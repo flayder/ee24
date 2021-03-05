@@ -13,44 +13,54 @@
 
         .l-footer__content__block.companies
           .l-footer__content__block-title Для компаний
-          %ul.l-footer__content__links
-            %li= link_to 'Добавить компанию в каталог', '/catalog/new', rel: :nofolow
-            %li= link_to 'Реклама', '/reklama', rel: :nofolow
+          - if block = FooterBlock.where(identity: 'companies').first
+            = raw block.content
+          -# %ul.l-footer__content__links
+          -#   %li= link_to 'Добавить компанию в каталог', '/catalog/new', rel: :nofolow
+          -#   %li= link_to 'Реклама', '/reklama', rel: :nofolow
 
         .l-footer__content__block.links
           .l-footer__content__block-title Ссылки
-          %ul.l-footer__content__links
-            - @site.static_docs.each do |doc|
-              - next if doc.link == 'reklama'
-              %li= link_to doc.title, "/#{doc.link}", rel: "#{nofolow.include?(doc.link) ? 'nofollow' : ''}"
+          - if block = FooterBlock.where(identity: 'links').first
+            = raw block.content
+          -# %ul.l-footer__content__links
+          -#   - @site.static_docs.each do |doc|
+          -#     - next if doc.link == 'reklama'
+          -#     %li= link_to doc.title, "/#{doc.link}", rel: "#{nofolow.include?(doc.link) ? 'nofollow' : ''}"
 
         .l-footer__content__block.projects
           .l-footer__content__block-title Наши проекты
-          %ul.l-footer__content__links
-            %li= link_to 'Продажа билетов на концерты в Праге', 'https://tickets.420on.cz'
+          - if block = FooterBlock.where(identity: 'projects').first
+            = raw block.content
+          -# %ul.l-footer__content__links
+          -#   %li= link_to 'Продажа билетов на концерты в Праге', 'https://tickets.420on.cz'
 
         .l-footer__content__block.social
           .l-footer__content__block-title Мы в соцсетях
-          %ul.l-footer__content__social-links
-            %li= link_to '', 'https://vk.com/czonline', class: 'link vk', rel: 'nofollow'
-            %li= link_to '', 'https://www.facebook.com/420on.cz', class: 'link fb', rel: 'nofollow'
-            %li= link_to '', 'https://twitter.com/420on', class: 'link tw', rel: 'nofollow'
-            %li= link_to '', 'https://www.ok.ru/czonline', class: 'link ok', rel: 'nofollow'
-            %li= link_to '', 'https://plus.google.com/110054812043913910012', class: 'link gp', rel: 'publisher', target: "_top"
-            -#= link_to '', '#', class: 'link fl', rel: 'nofollow'
-            %li= link_to '', 'https://www.youtube.com/user/420oncz', class: 'link yt', rel: 'nofollow'
-            %li= link_to '', 'https://instagram.com/420oncz', class: 'link ig', rel: 'nofollow'
+          - if block = FooterBlock.where(identity: 'social').first
+            = raw block.content
+          -# %ul.l-footer__content__social-links
+          -#   %li= link_to '', 'https://vk.com/czonline', class: 'link vk', rel: 'nofollow'
+          -#   %li= link_to '', 'https://www.facebook.com/420on.cz', class: 'link fb', rel: 'nofollow'
+          -#   %li= link_to '', 'https://twitter.com/420on', class: 'link tw', rel: 'nofollow'
+          -#   %li= link_to '', 'https://www.ok.ru/czonline', class: 'link ok', rel: 'nofollow'
+          -#   %li= link_to '', 'https://plus.google.com/110054812043913910012', class: 'link gp', rel: 'publisher', target: "_top"
+          -#   -#= link_to '', '#', class: 'link fl', rel: 'nofollow'
+          -#   %li= link_to '', 'https://www.youtube.com/user/420oncz', class: 'link yt', rel: 'nofollow'
+          -#   %li= link_to '', 'https://instagram.com/420oncz', class: 'link ig', rel: 'nofollow'
 
         .l-footer__content__block.contacts
           .l-footer__content__block-title Связаться с нами
-          %ul.l-footer__content__links
-            %li
-              420on.cz s.r.o.
-            %li= link_to 'info@420on.cz', 'mailto:info@420on.cz', rel: :nofolow
-            %li
-              тел. +420 212 247 420
-            %li
-              Václavské náměstí 813/57, Nové Město, 110 00 Praha 1
+          - if block = FooterBlock.where(identity: 'contacts').first
+            = raw block.content
+          -# %ul.l-footer__content__links
+          -#   %li
+          -#     420on.cz s.r.o.
+          -#   %li= link_to 'info@420on.cz', 'mailto:info@420on.cz', rel: :nofolow
+          -#   %li
+          -#     тел. +420 212 247 420
+          -#   %li
+          -#     Václavské náměstí 813/57, Nové Město, 110 00 Praha 1
 
       .l-footer__content__copy
         %p= "#{@site.domain} &mdash; #{@site.portal_title}".html_safe
