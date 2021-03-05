@@ -100,8 +100,8 @@ gem 'livejournal', require: false
 gem 'ruby-stemmer', '>=0.8.3', require: false
 
 # for fetching yandex metrika api
-# gem 'em-synchrony', require: false
-# gem 'em-http-request', require: false
+gem 'em-synchrony', require: false
+gem 'em-http-request', require: false
 
 gem 'bugsnag'
 
