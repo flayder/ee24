@@ -14,7 +14,7 @@ class Admin::MainSectionsController < Admin::BaseController
     @main_section = MainSection.find(params[:id])
 
     if @main_section.update_attributes params[:main_section]
-      redirect_to action: :index, notice: 'Раздел главной успешно обновлен'
+      redirect_to action: :index
     else
      render action: :edit
     end

@@ -40,6 +40,8 @@
                   = link_to_unless_current "Разделы главной", admin_main_sections_path
                 %li
                   = link_to_unless_current "Блоки главной", admin_main_blocks_path
+                %li
+                  = link_to_unless_current "Блоки футера", admin_footer_blocks_path
               - if can?(:manage, DictionaryObject)
                 %li
                   = link_to_unless_current "Словари", admin_dictionaries_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20210305134329) do
+ActiveRecord::Schema.define(:version => 20210305155308) do
 
   create_table "ad_agencies", :force => true do |t|
     t.string   "title",      :default => ""
@@ -524,6 +524,14 @@ ActiveRecord::Schema.define(:version => 20210305134329) do
   add_index "external_docs", ["site_id"], :name => "index_external_docs_on_site_id"
   add_index "external_docs", ["url", "site_id"], :name => "index_external_docs_on_url_and_site_id", :unique => true
   add_index "external_docs", ["user_id"], :name => "index_external_docs_on_user_id"
+
+  create_table "footer_blocks", :force => true do |t|
+    t.string   "name"
+    t.string   "identity"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "forecast_anchors", :force => true do |t|
     t.string   "text"

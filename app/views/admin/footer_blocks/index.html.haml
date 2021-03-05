@@ -1,0 +1,18 @@
+%h1= 'Блоки футера'
+
+%table.table.table-bordered
+  %thead
+    %th= FooterBlock.human_attribute_name :id
+    %th= FooterBlock.human_attribute_name :name
+    %th= FooterBlock.human_attribute_name :identity
+    %th= FooterBlock.human_attribute_name :content
+    %th= 'Действия'
+  - @footer_blocks.each do |footer_block|
+    %tr
+      %td= footer_block.id
+      %td= footer_block.name
+      %td= footer_block.identity
+      %td= footer_block.content
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_footer_block_path(footer_block)
