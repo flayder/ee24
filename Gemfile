@@ -132,7 +132,7 @@ group :test do
   gem 'shoulda'
   gem 'capybara', '2.4.4'
   gem 'selenium-webdriver', '2.45.0'
-  gem 'capybara-webkit'
+  # gem 'capybara-webkit'
   gem 'rubyzip', '>= 1.0.0' # will load new rubyzip version
   gem 'zip-zip' # will load compatibility for old rubyzip API.
   gem 'launchy'
