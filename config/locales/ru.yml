@@ -488,6 +488,9 @@ ru:
         body: Код
         code_type: Тип
         comment: Комментарий
+      main_section:
+        name: Название
+        active: Активно
       main_block:
         doc_type: Тип доков
         position: Позиция

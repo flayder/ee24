@@ -1,0 +1,11 @@
+%h1= 'Разделы главной'
+
+= form_for [:admin, @main_section] do |f|
+  = error_messages_for :main_section, object: @main_section
+
+  .form-group
+    = f.label :active, 'Активно'
+    = f.check_box(:active)
+
+  .form-group
+    = f.submit 'Сохранить', class: 'btn btn-default'

@@ -94,6 +94,7 @@ Onru::Application.routes.draw do
     resources :ad_formats, :except => :show
     resources :ad_agencies, :except => :show
     resources :main_blocks
+    resources :main_sections, only: [:index, :edit, :update]
     resources :redirects, except: :show
 
     get 'versions' => 'versions#index'

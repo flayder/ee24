@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20191202054957) do
+ActiveRecord::Schema.define(:version => 20210305134329) do
 
   create_table "ad_agencies", :force => true do |t|
     t.string   "title",      :default => ""
@@ -711,6 +711,14 @@ ActiveRecord::Schema.define(:version => 20191202054957) do
 
   add_index "main_menu_links", ["site_id"], :name => "index_main_menu_links_on_site_id"
 
+  create_table "main_sections", :force => true do |t|
+    t.string   "name"
+    t.string   "identity"
+    t.boolean  "active"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "messages", :force => true do |t|
     t.string   "title"
     t.text     "text"
@@ -902,11 +910,11 @@ ActiveRecord::Schema.define(:version => 20191202054957) do
     t.string   "email"
     t.string   "phone_number"
     t.date     "birthday"
-    t.text     "comment"
+    t.text     "comment",      :limit => 16777215
     t.integer  "docable_id"
     t.string   "docable_type"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "resumes", :force => true do |t|
@@ -1146,18 +1154,6 @@ ActiveRecord::Schema.define(:version => 20191202054957) do
 
   add_index "twitter_accounts", ["site_id"], :name => "index_rubric_twitters_on_site_id"
   add_index "twitter_accounts", ["site_rubric_id"], :name => "index_rubric_twitters_on_site_rubric_id"
-
-  create_table "user_areas", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "user_countries", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "user_visits", :force => true do |t|
     t.integer  "user_id",                                  :null => false

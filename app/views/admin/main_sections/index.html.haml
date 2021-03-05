@@ -1,0 +1,16 @@
+%h1= 'Разделы главной'
+
+%table.table.table-bordered
+  %thead
+    %th= MainSection.human_attribute_name :id
+    %th= MainSection.human_attribute_name :name
+    %th= MainSection.human_attribute_name :active
+    %th= 'Действия'
+  - @main_sections.each do |main_section|
+    %tr
+      %td= main_section.id
+      %td= main_section.name
+      %td= main_section.active? ? 'Да' : 'Нет'
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_main_section_path(main_section)
