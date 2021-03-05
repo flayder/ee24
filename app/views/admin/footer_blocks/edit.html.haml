@@ -2,10 +2,6 @@
 
 = form_for [:admin, @footer_block] do |f|
   = error_messages_for :footer_block, object: @footer_block
-  
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
 
   .form-group
     = f.label :content, 'Содержание'

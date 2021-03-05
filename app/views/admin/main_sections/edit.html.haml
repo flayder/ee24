@@ -2,10 +2,6 @@
 
 = form_for [:admin, @main_section] do |f|
   = error_messages_for :main_section, object: @main_section
-  
-  .form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
 
   .form-group
     = f.label :active, 'Активно'
