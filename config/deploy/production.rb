@@ -10,7 +10,7 @@ set :rails_env, 'production'
 set :branch, 'master'
 
 set :deploy_to, '/var/www/420on'
-set :repository, 'git@github.com:evrone/420on.git'
+set :repository, 'git@github.com:finist/420on.git'
 set :user, 'deploy'
 set :forward_agent, true
 set :rbenv_path, '/home/deploy/.rbenv/'
