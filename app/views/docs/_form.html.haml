@@ -1,0 +1,146 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+  = stylesheet_link_tag '//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+
+.b-form.l-cols
+  - link = @global_rubric.link
+  = form_for @doc, url: (@doc.persisted? ? "/#{link}/#{@doc.id}" : "/#{link}"), method: (@doc.persisted? ? :put : :post), html: {class: 'b-form', multipart: true} do |f|
+    = error_messages_for :doc
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :doc_rubric_id
+      .l-cols-8.l-l
+        = grouped_collection_select(:doc, :doc_rubric_id, @site.doc_global_rubrics, :doc_rubrics, :title, :id, :title, {prompt: 'Выберите рубрику'}, class: 'b-form__control select')
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :title
+      .l-cols-8.l-l
+        = f.text_field :title, class: 'b-form__control input wide'
+
+    = render partial: 'docs/upload_photos', locals: {doc: @doc, f: f}
+
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :long_image
+      .l-cols-8.l-l
+        = f.check_box :long_image
+
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :annotation
+      .l-cols-8.l-l
+        = f.text_area :annotation, cols: 50, rows: 2, class: 'b-form__control textarea'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :text
+      .l-cols-8.l-l
+        - if can?(:rich_edit, Doc)
+          = f.cktext_area :text, class: 'b-form__control textarea', ckeditor: {toolbar: 'Full'}
+        - else
+          = f.cktext_area :text, class: 'b-form__control textarea', ckeditor: {toolbar: 'Basic'}
+
+    - if current_user.site_full_admin_for(@site)
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :user_id
+        .l-cols-8.l-l
+          = f.text_field :user_id, value: @doc.user.try(:email), class: 'b-form__control wide'
+          %p
+            id или email пользователя
+
+    - if can?(:manage, @doc)
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :tag_list
+        .l-cols-8.l-l
+          = f.text_field :tag_list, class: 'b-form__control wide with_autocomplete', data: {url: '/tags/autocomplete'}
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :quote
+        .l-cols-8.l-l
+          = f.text_field :quote, class: 'b-form__control wide'
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :hero
+        .l-cols-8.l-l
+          = f.text_field :hero, class: 'b-form__control wide'
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :approved
+        .l-cols-8.l-l
+          = f.check_box :approved, onchange: "checkApproved(this)"
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :approve_on
+        .l-cols-8.l-l
+          = f.datetime_select :approve_on, { include_blank: true, disabled: @doc.approved? }, { class: 'b-form__control inline-block' }
+          = Time.zone
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :main
+        .l-cols-8.l-l
+          = f.check_box :main
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :top_main
+        .l-cols-8.l-l
+          = f.check_box :top_main
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :no_watermark
+        .l-cols-8.l-l
+          = f.check_box :no_watermark
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :pictureless
+        .l-cols-8.l-l
+          = f.check_box :pictureless
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :not_in_rss
+        .l-cols-8.l-l
+          = f.check_box :not_in_rss
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :yandex_zen
+        .l-cols-8.l-l
+          = f.check_box :yandex_zen
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :is_commentable
+        .l-cols-8.l-l
+          = f.check_box :is_commentable
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :created_at
+        .l-cols-8.l-l
+          = f.datetime_select :created_at, {}, {class: 'b-form__control inline-block'}
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :language
+        .l-cols-8.l-l
+          = f.select :language, options_for_select(Hash[ApplicationHelper::LANGUAGE_LIST[I18n.locale].to_a.collect(&:reverse)], @doc.language.present? ? @doc.language : I18n.locale.to_s), {}, {class: 'b-form__control select'}
+
+    .b-form__row
+      .l-cols-3.l-l
+        &nbsp;
+      .l-cols-8.l-l
+        = f.submit 'Отправить', class: 'g-button medium primary'
+
+:javascript
+  function checkApproved(el) {
+    $('select[id*=\"doc_approve_on_\"]').prop('disabled', el.checked);
+  }

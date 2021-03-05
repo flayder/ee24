@@ -1,0 +1,23 @@
+<div class='well'>
+  <%= render 'rubrics' %>
+  <!-- алфавитный указатель -->
+  <% if @letters.present? %>
+      <ul class="nav nav-pills">
+        <% @letters.each do |letter| %>
+            <li <%= 'class = active' if letter == params[:letter]  %>>
+              <%= link_to letter, admin_tags_url(:letter => letter) %>
+            </li>
+        <% end %>
+      </ul>
+  <% end %>
+  <%= render :partial => 'search_form' %>
+</div>
+<div class='well'>
+  <div style='margin-bottom: 10px;'>
+    <%= link_to 'Новый тег', new_admin_tag_url, class: 'btn btn-primary' %>
+  </div>
+
+  <h1>Рабочие теги</h1>
+
+  <%= render 'list' %>
+</div>

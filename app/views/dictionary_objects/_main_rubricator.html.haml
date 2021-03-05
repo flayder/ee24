@@ -1,0 +1,7 @@
+.b-dropdown
+  .b-dropdown__active 
+    = @dictionary.title
+  .b-dropdown__list
+    - @site.dictionaries.each do |dictionary|
+      .item
+        = link_to dictionary.title, dictionary.url

@@ -1,0 +1,60 @@
+table.b-weather {
+  margin-bottom: 20px;
+  tr {
+    height: 45px;
+    &:nth-child(odd) {background-color: #f2f2f2;}
+    &.event {}
+    td {
+      padding: 10px;
+      font-size: 20px;
+      vertical-align: middle;
+      &.date-name.weekend {
+        span {color: #ff6600;}
+      }
+      .day-value {font-size: 12px;}
+    }
+  }
+}
+
+.weather-current-title, .weather-current-city, .weather-forecast-title, .weather-current-description {
+  font-size: 40px;
+  line-height: 40px;
+  font-weight: bold;
+  font-family: "ProximaNova", Verdana, sans-serif;
+}
+
+.weather-forecast-title {
+  &.weekend {
+    color: #ff6600;
+  }
+  .day-value {
+    font-size: 12px;
+  }
+}
+
+.weather-current-city, .weather-current-description {
+  padding-left: 15px;
+}
+
+.weather-forecast-temp, .header-current-weather, .weather-current-temp {
+  display: block;
+  img {
+    vertical-align: middle;
+    display: inline;
+  }
+}
+
+.weather-current-temp {
+  font-size: 50px;
+  line-height: 50px;
+  font-weight: bold;
+  font-family: "ProximaNova", Verdana, sans-serif;
+}
+
+.header-current-weather {
+  position: absolute;
+  bottom: 18%;
+  right: 25%;
+  text-align: right;
+  font-weight: bold;
+}

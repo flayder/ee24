@@ -1,0 +1,12 @@
+- case params[:controller]
+- when 'job'
+  = render partial: "/job/templates/blocks/main_menu", locals: { doc_global_rubric: @site.doc_global_rubrics.find_by_link('job') }
+- when 'docs'
+  - if params[:global_rubric] == 'job'
+    = render partial: "/job/templates/blocks/main_menu", locals: { doc_global_rubric: @site.doc_global_rubrics.find_by_link('job') }
+  - else
+    = render partial: "/docs/templates/blocks/main_menu"
+- when 'photo', 'catalog', 'afisha', 'map', 'dictionary_objects'
+  = main_menu_partial(params[:controller])
+- else
+  = render partial: "/layouts/menu"

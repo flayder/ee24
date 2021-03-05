@@ -1,0 +1,1 @@
+$page_views_redis = Redis.new(db: Settings.redis.db.page_views, host: ENV['REDIS_HOST'] || 'localhost', port: ENV['REDIS_PORT'] || '6379')

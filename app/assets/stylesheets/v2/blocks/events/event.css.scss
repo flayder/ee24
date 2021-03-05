@@ -1,0 +1,29 @@
+.b-event__info {
+  padding-top: 20px;
+  margin-bottom: 30px;
+  font: 16px/19px $font-family_proxymanova;
+  color: $black;
+  background: $blue-light;
+  
+  & &-item {
+    display: inline-block;
+    width: 50%;
+    padding-bottom: 15px;
+    vertical-align: top;
+    overflow: hidden;
+
+    .item__title {
+      @include box-sizing(border-box);
+      width: 25%;
+      padding-left: 15px;
+      float: left;
+      color: $gray-mid;
+    }
+
+    .item__content {
+      width: 75%;
+      float: left;
+    }
+    .g-button {margin: 0 0 -5px 15px;}
+  }
+}

@@ -1,0 +1,4 @@
+- if article
+  .b-docs-item
+    = link_to image_for_article(article), article.approved ? article.url : article.preview_secret_url, class: 'b-docs-item__image' if article.main_photo
+    = render partial: "shared/#{article.class.to_s.downcase}", object: article

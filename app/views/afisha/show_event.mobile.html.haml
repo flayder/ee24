@@ -1,0 +1,12 @@
+= content_for :title, 'Афиша'
+
+- @doc = @event
+.container
+  = render 'shared/mobile/doc'
+
+  .doc-subheader Ближайщие события
+  .feed
+    - @events.each do |event|
+      = render 'shared/mobile/doc_item', doc: event
+  .text-center
+    = link_to 'Все события', '/afisha'

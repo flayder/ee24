@@ -1,0 +1,15 @@
+= render partial: 'admin/shared/user/well_menu'
+%h3 Статистика регистраций:
+%table.table.table-condensed
+  %thead
+    %tr
+      %th Период
+      %th Facebook
+      %th Vkontakte
+      %th Через форму
+      %th Всего
+  %tbody
+    = render partial: 'stat', locals: { period_title: 'За день', period_scope: :of_today }
+    = render partial: 'stat', locals: { period_title: 'За неделю', period_scope: :of_the_week }
+    = render partial: 'stat', locals: { period_title: 'За месяц', period_scope: :of_the_month }
+    = render partial: 'stat', locals: { period_title: 'За все время', period_scope: :scoped }

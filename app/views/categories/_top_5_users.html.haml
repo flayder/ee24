@@ -1,0 +1,11 @@
+.b-category-active-users
+  .b-category-active-users__title Активные участники
+  .b-category-active-users__list
+    - @users.each do |user|
+      .b-category-active-user
+        = link_to image_tag(user.avatar.url(:small)), user_path(user.subdomain), class: 'b-category-active-user__avatar'
+        .b-category-active-user__content
+          = link_to user.fio_or_login, user_path(user.subdomain), class: 'b-category-active-user__title'
+          .b-category-active-user__comments
+            = user.questions.count
+            = Russian.p(user.questions.count, 'пост', 'поста', 'постов')

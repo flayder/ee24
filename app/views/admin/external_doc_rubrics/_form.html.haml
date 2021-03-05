@@ -1,0 +1,10 @@
+%h1= 'Новый рубрика внешний документов'
+= form_for [:admin, @external_doc_rubric] do |f|
+  = error_messages_for :external_doc_rubric, object: @external_doc_rubric
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

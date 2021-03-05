@@ -1,0 +1,15 @@
+development:
+  appKey: 1753483288295219 # Use localhost:3000
+  appSecret: a6930035402cf40fae25384cf07aebca
+test:
+  appKey: 1095941307090145
+  appSecret: 33d38efea186ae818c6cd9880aeb2876
+production:
+  appKey: 156802067754189
+  appSecret: 558a7c023a1883fa083ec896b26f0315
+staging:
+  appKey: 414255168621869
+  appSecret: b274acc626479cd6ba82dbed03e2e5e0
+  420on.cz:
+    appKey: 110073719105182 #263288213773637
+    appSecret: 49b117273c3231ef9a7ec6f0f4a68553 #22a3cdf72cffae50a9c61bc826e104dc

@@ -1,0 +1,65 @@
+@import "import/clean-base";
+
+$images-path: "forms";
+
+form {
+  margin: 0;
+}
+
+label {
+  vertical-align: middle;
+}
+
+button, input, select, textarea {
+  @include g-font_base;
+  color: $c-black;
+  outline: none;
+}
+
+textarea::-webkit-input-placeholder { color: #a3a3a3; }
+input::-webkit-input-placeholder { color: #a3a3a3 !important;}
+textarea:-moz-placeholder { color: #a3a3a3; }
+input:-moz-placeholder { color: #a3a3a3 !important; }
+
+.field_with_errors {
+  textarea::-webkit-input-placeholder { color: $c-white; }
+  input::-webkit-input-placeholder { color: $c-white !important;}
+  textarea:-moz-placeholder { color: $c-white; }
+  input:-moz-placeholder { color: $c-white !important; }
+}
+
+
+input[type="text"], input[type="password"], input[type="search"], input[type="email"], input[type="url"], input[type="number"], textarea {
+  margin: 0;
+}
+
+input[type="search"] {
+  border: none;
+  -webkit-appearance: none;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+ -webkit-appearance: none;
+}
+
+textarea {
+  padding: 3px 5px;
+  resize: none;
+  overflow: auto;
+}
+
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+label, input[type="button"], input[type="submit"], input[type="image"] {
+  cursor: pointer;
+  &.disabled {
+    cursor: default;
+  }
+}
+
+label, input[type="radio"], input[type="checkbox"], select {
+  vertical-align: middle;
+}

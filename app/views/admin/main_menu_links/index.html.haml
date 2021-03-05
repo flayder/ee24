@@ -1,0 +1,6 @@
+= render partial: 'search_form'
+
+= link_to 'Новая ссылка в меню', new_admin_main_menu_link_path
+= render partial: 'table', locals: { main_menu_links: @main_menu_links }
+
+= will_paginate_bootstrap @main_menu_links

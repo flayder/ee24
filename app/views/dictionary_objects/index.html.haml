@@ -1,0 +1,24 @@
+.l-wrapper
+
+  %aside.l-section__aside.b-ency__aside
+    = render partial: 'shared/ency_widget'
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    .b-ency
+
+      - if @dictionary_objects.empty?
+        Пока нет ни одной статьи.
+      - else
+        .b-ency__subsections
+          - (@rubric.try(:dictionary) || @dictionary).rubrics.each do |rubric|
+            .item>
+              = image_tag rubric.image.url(:xxsmall), class: 'item-avatar'
+              = link_to rubric.title, rubric.path, class: 'item-link'
+
+      .b-ency__digest
+        .b-ency__digest-title
+          %span Это интересно
+        - DictionaryObject.where(rubric_id: (@rubric.try(:dictionary) || @dictionary).rubrics.pluck(:id)).sample(3).each do |dictionary_object|
+          = render partial: 'shared/ency_item', object: dictionary_object
+= seo_text @seo

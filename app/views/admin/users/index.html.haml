@@ -1,0 +1,5 @@
+= render partial: 'admin/shared/user/well_menu'
+= render partial: 'search_form'
+= render partial: 'table', locals: { users: @users }
+
+= will_paginate_bootstrap @users

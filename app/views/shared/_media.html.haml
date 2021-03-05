@@ -1,0 +1,20 @@
+.b-media
+  - if !(controller_name == 'photo' && @rubric)
+    .b-media__sticker= media.rubric.try(:title)
+  = link_to media.approved ? media.url : media.preview_secret_url, class: 'b-media__link' do
+    - if media.photos.main.present?
+      = image_tag media.photos.main.first.image.url(:xxlarge), alt: media.title, size: '610x415'
+    - elsif media.photos.present?
+      = image_tag media.photos.first.image.url(:xxlarge), alt: media.title, size: '610x415'
+    .b-media__descr
+      .b-media__title= sanitize(media.title)
+      .b-media__lead= truncate(strip_tags(media.annotation), length: 200).html_safe if !@site.photo_rubrics.include?(media.rubric) && controller_name != 'photos'
+  .b-media__info
+    .g-aux.r
+      .g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: media}
+      .g-aux__item.views= media.page_views
+      .g-aux__item.date= media.created_at.strftime('%d.%m.%Y')
+    - if media.user
+      = link_to user_path(media.user.subdomain), class: 'g-author' do
+        = image_tag media.user.avatar.url(:avatar), width: 27, height: 27
+        %span>= media.user.fio.present? ? media.user.fio : media.user.login

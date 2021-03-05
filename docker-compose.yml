@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - database
+      - redis
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/420on:cached
+      - gem_cache:/usr/local/bundle/gems:delegated
+    env_file: .env
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+
+  database:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql:delegated
+    restart: always
+    env_file: .env
+
+  redis:
+    image: redis:6.0.4
+
+volumes:
+  db_data:
+  gem_cache:

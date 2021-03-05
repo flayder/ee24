@@ -1,0 +1,45 @@
+- content_for :head do
+  %meta{content: "Чехия Онлайн 420on.cz", property: 'og:site_name'}/
+  %meta{content: sanitize(@question.title), property: 'og:title'}/
+  %meta{content: request.url.force_encoding('UTF-8'), property: 'og:url'}/
+  %meta{content: URI.join(root_url, @question.category.logo.to_s), property: 'og:image'}
+  %meta{content: strip_tags(@question.content), property: 'og:description'}
+  %meta{content: "https://www.facebook.com/420on.cz", property: 'article:publisher'}
+  %meta{content: 'article', property: 'og:type'}/
+
+  %meta{content: 'summary', property: 'twitter:card'}
+  %meta{content: '@420on', property: 'twitter:site'}
+  %meta{content: sanitize(@question.title), property: 'twitter:title'}
+  %meta{content: request.url.force_encoding('UTF-8'), property: 'twitter:url'}
+  %meta{content: strip_tags(@question.content), property: 'twitter:description'}
+  %meta{content: URI.join(root_url, @question.category.logo.to_s), property: 'twitter:image'}
+.l-wrapper
+
+  %aside.l-section__aside
+
+    = render partial: 'relevant_questions', locals: {questions: @relevant_questions} if @relevant_questions.present?
+    = render 'categories/rubricator'
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+
+    .b-question
+      = render partial: 'posts/item_header', locals: {item: @question}
+      - if can? :update, @question
+        .b-question__actions
+          = link_to t('.edit_link'), edit_category_question_path(@category, @question), class: 'b-question__action abuse'
+          = link_to t('.remove_link'), category_question_path(@category, @question), method: :delete, class: 'b-question__action abuse', confirm: "Вы уверены?"
+      - if @question.answer.present?
+        .b-question__answer
+          .title Официальный ответ
+          .content
+            = @question.answer.try(:html_safe)
+            .g-aux.l.midi.blue
+              %span.g-aux__item.date= l @question.updated_at, format: :long_short
+              = link_to 'Ссылка на ответ', '#', class: 'g-aux__item hash'
+
+    .g-comments-wrapper.js-comments{data:{class: 'Question', id: @question.id}}
+      = render 'comments/comment_form_full', doc: @question, visible: true
+      .b-latest-items
+        .g-subheader2= t('.last_five_header')
+        = render partial: 'question', collection: @latest_questions, locals: {relation: 'latest'}

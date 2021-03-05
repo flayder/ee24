@@ -1,0 +1,13 @@
+%div
+  .l-wrapper
+    .l-page__columns-line
+      .l-section__main.l-r-important
+        %div.l-section__main
+          - if @comments.present?
+            = render partial: '/account/templates/blocks/comments.html.haml', object: @comments
+            = will_paginate_new @comments
+          - else
+            .g-info
+              .g-info__text= is_my_profile?(@user) ? "У вас ещё нет комментариев." : "У пользователя нет комментариев."
+      .l-section__aside.l-l
+        = render 'account/templates/blocks/aside', user: @user

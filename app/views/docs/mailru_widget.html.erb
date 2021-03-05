@@ -1,0 +1,19 @@
+<% if @docs.any? %>
+  <%= image_tag 'logo_mailru.png', :width => '240', :height => '60', class: 'title' %>
+  <div class="main">
+    <% if @docs.first.main_photo.present? %>
+      <%= link_to image_tag(@docs.first.main_photo.image.url(:mailru), :width => '140', :height => '100', :alt => ''), @docs.first.url(@site) %>
+    <% end %>
+    <span class="date"><%= @docs.first.created_at.strftime('%d.%m') %><b>|</b><%= @docs.first.created_at.strftime('%H:%M') %></span>
+    <%= link_to @docs.first.title, @docs.first.url(@site) %>
+    <div class="clear"></div>
+  </div>
+  <ul>
+    <% @docs[1, 2].each do |doc| %>
+      <li>
+        <span class="date"><%= doc.created_at.strftime('%d.%m') %><b>|</b><%= doc.created_at.strftime('%H:%M') %></span>
+        <%= link_to doc.title, doc.url %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

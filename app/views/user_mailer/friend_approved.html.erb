@@ -1,0 +1,2 @@
+Пользователь <%= link_to @friend.login, "https://#{@site.domain}/users/#{@friend.subdomain}" %> подтвердил, что вы друзья.
+<%= render partial: "user_mailer/unsubscribe_text", locals: { user: @user, site: @site} %>

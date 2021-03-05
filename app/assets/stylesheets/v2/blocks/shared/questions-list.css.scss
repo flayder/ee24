@@ -1,0 +1,28 @@
+.b-questions-list {
+  & &__item {
+    min-height: 40px;
+    padding-left: 55px;
+    margin-bottom: 30px;
+    &:last-child {margin-bottom: 0}
+    &:after {
+      display: block;
+      width: 40px;
+      height: 40px;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      background: $blue-mid;
+    }
+  }
+
+  & &__title {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+    line-height: 17px;
+    color: $gray-mid2;
+  }
+  
+}

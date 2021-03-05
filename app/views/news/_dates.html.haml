@@ -1,0 +1,12 @@
+.g-dates
+  -# (6.days.ago.to_date..Date.today.to_date).to_a.reverse.each do |day|
+    = active_date(day, @date, :news)
+
+  .g-dates__selector
+    = text_field_tag 'datepicker', '', class: 'js-datepicker', data: {type: controller_name}
+  .g-date.g-date__archive
+    Архив
+
+  -# unless (6.days.ago.to_date..Date.today.to_date).to_a.include?(@date)
+    .g-date.active
+      = Russian.strftime(@date, "%a %e.%m")

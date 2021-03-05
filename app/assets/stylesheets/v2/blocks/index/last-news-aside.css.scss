@@ -1,0 +1,24 @@
+.b-last-news-aside {
+  padding: 18px 25px;
+  background: #edf6fa;
+
+  &:first-child {
+    margin-top: 54px;
+  }
+
+  .news_item {
+    margin-bottom: 25px;
+  }
+
+  .news_date {
+    color: $gray-mid;
+  }
+
+  .news_title a {
+    color: #000;
+  }
+
+  .link_to_all_news {
+    font-size: 16px;
+  }
+}

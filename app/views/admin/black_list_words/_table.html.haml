@@ -1,0 +1,12 @@
+%table.table.table-bordered
+  %thead
+    %th
+      = BlackListWord.human_attribute_name(:lemma)
+      = sort_link @search, :lemma, SearchQuery.human_attribute_name(:lemma), :default_order => :desc
+    %th= 'Действия'
+  - black_list_words.each do |word|
+    %tr
+      %td= word.lemma
+      %td
+        %ul.admin_actions
+          %li= link_to 'Удалить', admin_black_list_word_path(word), :method => :delete, :confirm => 'Вы уверены?'

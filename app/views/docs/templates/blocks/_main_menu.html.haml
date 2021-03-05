@@ -1,0 +1,21 @@
+%nav.b-site-navigation
+  %div.l-page__center
+    .main-links
+      .line
+        = link_to_current @global_rubric.title, "/#{@global_rubric.link}"
+        - @global_rubric.doc_rubrics.each do |rubric|
+          - if (params[:rubric].present? && rubric.link == params[:rubric])
+            %span.active= rubric.title
+          - else
+            = link_to rubric.title, "/#{@global_rubric.link}/#{rubric.link}"
+      .line.user-actions
+        - if logged_in?
+          = link_to_current 'Мои статьи', "/#{@global_rubric.link}/my"
+        - if can? :manage, Doc
+          - if @site.domain == '36on.ru'
+            = link_to_current 'Народные новости', "/#{@global_rubric.link}/not_approved/users", class: 'green'
+          - else
+            = link_to_current 'От юзеров', "/#{@global_rubric.link}/not_approved/users", class: 'red'
+          = link_to_current 'От редакции', "/#{@global_rubric.link}/not_approved/editors", class:  'red'
+    - if @site.voronezh?
+      = render partial: 'layouts/special_projects_menu'

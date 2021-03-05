@@ -1,0 +1,15 @@
+<% if @tags.present? %>
+  <% @tags.in_groups_of(50, false) do |tags| %>
+    <div style='width:49%;display:inline-block;vertical-align: top;'>
+      <% tags.each do |tag| %>
+        <div>
+          <%= link_to tag.name, admin_tag_url(tag.id) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= will_paginate_bootstrap @tags %>
+<% else %>
+  К сожалению ничего не найдено.
+<% end %>

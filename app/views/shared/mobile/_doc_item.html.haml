@@ -1,0 +1,17 @@
+- date_format ||= "%H:%M"
+.doc-item
+  .doc-image
+    = image_tag doc.main_photo.image.small.url if doc.main_photo
+
+  .doc-content
+    .doc-info
+      - if doc.is_a?(Event)
+        %span.doc-playbill-date= doc.start_date.strftime("%d.%m.%y")
+      - else
+        %span.doc-date= doc.created_at.strftime(date_format)
+      %span.doc-category= link_to doc.rubric.title, doc.rubric.url
+
+    .doc-title
+      = link_to doc.title, doc.url
+
+  .clearfix

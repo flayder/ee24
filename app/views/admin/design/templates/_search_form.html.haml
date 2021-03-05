@@ -1,0 +1,11 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_design_templates_path do |form|
+      .control-group
+        .controls
+          = form.input :id_eq, :required => false
+        .controls
+          = form.input :name_like, :required => false
+        .controls
+          = form.button :submit, 'Найти', class: 'btn'

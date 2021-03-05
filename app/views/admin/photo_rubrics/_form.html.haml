@@ -1,0 +1,14 @@
+%h1= 'Новая фото рубрика'
+= form_for [:admin, @photo_rubric] do |f|
+  = error_messages_for :photo_rubric, :object => @photo_rubric
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :link
+    = f.text_field :link
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

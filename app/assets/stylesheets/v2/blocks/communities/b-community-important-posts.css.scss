@@ -1,0 +1,27 @@
+.b-community-important-posts {
+  margin-top: 25px;
+  border-left: 10px solid #E62C3F;
+  padding-left: 10px;
+}
+
+.b-community-important-posts__title {
+  text-transform: uppercase;
+  font: 18px/24px $font-family_proxymanova;
+  color: #414141;
+  letter-spacing: 1px;
+}
+
+.b-community-important-posts__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    margin: 12px 0;
+    line-height: 22px;
+  }
+}
+
+.b-community-important-post {
+  font-size: 18px;
+  color: $blue-dark4;
+}

@@ -1,0 +1,62 @@
+.g-button {
+  display: inline-block;
+  @include box-sizing(border-box);
+  height: 30px;
+  min-width: 45px;
+  padding: 8px 10px 9px;
+  font-size: 13px;
+  line-height: 16px;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  color: $blue-dark;
+  @include bg-darken($gray-light4);
+  border: none;
+  border-radius: 3px;
+  &:hover {cursor: pointer;}
+  &.block {
+    display: block;
+    margin-bottom: 20px;
+  }
+  &.wide {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  &.large {
+    height: 70px;
+    padding: 20px 60px;
+    margin-top: 5px;
+    font-size: 24px;
+    line-height: 28px;
+  }
+  &.medium {
+    height: 40px;
+    padding: 13px 30px;
+    font-size: 17px;
+    line-height: 17px;
+  }
+  &.minor {
+    color: $red-dark;
+    text-decoration: underline;
+    &:hover {text-decoration: none;}
+  }
+  &.primary {
+    color: $white;
+    @include bg-darken($blue-dark2);
+  }
+  &.danger {
+    color: $white;
+    @include bg-darken($red-dark);
+  }
+  &.disabled {
+    color: $gray-mid2;
+    @include bg-darken($gray-light2);
+    cursor: default;
+  }
+}
+
+input.g-button {
+  height: 30px;
+  padding: 0 10px;
+  min-width: 65px;
+}

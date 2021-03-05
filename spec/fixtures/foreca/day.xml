@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weather generated="2013-04-19T07:30:00Z">
+
+<loc id="100466806">
+<step dt="2013-04-19" tn="4" tx="19" s="d300" pr="0.0" wsx="4.4" wn="W" pp="2" tp="0" rise="05:32" set="20:04" dl="871" uv="4" ca="78" mp="100" mrise="12:15" mset="02:49" />
+<step dt="2013-04-20" tn="6" tx="21" s="d200" pr="0.0" wsx="3.9" wn="W" pp="2" tp="0" rise="05:29" set="20:06" dl="876" uv="5" ca="29" mp="110" mrise="13:26" mset="03:11" />
+<step dt="2013-04-21" tn="6" tx="18" s="d200" pr="0.3" wsx="3.3" wn="NW" pp="39" tp="0" rise="05:27" set="20:08" dl="881" uv="4" ca="83" mp="120" mrise="14:40" mset="03:31" />
+<step dt="2013-04-22" tn="5" tx="15" s="d400" pr="0.0" wsx="5.8" wn="NE" pp="53" tp="0" rise="05:24" set="20:10" dl="885" uv="1" ca="94" mp="140" mrise="15:57" mset="03:49" />
+<step dt="2013-04-23" tn="4" tx="14" s="d200" pr="0.2" wsx="7.8" wn="NE" pp="34" tp="0" rise="05:22" set="20:12" dl="890" uv="" ca="77" mp="150" mrise="17:17" mset="04:07" />
+<step dt="2013-04-24" tn="5" tx="17" s="d200" pr="1.4" wsx="5.1" wn="NE" pp="37" tp="0" rise="05:19" set="20:14" dl="894" uv="" ca="85" mp="160" mrise="18:39" mset="04:27" />
+<step dt="2013-04-25" tn="5" tx="14" s="d410" pr="1.2" wsx="4.4" wn="SE" pp="80" tp="0" rise="05:17" set="20:16" dl="899" uv="" ca="99" mp="180" mrise="20:04" mset="04:50" />
+<step dt="2013-04-26" tn="5" tx="14" s="d310" pr="1.3" wsx="5.4" wn="N" pp="84" tp="0" rise="05:14" set="20:18" dl="903" uv="" ca="95" mp="190" mrise="21:28" mset="05:18" />
+<step dt="2013-04-27" tn="5" tx="15" s="d310" pr="0.8" wsx="5.0" wn="N" pp="84" tp="0" rise="05:12" set="20:20" dl="908" uv="" ca="85" mp="200" mrise="22:46" mset="05:54" />
+<step dt="2013-04-28" tn="5" tx="15" s="d210" pr="0.5" wsx="5.1" wn="NW" pp="70" tp="0" rise="05:10" set="20:23" dl="912" uv="" ca="82" mp="220" mrise="23:54" mset="06:41" />
+</loc>
+
+<loc id="100472045">
+<step dt="2013-04-19" tn="5" tx="25" s="d100" pr="0.0" wsx="2.3" wn="NW" pp="2" tp="0" rise="06:19" set="20:26" dl="846" uv="5" ca="6" mp="100" mrise="13:06" mset="03:08" />
+<step dt="2013-04-20" tn="5" tx="23" s="d200" pr="0.0" wsx="1.6" wn="NW" pp="2" tp="0" rise="06:17" set="20:27" dl="850" uv="5" ca="22" mp="110" mrise="14:13" mset="03:35" />
+<step dt="2013-04-21" tn="7" tx="17" s="d220" pr="4.9" wsx="5.5" wn="N" pp="86" tp="0" rise="06:15" set="20:29" dl="853" uv="4" ca="88" mp="130" mrise="15:22" mset="03:59" />
+<step dt="2013-04-22" tn="2" tx="8" s="d430" pr="10.7" wsx="6.1" wn="N" pp="54" tp="0" rise="06:13" set="20:31" dl="857" uv="4" ca="100" mp="140" mrise="16:34" mset="04:22" />
+<step dt="2013-04-23" tn="3" tx="12" s="d430" pr="10.8" wsx="4.5" wn="N" pp="71" tp="0" rise="06:11" set="20:32" dl="861" uv="" ca="100" mp="150" mrise="17:49" mset="04:45" />
+<step dt="2013-04-24" tn="6" tx="12" s="d420" pr="2.0" wsx="6.9" wn="N" pp="64" tp="0" rise="06:09" set="20:34" dl="865" uv="" ca="99" mp="160" mrise="19:06" mset="05:10" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="0.4" wsx="6.9" wn="N" pp="67" tp="0" rise="06:07" set="20:36" dl="868" uv="" ca="83" mp="180" mrise="20:25" mset="05:38" />
+<step dt="2013-04-26" tn="4" tx="15" s="d210" pr="0.2" wsx="6.3" wn="W" pp="59" tp="0" rise="06:05" set="20:37" dl="872" uv="" ca="64" mp="190" mrise="21:44" mset="06:11" />
+<step dt="2013-04-27" tn="5" tx="17" s="d310" pr="0.5" wsx="5.5" wn="NW" pp="68" tp="0" rise="06:03" set="20:39" dl="876" uv="" ca="87" mp="200" mrise="22:58" mset="06:52" />
+<step dt="2013-04-28" tn="6" tx="18" s="d300" pr="0.1" wsx="4.9" wn="W" pp="48" tp="0" rise="06:01" set="20:41" dl="879" uv="" ca="92" mp="220" mrise="" mset="07:43" />
+</loc>
+
+<loc id="100473247">
+<step dt="2013-04-19" tn="8" tx="20" s="d200" pr="0.0" wsx="6.8" wn="SW" pp="2" tp="0" rise="06:03" set="20:32" dl="868" uv="4" ca="41" mp="100" mrise="12:48" mset="03:18" />
+<step dt="2013-04-20" tn="8" tx="18" s="d200" pr="0.0" wsx="3.8" wn="W" pp="2" tp="0" rise="06:01" set="20:34" dl="873" uv="4" ca="76" mp="110" mrise="13:59" mset="03:40" />
+<step dt="2013-04-21" tn="5" tx="13" s="d410" pr="0.2" wsx="4.9" wn="N" pp="27" tp="0" rise="05:58" set="20:36" dl="878" uv="4" ca="98" mp="130" mrise="15:13" mset="04:00" />
+<step dt="2013-04-22" tn="3" tx="10" s="d410" pr="1.1" wsx="6.3" wn="NE" pp="76" tp="0" rise="05:56" set="20:38" dl="882" uv="3" ca="98" mp="140" mrise="16:28" mset="04:19" />
+<step dt="2013-04-23" tn="3" tx="13" s="d300" pr="0.5" wsx="7.4" wn="NE" pp="37" tp="0" rise="05:53" set="20:40" dl="887" uv="" ca="89" mp="150" mrise="17:48" mset="04:38" />
+<step dt="2013-04-24" tn="2" tx="13" s="d210" pr="0.0" wsx="4.7" wn="N" pp="61" tp="0" rise="05:51" set="20:42" dl="891" uv="" ca="9" mp="160" mrise="19:10" mset="04:59" />
+<step dt="2013-04-25" tn="5" tx="12" s="d410" pr="1.2" wsx="5.6" wn="N" pp="70" tp="0" rise="05:49" set="20:44" dl="895" uv="" ca="94" mp="180" mrise="20:34" mset="05:22" />
+<step dt="2013-04-26" tn="4" tx="13" s="d210" pr="0.8" wsx="6.1" wn="NW" pp="82" tp="0" rise="05:46" set="20:47" dl="900" uv="" ca="81" mp="190" mrise="21:57" mset="05:51" />
+<step dt="2013-04-27" tn="5" tx="14" s="d310" pr="0.4" wsx="5.4" wn="NW" pp="64" tp="0" rise="05:44" set="20:49" dl="904" uv="" ca="83" mp="200" mrise="23:15" mset="06:27" />
+<step dt="2013-04-28" tn="5" tx="14" s="d310" pr="0.2" wsx="4.9" wn="W" pp="57" tp="0" rise="05:41" set="20:51" dl="909" uv="" ca="87" mp="220" mrise="" mset="07:15" />
+</loc>
+
+<loc id="100487846">
+<step dt="2013-04-19" tn="2" tx="11" s="d200" pr="0.0" wsx="8.3" wn="E" pp="7" tp="0" rise="06:21" set="20:01" dl="820" uv="6" ca="55" mp="100" mrise="13:09" mset="02:40" />
+<step dt="2013-04-20" tn="2" tx="14" s="d200" pr="0.0" wsx="8.5" wn="E" pp="10" tp="0" rise="06:19" set="20:03" dl="823" uv="6" ca="50" mp="110" mrise="14:11" mset="03:11" />
+<step dt="2013-04-21" tn="3" tx="13" s="d320" pr="2.3" wsx="1.9" wn="N" pp="95" tp="0" rise="06:18" set="20:04" dl="826" uv="6" ca="87" mp="130" mrise="15:16" mset="03:40" />
+<step dt="2013-04-22" tn="6" tx="13" s="d210" pr="2.4" wsx="7.2" wn="W" pp="98" tp="0" rise="06:16" set="20:05" dl="829" uv="6" ca="82" mp="140" mrise="16:22" mset="04:08" />
+<step dt="2013-04-23" tn="4" tx="11" s="d210" pr="0.7" wsx="9.5" wn="W" pp="82" tp="0" rise="06:14" set="20:07" dl="832" uv="" ca="85" mp="150" mrise="17:32" mset="04:36" />
+<step dt="2013-04-24" tn="3" tx="10" s="d410" pr="1.7" wsx="11.4" wn="W" pp="58" tp="0" rise="06:13" set="20:08" dl="835" uv="" ca="91" mp="160" mrise="18:43" mset="05:06" />
+<step dt="2013-04-25" tn="4" tx="10" s="d210" pr="1.5" wsx="8.4" wn="W" pp="78" tp="0" rise="06:11" set="20:09" dl="838" uv="" ca="91" mp="180" mrise="19:57" mset="05:40" />
+<step dt="2013-04-26" tn="4" tx="11" s="d210" pr="0.2" wsx="4.6" wn="W" pp="55" tp="0" rise="06:09" set="20:10" dl="840" uv="" ca="65" mp="190" mrise="21:11" mset="06:18" />
+<step dt="2013-04-27" tn="5" tx="15" s="d200" pr="0.0" wsx="3.8" wn="W" pp="18" tp="0" rise="06:08" set="20:12" dl="843" uv="" ca="36" mp="200" mrise="22:22" mset="07:03" />
+<step dt="2013-04-28" tn="6" tx="18" s="d100" pr="0.0" wsx="3.3" wn="S" pp="21" tp="0" rise="06:06" set="20:13" dl="846" uv="" ca="15" mp="220" mrise="23:27" mset="07:56" />
+</loc>
+
+<loc id="100497206">
+<step dt="2013-04-19" tn="5" tx="24" s="d100" pr="0.0" wsx="2.4" wn="NW" pp="2" tp="0" rise="06:20" set="20:26" dl="846" uv="5" ca="6" mp="100" mrise="13:07" mset="03:09" />
+<step dt="2013-04-20" tn="5" tx="23" s="d200" pr="0.0" wsx="1.7" wn="NW" pp="2" tp="0" rise="06:18" set="20:28" dl="850" uv="5" ca="21" mp="110" mrise="14:13" mset="03:36" />
+<step dt="2013-04-21" tn="6" tx="16" s="d320" pr="4.6" wsx="5.8" wn="N" pp="86" tp="0" rise="06:16" set="20:30" dl="854" uv="4" ca="88" mp="130" mrise="15:23" mset="03:59" />
+<step dt="2013-04-22" tn="2" tx="8" s="d421" pr="11.2" wsx="6.1" wn="N" pp="54" tp="0" rise="06:14" set="20:31" dl="857" uv="4" ca="100" mp="140" mrise="16:34" mset="04:22" />
+<step dt="2013-04-23" tn="3" tx="11" s="d430" pr="11.2" wsx="4.7" wn="N" pp="69" tp="0" rise="06:12" set="20:33" dl="861" uv="" ca="100" mp="150" mrise="17:49" mset="04:46" />
+<step dt="2013-04-24" tn="6" tx="12" s="d410" pr="1.5" wsx="6.7" wn="N" pp="68" tp="0" rise="06:09" set="20:35" dl="865" uv="" ca="99" mp="160" mrise="19:06" mset="05:11" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="0.4" wsx="6.9" wn="N" pp="65" tp="0" rise="06:07" set="20:36" dl="868" uv="" ca="83" mp="180" mrise="20:25" mset="05:39" />
+<step dt="2013-04-26" tn="4" tx="15" s="d210" pr="0.2" wsx="6.4" wn="W" pp="56" tp="0" rise="06:05" set="20:38" dl="872" uv="" ca="68" mp="190" mrise="21:44" mset="06:12" />
+<step dt="2013-04-27" tn="5" tx="17" s="d310" pr="0.6" wsx="5.5" wn="NW" pp="68" tp="0" rise="06:03" set="20:40" dl="876" uv="" ca="89" mp="200" mrise="22:59" mset="06:53" />
+<step dt="2013-04-28" tn="6" tx="18" s="d300" pr="0.1" wsx="4.8" wn="W" pp="48" tp="0" rise="06:01" set="20:41" dl="879" uv="" ca="92" mp="220" mrise="" mset="07:43" />
+</loc>
+
+<loc id="100498698">
+<step dt="2013-04-19" tn="4" tx="22" s="d100" pr="0.0" wsx="4.7" wn="W" pp="2" tp="0" rise="05:49" set="20:08" dl="858" uv="5" ca="34" mp="100" mrise="12:34" mset="02:51" />
+<step dt="2013-04-20" tn="5" tx="22" s="d000" pr="0.0" wsx="3.5" wn="W" pp="2" tp="0" rise="05:47" set="20:10" dl="862" uv="5" ca="2" mp="110" mrise="13:43" mset="03:16" />
+<step dt="2013-04-21" tn="6" tx="16" s="d410" pr="1.4" wsx="4.4" wn="N" pp="82" tp="0" rise="05:45" set="20:11" dl="866" uv="4" ca="94" mp="130" mrise="14:54" mset="03:38" />
+<step dt="2013-04-22" tn="6" tx="12" s="d430" pr="7.2" wsx="5.3" wn="NE" pp="72" tp="0" rise="05:42" set="20:13" dl="870" uv="1" ca="100" mp="140" mrise="16:08" mset="03:59" />
+<step dt="2013-04-23" tn="3" tx="12" s="d430" pr="8.2" wsx="7.1" wn="NE" pp="55" tp="0" rise="05:40" set="20:15" dl="875" uv="" ca="97" mp="150" mrise="17:26" mset="04:19" />
+<step dt="2013-04-24" tn="3" tx="13" s="d410" pr="2.3" wsx="6.0" wn="NE" pp="53" tp="0" rise="05:38" set="20:17" dl="879" uv="" ca="100" mp="160" mrise="18:45" mset="04:42" />
+<step dt="2013-04-25" tn="2" tx="13" s="d310" pr="1.4" wsx="4.9" wn="N" pp="84" tp="0" rise="05:36" set="20:19" dl="883" uv="" ca="95" mp="180" mrise="20:07" mset="05:08" />
+<step dt="2013-04-26" tn="2" tx="13" s="d310" pr="0.9" wsx="6.0" wn="W" pp="75" tp="0" rise="05:33" set="20:21" dl="887" uv="" ca="86" mp="190" mrise="21:28" mset="05:39" />
+<step dt="2013-04-27" tn="3" tx="15" s="d310" pr="0.6" wsx="5.2" wn="NW" pp="65" tp="0" rise="05:31" set="20:23" dl="891" uv="" ca="89" mp="200" mrise="22:44" mset="06:17" />
+<step dt="2013-04-28" tn="3" tx="15" s="d310" pr="0.3" wsx="5.0" wn="NW" pp="61" tp="0" rise="05:29" set="20:25" dl="895" uv="" ca="98" mp="220" mrise="23:52" mset="07:06" />
+</loc>
+
+<loc id="100501215">
+<step dt="2013-04-19" tn="4" tx="24" s="d000" pr="0.0" wsx="1.2" wn="W" pp="2" tp="0" rise="06:23" set="20:27" dl="844" uv="5" ca="6" mp="100" mrise="13:10" mset="03:10" />
+<step dt="2013-04-20" tn="6" tx="23" s="d200" pr="0.0" wsx="1.6" wn="W" pp="2" tp="0" rise="06:21" set="20:29" dl="847" uv="5" ca="57" mp="110" mrise="14:16" mset="03:37" />
+<step dt="2013-04-21" tn="8" tx="17" s="d220" pr="9.8" wsx="5.3" wn="N" pp="83" tp="0" rise="06:19" set="20:30" dl="851" uv="5" ca="91" mp="130" mrise="15:26" mset="04:01" />
+<step dt="2013-04-22" tn="2" tx="9" s="d431" pr="11.1" wsx="6.1" wn="N" pp="53" tp="0" rise="06:17" set="20:32" dl="855" uv="4" ca="100" mp="140" mrise="16:36" mset="04:24" />
+<step dt="2013-04-23" tn="2" tx="11" s="d420" pr="7.2" wsx="4.7" wn="NW" pp="71" tp="0" rise="06:15" set="20:34" dl="858" uv="" ca="100" mp="150" mrise="17:51" mset="04:48" />
+<step dt="2013-04-24" tn="5" tx="12" s="d410" pr="1.0" wsx="6.9" wn="N" pp="69" tp="0" rise="06:13" set="20:35" dl="862" uv="" ca="99" mp="160" mrise="19:08" mset="05:14" />
+<step dt="2013-04-25" tn="4" tx="15" s="d210" pr="0.3" wsx="7.1" wn="NW" pp="66" tp="0" rise="06:11" set="20:37" dl="866" uv="" ca="81" mp="180" mrise="20:26" mset="05:42" />
+<step dt="2013-04-26" tn="4" tx="17" s="d210" pr="0.1" wsx="6.5" wn="W" pp="53" tp="0" rise="06:09" set="20:39" dl="869" uv="" ca="65" mp="190" mrise="21:45" mset="06:16" />
+<step dt="2013-04-27" tn="5" tx="18" s="d310" pr="0.4" wsx="5.9" wn="NW" pp="67" tp="0" rise="06:07" set="20:40" dl="873" uv="" ca="85" mp="200" mrise="22:59" mset="06:57" />
+<step dt="2013-04-28" tn="7" tx="19" s="d300" pr="0.1" wsx="4.9" wn="W" pp="48" tp="0" rise="06:05" set="20:42" dl="876" uv="" ca="93" mp="220" mrise="" mset="07:48" />
+</loc>
+
+<loc id="100505421">
+<step dt="2013-04-19" tn="5" tx="24" s="d100" pr="0.0" wsx="2.4" wn="NW" pp="2" tp="0" rise="06:20" set="20:26" dl="846" uv="5" ca="6" mp="100" mrise="13:07" mset="03:09" />
+<step dt="2013-04-20" tn="5" tx="23" s="d200" pr="0.0" wsx="1.7" wn="NW" pp="2" tp="0" rise="06:18" set="20:28" dl="850" uv="5" ca="21" mp="110" mrise="14:13" mset="03:35" />
+<step dt="2013-04-21" tn="7" tx="16" s="d320" pr="4.6" wsx="5.7" wn="N" pp="86" tp="0" rise="06:16" set="20:30" dl="854" uv="4" ca="88" mp="130" mrise="15:23" mset="03:59" />
+<step dt="2013-04-22" tn="2" tx="8" s="d421" pr="11.2" wsx="6.1" wn="N" pp="54" tp="0" rise="06:13" set="20:31" dl="857" uv="4" ca="100" mp="140" mrise="16:34" mset="04:22" />
+<step dt="2013-04-23" tn="3" tx="11" s="d430" pr="11.1" wsx="4.6" wn="N" pp="70" tp="0" rise="06:11" set="20:33" dl="861" uv="" ca="100" mp="150" mrise="17:49" mset="04:46" />
+<step dt="2013-04-24" tn="6" tx="12" s="d410" pr="1.6" wsx="6.7" wn="N" pp="67" tp="0" rise="06:09" set="20:35" dl="865" uv="" ca="99" mp="160" mrise="19:06" mset="05:11" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="0.4" wsx="6.9" wn="N" pp="65" tp="0" rise="06:07" set="20:36" dl="868" uv="" ca="83" mp="180" mrise="20:25" mset="05:39" />
+<step dt="2013-04-26" tn="4" tx="15" s="d210" pr="0.2" wsx="6.4" wn="W" pp="57" tp="0" rise="06:05" set="20:38" dl="872" uv="" ca="67" mp="190" mrise="21:44" mset="06:12" />
+<step dt="2013-04-27" tn="5" tx="17" s="d310" pr="0.6" wsx="5.5" wn="NW" pp="68" tp="0" rise="06:03" set="20:40" dl="876" uv="" ca="88" mp="200" mrise="22:59" mset="06:53" />
+<step dt="2013-04-28" tn="6" tx="18" s="d300" pr="0.1" wsx="4.8" wn="W" pp="48" tp="0" rise="06:01" set="20:41" dl="879" uv="" ca="92" mp="220" mrise="" mset="07:43" />
+</loc>
+
+<loc id="100505806">
+<step dt="2013-04-19" tn="5" tx="25" s="d100" pr="0.0" wsx="2.3" wn="W" pp="2" tp="0" rise="06:08" set="20:12" dl="844" uv="5" ca="10" mp="100" mrise="12:54" mset="02:54" />
+<step dt="2013-04-20" tn="6" tx="22" s="d200" pr="0.0" wsx="1.9" wn="W" pp="2" tp="0" rise="06:06" set="20:14" dl="848" uv="5" ca="41" mp="110" mrise="14:01" mset="03:21" />
+<step dt="2013-04-21" tn="10" tx="21" s="d200" pr="0.1" wsx="3.0" wn="W" pp="30" tp="0" rise="06:04" set="20:16" dl="851" uv="5" ca="73" mp="130" mrise="15:10" mset="03:46" />
+<step dt="2013-04-22" tn="9" tx="16" s="d240" pr="9.3" wsx="2.3" wn="SE" pp="67" tp="36" rise="06:02" set="20:17" dl="855" uv="5" ca="90" mp="140" mrise="16:21" mset="04:09" />
+<step dt="2013-04-23" tn="6" tx="11" s="d430" pr="16.3" wsx="4.4" wn="W" pp="78" tp="0" rise="06:00" set="20:19" dl="859" uv="" ca="99" mp="150" mrise="17:35" mset="04:33" />
+<step dt="2013-04-24" tn="5" tx="9" s="d430" pr="11.5" wsx="4.9" wn="N" pp="58" tp="0" rise="05:58" set="20:21" dl="862" uv="" ca="100" mp="160" mrise="18:52" mset="04:58" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="1.1" wsx="6.8" wn="N" pp="74" tp="0" rise="05:56" set="20:22" dl="866" uv="" ca="87" mp="180" mrise="20:10" mset="05:27" />
+<step dt="2013-04-26" tn="4" tx="16" s="d210" pr="0.3" wsx="6.3" wn="W" pp="64" tp="0" rise="05:54" set="20:24" dl="869" uv="" ca="61" mp="190" mrise="21:29" mset="06:00" />
+<step dt="2013-04-27" tn="5" tx="18" s="d210" pr="0.2" wsx="5.8" wn="NW" pp="55" tp="0" rise="05:52" set="20:25" dl="873" uv="" ca="85" mp="200" mrise="22:43" mset="06:41" />
+<step dt="2013-04-28" tn="7" tx="19" s="d310" pr="0.3" wsx="5.7" wn="NW" pp="54" tp="0" rise="05:50" set="20:27" dl="877" uv="" ca="95" mp="220" mrise="23:50" mset="07:32" />
+</loc>
+
+<loc id="100509820">
+<step dt="2013-04-19" tn="7" tx="13" s="d200" pr="1.4" wsx="12.4" wn="SW" pp="59" tp="0" rise="06:08" set="21:16" dl="907" uv="3" ca="85" mp="100" mrise="12:51" mset="04:06" />
+<step dt="2013-04-20" tn="3" tx="12" s="d200" pr="0.0" wsx="6.0" wn="W" pp="31" tp="0" rise="06:05" set="21:19" dl="913" uv="2" ca="71" mp="110" mrise="14:09" mset="04:21" />
+<step dt="2013-04-21" tn="1" tx="8" s="d310" pr="1.0" wsx="4.8" wn="N" pp="46" tp="0" rise="06:02" set="21:21" dl="919" uv="2" ca="90" mp="130" mrise="15:31" mset="04:35" />
+<step dt="2013-04-22" tn="-2" tx="9" s="d000" pr="0.0" wsx="2.1" wn="NE" pp="2" tp="0" rise="05:59" set="21:24" dl="925" uv="3" ca="0" mp="140" mrise="16:54" mset="04:47" />
+<step dt="2013-04-23" tn="0" tx="11" s="d000" pr="0.0" wsx="2.9" wn="S" pp="5" tp="0" rise="05:56" set="21:27" dl="930" uv="" ca="0" mp="150" mrise="18:21" mset="04:59" />
+<step dt="2013-04-24" tn="0" tx="11" s="d210" pr="0.0" wsx="2.7" wn="S" pp="65" tp="0" rise="05:53" set="21:29" dl="936" uv="" ca="44" mp="160" mrise="19:52" mset="05:12" />
+<step dt="2013-04-25" tn="3" tx="10" s="d410" pr="1.1" wsx="4.0" wn="E" pp="71" tp="0" rise="05:50" set="21:32" dl="942" uv="" ca="96" mp="180" mrise="21:25" mset="05:28" />
+<step dt="2013-04-26" tn="2" tx="10" s="d410" pr="0.8" wsx="4.4" wn="N" pp="78" tp="0" rise="05:46" set="21:35" dl="948" uv="" ca="90" mp="190" mrise="22:57" mset="05:49" />
+<step dt="2013-04-27" tn="2" tx="10" s="d210" pr="0.8" wsx="4.3" wn="NW" pp="77" tp="0" rise="05:43" set="21:38" dl="954" uv="" ca="92" mp="200" mrise="" mset="06:17" />
+<step dt="2013-04-28" tn="2" tx="11" s="d300" pr="0.1" wsx="4.1" wn="SW" pp="51" tp="0" rise="05:40" set="21:40" dl="960" uv="" ca="81" mp="220" mrise="00:21" mset="06:59" />
+</loc>
+
+<loc id="100512053">
+<step dt="2013-04-19" tn="4" tx="25" s="d000" pr="0.0" wsx="2.5" wn="SW" pp="2" tp="0" rise="06:18" set="20:19" dl="841" uv="5" ca="6" mp="100" mrise="13:05" mset="03:01" />
+<step dt="2013-04-20" tn="6" tx="22" s="d200" pr="0.0" wsx="2.1" wn="W" pp="2" tp="0" rise="06:16" set="20:21" dl="844" uv="5" ca="56" mp="110" mrise="14:11" mset="03:29" />
+<step dt="2013-04-21" tn="9" tx="21" s="d210" pr="0.4" wsx="2.9" wn="W" pp="40" tp="0" rise="06:14" set="20:22" dl="848" uv="5" ca="72" mp="130" mrise="15:19" mset="03:54" />
+<step dt="2013-04-22" tn="7" tx="14" s="d420" pr="8.1" wsx="4.9" wn="N" pp="62" tp="0" rise="06:12" set="20:24" dl="851" uv="5" ca="100" mp="140" mrise="16:30" mset="04:17" />
+<step dt="2013-04-23" tn="4" tx="9" s="d410" pr="2.6" wsx="4.8" wn="W" pp="73" tp="0" rise="06:10" set="20:26" dl="855" uv="" ca="100" mp="150" mrise="17:44" mset="04:42" />
+<step dt="2013-04-24" tn="6" tx="11" s="d420" pr="9.6" wsx="5.5" wn="N" pp="57" tp="0" rise="06:08" set="20:27" dl="859" uv="" ca="100" mp="160" mrise="19:00" mset="05:08" />
+<step dt="2013-04-25" tn="4" tx="15" s="d210" pr="0.7" wsx="6.4" wn="NW" pp="68" tp="0" rise="06:06" set="20:29" dl="862" uv="" ca="87" mp="180" mrise="20:17" mset="05:37" />
+<step dt="2013-04-26" tn="5" tx="17" s="d200" pr="0.1" wsx="6.2" wn="W" pp="50" tp="0" rise="06:04" set="20:30" dl="866" uv="" ca="65" mp="190" mrise="21:35" mset="06:11" />
+<step dt="2013-04-27" tn="7" tx="19" s="d210" pr="0.2" wsx="5.5" wn="NW" pp="53" tp="0" rise="06:02" set="20:32" dl="869" uv="" ca="76" mp="200" mrise="22:49" mset="06:53" />
+<step dt="2013-04-28" tn="8" tx="19" s="d200" pr="0.0" wsx="5.4" wn="NW" pp="43" tp="0" rise="06:01" set="20:34" dl="873" uv="" ca="88" mp="220" mrise="23:55" mset="07:44" />
+</loc>
+
+<loc id="100514198">
+<step dt="2013-04-19" tn="4" tx="24" s="d000" pr="0.0" wsx="1.6" wn="W" pp="2" tp="0" rise="06:21" set="20:24" dl="842" uv="5" ca="3" mp="100" mrise="13:09" mset="03:07" />
+<step dt="2013-04-20" tn="8" tx="22" s="d200" pr="0.0" wsx="1.9" wn="N" pp="2" tp="0" rise="06:19" set="20:26" dl="846" uv="5" ca="64" mp="110" mrise="14:14" mset="03:34" />
+<step dt="2013-04-21" tn="10" tx="19" s="d220" pr="10.0" wsx="3.3" wn="NW" pp="77" tp="29" rise="06:17" set="20:28" dl="850" uv="5" ca="77" mp="130" mrise="15:23" mset="03:58" />
+<step dt="2013-04-22" tn="4" tx="11" s="d420" pr="7.1" wsx="5.6" wn="N" pp="53" tp="0" rise="06:15" set="20:29" dl="853" uv="5" ca="100" mp="140" mrise="16:34" mset="04:22" />
+<step dt="2013-04-23" tn="3" tx="10" s="d410" pr="7.1" wsx="4.4" wn="W" pp="77" tp="0" rise="06:13" set="20:31" dl="857" uv="" ca="100" mp="150" mrise="17:48" mset="04:46" />
+<step dt="2013-04-24" tn="5" tx="12" s="d410" pr="3.5" wsx="7.1" wn="N" pp="68" tp="0" rise="06:11" set="20:32" dl="861" uv="" ca="100" mp="160" mrise="19:05" mset="05:12" />
+<step dt="2013-04-25" tn="4" tx="15" s="d210" pr="0.4" wsx="6.8" wn="NW" pp="68" tp="0" rise="06:09" set="20:34" dl="864" uv="" ca="87" mp="180" mrise="20:23" mset="05:41" />
+<step dt="2013-04-26" tn="5" tx="17" s="d210" pr="0.1" wsx="6.2" wn="W" pp="50" tp="0" rise="06:07" set="20:36" dl="868" uv="" ca="65" mp="190" mrise="21:41" mset="06:14" />
+<step dt="2013-04-27" tn="6" tx="18" s="d310" pr="0.2" wsx="5.4" wn="NW" pp="61" tp="0" rise="06:05" set="20:37" dl="871" uv="" ca="85" mp="200" mrise="22:55" mset="06:56" />
+<step dt="2013-04-28" tn="8" tx="19" s="d300" pr="0.0" wsx="5.0" wn="W" pp="45" tp="0" rise="06:04" set="20:39" dl="875" uv="" ca="93" mp="220" mrise="" mset="07:46" />
+</loc>
+
+<loc id="100515012">
+<step dt="2013-04-19" tn="3" tx="21" s="d100" pr="0.0" wsx="4.8" wn="W" pp="2" tp="0" rise="06:29" set="20:41" dl="852" uv="5" ca="21" mp="100" mrise="13:16" mset="03:25" />
+<step dt="2013-04-20" tn="4" tx="22" s="d200" pr="0.3" wsx="3.4" wn="NW" pp="3" tp="0" rise="06:26" set="20:43" dl="856" uv="5" ca="13" mp="110" mrise="14:23" mset="03:50" />
+<step dt="2013-04-21" tn="5" tx="13" s="d220" pr="4.4" wsx="7.0" wn="N" pp="83" tp="0" rise="06:24" set="20:45" dl="860" uv="4" ca="93" mp="130" mrise="15:34" mset="04:13" />
+<step dt="2013-04-22" tn="0" tx="10" s="d210" pr="0.5" wsx="7.6" wn="NE" pp="64" tp="0" rise="06:22" set="20:47" dl="864" uv="3" ca="63" mp="140" mrise="16:47" mset="04:35" />
+<step dt="2013-04-23" tn="0" tx="7" s="d431" pr="17.5" wsx="7.2" wn="N" pp="45" tp="0" rise="06:20" set="20:48" dl="868" uv="" ca="100" mp="150" mrise="18:03" mset="04:57" />
+<step dt="2013-04-24" tn="3" tx="13" s="d220" pr="3.1" wsx="6.2" wn="N" pp="79" tp="0" rise="06:18" set="20:50" dl="872" uv="" ca="76" mp="160" mrise="19:22" mset="05:21" />
+<step dt="2013-04-25" tn="2" tx="13" s="d210" pr="0.5" wsx="7.7" wn="NW" pp="62" tp="0" rise="06:16" set="20:52" dl="876" uv="" ca="75" mp="180" mrise="20:42" mset="05:48" />
+<step dt="2013-04-26" tn="3" tx="14" s="d210" pr="0.4" wsx="7.2" wn="W" pp="65" tp="0" rise="06:13" set="20:54" dl="880" uv="" ca="70" mp="190" mrise="22:02" mset="06:20" />
+<step dt="2013-04-27" tn="3" tx="13" s="d410" pr="1.1" wsx="6.4" wn="NW" pp="70" tp="0" rise="06:11" set="20:55" dl="883" uv="" ca="95" mp="200" mrise="23:17" mset="07:00" />
+<step dt="2013-04-28" tn="4" tx="15" s="d300" pr="0.1" wsx="5.3" wn="SW" pp="49" tp="0" rise="06:09" set="20:57" dl="887" uv="" ca="96" mp="220" mrise="" mset="07:49" />
+</loc>
+
+<loc id="100517716">
+<step dt="2013-04-19" tn="5" tx="24" s="d000" pr="0.0" wsx="2.0" wn="N" pp="2" tp="0" rise="06:20" set="20:25" dl="844" uv="5" ca="2" mp="100" mrise="13:07" mset="03:07" />
+<step dt="2013-04-20" tn="5" tx="23" s="d200" pr="0.0" wsx="1.4" wn="W" pp="2" tp="0" rise="06:18" set="20:26" dl="848" uv="5" ca="50" mp="110" mrise="14:13" mset="03:34" />
+<step dt="2013-04-21" tn="8" tx="18" s="d220" pr="8.2" wsx="4.5" wn="N" pp="83" tp="10" rise="06:16" set="20:28" dl="852" uv="5" ca="78" mp="130" mrise="15:22" mset="03:58" />
+<step dt="2013-04-22" tn="3" tx="9" s="d420" pr="7.8" wsx="6.0" wn="N" pp="54" tp="0" rise="06:14" set="20:30" dl="855" uv="4" ca="100" mp="140" mrise="16:33" mset="04:21" />
+<step dt="2013-04-23" tn="3" tx="12" s="d430" pr="8.4" wsx="3.0" wn="NW" pp="77" tp="0" rise="06:12" set="20:31" dl="859" uv="" ca="100" mp="150" mrise="17:48" mset="04:45" />
+<step dt="2013-04-24" tn="6" tx="12" s="d410" pr="2.8" wsx="7.2" wn="N" pp="63" tp="0" rise="06:10" set="20:33" dl="863" uv="" ca="100" mp="160" mrise="19:05" mset="05:11" />
+<step dt="2013-04-25" tn="3" tx="15" s="d210" pr="0.4" wsx="6.9" wn="N" pp="66" tp="0" rise="06:08" set="20:35" dl="866" uv="" ca="82" mp="180" mrise="20:23" mset="05:39" />
+<step dt="2013-04-26" tn="3" tx="16" s="d210" pr="0.2" wsx="6.2" wn="W" pp="54" tp="0" rise="06:06" set="20:36" dl="870" uv="" ca="64" mp="190" mrise="21:42" mset="06:12" />
+<step dt="2013-04-27" tn="4" tx="17" s="d310" pr="0.4" wsx="5.4" wn="NW" pp="64" tp="0" rise="06:04" set="20:38" dl="874" uv="" ca="87" mp="200" mrise="22:56" mset="06:53" />
+<step dt="2013-04-28" tn="6" tx="18" s="d300" pr="0.1" wsx="5.0" wn="W" pp="49" tp="0" rise="06:02" set="20:40" dl="877" uv="" ca="94" mp="220" mrise="" mset="07:44" />
+</loc>
+
+<loc id="100519447">
+<step dt="2013-04-19" tn="5" tx="24" s="d100" pr="0.0" wsx="2.3" wn="N" pp="2" tp="0" rise="06:18" set="20:25" dl="846" uv="5" ca="8" mp="100" mrise="13:05" mset="03:07" />
+<step dt="2013-04-20" tn="5" tx="23" s="d200" pr="0.0" wsx="1.7" wn="W" pp="2" tp="0" rise="06:16" set="20:26" dl="850" uv="5" ca="21" mp="110" mrise="14:12" mset="03:34" />
+<step dt="2013-04-21" tn="7" tx="17" s="d220" pr="7.3" wsx="5.3" wn="N" pp="85" tp="0" rise="06:14" set="20:28" dl="853" uv="4" ca="85" mp="130" mrise="15:21" mset="03:58" />
+<step dt="2013-04-22" tn="3" tx="8" s="d430" pr="8.9" wsx="6.2" wn="N" pp="54" tp="0" rise="06:12" set="20:30" dl="857" uv="4" ca="100" mp="140" mrise="16:33" mset="04:21" />
+<step dt="2013-04-23" tn="4" tx="13" s="d430" pr="10.6" wsx="4.2" wn="N" pp="75" tp="0" rise="06:10" set="20:31" dl="861" uv="" ca="100" mp="150" mrise="17:48" mset="04:44" />
+<step dt="2013-04-24" tn="6" tx="12" s="d420" pr="3.2" wsx="7.4" wn="N" pp="60" tp="0" rise="06:08" set="20:33" dl="865" uv="" ca="99" mp="160" mrise="19:05" mset="05:09" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="0.6" wsx="7.0" wn="N" pp="68" tp="0" rise="06:06" set="20:35" dl="868" uv="" ca="86" mp="180" mrise="20:23" mset="05:38" />
+<step dt="2013-04-26" tn="4" tx="15" s="d210" pr="0.2" wsx="6.1" wn="W" pp="57" tp="0" rise="06:04" set="20:36" dl="872" uv="" ca="61" mp="190" mrise="21:43" mset="06:10" />
+<step dt="2013-04-27" tn="5" tx="17" s="d310" pr="0.6" wsx="5.6" wn="NW" pp="69" tp="0" rise="06:02" set="20:38" dl="876" uv="" ca="86" mp="200" mrise="22:57" mset="06:51" />
+<step dt="2013-04-28" tn="6" tx="18" s="d300" pr="0.1" wsx="5.0" wn="W" pp="48" tp="0" rise="06:00" set="20:40" dl="879" uv="" ca="93" mp="220" mrise="" mset="07:42" />
+</loc>
+
+<loc id="100520555">
+<step dt="2013-04-19" tn="5" tx="20" s="d100" pr="0.0" wsx="5.8" wn="W" pp="3" tp="0" rise="05:48" set="20:18" dl="870" uv="4" ca="27" mp="100" mrise="12:32" mset="03:04" />
+<step dt="2013-04-20" tn="10" tx="18" s="d200" pr="0.0" wsx="3.2" wn="W" pp="3" tp="0" rise="05:46" set="20:20" dl="874" uv="5" ca="75" mp="110" mrise="13:43" mset="03:26" />
+<step dt="2013-04-21" tn="8" tx="14" s="d400" pr="0.0" wsx="4.4" wn="NW" pp="30" tp="0" rise="05:43" set="20:22" dl="879" uv="4" ca="97" mp="130" mrise="14:57" mset="03:46" />
+<step dt="2013-04-22" tn="6" tx="10" s="d420" pr="2.5" wsx="5.3" wn="NE" pp="77" tp="0" rise="05:41" set="20:25" dl="883" uv="2" ca="100" mp="140" mrise="16:13" mset="04:04" />
+<step dt="2013-04-23" tn="6" tx="14" s="d200" pr="0.0" wsx="7.2" wn="NE" pp="35" tp="0" rise="05:38" set="20:27" dl="888" uv="" ca="83" mp="150" mrise="17:33" mset="04:23" />
+<step dt="2013-04-24" tn="5" tx="12" s="d400" pr="0.1" wsx="4.6" wn="NE" pp="37" tp="0" rise="05:36" set="20:29" dl="892" uv="" ca="93" mp="160" mrise="18:55" mset="04:43" />
+<step dt="2013-04-25" tn="7" tx="12" s="d310" pr="1.3" wsx="4.5" wn="SE" pp="84" tp="0" rise="05:33" set="20:31" dl="897" uv="" ca="99" mp="180" mrise="20:19" mset="05:07" />
+<step dt="2013-04-26" tn="7" tx="12" s="d210" pr="1.5" wsx="5.1" wn="NW" pp="86" tp="0" rise="05:31" set="20:33" dl="901" uv="" ca="90" mp="190" mrise="21:43" mset="05:35" />
+<step dt="2013-04-27" tn="6" tx="13" s="d310" pr="0.6" wsx="4.7" wn="NW" pp="63" tp="0" rise="05:29" set="20:35" dl="906" uv="" ca="80" mp="200" mrise="23:01" mset="06:11" />
+<step dt="2013-04-28" tn="7" tx="15" s="d200" pr="0.2" wsx="4.8" wn="NW" pp="52" tp="0" rise="05:26" set="20:37" dl="910" uv="" ca="77" mp="220" mrise="" mset="06:59" />
+</loc>
+
+<loc id="100523523">
+<step dt="2013-04-19" tn="4" tx="10" s="d410" pr="1.8" wsx="2.7" wn="E" pp="50" tp="0" rise="06:17" set="19:52" dl="815" uv="5" ca="100" mp="100" mrise="13:05" mset="02:30" />
+<step dt="2013-04-20" tn="3" tx="10" s="d410" pr="0.7" wsx="2.0" wn="E" pp="47" tp="0" rise="06:15" set="19:54" dl="818" uv="7" ca="97" mp="110" mrise="14:06" mset="03:02" />
+<step dt="2013-04-21" tn="5" tx="14" s="d310" pr="1.9" wsx="3.1" wn="N" pp="97" tp="0" rise="06:14" set="19:55" dl="821" uv="7" ca="92" mp="130" mrise="15:10" mset="03:32" />
+<step dt="2013-04-22" tn="7" tx="14" s="d220" pr="11.5" wsx="1.2" wn="N" pp="98" tp="0" rise="06:12" set="19:56" dl="823" uv="6" ca="85" mp="140" mrise="16:15" mset="04:01" />
+<step dt="2013-04-23" tn="6" tx="11" s="d420" pr="6.2" wsx="2.7" wn="SE" pp="98" tp="0" rise="06:11" set="19:57" dl="826" uv="" ca="99" mp="150" mrise="17:24" mset="04:30" />
+<step dt="2013-04-24" tn="5" tx="13" s="d210" pr="4.7" wsx="3.1" wn="SE" pp="88" tp="0" rise="06:09" set="19:58" dl="829" uv="" ca="83" mp="160" mrise="18:34" mset="05:01" />
+<step dt="2013-04-25" tn="5" tx="13" s="d310" pr="1.1" wsx="2.6" wn="N" pp="64" tp="0" rise="06:07" set="19:59" dl="831" uv="" ca="86" mp="180" mrise="19:47" mset="05:36" />
+<step dt="2013-04-26" tn="5" tx="15" s="d210" pr="0.6" wsx="2.3" wn="S" pp="56" tp="0" rise="06:06" set="20:01" dl="834" uv="" ca="62" mp="190" mrise="20:59" mset="06:15" />
+<step dt="2013-04-27" tn="6" tx="18" s="d100" pr="0.0" wsx="2.7" wn="N" pp="26" tp="0" rise="06:04" set="20:02" dl="837" uv="" ca="21" mp="200" mrise="22:10" mset="07:01" />
+<step dt="2013-04-28" tn="8" tx="20" s="d100" pr="0.0" wsx="2.5" wn="S" pp="18" tp="0" rise="06:03" set="20:03" dl="840" uv="" ca="18" mp="220" mrise="23:15" mset="07:54" />
+</loc>
+
+<loc id="100532096">
+<step dt="2013-04-19" tn="6" tx="11" s="d200" pr="0.2" wsx="4.7" wn="SE" pp="15" tp="0" rise="06:02" set="19:36" dl="813" uv="6" ca="77" mp="100" mrise="12:50" mset="02:14" />
+<step dt="2013-04-20" tn="5" tx="14" s="d200" pr="1.5" wsx="6.0" wn="SE" pp="10" tp="0" rise="06:01" set="19:37" dl="816" uv="7" ca="51" mp="110" mrise="13:51" mset="02:45" />
+<step dt="2013-04-21" tn="8" tx="13" s="d420" pr="4.2" wsx="3.0" wn="N" pp="82" tp="0" rise="05:59" set="19:38" dl="819" uv="5" ca="96" mp="120" mrise="14:54" mset="03:16" />
+<step dt="2013-04-22" tn="11" tx="15" s="d420" pr="2.8" wsx="6.5" wn="NW" pp="90" tp="0" rise="05:57" set="19:39" dl="821" uv="6" ca="99" mp="140" mrise="15:59" mset="03:45" />
+<step dt="2013-04-23" tn="10" tx="17" s="d210" pr="0.8" wsx="5.6" wn="N" pp="84" tp="0" rise="05:56" set="19:41" dl="824" uv="" ca="68" mp="150" mrise="17:07" mset="04:14" />
+<step dt="2013-04-24" tn="6" tx="14" s="d210" pr="2.4" wsx="3.7" wn="N" pp="64" tp="0" rise="05:54" set="19:42" dl="827" uv="" ca="82" mp="160" mrise="18:17" mset="04:46" />
+<step dt="2013-04-25" tn="5" tx="15" s="d300" pr="0.2" wsx="4.1" wn="N" pp="51" tp="0" rise="05:53" set="19:43" dl="830" uv="" ca="83" mp="180" mrise="19:29" mset="05:21" />
+<step dt="2013-04-26" tn="9" tx="15" s="d200" pr="0.1" wsx="4.4" wn="NW" pp="46" tp="0" rise="05:51" set="19:44" dl="832" uv="" ca="67" mp="190" mrise="20:42" mset="06:00" />
+<step dt="2013-04-27" tn="9" tx="18" s="d100" pr="0.0" wsx="4.6" wn="N" pp="28" tp="0" rise="05:50" set="19:45" dl="835" uv="" ca="16" mp="200" mrise="21:52" mset="06:46" />
+<step dt="2013-04-28" tn="11" tx="19" s="d000" pr="0.0" wsx="3.7" wn="N" pp="16" tp="0" rise="05:48" set="19:46" dl="837" uv="" ca="8" mp="220" mrise="22:57" mset="07:39" />
+</loc>
+
+<loc id="100534838">
+<step dt="2013-04-19" tn="4" tx="24" s="d000" pr="0.0" wsx="1.4" wn="NW" pp="2" tp="0" rise="06:20" set="20:23" dl="843" uv="5" ca="0" mp="100" mrise="13:06" mset="03:05" />
+<step dt="2013-04-20" tn="8" tx="22" s="d200" pr="0.0" wsx="2.2" wn="N" pp="2" tp="0" rise="06:18" set="20:25" dl="847" uv="5" ca="54" mp="110" mrise="14:12" mset="03:32" />
+<step dt="2013-04-21" tn="10" tx="19" s="d220" pr="7.3" wsx="3.1" wn="NW" pp="73" tp="33" rise="06:15" set="20:26" dl="850" uv="5" ca="77" mp="130" mrise="15:22" mset="03:57" />
+<step dt="2013-04-22" tn="4" tx="11" s="d420" pr="5.7" wsx="5.3" wn="N" pp="53" tp="0" rise="06:13" set="20:28" dl="854" uv="5" ca="100" mp="140" mrise="16:32" mset="04:20" />
+<step dt="2013-04-23" tn="4" tx="10" s="d410" pr="5.7" wsx="4.7" wn="W" pp="78" tp="0" rise="06:11" set="20:29" dl="857" uv="" ca="100" mp="150" mrise="17:47" mset="04:44" />
+<step dt="2013-04-24" tn="6" tx="12" s="d410" pr="5.4" wsx="7.4" wn="N" pp="62" tp="0" rise="06:09" set="20:31" dl="861" uv="" ca="100" mp="160" mrise="19:03" mset="05:10" />
+<step dt="2013-04-25" tn="4" tx="15" s="d210" pr="0.6" wsx="6.6" wn="NW" pp="67" tp="0" rise="06:07" set="20:33" dl="865" uv="" ca="85" mp="180" mrise="20:21" mset="05:39" />
+<step dt="2013-04-26" tn="5" tx="17" s="d200" pr="0.1" wsx="6.0" wn="W" pp="49" tp="0" rise="06:05" set="20:34" dl="868" uv="" ca="65" mp="190" mrise="21:40" mset="06:12" />
+<step dt="2013-04-27" tn="6" tx="18" s="d310" pr="0.2" wsx="5.0" wn="NW" pp="59" tp="0" rise="06:04" set="20:36" dl="872" uv="" ca="85" mp="200" mrise="22:54" mset="06:53" />
+<step dt="2013-04-28" tn="7" tx="19" s="d300" pr="0.0" wsx="5.1" wn="W" pp="45" tp="0" rise="06:02" set="20:37" dl="875" uv="" ca="94" mp="220" mrise="" mset="07:44" />
+</loc>
+
+<loc id="100535121">
+<step dt="2013-04-19" tn="4" tx="22" s="d100" pr="0.0" wsx="4.5" wn="W" pp="2" tp="0" rise="06:16" set="20:26" dl="850" uv="5" ca="31" mp="100" mrise="13:02" mset="03:10" />
+<step dt="2013-04-20" tn="5" tx="22" s="d000" pr="0.0" wsx="2.9" wn="W" pp="2" tp="0" rise="06:13" set="20:28" dl="854" uv="5" ca="4" mp="110" mrise="14:09" mset="03:35" />
+<step dt="2013-04-21" tn="5" tx="14" s="d320" pr="8.9" wsx="6.9" wn="N" pp="89" tp="0" rise="06:11" set="20:30" dl="858" uv="2" ca="92" mp="130" mrise="15:20" mset="03:58" />
+<step dt="2013-04-22" tn="1" tx="6" s="d431" pr="17.0" wsx="6.8" wn="N" pp="66" tp="0" rise="06:09" set="20:32" dl="862" uv="4" ca="100" mp="140" mrise="16:32" mset="04:20" />
+<step dt="2013-04-23" tn="4" tx="8" s="d430" pr="21.8" wsx="6.3" wn="NE" pp="62" tp="0" rise="06:07" set="20:33" dl="866" uv="" ca="100" mp="150" mrise="17:48" mset="04:43" />
+<step dt="2013-04-24" tn="4" tx="13" s="d320" pr="2.2" wsx="6.8" wn="N" pp="64" tp="0" rise="06:05" set="20:35" dl="870" uv="" ca="95" mp="160" mrise="19:06" mset="05:07" />
+<step dt="2013-04-25" tn="3" tx="13" s="d310" pr="0.7" wsx="7.1" wn="N" pp="73" tp="0" rise="06:03" set="20:37" dl="874" uv="" ca="89" mp="180" mrise="20:26" mset="05:35" />
+<step dt="2013-04-26" tn="3" tx="13" s="d210" pr="0.4" wsx="6.6" wn="W" pp="68" tp="0" rise="06:01" set="20:39" dl="877" uv="" ca="63" mp="190" mrise="21:46" mset="06:07" />
+<step dt="2013-04-27" tn="4" tx="14" s="d310" pr="0.7" wsx="5.6" wn="NW" pp="68" tp="0" rise="05:59" set="20:40" dl="881" uv="" ca="87" mp="200" mrise="23:01" mset="06:47" />
+<step dt="2013-04-28" tn="5" tx="15" s="d310" pr="0.2" wsx="5.3" wn="W" pp="54" tp="0" rise="05:57" set="20:42" dl="885" uv="" ca="95" mp="220" mrise="" mset="07:37" />
+</loc>
+
+<loc id="100538560">
+<step dt="2013-04-19" tn="9" tx="23" s="d000" pr="0.0" wsx="3.2" wn="N" pp="2" tp="0" rise="06:31" set="20:38" dl="846" uv="5" ca="0" mp="100" mrise="13:18" mset="03:21" />
+<step dt="2013-04-20" tn="9" tx="22" s="d100" pr="0.0" wsx="2.3" wn="NW" pp="2" tp="0" rise="06:29" set="20:40" dl="850" uv="5" ca="8" mp="110" mrise="14:25" mset="03:47" />
+<step dt="2013-04-21" tn="6" tx="14" s="d420" pr="3.9" wsx="6.2" wn="N" pp="82" tp="0" rise="06:27" set="20:41" dl="854" uv="4" ca="96" mp="130" mrise="15:35" mset="04:11" />
+<step dt="2013-04-22" tn="3" tx="10" s="d210" pr="1.2" wsx="7.4" wn="N" pp="50" tp="0" rise="06:25" set="20:43" dl="858" uv="4" ca="73" mp="140" mrise="16:46" mset="04:34" />
+<step dt="2013-04-23" tn="1" tx="6" s="d421" pr="10.0" wsx="6.7" wn="N" pp="52" tp="0" rise="06:23" set="20:45" dl="861" uv="" ca="100" mp="150" mrise="18:01" mset="04:57" />
+<step dt="2013-04-24" tn="2" tx="11" s="d410" pr="2.2" wsx="6.4" wn="N" pp="73" tp="0" rise="06:21" set="20:46" dl="865" uv="" ca="99" mp="160" mrise="19:19" mset="05:22" />
+<step dt="2013-04-25" tn="4" tx="13" s="d210" pr="0.2" wsx="7.7" wn="NW" pp="57" tp="0" rise="06:19" set="20:48" dl="869" uv="" ca="68" mp="180" mrise="20:37" mset="05:50" />
+<step dt="2013-04-26" tn="5" tx="14" s="d210" pr="0.2" wsx="6.8" wn="W" pp="57" tp="0" rise="06:17" set="20:50" dl="873" uv="" ca="70" mp="190" mrise="21:56" mset="06:23" />
+<step dt="2013-04-27" tn="6" tx="15" s="d310" pr="0.6" wsx="6.4" wn="NW" pp="65" tp="0" rise="06:15" set="20:51" dl="876" uv="" ca="89" mp="200" mrise="23:11" mset="07:04" />
+<step dt="2013-04-28" tn="7" tx="16" s="d300" pr="0.1" wsx="5.3" wn="S" pp="49" tp="0" rise="06:13" set="20:53" dl="880" uv="" ca="90" mp="220" mrise="" mset="07:55" />
+</loc>
+
+<loc id="100548408">
+<step dt="2013-04-19" tn="2" tx="16" s="d400" pr="0.0" wsx="4.7" wn="SW" pp="2" tp="0" rise="05:19" set="20:03" dl="883" uv="3" ca="98" mp="100" mrise="12:00" mset="02:49" />
+<step dt="2013-04-20" tn="6" tx="16" s="d200" pr="0.0" wsx="6.1" wn="W" pp="2" tp="0" rise="05:16" set="20:05" dl="889" uv="4" ca="18" mp="110" mrise="13:14" mset="03:09" />
+<step dt="2013-04-21" tn="2" tx="13" s="d210" pr="0.2" wsx="4.1" wn="NW" pp="22" tp="0" rise="05:13" set="20:07" dl="894" uv="3" ca="69" mp="120" mrise="14:30" mset="03:27" />
+<step dt="2013-04-22" tn="0" tx="10" s="d200" pr="0.0" wsx="4.0" wn="NE" pp="46" tp="0" rise="05:11" set="20:10" dl="899" uv="2" ca="69" mp="140" mrise="15:50" mset="03:43" />
+<step dt="2013-04-23" tn="1" tx="12" s="d200" pr="0.0" wsx="6.0" wn="NE" pp="25" tp="0" rise="05:08" set="20:12" dl="904" uv="" ca="24" mp="150" mrise="17:12" mset="03:59" />
+<step dt="2013-04-24" tn="3" tx="12" s="d400" pr="0.3" wsx="4.7" wn="E" pp="31" tp="0" rise="05:05" set="20:14" dl="909" uv="" ca="99" mp="160" mrise="18:37" mset="04:17" />
+<step dt="2013-04-25" tn="3" tx="13" s="d410" pr="1.1" wsx="4.0" wn="S" pp="77" tp="0" rise="05:03" set="20:17" dl="914" uv="" ca="98" mp="180" mrise="20:04" mset="04:37" />
+<step dt="2013-04-26" tn="3" tx="12" s="d420" pr="2.2" wsx="4.3" wn="NE" pp="93" tp="0" rise="05:00" set="20:19" dl="919" uv="" ca="99" mp="190" mrise="21:31" mset="05:02" />
+<step dt="2013-04-27" tn="4" tx="13" s="d210" pr="1.4" wsx="4.8" wn="NW" pp="86" tp="0" rise="04:57" set="20:21" dl="923" uv="" ca="94" mp="200" mrise="22:51" mset="05:36" />
+<step dt="2013-04-28" tn="3" tx="14" s="d210" pr="0.5" wsx="4.5" wn="NW" pp="66" tp="0" rise="04:55" set="20:23" dl="928" uv="" ca="82" mp="220" mrise="" mset="06:21" />
+</loc>
+
+<loc id="100554410">
+<step dt="2013-04-19" tn="3" tx="24" s="d100" pr="0.0" wsx="2.8" wn="SW" pp="2" tp="0" rise="06:15" set="20:16" dl="840" uv="5" ca="5" mp="100" mrise="13:01" mset="02:57" />
+<step dt="2013-04-20" tn="5" tx="21" s="d200" pr="0.0" wsx="1.8" wn="W" pp="2" tp="0" rise="06:13" set="20:17" dl="844" uv="5" ca="57" mp="110" mrise="14:07" mset="03:25" />
+<step dt="2013-04-21" tn="8" tx="20" s="d200" pr="0.1" wsx="2.7" wn="S" pp="31" tp="0" rise="06:11" set="20:19" dl="848" uv="5" ca="76" mp="130" mrise="15:16" mset="03:50" />
+<step dt="2013-04-22" tn="8" tx="15" s="d220" pr="10.2" wsx="3.8" wn="N" pp="68" tp="0" rise="06:09" set="20:20" dl="851" uv="5" ca="88" mp="140" mrise="16:26" mset="04:14" />
+<step dt="2013-04-23" tn="4" tx="9" s="d410" pr="1.9" wsx="5.3" wn="W" pp="76" tp="0" rise="06:07" set="20:22" dl="855" uv="" ca="100" mp="150" mrise="17:40" mset="04:38" />
+<step dt="2013-04-24" tn="3" tx="9" s="d430" pr="12.8" wsx="5.4" wn="N" pp="56" tp="0" rise="06:05" set="20:24" dl="858" uv="" ca="100" mp="160" mrise="18:56" mset="05:04" />
+<step dt="2013-04-25" tn="3" tx="15" s="d210" pr="0.9" wsx="6.8" wn="NW" pp="65" tp="0" rise="06:03" set="20:25" dl="862" uv="" ca="88" mp="180" mrise="20:13" mset="05:34" />
+<step dt="2013-04-26" tn="4" tx="17" s="d210" pr="0.2" wsx="6.0" wn="W" pp="58" tp="0" rise="06:01" set="20:27" dl="865" uv="" ca="58" mp="190" mrise="21:32" mset="06:08" />
+<step dt="2013-04-27" tn="5" tx="19" s="d210" pr="0.2" wsx="5.9" wn="NW" pp="55" tp="0" rise="05:59" set="20:28" dl="869" uv="" ca="68" mp="200" mrise="22:45" mset="06:49" />
+<step dt="2013-04-28" tn="6" tx="20" s="d300" pr="0.0" wsx="5.5" wn="NW" pp="45" tp="0" rise="05:57" set="20:30" dl="872" uv="" ca="87" mp="220" mrise="23:51" mset="07:40" />
+</loc>
+
+<loc id="100554840">
+<step dt="2013-04-19" tn="3" tx="13" s="d200" pr="0.0" wsx="4.0" wn="W" pp="2" tp="0" rise="05:10" set="19:43" dl="872" uv="3" ca="75" mp="100" mrise="11:52" mset="02:28" />
+<step dt="2013-04-20" tn="3" tx="15" s="d100" pr="0.0" wsx="4.2" wn="W" pp="2" tp="0" rise="05:07" set="19:45" dl="877" uv="4" ca="33" mp="110" mrise="13:03" mset="02:50" />
+<step dt="2013-04-21" tn="4" tx="12" s="d420" pr="1.0" wsx="1.7" wn="N" pp="66" tp="0" rise="05:05" set="19:47" dl="882" uv="4" ca="99" mp="120" mrise="14:17" mset="03:09" />
+<step dt="2013-04-22" tn="4" tx="16" s="d400" pr="0.1" wsx="3.5" wn="NE" pp="47" tp="0" rise="05:02" set="19:49" dl="886" uv="1" ca="93" mp="140" mrise="15:35" mset="03:28" />
+<step dt="2013-04-23" tn="2" tx="15" s="d310" pr="0.1" wsx="6.8" wn="NE" pp="33" tp="0" rise="05:00" set="19:51" dl="891" uv="" ca="81" mp="150" mrise="16:54" mset="03:46" />
+<step dt="2013-04-24" tn="6" tx="15" s="d400" pr="0.0" wsx="6.1" wn="E" pp="50" tp="0" rise="04:57" set="19:53" dl="896" uv="" ca="93" mp="160" mrise="18:17" mset="04:05" />
+<step dt="2013-04-25" tn="3" tx="11" s="d410" pr="1.4" wsx="3.8" wn="SE" pp="78" tp="0" rise="04:55" set="19:56" dl="900" uv="" ca="98" mp="180" mrise="19:43" mset="04:28" />
+<step dt="2013-04-26" tn="4" tx="12" s="d410" pr="1.2" wsx="4.5" wn="SW" pp="86" tp="0" rise="04:52" set="19:58" dl="905" uv="" ca="94" mp="190" mrise="21:07" mset="04:55" />
+<step dt="2013-04-27" tn="4" tx="14" s="d410" pr="1.0" wsx="5.2" wn="NW" pp="83" tp="0" rise="04:50" set="20:00" dl="909" uv="" ca="93" mp="200" mrise="22:25" mset="05:31" />
+<step dt="2013-04-28" tn="5" tx="13" s="d210" pr="0.7" wsx="4.7" wn="NW" pp="77" tp="0" rise="04:48" set="20:02" dl="914" uv="" ca="89" mp="220" mrise="23:33" mset="06:17" />
+</loc>
+
+<loc id="100558799">
+<step dt="2013-04-19" tn="4" tx="25" s="d200" pr="0.0" wsx="2.5" wn="W" pp="2" tp="0" rise="06:09" set="20:14" dl="845" uv="5" ca="18" mp="100" mrise="12:55" mset="02:56" />
+<step dt="2013-04-20" tn="5" tx="22" s="d200" pr="0.0" wsx="1.7" wn="W" pp="2" tp="0" rise="06:07" set="20:16" dl="849" uv="5" ca="43" mp="110" mrise="14:01" mset="03:23" />
+<step dt="2013-04-21" tn="10" tx="20" s="d210" pr="0.3" wsx="3.0" wn="NW" pp="47" tp="0" rise="06:04" set="20:17" dl="852" uv="5" ca="72" mp="130" mrise="15:11" mset="03:47" />
+<step dt="2013-04-22" tn="8" tx="16" s="d220" pr="7.2" wsx="4.2" wn="E" pp="69" tp="0" rise="06:02" set="20:19" dl="856" uv="4" ca="93" mp="140" mrise="16:22" mset="04:10" />
+<step dt="2013-04-23" tn="7" tx="12" s="d430" pr="18.6" wsx="4.2" wn="SW" pp="77" tp="0" rise="06:00" set="20:21" dl="860" uv="" ca="100" mp="150" mrise="17:37" mset="04:34" />
+<step dt="2013-04-24" tn="5" tx="8" s="d420" pr="10.6" wsx="5.4" wn="N" pp="58" tp="0" rise="05:58" set="20:22" dl="864" uv="" ca="100" mp="160" mrise="18:53" mset="04:59" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="1.0" wsx="6.8" wn="N" pp="80" tp="0" rise="05:56" set="20:24" dl="867" uv="" ca="91" mp="180" mrise="20:12" mset="05:28" />
+<step dt="2013-04-26" tn="3" tx="16" s="d210" pr="0.3" wsx="6.2" wn="W" pp="64" tp="0" rise="05:54" set="20:26" dl="871" uv="" ca="61" mp="190" mrise="21:31" mset="06:01" />
+<step dt="2013-04-27" tn="4" tx="18" s="d210" pr="0.3" wsx="5.6" wn="NW" pp="57" tp="0" rise="05:52" set="20:27" dl="875" uv="" ca="82" mp="200" mrise="22:45" mset="06:41" />
+<step dt="2013-04-28" tn="6" tx="19" s="d310" pr="0.3" wsx="5.4" wn="NW" pp="56" tp="0" rise="05:50" set="20:29" dl="878" uv="" ca="96" mp="220" mrise="23:52" mset="07:32" />
+</loc>
+
+<loc id="100563514">
+<step dt="2013-04-19" tn="4" tx="16" s="d200" pr="0.0" wsx="5.1" wn="E" pp="2" tp="0" rise="06:10" set="19:55" dl="824" uv="6" ca="69" mp="100" mrise="12:57" mset="02:34" />
+<step dt="2013-04-20" tn="3" tx="17" s="d200" pr="0.0" wsx="6.1" wn="E" pp="2" tp="0" rise="06:08" set="19:56" dl="828" uv="6" ca="41" mp="110" mrise="14:00" mset="03:04" />
+<step dt="2013-04-21" tn="7" tx="15" s="d420" pr="1.0" wsx="3.1" wn="E" pp="36" tp="0" rise="06:06" set="19:57" dl="831" uv="4" ca="99" mp="130" mrise="15:05" mset="03:32" />
+<step dt="2013-04-22" tn="8" tx="17" s="d410" pr="1.6" wsx="4.4" wn="NW" pp="65" tp="0" rise="06:04" set="19:59" dl="834" uv="5" ca="94" mp="140" mrise="16:12" mset="03:59" />
+<step dt="2013-04-23" tn="6" tx="13" s="d200" pr="0.1" wsx="10.3" wn="W" pp="40" tp="0" rise="06:03" set="20:00" dl="837" uv="" ca="62" mp="150" mrise="17:23" mset="04:26" />
+<step dt="2013-04-24" tn="4" tx="12" s="d320" pr="6.2" wsx="10.8" wn="W" pp="50" tp="0" rise="06:01" set="20:01" dl="840" uv="" ca="77" mp="160" mrise="18:35" mset="04:56" />
+<step dt="2013-04-25" tn="4" tx="13" s="d210" pr="1.4" wsx="8.0" wn="W" pp="66" tp="0" rise="05:59" set="20:03" dl="843" uv="" ca="89" mp="180" mrise="19:50" mset="05:28" />
+<step dt="2013-04-26" tn="6" tx="15" s="d210" pr="0.1" wsx="5.6" wn="W" pp="52" tp="0" rise="05:58" set="20:04" dl="846" uv="" ca="77" mp="190" mrise="21:05" mset="06:05" />
+<step dt="2013-04-27" tn="7" tx="18" s="d200" pr="0.0" wsx="5.1" wn="W" pp="24" tp="0" rise="05:56" set="20:05" dl="849" uv="" ca="36" mp="200" mrise="22:16" mset="06:50" />
+<step dt="2013-04-28" tn="8" tx="20" s="d100" pr="0.0" wsx="4.6" wn="NW" pp="15" tp="0" rise="05:54" set="20:07" dl="852" uv="" ca="23" mp="220" mrise="23:22" mset="07:42" />
+</loc>
+
+<loc id="100569154">
+<step dt="2013-04-19" tn="3" tx="12" s="d200" pr="0.0" wsx="7.2" wn="E" pp="12" tp="0" rise="06:22" set="20:00" dl="817" uv="6" ca="68" mp="100" mrise="13:11" mset="02:38" />
+<step dt="2013-04-20" tn="4" tx="13" s="d200" pr="0.0" wsx="7.2" wn="E" pp="10" tp="0" rise="06:20" set="20:01" dl="820" uv="7" ca="44" mp="110" mrise="14:12" mset="03:10" />
+<step dt="2013-04-21" tn="3" tx="13" s="d410" pr="1.2" wsx="3.9" wn="NW" pp="98" tp="0" rise="06:19" set="20:02" dl="823" uv="7" ca="85" mp="130" mrise="15:16" mset="03:39" />
+<step dt="2013-04-22" tn="6" tx="14" s="d220" pr="4.1" wsx="5.5" wn="NW" pp="98" tp="0" rise="06:17" set="20:03" dl="826" uv="5" ca="82" mp="140" mrise="16:22" mset="04:07" />
+<step dt="2013-04-23" tn="4" tx="11" s="d310" pr="1.5" wsx="6.2" wn="NW" pp="98" tp="0" rise="06:15" set="20:05" dl="829" uv="" ca="96" mp="150" mrise="17:31" mset="04:36" />
+<step dt="2013-04-24" tn="1" tx="12" s="d310" pr="0.3" wsx="7.8" wn="NW" pp="65" tp="0" rise="06:14" set="20:06" dl="831" uv="" ca="65" mp="160" mrise="18:41" mset="05:07" />
+<step dt="2013-04-25" tn="4" tx="11" s="d210" pr="0.7" wsx="6.4" wn="NW" pp="71" tp="0" rise="06:12" set="20:07" dl="834" uv="" ca="89" mp="180" mrise="19:55" mset="05:41" />
+<step dt="2013-04-26" tn="5" tx="13" s="d210" pr="0.3" wsx="3.5" wn="W" pp="52" tp="0" rise="06:11" set="20:08" dl="837" uv="" ca="67" mp="190" mrise="21:08" mset="06:19" />
+<step dt="2013-04-27" tn="5" tx="17" s="d100" pr="0.0" wsx="3.4" wn="NW" pp="19" tp="0" rise="06:09" set="20:09" dl="840" uv="" ca="18" mp="200" mrise="22:19" mset="07:05" />
+<step dt="2013-04-28" tn="6" tx="20" s="d100" pr="0.0" wsx="3.0" wn="N" pp="16" tp="0" rise="06:08" set="20:11" dl="843" uv="" ca="17" mp="220" mrise="23:24" mset="07:58" />
+</loc>
+
+<loc id="100569696">
+<step dt="2013-04-19" tn="6" tx="20" s="d200" pr="0.0" wsx="5.6" wn="W" pp="2" tp="0" rise="05:36" set="20:05" dl="868" uv="4" ca="73" mp="100" mrise="12:19" mset="02:49" />
+<step dt="2013-04-20" tn="10" tx="20" s="d200" pr="0.0" wsx="4.3" wn="W" pp="2" tp="0" rise="05:33" set="20:07" dl="873" uv="5" ca="25" mp="110" mrise="13:30" mset="03:12" />
+<step dt="2013-04-21" tn="10" tx="17" s="d310" pr="2.0" wsx="3.3" wn="N" pp="63" tp="0" rise="05:31" set="20:09" dl="877" uv="3" ca="87" mp="120" mrise="14:43" mset="03:33" />
+<step dt="2013-04-22" tn="7" tx="14" s="d410" pr="0.4" wsx="5.4" wn="NE" pp="63" tp="0" rise="05:28" set="20:11" dl="882" uv="1" ca="100" mp="140" mrise="16:00" mset="03:51" />
+<step dt="2013-04-23" tn="5" tx="14" s="d200" pr="0.6" wsx="7.5" wn="NE" pp="43" tp="0" rise="05:26" set="20:13" dl="886" uv="" ca="88" mp="150" mrise="17:19" mset="04:10" />
+<step dt="2013-04-24" tn="5" tx="16" s="d300" pr="0.4" wsx="5.0" wn="NE" pp="41" tp="0" rise="05:24" set="20:15" dl="891" uv="" ca="85" mp="160" mrise="18:41" mset="04:31" />
+<step dt="2013-04-25" tn="6" tx="13" s="d410" pr="1.2" wsx="4.6" wn="SE" pp="84" tp="0" rise="05:21" set="20:17" dl="895" uv="" ca="96" mp="180" mrise="20:05" mset="04:54" />
+<step dt="2013-04-26" tn="6" tx="13" s="d310" pr="1.5" wsx="5.5" wn="W" pp="88" tp="0" rise="05:19" set="20:19" dl="900" uv="" ca="96" mp="190" mrise="21:29" mset="05:23" />
+<step dt="2013-04-27" tn="6" tx="14" s="d210" pr="0.7" wsx="5.0" wn="NW" pp="71" tp="0" rise="05:16" set="20:21" dl="904" uv="" ca="81" mp="200" mrise="22:46" mset="05:59" />
+<step dt="2013-04-28" tn="6" tx="15" s="d210" pr="0.4" wsx="5.0" wn="NW" pp="67" tp="0" rise="05:14" set="20:23" dl="909" uv="" ca="82" mp="220" mrise="23:54" mset="06:46" />
+</loc>
+
+<loc id="100570563">
+<step dt="2013-04-19" tn="6" tx="25" s="d100" pr="0.0" wsx="2.5" wn="SW" pp="2" tp="0" rise="06:15" set="20:18" dl="842" uv="5" ca="11" mp="100" mrise="13:02" mset="03:00" />
+<step dt="2013-04-20" tn="8" tx="21" s="d200" pr="0.0" wsx="1.8" wn="W" pp="2" tp="0" rise="06:13" set="20:20" dl="846" uv="5" ca="55" mp="110" mrise="14:08" mset="03:27" />
+<step dt="2013-04-21" tn="11" tx="20" s="d210" pr="0.3" wsx="2.8" wn="NW" pp="45" tp="0" rise="06:11" set="20:21" dl="849" uv="5" ca="77" mp="130" mrise="15:17" mset="03:52" />
+<step dt="2013-04-22" tn="7" tx="12" s="d430" pr="7.9" wsx="5.1" wn="N" pp="64" tp="0" rise="06:09" set="20:23" dl="853" uv="5" ca="100" mp="140" mrise="16:28" mset="04:15" />
+<step dt="2013-04-23" tn="5" tx="9" s="d410" pr="4.6" wsx="4.6" wn="W" pp="77" tp="0" rise="06:07" set="20:25" dl="857" uv="" ca="100" mp="150" mrise="17:42" mset="04:40" />
+<step dt="2013-04-24" tn="5" tx="8" s="d420" pr="13.7" wsx="6.0" wn="N" pp="55" tp="0" rise="06:05" set="20:26" dl="860" uv="" ca="100" mp="160" mrise="18:58" mset="05:05" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="0.9" wsx="6.5" wn="NW" pp="69" tp="0" rise="06:03" set="20:28" dl="864" uv="" ca="89" mp="180" mrise="20:16" mset="05:34" />
+<step dt="2013-04-26" tn="4" tx="15" s="d210" pr="0.2" wsx="6.3" wn="W" pp="55" tp="0" rise="06:01" set="20:29" dl="867" uv="" ca="63" mp="190" mrise="21:35" mset="06:08" />
+<step dt="2013-04-27" tn="6" tx="18" s="d210" pr="0.2" wsx="5.6" wn="NW" pp="56" tp="0" rise="05:59" set="20:31" dl="871" uv="" ca="83" mp="200" mrise="22:48" mset="06:49" />
+<step dt="2013-04-28" tn="7" tx="18" s="d200" pr="0.0" wsx="5.5" wn="W" pp="46" tp="0" rise="05:58" set="20:33" dl="875" uv="" ca="90" mp="220" mrise="23:55" mset="07:40" />
+</loc>
+
+<loc id="100572525">
+<step dt="2013-04-19" tn="4" tx="25" s="d200" pr="0.0" wsx="2.3" wn="W" pp="2" tp="0" rise="06:08" set="20:13" dl="845" uv="5" ca="16" mp="100" mrise="12:55" mset="02:56" />
+<step dt="2013-04-20" tn="5" tx="22" s="d200" pr="0.0" wsx="1.5" wn="W" pp="2" tp="0" rise="06:06" set="20:15" dl="848" uv="5" ca="37" mp="110" mrise="14:01" mset="03:22" />
+<step dt="2013-04-21" tn="10" tx="21" s="d210" pr="0.2" wsx="2.9" wn="NW" pp="39" tp="0" rise="06:04" set="20:17" dl="852" uv="5" ca="69" mp="130" mrise="15:10" mset="03:47" />
+<step dt="2013-04-22" tn="8" tx="16" s="d220" pr="7.4" wsx="3.5" wn="SE" pp="67" tp="5" rise="06:02" set="20:18" dl="856" uv="4" ca="92" mp="140" mrise="16:21" mset="04:10" />
+<step dt="2013-04-23" tn="6" tx="11" s="d430" pr="17.1" wsx="4.0" wn="SW" pp="78" tp="0" rise="06:00" set="20:20" dl="859" uv="" ca="99" mp="150" mrise="17:36" mset="04:33" />
+<step dt="2013-04-24" tn="5" tx="9" s="d420" pr="10.8" wsx="5.1" wn="N" pp="58" tp="0" rise="05:58" set="20:22" dl="863" uv="" ca="100" mp="160" mrise="18:53" mset="04:59" />
+<step dt="2013-04-25" tn="3" tx="15" s="d210" pr="1.0" wsx="6.8" wn="N" pp="78" tp="0" rise="05:56" set="20:23" dl="867" uv="" ca="90" mp="180" mrise="20:11" mset="05:27" />
+<step dt="2013-04-26" tn="4" tx="16" s="d210" pr="0.3" wsx="6.2" wn="W" pp="63" tp="0" rise="05:54" set="20:25" dl="870" uv="" ca="62" mp="190" mrise="21:30" mset="06:00" />
+<step dt="2013-04-27" tn="5" tx="18" s="d210" pr="0.2" wsx="5.7" wn="NW" pp="57" tp="0" rise="05:52" set="20:27" dl="874" uv="" ca="84" mp="200" mrise="22:44" mset="06:41" />
+<step dt="2013-04-28" tn="6" tx="19" s="d310" pr="0.3" wsx="5.5" wn="NW" pp="55" tp="0" rise="05:50" set="20:28" dl="878" uv="" ca="96" mp="220" mrise="23:51" mset="07:32" />
+</loc>
+
+<loc id="100575457">
+<step dt="2013-04-19" tn="4" tx="23" s="d000" pr="0.0" wsx="2.0" wn="SW" pp="2" tp="0" rise="06:18" set="20:16" dl="838" uv="5" ca="0" mp="100" mrise="13:05" mset="02:58" />
+<step dt="2013-04-20" tn="4" tx="22" s="d200" pr="0.0" wsx="2.8" wn="N" pp="2" tp="0" rise="06:16" set="20:18" dl="842" uv="5" ca="61" mp="110" mrise="14:10" mset="03:26" />
+<step dt="2013-04-21" tn="9" tx="21" s="d210" pr="0.3" wsx="2.2" wn="SW" pp="25" tp="0" rise="06:14" set="20:20" dl="845" uv="4" ca="74" mp="130" mrise="15:18" mset="03:51" />
+<step dt="2013-04-22" tn="7" tx="14" s="d320" pr="8.2" wsx="4.7" wn="N" pp="67" tp="0" rise="06:12" set="20:21" dl="849" uv="5" ca="95" mp="140" mrise="16:28" mset="04:15" />
+<step dt="2013-04-23" tn="4" tx="9" s="d410" pr="1.1" wsx="5.8" wn="W" pp="73" tp="0" rise="06:10" set="20:23" dl="852" uv="" ca="100" mp="150" mrise="17:41" mset="04:40" />
+<step dt="2013-04-24" tn="4" tx="10" s="d430" pr="13.3" wsx="5.5" wn="NW" pp="57" tp="0" rise="06:08" set="20:24" dl="856" uv="" ca="100" mp="160" mrise="18:57" mset="05:07" />
+<step dt="2013-04-25" tn="4" tx="16" s="d210" pr="0.8" wsx="6.6" wn="NW" pp="69" tp="0" rise="06:06" set="20:26" dl="859" uv="" ca="83" mp="180" mrise="20:14" mset="05:37" />
+<step dt="2013-04-26" tn="5" tx="18" s="d210" pr="0.1" wsx="6.1" wn="W" pp="51" tp="0" rise="06:04" set="20:27" dl="863" uv="" ca="62" mp="190" mrise="21:32" mset="06:11" />
+<step dt="2013-04-27" tn="6" tx="20" s="d200" pr="0.1" wsx="5.7" wn="NW" pp="43" tp="0" rise="06:02" set="20:29" dl="866" uv="" ca="66" mp="200" mrise="22:45" mset="06:53" />
+<step dt="2013-04-28" tn="8" tx="21" s="d200" pr="0.0" wsx="5.2" wn="NW" pp="36" tp="0" rise="06:00" set="20:30" dl="870" uv="" ca="82" mp="220" mrise="23:51" mset="07:44" />
+</loc>
+
+<loc id="100578072">
+<step dt="2013-04-19" tn="4" tx="23" s="d000" pr="0.0" wsx="2.3" wn="S" pp="2" tp="0" rise="06:32" set="20:34" dl="841" uv="5" ca="4" mp="100" mrise="13:20" mset="03:16" />
+<step dt="2013-04-20" tn="9" tx="22" s="d200" pr="0.0" wsx="1.7" wn="W" pp="2" tp="0" rise="06:30" set="20:35" dl="845" uv="5" ca="77" mp="110" mrise="14:25" mset="03:43" />
+<step dt="2013-04-21" tn="7" tx="15" s="d420" pr="6.4" wsx="7.2" wn="N" pp="75" tp="0" rise="06:28" set="20:37" dl="849" uv="5" ca="93" mp="130" mrise="15:34" mset="04:08" />
+<step dt="2013-04-22" tn="3" tx="9" s="d420" pr="6.6" wsx="7.9" wn="N" pp="39" tp="0" rise="06:26" set="20:39" dl="852" uv="4" ca="100" mp="140" mrise="16:45" mset="04:32" />
+<step dt="2013-04-23" tn="1" tx="6" s="d431" pr="10.4" wsx="6.5" wn="NW" pp="59" tp="0" rise="06:24" set="20:40" dl="856" uv="" ca="100" mp="150" mrise="17:58" mset="04:56" />
+<step dt="2013-04-24" tn="2" tx="10" s="d410" pr="2.4" wsx="7.1" wn="NW" pp="68" tp="0" rise="06:22" set="20:42" dl="859" uv="" ca="100" mp="160" mrise="19:15" mset="05:22" />
+<step dt="2013-04-25" tn="5" tx="15" s="d210" pr="0.2" wsx="7.0" wn="NW" pp="56" tp="0" rise="06:20" set="20:43" dl="863" uv="" ca="78" mp="180" mrise="20:33" mset="05:51" />
+<step dt="2013-04-26" tn="6" tx="16" s="d200" pr="0.1" wsx="6.3" wn="W" pp="48" tp="0" rise="06:18" set="20:45" dl="866" uv="" ca="67" mp="190" mrise="21:51" mset="06:25" />
+<step dt="2013-04-27" tn="7" tx="17" s="d310" pr="0.3" wsx="6.0" wn="NW" pp="60" tp="0" rise="06:16" set="20:47" dl="870" uv="" ca="85" mp="200" mrise="23:05" mset="07:07" />
+<step dt="2013-04-28" tn="8" tx="18" s="d300" pr="0.1" wsx="4.8" wn="S" pp="46" tp="0" rise="06:14" set="20:48" dl="873" uv="" ca="87" mp="220" mrise="" mset="07:58" />
+</loc>
+
+<loc id="100580497">
+<step dt="2013-04-19" tn="3" tx="18" s="d200" pr="0.0" wsx="2.8" wn="SE" pp="2" tp="0" rise="05:54" set="19:39" dl="825" uv="5" ca="66" mp="100" mrise="12:41" mset="02:18" />
+<step dt="2013-04-20" tn="4" tx="21" s="d100" pr="0.0" wsx="5.9" wn="SE" pp="2" tp="0" rise="05:53" set="19:41" dl="828" uv="6" ca="16" mp="110" mrise="13:44" mset="02:49" />
+<step dt="2013-04-21" tn="6" tx="19" s="d400" pr="0.0" wsx="2.3" wn="N" pp="9" tp="0" rise="05:51" set="19:42" dl="831" uv="6" ca="97" mp="120" mrise="14:49" mset="03:17" />
+<step dt="2013-04-22" tn="8" tx="19" s="d400" pr="0.3" wsx="3.3" wn="NW" pp="46" tp="0" rise="05:49" set="19:43" dl="834" uv="4" ca="100" mp="140" mrise="15:57" mset="03:44" />
+<step dt="2013-04-23" tn="9" tx="16" s="d200" pr="0.7" wsx="8.5" wn="W" pp="58" tp="0" rise="05:47" set="19:45" dl="837" uv="" ca="58" mp="150" mrise="17:07" mset="04:11" />
+<step dt="2013-04-24" tn="6" tx="16" s="d210" pr="1.4" wsx="8.1" wn="W" pp="27" tp="0" rise="05:46" set="19:46" dl="840" uv="" ca="43" mp="160" mrise="18:19" mset="04:40" />
+<step dt="2013-04-25" tn="4" tx="16" s="d310" pr="1.0" wsx="5.9" wn="W" pp="67" tp="0" rise="05:44" set="19:47" dl="843" uv="" ca="93" mp="180" mrise="19:34" mset="05:13" />
+<step dt="2013-04-26" tn="8" tx="17" s="d200" pr="0.1" wsx="5.4" wn="W" pp="50" tp="0" rise="05:42" set="19:49" dl="846" uv="" ca="74" mp="190" mrise="20:49" mset="05:50" />
+<step dt="2013-04-27" tn="9" tx="20" s="d200" pr="0.0" wsx="5.1" wn="W" pp="27" tp="0" rise="05:41" set="19:50" dl="849" uv="" ca="44" mp="200" mrise="22:01" mset="06:34" />
+<step dt="2013-04-28" tn="10" tx="20" s="d100" pr="0.0" wsx="5.2" wn="N" pp="12" tp="0" rise="05:39" set="19:51" dl="852" uv="" ca="26" mp="220" mrise="23:06" mset="07:26" />
+</loc>
+
+<loc id="100581671">
+<step dt="2013-04-19" tn="4" tx="25" s="d100" pr="0.0" wsx="2.1" wn="W" pp="2" tp="0" rise="06:15" set="20:20" dl="845" uv="5" ca="14" mp="100" mrise="13:01" mset="03:03" />
+<step dt="2013-04-20" tn="4" tx="22" s="d200" pr="0.0" wsx="1.5" wn="W" pp="2" tp="0" rise="06:13" set="20:22" dl="849" uv="5" ca="45" mp="110" mrise="14:08" mset="03:29" />
+<step dt="2013-04-21" tn="8" tx="17" s="d240" pr="6.0" wsx="2.4" wn="NW" pp="78" tp="35" rise="06:11" set="20:24" dl="853" uv="5" ca="78" mp="130" mrise="15:17" mset="03:54" />
+<step dt="2013-04-22" tn="5" tx="9" s="d430" pr="11.2" wsx="5.3" wn="N" pp="62" tp="0" rise="06:09" set="20:25" dl="856" uv="4" ca="100" mp="140" mrise="16:28" mset="04:17" />
+<step dt="2013-04-23" tn="5" tx="10" s="d430" pr="13.6" wsx="3.2" wn="NW" pp="78" tp="0" rise="06:06" set="20:27" dl="860" uv="" ca="100" mp="150" mrise="17:43" mset="04:40" />
+<step dt="2013-04-24" tn="5" tx="9" s="d420" pr="5.5" wsx="7.2" wn="N" pp="57" tp="0" rise="06:04" set="20:29" dl="864" uv="" ca="100" mp="160" mrise="19:00" mset="05:05" />
+<step dt="2013-04-25" tn="3" tx="14" s="d210" pr="1.0" wsx="6.8" wn="N" pp="71" tp="0" rise="06:02" set="20:30" dl="867" uv="" ca="93" mp="180" mrise="20:19" mset="05:34" />
+<step dt="2013-04-26" tn="4" tx="15" s="d210" pr="0.2" wsx="6.2" wn="W" pp="60" tp="0" rise="06:00" set="20:32" dl="871" uv="" ca="60" mp="190" mrise="21:38" mset="06:07" />
+<step dt="2013-04-27" tn="5" tx="17" s="d310" pr="0.4" wsx="5.5" wn="NW" pp="64" tp="0" rise="05:58" set="20:34" dl="875" uv="" ca="81" mp="200" mrise="22:52" mset="06:48" />
+<step dt="2013-04-28" tn="7" tx="18" s="d200" pr="0.1" wsx="5.5" wn="NW" pp="46" tp="0" rise="05:56" set="20:35" dl="878" uv="" ca="95" mp="220" mrise="23:58" mset="07:38" />
+</loc>
+
+<loc id="101500973">
+<step dt="2013-04-19" tn="1" tx="13" s="d300" pr="0.1" wsx="3.0" wn="NW" pp="32" tp="0" rise="06:38" set="20:44" dl="846" uv="3" ca="89" mp="100" mrise="13:15" mset="03:23" />
+<step dt="2013-04-20" tn="0" tx="13" s="d210" pr="0.6" wsx="4.1" wn="NW" pp="67" tp="0" rise="06:36" set="20:46" dl="849" uv="3" ca="86" mp="110" mrise="14:21" mset="03:50" />
+<step dt="2013-04-21" tn="-2" tx="14" s="d210" pr="0.2" wsx="4.0" wn="W" pp="64" tp="0" rise="06:34" set="20:48" dl="853" uv="4" ca="62" mp="120" mrise="15:30" mset="04:14" />
+<step dt="2013-04-22" tn="0" tx="12" s="d210" pr="0.6" wsx="3.6" wn="N" pp="87" tp="0" rise="06:32" set="20:49" dl="857" uv="4" ca="54" mp="140" mrise="16:41" mset="04:37" />
+<step dt="2013-04-23" tn="-2" tx="18" s="d200" pr="0.0" wsx="3.0" wn="SW" pp="10" tp="0" rise="06:30" set="20:51" dl="861" uv="5" ca="52" mp="150" mrise="17:56" mset="05:00" />
+<step dt="2013-04-24" tn="2" tx="22" s="d300" pr="0.0" wsx="5.4" wn="NW" pp="8" tp="0" rise="06:28" set="20:53" dl="864" uv="" ca="67" mp="160" mrise="19:13" mset="05:25" />
+<step dt="2013-04-25" tn="4" tx="20" s="d400" pr="0.0" wsx="1.6" wn="W" pp="21" tp="0" rise="06:26" set="20:55" dl="868" uv="" ca="94" mp="170" mrise="20:31" mset="05:53" />
+<step dt="2013-04-26" tn="6" tx="20" s="d210" pr="0.3" wsx="3.4" wn="N" pp="54" tp="0" rise="06:24" set="20:56" dl="872" uv="" ca="82" mp="190" mrise="21:51" mset="06:25" />
+<step dt="2013-04-27" tn="5" tx="18" s="d200" pr="0.1" wsx="2.6" wn="N" pp="47" tp="0" rise="06:22" set="20:58" dl="875" uv="" ca="78" mp="200" mrise="23:06" mset="07:04" />
+<step dt="2013-04-28" tn="5" tx="18" s="d300" pr="0.0" wsx="2.8" wn="N" pp="42" tp="0" rise="06:20" set="21:00" dl="879" uv="" ca="66" mp="220" mrise="" mset="07:53" />
+</loc>
+
+<loc id="101502026">
+<step dt="2013-04-19" tn="2" tx="14" s="d410" pr="0.4" wsx="4.4" wn="W" pp="60" tp="0" rise="06:34" set="21:02" dl="867" uv="3" ca="95" mp="100" mrise="13:09" mset="03:44" />
+<step dt="2013-04-20" tn="-1" tx="12" s="d210" pr="0.3" wsx="3.3" wn="NW" pp="34" tp="0" rise="06:32" set="21:04" dl="872" uv="2" ca="89" mp="110" mrise="14:19" mset="04:07" />
+<step dt="2013-04-21" tn="0" tx="12" s="d210" pr="0.9" wsx="2.6" wn="SW" pp="68" tp="0" rise="06:29" set="21:06" dl="876" uv="3" ca="87" mp="120" mrise="15:32" mset="04:27" />
+<step dt="2013-04-22" tn="-1" tx="14" s="d210" pr="1.1" wsx="2.5" wn="W" pp="72" tp="0" rise="06:27" set="21:08" dl="881" uv="3" ca="68" mp="140" mrise="16:48" mset="04:47" />
+<step dt="2013-04-23" tn="4" tx="11" s="d420" pr="3.7" wsx="5.7" wn="SW" pp="67" tp="0" rise="06:25" set="21:10" dl="885" uv="4" ca="99" mp="150" mrise="18:06" mset="05:06" />
+<step dt="2013-04-24" tn="1" tx="12" s="d210" pr="1.9" wsx="4.9" wn="NW" pp="27" tp="0" rise="06:22" set="21:12" dl="890" uv="" ca="66" mp="160" mrise="19:28" mset="05:26" />
+<step dt="2013-04-25" tn="-2" tx="18" s="d310" pr="0.4" wsx="4.5" wn="SW" pp="55" tp="0" rise="06:20" set="21:14" dl="894" uv="" ca="83" mp="170" mrise="20:52" mset="05:49" />
+<step dt="2013-04-26" tn="5" tx="13" s="d310" pr="0.7" wsx="4.3" wn="W" pp="66" tp="0" rise="06:17" set="21:16" dl="898" uv="" ca="94" mp="190" mrise="22:15" mset="06:17" />
+<step dt="2013-04-27" tn="2" tx="14" s="d300" pr="0.2" wsx="4.0" wn="W" pp="50" tp="0" rise="06:15" set="21:18" dl="903" uv="" ca="93" mp="200" mrise="23:34" mset="06:52" />
+<step dt="2013-04-28" tn="3" tx="14" s="d410" pr="0.4" wsx="4.4" wn="N" pp="60" tp="0" rise="06:13" set="21:20" dl="907" uv="" ca="94" mp="220" mrise="" mset="07:38" />
+</loc>
+
+<loc id="101510853">
+<step dt="2013-04-19" tn="0" tx="10" s="d220" pr="3.1" wsx="4.4" wn="W" pp="72" tp="0" rise="06:17" set="20:31" dl="853" uv="3" ca="92" mp="100" mrise="12:55" mset="03:12" />
+<step dt="2013-04-20" tn="-1" tx="9" s="d220" pr="6.0" wsx="4.1" wn="SW" pp="87" tp="0" rise="06:15" set="20:33" dl="857" uv="3" ca="61" mp="110" mrise="14:03" mset="03:37" />
+<step dt="2013-04-21" tn="1" tx="9" s="d420" pr="2.5" wsx="4.9" wn="W" pp="56" tp="0" rise="06:13" set="20:35" dl="861" uv="2" ca="96" mp="120" mrise="15:13" mset="04:00" />
+<step dt="2013-04-22" tn="3" tx="13" s="d310" pr="0.3" wsx="1.5" wn="NW" pp="29" tp="0" rise="06:11" set="20:37" dl="865" uv="4" ca="89" mp="140" mrise="16:26" mset="04:21" />
+<step dt="2013-04-23" tn="3" tx="20" s="d200" pr="0.0" wsx="4.0" wn="SW" pp="3" tp="0" rise="06:08" set="20:38" dl="869" uv="" ca="22" mp="150" mrise="17:42" mset="04:43" />
+<step dt="2013-04-24" tn="7" tx="18" s="d200" pr="0.0" wsx="4.6" wn="NE" pp="10" tp="0" rise="06:06" set="20:40" dl="873" uv="" ca="66" mp="160" mrise="19:01" mset="05:07" />
+<step dt="2013-04-25" tn="8" tx="20" s="d300" pr="0.0" wsx="4.2" wn="NW" pp="27" tp="0" rise="06:04" set="20:42" dl="877" uv="" ca="92" mp="170" mrise="20:21" mset="05:33" />
+<step dt="2013-04-26" tn="10" tx="17" s="d300" pr="0.0" wsx="3.9" wn="W" pp="40" tp="0" rise="06:02" set="20:44" dl="881" uv="" ca="86" mp="190" mrise="21:42" mset="06:03" />
+<step dt="2013-04-27" tn="9" tx="16" s="d200" pr="0.1" wsx="4.0" wn="E" pp="37" tp="0" rise="06:00" set="20:46" dl="885" uv="" ca="74" mp="200" mrise="22:58" mset="06:41" />
+<step dt="2013-04-28" tn="9" tx="16" s="d400" pr="0.1" wsx="4.7" wn="S" pp="49" tp="0" rise="05:58" set="20:47" dl="889" uv="" ca="86" mp="220" mrise="" mset="07:30" />
+</loc>
+
+<loc id="101512236">
+<step dt="2013-04-19" tn="4" tx="15" s="d210" pr="0.8" wsx="2.4" wn="N" pp="76" tp="0" rise="06:46" set="21:01" dl="855" uv="4" ca="95" mp="100" mrise="13:22" mset="03:42" />
+<step dt="2013-04-20" tn="0" tx="12" s="d220" pr="1.7" wsx="3.8" wn="NW" pp="92" tp="0" rise="06:44" set="21:03" dl="859" uv="3" ca="86" mp="110" mrise="14:30" mset="04:07" />
+<step dt="2013-04-21" tn="-3" tx="11" s="d220" pr="5.9" wsx="4.6" wn="NW" pp="94" tp="0" rise="06:41" set="21:05" dl="863" uv="3" ca="77" mp="120" mrise="15:41" mset="04:29" />
+<step dt="2013-04-22" tn="1" tx="15" s="d210" pr="2.8" wsx="1.9" wn="NW" pp="76" tp="0" rise="06:39" set="21:07" dl="867" uv="3" ca="58" mp="140" mrise="16:54" mset="04:51" />
+<step dt="2013-04-23" tn="0" tx="20" s="d210" pr="1.7" wsx="3.8" wn="W" pp="28" tp="0" rise="06:37" set="21:09" dl="871" uv="4" ca="76" mp="150" mrise="18:10" mset="05:12" />
+<step dt="2013-04-24" tn="5" tx="13" s="d320" pr="4.4" wsx="3.3" wn="N" pp="16" tp="0" rise="06:35" set="21:11" dl="875" uv="" ca="98" mp="160" mrise="19:29" mset="05:35" />
+<step dt="2013-04-25" tn="2" tx="22" s="d400" pr="0.0" wsx="2.9" wn="SW" pp="34" tp="0" rise="06:32" set="21:12" dl="879" uv="" ca="93" mp="170" mrise="20:50" mset="06:00" />
+<step dt="2013-04-26" tn="8" tx="20" s="d210" pr="0.3" wsx="4.4" wn="W" pp="57" tp="0" rise="06:30" set="21:14" dl="883" uv="" ca="69" mp="190" mrise="22:11" mset="06:31" />
+<step dt="2013-04-27" tn="7" tx="18" s="d210" pr="0.2" wsx="3.1" wn="N" pp="56" tp="0" rise="06:28" set="21:16" dl="887" uv="" ca="85" mp="200" mrise="23:28" mset="07:09" />
+<step dt="2013-04-28" tn="6" tx="18" s="d410" pr="0.2" wsx="3.6" wn="E" pp="52" tp="0" rise="06:26" set="21:18" dl="891" uv="" ca="90" mp="220" mrise="" mset="07:56" />
+</loc>
+
+<loc id="102122104">
+<step dt="2013-04-19" tn="-1" tx="3" s="d422" pr="14.9" wsx="8.1" wn="E" pp="98" tp="0" rise="06:19" set="20:30" dl="851" uv="2" ca="100" mp="100" mrise="12:42" mset="03:05" />
+<step dt="2013-04-20" tn="0" tx="4" s="d431" pr="29.3" wsx="9.7" wn="SE" pp="98" tp="0" rise="06:17" set="20:32" dl="855" uv="1" ca="100" mp="110" mrise="13:50" mset="03:32" />
+<step dt="2013-04-21" tn="-1" tx="6" s="d211" pr="6.7" wsx="7.2" wn="W" pp="95" tp="0" rise="06:15" set="20:34" dl="859" uv="4" ca="51" mp="120" mrise="14:59" mset="03:55" />
+<step dt="2013-04-22" tn="-2" tx="4" s="d200" pr="0.1" wsx="3.9" wn="S" pp="13" tp="0" rise="06:12" set="20:36" dl="863" uv="4" ca="50" mp="130" mrise="16:11" mset="04:17" />
+<step dt="2013-04-23" tn="-1" tx="4" s="d431" pr="4.8" wsx="9.2" wn="E" pp="98" tp="0" rise="06:10" set="20:37" dl="867" uv="2" ca="91" mp="150" mrise="17:27" mset="04:39" />
+<step dt="2013-04-24" tn="-2" tx="7" s="d211" pr="0.4" wsx="6.8" wn="W" pp="74" tp="0" rise="06:08" set="20:39" dl="871" uv="" ca="53" mp="160" mrise="18:44" mset="05:02" />
+<step dt="2013-04-25" tn="-1" tx="4" s="d411" pr="0.3" wsx="7.9" wn="W" pp="58" tp="0" rise="06:06" set="20:41" dl="875" uv="" ca="93" mp="170" mrise="20:04" mset="05:28" />
+<step dt="2013-04-26" tn="-1" tx="4" s="d411" pr="2.6" wsx="6.4" wn="E" pp="77" tp="0" rise="06:04" set="20:43" dl="878" uv="" ca="100" mp="190" mrise="21:25" mset="05:58" />
+<step dt="2013-04-27" tn="-1" tx="4" s="d411" pr="3.0" wsx="6.7" wn="SE" pp="79" tp="0" rise="06:02" set="20:45" dl="882" uv="" ca="100" mp="200" mrise="22:42" mset="06:34" />
+<step dt="2013-04-28" tn="0" tx="4" s="d411" pr="1.7" wsx="5.6" wn="SE" pp="71" tp="0" rise="06:00" set="20:46" dl="886" uv="" ca="100" mp="210" mrise="23:52" mset="07:21" />
+</loc>
+
+</weather>

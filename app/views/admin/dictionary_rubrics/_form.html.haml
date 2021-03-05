@@ -1,0 +1,17 @@
+%h1= 'Новая словарная рубрика'
+= form_for [:admin, @dictionary_rubric] do |f|
+  = error_messages_for :dictionary_rubric, :object => @dictionary_rubric
+  
+  = f.label :dictionary_id
+  = f.select :dictionary_id, @site.dictionaries.map{ |d| [d.title, d.id] }
+
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :image
+  %p
+    = image_tag @dictionary_rubric.image.url(:small)
+  = f.file_field :image
+  %br
+  %br
+  = f.submit 'Сохранить', class: 'btn'

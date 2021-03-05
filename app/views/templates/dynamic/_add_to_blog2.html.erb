@@ -1,0 +1,62 @@
+<div id="addtoblog" style="position: absolute; display: none; margin-top: 10px; z-index: 999; border: 1px solid #ccc; padding: 10px; background-color: white;">
+  <table>
+    <tr>
+      <td style="text-align: left;">
+        Код для вставки в блоги поддерживающие специальные коды:
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <textarea style="margin: 10px 0;width: 455px; height: 150px;" readonly>
+          <table  width="660px" align="left" cellpadding="0" cellspacing="0" style="border: 1px solid black; background-color: white;">
+            <tr>
+              <td height="5px" style="border:0; padding: 0; margin: 0;"></td>
+            </tr>
+            <tr>
+              <td width="5px" style="padding: 0; margin: 0; border:0;"></td>
+              <td valign="top" style="padding: 0; margin: 0; border:0;">
+                <a href='<%= object[:doc].url %>' >
+                  <% if object[:main_photo] %>
+                    <img width="160px" src="<%= url_for_file_column( object[:main_photo], 'image', object[:url_for_file_column_options]) %>" style="border: 1px solid black" /> </a>
+                  <% end %>
+              </td>
+              <td>
+                <% doc = object[:doc] %>
+                <% if defined?(doc.title) %>
+                  <b><%= link_to doc.title, "https://" + @site.domain + url_for(params), style: "color: black;" %></b>
+                  <br><br>
+                <% end %>
+                <% if defined?(doc.annotation) %>
+                  <%= doc.annotation %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Подробнее...", "https://" + @site.domain + url_for(params), style: "color: green;" %><br><br>
+                <% end %>
+              </td>
+              <% if !object[:photos].nil? %>
+                <table align="center" cellspacing="0" align="left" cellpadding="0" style="background-color: #fff; margin: 0;">
+                  <tr>
+                    <td width=5 style="padding: 0; margin: 0; border:0;"></td>
+                    <% limit = 4
+                       count = 0
+                       object[:photos].each{|photo| %><% photo_addr = photo.url
+                             photo_image_tag = image_tag(url_for_file_column(photo, "image", "photo_small"), size: "80x61", alt: photo.title) %>
+                    <td style="padding: 0; margin: 0; border:0;">
+                      <%= link_to photo_image_tag, photo_addr %>
+                    </td>
+                    <td width=5 style="padding: 0; margin: 0; border:0;"></td>
+                      <% count = count + 1
+                        break if count >= limit
+                        } %>
+                  </tr>
+                </table>
+              <% end %>
+              <td width="10" style="padding: 0; margin: 0; border:0;"></td>
+              <td valign="top" style="padding: 0; margin: 0; border:0;">
+                <img width="80px" src=<%= "https://" + @site.domain + "/images/logo.jpg" %> />
+              </td>
+              <td width="5px" style="padding: 0; margin: 0; border:0;">
+          </table>
+        </textarea>
+      </td>
+    </tr>
+  </table>
+  <a href="#" id ="addtoblog_close_link">Закрыть</a>
+</div>

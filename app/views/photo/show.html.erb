@@ -1,0 +1,6 @@
+<div class="g-box">
+  <%= render partial: "/photo/templates/blocks/gallery_title", locals: { doc: @gallery } %>
+  <%= link_to image_tag(url_for_file_column(@photo, "image", "medium"), alt: "#{@gallery.title} #{@photo.id}", title: "#{@gallery.title} #{@photo.id}"), photo_id: @next_photo.id %>
+  <%= yandex_direct_code @site %>
+</div>
+<%= seo_text @seo %>

@@ -1,0 +1,39 @@
+//@import url("//hello.myfonts.net/count/2b7007");
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 2846727, 2014-07-16T08:09:14-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: Proxima Nova Regular by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/regular/
+ *
+ * Webfont: Proxima Nova Bold by Mark Simonson
+ * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/bold/
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=2846727
+ * Licensed pageviews: 1,000,000
+ * Webfonts copyright: Copyright (c) Mark Simonson, 2005. All rights reserved.
+ *
+ * © 2014 MyFonts Inc
+*/
+
+@include font-face('PtSans', 'ptsans/PTS55F_W', normal, $asset-pipeline: true);
+@include font-face('PtSans', 'ptsans/PTS56F_W', normal, italic, $asset-pipeline: true);
+@include font-face('PtSans', 'ptsans/PTS75F_W', bold, $asset-pipeline: true);
+@include font-face('PtSans', 'ptsans/PTS76F_W', bold, italic, $asset-pipeline: true);
+
+@include font-face('PtSansNarrow', 'ptsans-narrow/PTN57F_W', normal, $asset-pipeline: true);
+@include font-face('PtSansNarrow', 'ptsans-narrow/PTN77F_W', bold, $asset-pipeline: true);
+
+@include font-face('PtSansCaption', 'ptsans-caption/PTC55F_W', normal, $asset-pipeline: true);
+@include font-face('PtSansCaption', 'ptsans-caption/PTC75F_W', bold, $asset-pipeline: true);
+
+@include font-face('ProximaNova', 'proxima-nova/2B7007_0_0', normal, $asset-pipeline: true);
+@include font-face('ProximaNova', 'proxima-nova/2B7007_1_0', bold, $asset-pipeline: true);

@@ -1,0 +1,11 @@
+.g-title
+  %span.title= @category ? @category.name : 'Последнее'
+  .controls
+    = form_tag 'url/to/controller', remote: true, class: 'b-form' do
+      %label
+        = check_box_tag 'questions', true, true
+        Вопросы
+      %label
+        = check_box_tag 'publications', true, true
+        Публикации
+      .g-loader.mini= submit_tag 'Обновить содержимое', class: 'g-loader__link'

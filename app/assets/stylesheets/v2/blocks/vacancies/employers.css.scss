@@ -1,0 +1,31 @@
+.b-employers-list {
+  width: 202px;
+  margin: 0 auto;
+  font-family: $font-family_proxymanova;
+
+  & &__item {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .item__link {
+    display: block;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  .item__image {
+    width: 200px;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px $gray-light solid;
+    img {margin: 0 auto;}
+  }
+  .item__info {
+    font-size: 16px;
+    color: $gray-dark;
+    a {
+      font-size: 20px;
+      font-weight: 700;
+      color: $red-dark;
+    }
+  }
+}

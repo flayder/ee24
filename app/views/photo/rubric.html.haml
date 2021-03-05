@@ -1,0 +1,21 @@
+.l-wrapper
+
+  %h1.g-subheader.g-subheader__last-news
+    = @rubric.present? ? @rubric.title : "Фото"
+
+  .b-photos
+    .b-injection
+      .l-cols
+        .l-cols-3.l-l
+          = render 'shared/adv-aside'
+        .l-cols-3.l-l
+          = link_if_logged 'фоторепортаж', '/photo/new'
+
+
+    - @galleries.each do |gallery|
+      = render partial: 'shared/media', object: gallery
+
+    .g-loader
+      = will_paginate @galleries
+
+= seo_text @seo

@@ -1,0 +1,13 @@
+- if @popular_news
+  .g-subheader
+    ТОП за 24 часа
+  - @popular_news.each do |item|
+    .b-docs-item
+      = link_to item.title, item.approved ? item.url : item.preview_secret_url, class: 'b-docs-item__title'
+      .g-aux.l
+        %time.g-aux__item.date{datetime: Russian::strftime(item.created_at, '%Y-%m-%d')}
+          = item.created_at.strftime('%d.%m.%Y')
+        .g-aux__item.views
+          = item.page_views
+        .g-aux__item.comments
+          = render partial: 'templates/blocks/comments_counter_code', locals: {doc: item}

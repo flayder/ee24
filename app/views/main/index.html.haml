@@ -1,0 +1,63 @@
+- content_for :head do
+  %meta{content: URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png')), property: 'og:image'}
+
+.l-wrapper
+
+  %aside.l-section__aside
+    = render 'last_news_aside'
+    = render 'shared/adv-aside'
+    = render 'vacancies'
+
+  %div.l-section__main
+    .g-subheader.g-subheader__large Главное
+
+    .news__carousel
+      - @docs.first(5).each do |article|
+        .news-item
+          = link_to article.url do
+            = image_tag(article.main_photo.image.xxlarge.url, size: '610х421', title: article.title) if article.main_photo.present?
+          .news-item__info
+            .news-item__info-content
+              = link_to article.title, article.url, class: "news-item__title"
+              .news-item__annotation
+                = link_to article.annotation, article.url
+
+
+    = render partial: 'shared/docs', object: @docs.last(3).each_slice(1)
+
+    = render 'events'
+
+    %div
+      .b-categories-list
+        .l-row
+          .g-subheader.g-subheader__large.l-l
+            = link_to t('.community'), '/categories'
+          = link_to t('.create_new_question'), new_question_path, class:'g-button medium danger l-r'
+        .b-categories__content
+          = render partial: 'categories/questions', object: @questions
+
+  %div.l-section__main
+    %br
+    .g-subheader.g-subheader__large
+      = link_to @main_blocks.first.title, @main_blocks.first.path
+    = render partial: 'shared/docs', object: @main_blocks.first.docs.by_language.first(3).each_slice(1)
+
+.l-wrapper
+  = render 'photo_digest'
+
+-# новости
+.l-wrapper
+  .l-page__columns-line
+    %aside.l-section__aside
+      = render 'shared/rated'
+      = render 'shared/ency_widget'
+      = render 'templates/blocks/new/social_widgets'
+      = render 'shared/adv-aside'
+
+    %div.l-section__main
+      - @main_blocks[1..-1].each do |block|
+        .g-subheader.g-subheader__large
+          = link_to block.title, block.path
+        = render partial: 'shared/docs', object: block.docs.by_language.first(3).each_slice(1)
+
+= seo_text @seo

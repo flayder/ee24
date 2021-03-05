@@ -1,0 +1,5 @@
+.b-search.light
+  = form_tag path, method: :get do
+    = submit_tag 'Найти', name: nil
+    .b-search__input= text_field_tag :search, params[:search]
+-#%h3 Результаты поиска по #{t(params[:controller].gsub('/', '.'))}

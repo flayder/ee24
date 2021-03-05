@@ -1,0 +1,13 @@
+- if current_user.admin_messages.any?
+  .g-info
+    - message = current_user.admin_messages.first
+    .g-info__title= message.title
+    .g-info__text
+      = raw sanitize(message.text, :tags => ['a'])
+      .g-info__aux
+        - case message.buttons
+        - when 'ok'
+          = button_to 'OK', message_path(message), method: :delete, class: 'g-button default'
+        - when 'approve_friend'
+          = button_to 'Да', user_friend_approved_url(user_id: @user.subdomain, id: message.id), class: 'g-button primary'
+          = button_to 'Нет', user_friend_not_approved_url(user_id: @user.subdomain, id: message.id), class: 'g-button danger'

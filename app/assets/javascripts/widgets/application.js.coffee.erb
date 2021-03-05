@@ -1,0 +1,111 @@
+class App.Widgets.Application extends Ultimate.Plugin
+
+  el: 'body'
+
+  events:
+    'click                a.js-jump': 'jumpUp'
+    'click                a.tour-trigger': 'showTour'
+    'click        a.remote-seo-link': 'openRemoteLink'
+#    'click .b-map-container___close': 'hideMapcontainer'
+    'change       .on_change_submit': 'onChangeSubmit'
+    'change      .main_radio_button': 'changeMainPhoto'
+
+  initialize: ->
+    @$('.map-container').append @$('.map-container').data 'map'
+    $(document).keyup @keyPressed
+    @$('.seo-link').each ->
+      $(@).attr 'href', $(@).data 'link'
+    @$(".b-news__title__link").each ->
+      if $(@).html().replace(/[\s]*/g, "").length >= 70
+        $(@).addClass "b-news__title__link_overflowed"
+    swfobject.embedSWF('<%= asset_path '5.swf' %>', 'flashBanner', '360', '70', '9.0.0')
+
+      # $(window).on 'scroll resize', @fixPosition
+
+    if backgroundUrl?
+      $lPage = $(".l-page")
+      $lPage.css('background-repeat', if backgroundRepeat then 'repeat-y' else 'no-repeat')
+      $lPage.addClass("background-banner").css('background-image', "url('#{backgroundUrl}')")
+
+    if backgroundLink?
+      $body = $('body')
+      $contentWidth = 1240
+      $header = $('.l-page > .l-page__header')
+      beforeHeader = parseInt($header.css('marginTop'))
+      headerHeight = $header.height()
+      isHover = false
+      backMouseHold = false
+      $body.mousemove (event) ->
+        bodyWidth = $body.width()
+        sideSpace = (bodyWidth - $contentWidth) / 2
+        sideHover = event.pageX < sideSpace or event.pageX > (sideSpace + $contentWidth)
+        isHover = if beforeHeader > 0 then sideHover or event.pageY < beforeHeader else sideHover and event.pageY > headerHeight
+        $body.css "cursor", if isHover then "pointer" else "auto"
+      $body.mousedown (event) ->
+        backMouseHold = $(event.target).hasClass("l-page") and isHover
+        true
+      $body.mouseup (event) ->
+        if $(event.target).hasClass("l-page") and backMouseHold
+          backMouseHold = false
+          window.open backgroundLink
+
+  changeMainPhoto: (event) ->
+    jThis = $(event.currentTarget)
+
+    id = jThis.attr('id').replace('main_', '')
+    $('.gallery_photos_attributes_main').val '0'
+    if jThis.prop 'checked'
+      $("#gallery_photos_attributes_#{id}_main").val '1'
+
+  onChangeSubmit: (event) ->
+    jForm = $(event.currentTarget).closest 'form'
+    day = jForm.find('#day_select').val()
+    month = jForm.find('#month_select').val()
+    year = jForm.find('#year_select').val()
+    controller = (if (typeof link is `undefined`) then "news" else link)
+    href_params = [controller]
+    href_params.push rubric if rubric != ''
+    if _.isEmpty(year)
+      month = ''
+      day = ''
+    if _.isEmpty(month)
+      day = ''
+    href_params.push 'date'
+    href_params.push year
+    href_params.push month
+    href_params.push day
+    window.location.href = "/" + href_params.join("/")
+
+#  hideMapcontainer: ->
+#    @$('.b-map-container').hide()
+#    false
+
+  jumpUp: (event) ->
+    jLink = $ event.currentTarget
+    App.getFirstWidget(App.Widgets.Popup).showAjax jLink.data('title'), jLink.attr('href'), jLink.hasClass('cache')
+    false
+
+  showTour: (event) ->
+    jLink = $ event.currentTarget
+    popup = App.getFirstWidget(App.Widgets.Popup)
+    popup.jWindow.css("width", 1030)
+    popup.show jLink.data('title'), $ jLink.data('target')
+    false
+
+  keyPressed: (event) ->
+    switch event.keyCode
+      when 27 then App.getFirstWidget(App.Widgets.Popup).close()
+      when 37 then App.getFirstWidget(App.Widgets.PhotoCarousel).slide(-1)
+      when 39 then App.getFirstWidget(App.Widgets.PhotoCarousel).slide(1)
+
+  openRemoteLink: (event)  ->
+    jThis = $ event.currentTarget
+    jThis.attr 'href', jThis.data 'link'
+
+#  fixPosition: () ->
+#    if $(document).scrollTop() > 700
+#      $('.layout-banner').addClass 'stop'
+#      cout 'yes'
+#    if $(document).scrollTop() < 700
+#      $('.layout-banner').removeClass 'stop'
+#

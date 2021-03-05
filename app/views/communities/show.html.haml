@@ -1,0 +1,42 @@
+.l-wrapper
+  %aside.l-section__aside
+    = render 'shared/active_users', users: @community.posts.map(&:comments).flatten.group_by {|c| c.user}.sort_by {|c| c.last.count}.first(3)
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    = render 'shared/search'
+    = render 'communities/community_header'
+    .b-community-important-posts
+      .b-community-important-posts__title Важные публикации
+      %ul.b-community-important-posts__list
+        - @community.posts.last(3).each do |post|
+          %li= link_to post.title, [@community.category, @community, post], class: 'b-community-important-post'
+    = render 'categories/menu'
+    = render 'categories/posts', posts: @posts
+
+    -#.b-community-posts
+      .b-filters
+        = link_to 'Добавить', 'javascript:;', class: 'b-filters__action'
+        .b-filters__list
+          = link_to 'Новые', 'javascript:;', class: 'b-filters__item current'
+          = link_to 'Обсуждаемые', 'javascript:;', class: 'b-filters__item'
+      .b-community-posts__list
+        - @community.posts.each do |post|
+          .b-community-post
+            = link_to image_tag("https://lorempixel.com/150/150/people/#{rand(5)}"), post.user, class: 'b-community-post__cover'
+            .b-community-post__content
+              = link_to post.title, [@community.category, @community, post], class: 'b-community-post__title'
+              .b-community-post__text= Faker::Lorem.sentence(30)
+              .b-community-post__stats
+                = link_to Faker::Name.name, post.user, class: 'b-community-post__stat user'
+                .b-community-post__stat.date= l post.created_at, format: :long_short
+                .b-community-post__stat.comments= rand(15)
+        .g-loader= link_to 'Загрузить ещё публикации', 'javascript:;', class: 'g-loader__link'
+
+-#%p
+-#  = link_to "Создать публикацию", new_category_community_post_path(@category, @community) if can? :create, Post
+-#
+-#- @community.posts.each do |post|
+-#  %p
+-#    = link_to post.title, category_community_post_path(@community.category, @community, post)
+-#    = link_to "Редактировать", edit_category_community_post_path(@community.category, @community, post) if can? :edit, post

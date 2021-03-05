@@ -1,0 +1,22 @@
+= content_for :title, @tag.name
+
+.container
+  .logo
+
+  - if @news.present?
+    %h2.page-title В новостях
+    .feed
+      - @news.first(6).each do |doc|
+        = render 'shared/mobile/doc_item', doc: doc
+
+  - if @docs.present?
+    %h2.page-title В статьях
+    .feed
+      - @docs.first(6).each do |doc|
+        = render 'shared/mobile/doc_item', doc: doc
+
+  - if @events.first(6).present?
+    %h2.page-title События
+    .feed
+      - @events.each do |doc|
+        = render 'shared/mobile/doc_item', doc: doc

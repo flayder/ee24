@@ -1,0 +1,42 @@
+%h1= 'Блок на главной'
+= form_for [:admin, @main_block] do |f|
+  = error_messages_for :main_block, object: @main_block
+
+  .form-group
+    = f.label :doc_type
+    = f.select :doc_type, MainBlock::DOC_TYPES.map { |type| [type.constantize.model_name.human, type] }, {}, class: 'form-control'
+
+  .form-group
+    = f.label :position
+    = f.text_field :position, class: 'form-control'
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, placeholder: 'Взгляд', class: 'form-control'
+
+  .form-group
+    = f.label :path
+    = f.text_field :path, placeholder: '/vz', class: 'form-control'
+
+  .form-group
+    = f.label :banner
+    = f.text_area :banner, rows: 8, class: 'form-control'
+
+  .form-group
+  %h3 Рубрики
+  %ul
+    - if @main_block.doc_type == 'Doc'      
+      - @rubrics.each do |doc_global_rubric|
+        %li
+          = doc_global_rubric.title
+          %ul
+            - doc_global_rubric.doc_rubrics.each do |doc_rubric|              
+              - main_block = @main_block.main_block_rubrics.detect { |mbr| mbr.rubric_id == doc_rubric.id }
+              - if main_block
+                = f.fields_for :main_block_rubrics, main_block do |builder|
+                  = render partial: 'fields_for_main_block_rubrics', locals: { builder: builder }
+    - else
+      = f.fields_for :main_block_rubrics do |builder|
+        = render partial: 'fields_for_main_block_rubrics', locals: { builder: builder }
+  .form-group
+    = f.submit 'Сохранить', class: 'btn btn-default'

@@ -1,0 +1,7 @@
+<ul class="error_list">
+  <li>
+    <% if @rubrics.present? %>
+      <%= select :catalog, :parent_id, @rubrics.map{|r| [r.title, r.id]}, {:selected => (@catalog ? @catalog.parent_id : nil)} %>
+    <% end %>
+  </li>
+</ul>

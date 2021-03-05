@@ -1,0 +1,19 @@
+.l-wrapper
+
+  %h1.g-subheader.g-subheader__last-news
+    = @rubric.present? ? @rubric.title : "Фото"
+
+  .b-photos.js-loaderByPage
+    .b-injection
+      .l-cols
+        .l-cols-3.l-l
+          = render 'shared/adv-aside'
+        .l-cols-3.l-l
+          = link_if_logged 'фоторепортаж', '/photo/new'
+
+    .col1= render partial: 'galleries_list', object: @galleries
+
+    .g-loader
+      = will_paginate @galleries
+      =# link_to 'Загрузить ещё фотоальбомы', 'javascript:;', data: {page: @galleries.next_page}, class: 'g-loader__link js-loader'
+= seo_text @seo

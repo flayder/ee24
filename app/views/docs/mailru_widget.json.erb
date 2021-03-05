@@ -1,0 +1,21 @@
+{
+    "logo": "https://<%= @site.domain %><%= asset_path('logo_mailru.png') %>",
+    "news": [
+        <% if @docs.any? %>
+            {
+                "img": "<%= @docs.first.main_photo.try(:image).try(:url, :mailru) %>",
+                "title": "<%= @docs.first.title %>",
+                "datetime": "<%= Russian::strftime(@docs.first.created_at, '%-d %B') %>",
+                "url": "<%= @docs.first.url %>"
+            }
+            <% @docs[1,2].each do |doc| %>
+             ,
+             {
+                "title": "<%= doc.title %>",
+                "datetime": "<%= Russian::strftime(doc.created_at, '%-d %B') %>",
+                "url": "<%= doc.url %>"
+             }
+            <% end %>
+        <% end %>
+    ]
+}

@@ -1,0 +1,13 @@
+<font size="3"><b>Пользователь <%= link_to @user_login, "https://#{@site.domain}/users/#{@subdomain}" %> хочет добавить Вас в друзья.</b></font>
+<br><br>
+
+Вы можете подтвердить, что вы друзья, или отклонить заявку.<br />
+<a href="https://<%= @site.domain %>/users/<%= @subdomain %>">https://<%= @site.domain %>/users/<%= @subdomain %></a>
+
+
+<br><br>
+Если ссылка по каким-то причинам не работает, то скопируйте этот текст и вставьте в адресную строку браузера:<br>
+-----------------------<br>
+https://<%= @site.domain %>/users/<%= @subdomain %>/<br>
+-----------------------
+<%= render partial: "user_mailer/unsubscribe_text", locals: { user: @user, site: @site} %>

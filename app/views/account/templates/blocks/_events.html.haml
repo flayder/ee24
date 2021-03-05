@@ -1,0 +1,6 @@
+.g-entity-filter events filter
+- if is_my_profile?(@user)
+  = render 'account/templates/blocks/entity-list'
+- else
+  = render 'account/templates/blocks/public-events'
+.g-loader= link_to 'Загрузить ещё событий', 'javascript:;', class: 'g-loader__link'

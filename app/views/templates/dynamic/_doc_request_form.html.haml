@@ -1,0 +1,35 @@
+.b-form.l-cols.b-account-edit.b-ae-secondary.request-form
+  .title.center
+    %strong Заполните, пожалуйста, заявку для обратной связи
+  = form_for RequestForm.new, remote: true do |f|
+    = f.hidden_field :docable_id, value: doc.id
+    = f.hidden_field :docable_type, value: doc.class
+    .b-form__row
+      .l-cols-8.l-l
+        = f.text_field :full_name, class: 'b-form__control input wide', placeholder: 'Фамилия Имя Отчество', required: true
+    .b-form__row
+      .l-cols-8.l-l.b-ae-secondary__fields
+        .b-ae-secondary__field.wide.datetime
+          .title Дата рождения
+          = f.date_select :birthday, { start_year: 1900, end_year: DateTime.now.year - 5, include_blank: true }, { class: 'b-ae__input', required: true }
+    .b-form__row
+      .l-cols-4.l-l
+        = f.text_field :email, class: 'b-ae__input', placeholder: 'Email', required: true
+      .l-cols-4.l-l
+        = f.text_field :phone_number, class: 'b-ae__input', placeholder: 'Номер телефона'
+    .b-form__row
+      .l-cols-8.l-l
+        = f.text_area :comment, rows: 4, class: 'b-ae__input b-form__control input wide', placeholder: 'Комментарий'
+
+    .l-cols-8.l-l
+      = recaptcha_tags
+    .l-cols-8.l-l
+      = submit_tag 'Отправить заявку', class: 'g-button primary'
+
+
+:javascript
+  $(document).ready( function($) {
+    $('.request-form form').on('ajax:success', function() {
+      $('.request-form').hide();
+    });
+  });

@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая глобальная статейная рубрика', new_admin_doc_global_rubric_path
+= render :partial => 'table', :locals => { :global_rubrics => @global_rubrics }
+
+= will_paginate_bootstrap @global_rubrics

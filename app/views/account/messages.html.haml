@@ -1,0 +1,13 @@
+%div
+  .l-wrapper
+    .l-page__columns-line
+      .l-section__main.l-r-important
+        - if is_my_profile?(@user)
+          = render 'account/templates/blocks/messages'
+        - else
+          .b-correspondence
+            .b-dialogs
+              = render "account/templates/blocks/dialogs_list", user: current_user, dialog_user: @user
+              = render "account/templates/blocks/dialog_content"
+      .l-section__aside.l-l
+        = render 'account/templates/blocks/aside', user: current_user

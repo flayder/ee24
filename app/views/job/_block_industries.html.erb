@@ -1,0 +1,11 @@
+<% if @block_industries.present? %>
+  <div class="g-box rubrics">
+    <div class="title">Профессии</div>
+      <% @block_industries.each do |industry| %>
+        <%= link_to url_for(action: 'industry', industry_id: industry.id, type: params[:type]), class: "rubric #{((@industry and industry.id == @industry.id) ? 'current' : '')}" do %>
+          <span class="text"><%= industry.title %></span>
+          <span class="counter"><%= industry.job_items_count %></span>
+        <% end %>
+      <% end %>
+  </div>
+<% end %>

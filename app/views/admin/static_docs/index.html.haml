@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая статическая страница', new_admin_static_doc_path
+= render :partial => 'table', :locals => { :static_docs => @static_docs }
+
+= will_paginate_bootstrap @static_docs

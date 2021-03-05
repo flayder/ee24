@@ -1,0 +1,37 @@
+= form_for [:admin, @external_doc] do |f|
+  = error_messages_for :external_doc, object: @external_doc
+
+  .controls
+    = f.label :external_doc_rubric_id
+    = f.select :external_doc_rubric_id, @site.external_doc_rubrics.map { |r| [r.title, r.id] }
+
+  .controls
+    = f.label :title
+    = f.text_field :title, required: true
+
+  .controls
+    = f.label :url
+    = f.text_field :url, type: "url", required: true
+
+  .controls
+    = f.label :approved
+    = f.check_box :approved
+
+  .controls
+    = f.label :main
+    = f.check_box :main
+
+  .controls
+    - if @external_doc.image?
+      = image_tag @external_doc.image.url(:medium)
+    = f.label :image, class: 'control-label'
+    %b Картинка 295x250
+
+  .controls
+    = f.file_field :image
+    = f.hidden_field :image_cache
+    = f.label :remove_image
+    = f.check_box :remove_image
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

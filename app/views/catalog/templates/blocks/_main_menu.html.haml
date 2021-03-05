@@ -1,0 +1,13 @@
+%nav.b-site-navigation
+  %div.l-page__center
+    .main-links
+      .line
+        = link_to_current("Компании (#{@site.catalogs.approved.count})", "/catalog")
+        - if logged_in?
+          = link_to_current 'Мои компании', my_catalogs_path
+      .line.user-actions
+        - if can? :approve, Catalog
+          = link_to_current 'От юзеров', not_approved_users_catalogs_path, class: 'red'
+          = link_to_current 'От редакции', not_approved_editors_catalogs_path, class: 'red'
+    - if @site.voronezh?
+      = render partial: 'layouts/special_projects_menu'

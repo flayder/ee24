@@ -1,0 +1,95 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    = link_if_logged params[:type] == 'resume' ? 'резюме' : 'вакансию', url_for(action: :new, type: params[:type])
+    = render partial: 'job/rubricator'
+    = render 'shared/adv-aside'
+    = render partial: 'shared/rated'
+
+  %div.l-section__main
+    .b-vacancy
+      .b-vacancy__relevant
+        - if @job_item.respond_to?(:company_name) && @job_item.catalog
+          .b-vacancy__employer
+            .avatar= image_tag @job_item.catalog.logo.url(:medium), size: '200x100'
+            .title= link_to @job_item.catalog.title, @job_item.catalog.url
+        - if @relevant_job.present?
+          .relevant__title Подобные вакансии
+          .relevant__list
+            - @relevant_job.each do |job|
+              .item
+                .title
+                  = link_to job.title, job.url
+                .employer
+                  - if job.catalog.present?
+                    = link_to job.catalog.title, job.catalog.url
+                  - elsif job.company_name.present?
+                    = job.company_name
+                .location
+                  = job.region_city.title
+
+      .b-vacancy__content
+        %h1.b-vacancy__title.hot= @job_item.title
+        .b-vacancy__manage
+          - if can? :manage, @job_item
+            = link_to "Изменить", {action: "edit", id: @job_item.id, type: params[:type]}
+            = link_to "Удалить", {action: "destroy", type: params[:type], id: @job_item.id}, confirm:"Удалить?", method: :delete
+            - if can?(:manage, @job_item) && !@job_item.approved?
+              = link_to "Подтвердить", {action: "approve", type: params[:type], id: @job_item.id}, confirm:"Подтвердить?"
+          - if can? :manage, Version
+            = link_to 'История изменений', admin_item_versions_url(item_type: @job_item.class, item_id: @job_item.id)
+
+        .b-vacancy__datetime Размещено #{timeleft(@job_item.created_at)}
+        .b-vacancy__summary
+          .row
+            .dt Тип занятости
+            .dd= @job_item.busy_title
+          .row
+            .dt Профессия
+            .dd= @job_item.professions.pluck(:title).join(', ')
+          .row
+            .dt Регион
+            .dd= @job_item.region.title
+          .row
+            .dt Город
+            .dd= @job_item.region_city.title
+          .row
+            .dt Заработная плата
+            .dd.salary
+              - if @job_item.money.to_i > 0
+                = "#{number_with_precision(@job_item.money, delimiter: ' ', precision: 0).html_safe} #{JobItem::CURRENCY[@job_item.currency]}"
+              - else
+                не указана
+          - if !@job_item.catalog && @job_item.company_name.present?
+            .row
+              .dt Компания
+              .dd= @job_item.company_name
+
+        .b-vacancy__text
+          .title Описание
+          = simple_format sanitize(@job_item.text, tags: %w(p br strong))
+        - if @job_item.requirements.present?
+          .b-vacancy__responsibility
+            .title Требования
+            = simple_format sanitize(@job_item.requirements, tags: %w(p br strong))
+        - if @job_item.terms.present?
+          .b-vacancy__requirements
+            .title Условия
+            = simple_format sanitize(@job_item.terms, tags: %w(p br strong))
+        - if @job_item.additional_info?
+          .b-vacancy__text
+            .title Дополнительная информация
+            = simple_format sanitize(@job_item.additional_info, tags: %w(p br strong))
+        - if [@job_item.contacts_name, @job_item.contacts_email, @job_item.contacts_phone].any?(&:present?)
+          .b-vacancy__conditions
+            .b-vacancy__contacts
+              .title Контакты:
+              = simple_format h(@job_item.contacts_name)
+              = simple_format h(@job_item.contacts_email)
+              = simple_format h(@job_item.contacts_phone)
+        - if @job_item.link.present?
+          .b-vacancy__text
+            .link_title= link_to "Откликнутся на вакансию", @job_item.link
+= seo_text @seo
+= seo_about @seo_about
+= seo_sub_text @seo_sub_text

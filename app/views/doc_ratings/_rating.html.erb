@@ -1,0 +1,26 @@
+<div class="rate-post">Оценить <%= params[:controller] == 'afisha' ? 'событие' : 'пост' %></div>
+<div class="doc-rating">
+  <div id="rating_article" class="rating-count-wrap <%= doc.class.to_s.underscore %>-<%= doc.id %> ">
+    <input type ="hidden" id ="doc-class" value ="<%= doc.class.to_s.underscore %>" />
+    <input type ="hidden" id ="doc-id" value ="<%= doc.id %>" />
+    <h5 id="rating_value_article"><%= doc.rating %></h5>
+    <span class="rating-link">Рейтинг</span>
+    <% if logged_in? && current_user.confirm? %>
+      <div class="rating-actions <%= (doc.voted_by?(current_user)) ? 'disabled' : 'active' %>">
+        <a class="rating-action plus" href="javascript:;"><span><i class="sign-h"><i class="sign-v"></i></i>+</span></a>
+        <a class="rating-action minus" href="javascript:;"><span><i class="sign-h"></i>-</span></a>
+      </div>
+    <% else %>
+      <div class="rating-actions disabled">
+        <a class="rating-action-plus seo-link" href="#" data-link="/doc_ratings/not_allowed"><span><i class="sign-h"><i class="sign-v"></i></i>+</span></a>
+        <a class="rating-action-minus seo-link" href="#" data-link="/doc_ratings/not_allowed"><span><i class="sign-h"></i>-</span></a>
+      </div>
+    <% end %>
+  </div>
+  <div id ="ratings_cnt">
+    <% voted_cnt = doc.ratings.count %>
+    <% if voted_cnt > 0 %>
+      ( <%= voted_cnt %> <%= Russian.p(voted_cnt, 'голос', 'голоса', 'голосов') %> )
+    <% end %>
+  </div>
+</div>

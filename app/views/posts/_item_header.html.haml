@@ -1,0 +1,15 @@
+.b-post__header
+  = link_to image_tag(item.user.avatar.url(:avatar), style: "border: 4px #d9e0e8 solid; border-radius: 50%;"), user_path(item.user.subdomain), class: 'b-post__header__cover'
+  .b-post__header__content
+    = link_to item.user.fio_or_login, user_path(item.user.subdomain), class: 'b-post__header__user-name'
+
+    .g-aux.l.blue.midi
+      - if item.respond_to?(:community)
+        = link_to item.community.name, [item.community.category, item.community], class: 'g-aux__item users'
+      - else
+        = link_to item.category.name, item.category, class: 'g-aux__label'
+
+      %span.g-aux__item.date= l item.created_at, format: :long_short
+  = render 'shared/social_likes'
+.b-post__title= item.title
+.b-post__content= sanitize item.content

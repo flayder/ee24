@@ -1,0 +1,20 @@
+%table.table.table-bordered
+  %thead
+    %th= Dictionary.human_attribute_name :id
+    %th= Dictionary.human_attribute_name :link
+    %th= Dictionary.human_attribute_name :title
+    %th= Dictionary.human_attribute_name :description
+    %th= 'Словарных рубрик'
+    %th= 'Действия'
+  - dictionaries.each do |dict|
+    %tr    
+      %td= dict.id
+      %td= dict.link
+      %td= dict.title
+      %td= dict.description
+      %td= dict.rubrics.count
+      %td
+        %ul.admin_actions
+          %li= link_to 'Просмотреть', admin_dictionary_path(dict)
+          %li= link_to 'Редактировать', edit_admin_dictionary_path(dict)
+          %li= link_to 'Удалить', admin_dictionary_path(dict), :method => :delete, :confirm => 'Вы уверены?'

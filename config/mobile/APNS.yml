@@ -1,0 +1,43 @@
+# encoding: utf-8
+development:
+  common: &common
+    gateway:     gateway.sandbox.push.apple.com
+    port:        2195
+    retries:     3
+    passphrase:  evrone2013
+  36on.ru:
+    <<: *common
+    certificate: <%= Rails.root.join('config', 'mobile', 'certificates', '36on.ru.pem') %>
+
+
+test:
+  common: &common
+    gateway:     127.0.0.1
+    port:        2195
+    retries:     3
+    passphrase:  evrone2013
+  420on.cz:
+    <<: *common
+  36on.ru:
+    <<: *common
+    certificate: <%= Rails.root.join('config', 'mobile', 'certificates', '36on.ru.pem') %>
+
+staging:
+  common: &common
+    gateway:     gateway.sandbox.push.apple.com
+    port:        2195
+    retries:     3
+    passphrase:  evrone2013
+  36on.ru:
+    <<: *common
+    certificate: <%= Rails.root.join('config', 'mobile', 'certificates', '36on.ru.pem') %>
+
+production:
+  common: &common
+    gateway:     gateway.push.apple.com
+    port:        2195
+    retries:     3
+    passphrase:  evrone2013
+  36on.ru:
+    <<: *common
+    certificate: <%= Rails.root.join('config', 'mobile', 'certificates', '36on.ru.pem') %>

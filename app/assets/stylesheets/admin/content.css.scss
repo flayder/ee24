@@ -1,0 +1,9 @@
+div[role="content"] {
+  position: relative;
+  @include transition(left, 0.5s);
+  &.span12 {
+    margin: 0;
+    position: absolute;
+    right: 0;
+  }
+}

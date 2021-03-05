@@ -1,0 +1,286 @@
+form .errorExplanation {
+  text-align: center;
+  color: red;
+  font-size: large;
+  border: solid 1px;
+  .errorExplanationHeader {
+    font-size: larger;
+    font-weight: bold;
+  }
+}
+
+.b-form {
+  @include clearfix;
+
+  & &__row {
+    clear: both;
+    margin-bottom: 30px;
+    @include clearfix;
+    &.w8 {@include grid-size(8);}
+    &.w4 {@include grid-size(4);}
+
+    li{
+      margin-left: 17px;
+      list-style-type: decimal;
+    }
+  }
+
+  &.short .b-form__control {width: 255px;}
+
+  label,
+  .label {
+    display: block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding-top: 7px;
+    font-size: 16px;
+    color: $blue-mid2;
+    text-align: right;
+    &.inline {
+      display: inline-block;
+      margin-right: 10px;
+      color: $gray-mid3;
+    }
+  }
+
+  table,
+  .table{
+    width: 80%;
+    float:left;
+  }
+
+  & &__short_control {
+    display: block;
+    @include box-sizing(border-box);
+    @include grid-size(3);
+    height: 25px;
+    width: 100px;
+    padding: 0 10px;
+    font: 14px/20px $font-family_base;
+    color: $gray-mid;
+    background: $white;
+    border: 1px $gray-light solid;
+    @include hard-radius;
+    &:focus {border-color: $blue-regular}
+    &.wide {width: 100% !important}
+    &.address {width: 40%}
+    &.inline {
+      float: left;
+      & + .inline {margin-left: 20px;}
+    }
+    &.inline-block {
+      display: inline-block;
+    }
+  }
+
+  & &__control {
+    display: block;
+    @include box-sizing(border-box);
+    @include grid-size(3);
+    height: 32px;
+    padding: 0 10px;
+    font: 16px/32px $font-family_base;
+    color: $gray-mid;
+    background: $white;
+    border: 1px $gray-light solid;
+    @include hard-radius;
+    &:focus {border-color: $blue-regular}
+    &.wide {width: 100% !important;}
+    &.address {width: 40%}
+    &.inline {
+      float: left;
+      & + .inline {margin-left: 20px;}
+    }
+    &.inline-block {
+      display: inline-block;
+      width: auto;
+    }
+  }
+
+  & .select,
+  & .search {padding-right: 30px;}
+
+  & .select {background: asset_data_url('v2/element-triangle-8.png') right center no-repeat;}
+  & .search {background: asset_data_url('v2/element-loupe.png') right center no-repeat;}
+
+  & .textarea {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+  }
+
+  input[type=checkbox] {
+    display: inline-block;
+    @include box-sizing(border-box);
+    @include appearance(none);
+    margin: 7px 0 0;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    border: 1px #d2d2d2 solid;
+    border-radius: 3px;
+
+    &:checked {
+      &:after {
+        display: block;
+        content: '';
+        width: 24px;
+        height: 19px;
+        position: absolute;
+        top: -3px;
+        left: 0;
+        background: asset_data_url('v2/checkbox-1.png') 0 0 no-repeat;
+      }
+    }
+  }
+
+  span.cke_skin_kama {padding: 0;}
+
+  & &__dynamic {margin-top: 20px;}
+
+  & &__checkbox-list {
+    margin-left: -$dx;
+    overflow: hidden;
+    &__item {
+      @include grid-size(3);
+      float: left;
+      margin-left: $dx;
+      margin-bottom: 10px;
+      span {@include ellipsis(90%);}
+      input[type=checkbox] {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+  }
+
+  .notice {
+    margin: 10px 0;
+  }
+
+  &_colored {
+    .b-filter__title {
+      margin-bottom: 20px
+    }
+
+    .b-form__group {
+      .b-form__row {
+        display: inline-block;
+        margin-top: 0;
+        margin-right: 20px;
+        vertical-align: bottom;
+      }
+    }
+
+    .b-form__row, label {
+      margin-top: 10px;
+      font-family: $font-family_proxymanova;
+      font-size: 13px;
+      color: $gray-light2;
+      text-transform: uppercase;
+      vertical-align: baseline;
+    }
+
+    .b-form__row {
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-bottom: 8px;
+    }
+
+    input[type="text"] {
+      width: 100px;
+      background-color: #5a9de2;
+      border: none;
+      color: #fff;
+    }
+
+    input[type="checkbox"] {
+      background-color: #5a9de2;
+      border-color: #5a9de2;
+      margin-right: 8px;
+      &+ label {
+        display: inline-block;
+      }
+    }
+  }
+  .label-left {
+    text-align: left;
+  }
+}
+
+// photo upload
+
+.b-form__photo {
+//  width: 1000px;
+  float: left;
+  @include clearfix;
+
+  .photo__title {
+    height: 35px;
+    margin-left: 20px;
+    float: left;
+    font-size: 16px;
+    line-height: 35px;
+    color: $gray-mid4;
+  }
+  .photo__actions {
+    display: none;
+    margin-left: 20px;
+    float: left;
+    font-size: 14px;
+    line-height: 35px;
+    .action {
+      cursor: pointer;
+      &:hover {text-decoration: underline;}
+    }
+    .danger {color: $red-dark;}
+    .b-ae-primary__avatar & { // prfile avatar
+      margin: 0;
+      width: 100%;
+    }
+  }
+  .photo__input-wrapper {
+    max-width: 100px;
+    height: 35px;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    &:hover .g-button.primary {background-color: darken($blue-dark2, 10%);}
+  }
+  .g-button {float: left;}
+  .photo__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 4em;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+  .photo__variants {
+    width: 100%;
+    margin-top: 10px;
+    float: left;
+  }
+}
+
+.b-form__image {
+  padding-left: 100px;
+  margin: 0 40px 20px 0;
+  float: left;
+  @include clearfix;
+  img {
+    max-width: 80px;
+    max-height: 61px;
+    margin-left: -100px;
+    float: left;
+  }
+  &-control {
+    padding-top: 7px;
+    @include clearfix;
+  }
+}

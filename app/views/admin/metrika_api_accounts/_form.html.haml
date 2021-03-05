@@ -1,0 +1,21 @@
+= form_for [:admin, @metrika_api_account] do |f|
+  = error_messages_for :metrika_api_account, :object => @metrika_api_account
+  
+  .controls
+    = f.label :app_id
+    = f.text_field :app_id
+
+  .controls
+    = f.label :app_password
+    = f.text_field :app_password
+
+  .controls
+    = f.label :token
+    = f.text_field :token
+
+  .controls
+    = f.label :counter_id
+    = f.text_field :counter_id
+  
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

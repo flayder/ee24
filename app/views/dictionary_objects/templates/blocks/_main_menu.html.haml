@@ -1,0 +1,9 @@
+%nav.b-site-navigation
+  %div.l-page__center
+    .main-links
+      = link_to_current @dictionary.title, dictionary_objects_path(link: @dictionary.link)
+      .line.user-actions
+        - @dictionary.rubrics.each do |rubric|
+          = link_to_current rubric.title, rubric.path
+    - if @site.voronezh?
+      = render partial: 'layouts/special_projects_menu'

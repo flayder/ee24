@@ -1,0 +1,7 @@
+Здравствуйте, <%= @login %>.<br><br>
+Ваш пароль на портале <%= @site.domain %> был изменен.<br>
+<br><br>
+Новый пароль: <b><%= @new_password %></b>
+<br><br>
+_____________________________<br>
+<%= @site.portal_title %> — <%= link_to @site.domain, "https://#{@site.domain}" %>

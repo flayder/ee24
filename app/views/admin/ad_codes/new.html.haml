@@ -1,0 +1,10 @@
+%h1
+  Новый код баннера
+  - if @ad_section.present?
+    %h4
+      = @ad_section.class.model_name.human
+      - if @ad_section.respond_to?(:title)
+        = "«#{@ad_section.title}»"
+      - else
+        = "##{@ad_section.id}"
+= render :partial => 'form'

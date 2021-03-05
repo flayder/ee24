@@ -1,0 +1,35 @@
+%button.g-button.primary.block.medium.g-comments-collapse.js-commentsCollapse{class: ("active" unless collapsed)}
+  %span.collapse-message
+    - if collapsed
+      Показать
+    - else
+      Скрыть
+  коментарии (
+  %span.js-commentsCount
+    = comments.count
+  )
+  .g-comments-collapse__turn.js-turn
+
+.g-comments.js-roots{class: ("collapsed" if collapsed)}
+
+  .g-comments__aux
+    .actions
+      %span
+        - if current_user
+          - if @doc.comment_subscribers.where(user_id: current_user).present?
+            = link_to "Отписаться", comment_subscribers_path(class: @doc.class, id: @doc.id), method: :delete, class: "subscribers"
+          - else
+            = link_to "Подписаться", comment_subscribers_path(class: @doc.class, id: @doc.id), method: :post, class: "subscribers"
+      \|
+      %span.actions__item.js-commentsAction.js-commentsRegular{class: "#{'active' if order == 'regular'}"} Новые снизу
+      \/
+      %span.actions__item.js-commentsAction.js-commentsNew{class: "#{'active' if order == 'new'}"} Новые сверху
+      \/
+      %span.actions__item.js-commentsAction.js-commentsRated{class: "#{'active' if order == 'ratings'}"} Лучшие
+    .g-comments__title#comments
+      Комментарии (
+      %span.js-commentsCount
+        = comments.count
+      )
+
+  = render partial: 'comments/comments', object: comments

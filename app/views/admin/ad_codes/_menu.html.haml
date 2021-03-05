@@ -1,0 +1,4 @@
+%ul.nav.nav-pills
+  %li{class: ('active' if current_page?(admin_ad_codes_url))}= link_to 'Все рекламные баннеры', admin_ad_codes_url
+  %li{class: ('active' if current_page?(rubrics_admin_ad_codes_url))}= link_to 'Для рубрик', rubrics_admin_ad_codes_url
+  %li{class: ('active' if current_page?(list_admin_ad_codes_url(:ad_code => {:ad_section_type => 'Site', :ad_section_id => @site.id})))}= link_to 'Для сайта', list_admin_ad_codes_url(:ad_code => {:ad_section_type => 'Site', :ad_section_id => @site.id})

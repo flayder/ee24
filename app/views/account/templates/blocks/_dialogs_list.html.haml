@@ -1,0 +1,18 @@
+.b-dialogs__list
+  - if !user.dialog_users.include?(@user)
+    .b-dialogs__item.active
+      = raw avatar_img(@user, "avatar")
+      .username= @user.fio_or_login
+  - user.dialog_users.each do |sender|
+    - messages = sender.sent_messages.to_user(user)
+    - messages = user.sent_messages.to_user(sender) unless messages.present?
+    .b-dialogs__item{class: "#{'active' if sender.eql?(dialog_user)}"}
+      = raw avatar_img(sender, "avatar")
+      .username= link_to_unless sender.eql?(dialog_user), sender.fio_or_login, user_messages_url(sender.subdomain)
+      - if messages.to_user(user).not_viewed.any?
+        - messages_count = messages.not_viewed.size
+        .count
+          = link_to "#{messages_count} #{Russian.pluralize(messages_count, 'новое сообщение', 'новых сообщения', 'новых сообщений')}", user_messages_url(sender.subdomain)
+      - else
+        .last-message= messages.last.title
+      .date= l messages.last.created_at, format: :only_date

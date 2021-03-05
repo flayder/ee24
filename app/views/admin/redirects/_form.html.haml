@@ -1,0 +1,14 @@
+%h1= 'Новый редирект'
+= form_for [:admin, @redirect] do |f|
+  = error_messages_for :redirect, :object => @redirect
+
+  .controls
+    = f.label :from
+    = f.text_field :from, placeholder: 'https://36on.ru/news/people/21390-gennadiy-chernushkin-lesnoy-massiv-severnogo-mikrorayona-dolzhen-byt-sohranen'
+
+  .controls
+    = f.label :to
+    = f.text_field :to, placeholder: 'https://36on.ru/vz/society/7927-gennadiy-chernushkin-lesnoy-massiv-severnogo-mikrorayona-dolzhen-byt-sohranen'
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

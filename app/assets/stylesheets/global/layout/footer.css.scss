@@ -1,0 +1,45 @@
+> .l-footer {
+  > .l-page__center {
+    overflow: hidden;
+    padding-top: 30px;
+    height: 120px;
+    padding-bottom: 10px;
+    a {
+      color: black !important;
+    }
+    .right {
+      float: right;
+      p {
+        margin-top: 5px;
+        padding: 0;
+        font-size: 13px;
+        font-weight: bold;
+      }
+      table {
+        margin-top: 5px;
+        td {
+          padding-left: 10px;
+          &:first-child {
+            padding: 0;
+          }
+        }
+      }
+    }
+    .about {
+      margin-bottom: 10px;
+    }
+    p {
+      padding: 0;
+      &.platform {
+        margin-top: 10px;
+      }
+    }
+    > .orphus {
+      display: block;
+      @include position(false 10px 10px false);
+    }
+    > .time {
+      @include position(false 10px 68px false);
+    }
+  }
+}

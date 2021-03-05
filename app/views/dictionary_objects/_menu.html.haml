@@ -1,0 +1,17 @@
+- if @letters
+  .b-ency__menu
+    %span.title Быстрый переход:
+    %span.links<
+      - @letters.each do |letter|
+        - url = dictionary_objects_letter_path(link: @dictionary.link, letter: letter)
+        = link_to url, class: "anchor#{' active' if current_page?(url)}" do
+          %span>= letter
+
+
+-#%ul.b-letters
+-#  %li.first Алфавитный указатель:
+-#  %li.all
+-#    = link_to 'Все', {action: "index"}, {class: ("active" if selected_letter == "all")}
+-#  - @letters.each do |letter|
+-#    %li
+-#      = link_to_unless_current letter, dictionary_objects_letter_path(link: @dictionary.link, letter: letter)

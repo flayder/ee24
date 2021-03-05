@@ -1,0 +1,15 @@
+- if @web_analytics_blocks.present?
+  %table.table.table-bordered
+    %thead
+      %th= WebAnalyticsBlock.human_attribute_name :code_type
+      %th= WebAnalyticsBlock.human_attribute_name :body
+      %th= 'Действия'
+    %tbody
+      - @web_analytics_blocks.each do |wa_block|
+        %tr
+          %td= wa_block.code_type
+          %td= wa_block.body
+          %td
+            = link_to 'ред.', edit_admin_web_analytics_block_url(wa_block)
+            = link_to 'уд.', admin_web_analytics_block_url(wa_block), :method => :delete, :confirm => 'Вы уверены, что хотите удалить код счётчика?'
+= link_to 'Новый код счётчика', new_admin_web_analytics_block_url

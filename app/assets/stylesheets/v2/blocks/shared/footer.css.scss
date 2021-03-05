@@ -1,0 +1,91 @@
+$list: vk fb tw ok gp fl yt ig;
+
+@mixin serialed-bg {
+  @each $site in $list {
+    &.#{$site} {background-image: asset_data_url("v2/social/footer-#{$site}.png")}
+  }
+}
+
+.l-footer {
+  min-width: 1240px;
+  margin-top: 100px;
+  background: #e3e3e3;
+}
+
+.orphus {
+  display: block;
+  .orphus-image {
+    display: inline;
+    vertical-align: middle;
+    margin: -2px 3px 0 0;
+  }
+}
+
+#orphus {
+  display: none;
+}
+
+.l-footer__content {
+  padding: 35px 0 65px;
+  color: $black;
+  a {color: $black}
+
+  &__blocks {@include clearfix;}
+
+  &__block {
+    @include grid-size(3);
+    display: inline-block;
+    margin-right: $dx;
+    margin-bottom: 1.5*$dx;
+    vertical-align: top;
+
+    &-title {
+      padding: $dx 0 $dx/2;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    &.companies {
+      width: 220px;
+      float: right;
+      padding: $dx;
+      background: #fff;
+      .l-footer__content__block-title {padding-top: 0;}
+    }
+
+    &.contacts {@include grid-size(4);}
+  }
+
+  &__links li {margin-bottom: 2px;}
+
+  &__social-links {
+    width: 200px;
+    @include clearfix;
+
+    .link {
+      display: block;
+      width: 32px;
+      height: 32px;
+      float: left;
+      margin: 0 15px 15px 0;
+      opacity: .75;
+      &:hover {opacity: 1}
+      @include serialed-bg;
+    }
+  }
+
+  &__copy {
+    font-size: $font-size_mini;
+    p {margin: 0;}
+    float: left;
+  }
+  &__analitics {
+    float: right;
+    @include clearfix;
+    a {
+      float: left;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+}

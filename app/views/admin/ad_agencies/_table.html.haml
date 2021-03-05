@@ -1,0 +1,13 @@
+%table.table.table-bordered
+  %thead
+    %th= AdAgency.human_attribute_name :id
+    %th= AdAgency.human_attribute_name :title
+    %th= 'Действия'
+  - ad_agencies.each do |ad_agency|
+    %tr
+      %td= ad_agency.id
+      %td= ad_agency.title
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_ad_agency_path(ad_agency)
+          %li= link_to 'Удалить', admin_ad_agency_path(ad_agency), :method => :delete, :confirm => 'Вы уверены?'          

@@ -1,0 +1,24 @@
+.pagination {
+  margin: 50px 0;
+  text-align: center;
+  span, a {
+    padding: 3px 10px;
+  }
+  font-family: $font-family_base;
+  font-size: 22px;
+  .current {
+    color: $blue-mid5;
+    font-weight: bold;
+    font-style: normal;
+  }
+  a {
+    color: $gray-mid;
+    text-decoration: underline;
+    font-weight: normal;
+  }
+
+  img {
+    display: inline-block;
+    vertical-align: sub;
+  }
+}

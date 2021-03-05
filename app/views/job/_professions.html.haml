@@ -1,0 +1,7 @@
+- if @professions.present?
+  .b-form__dynamic
+    .label.required{style: 'text-align: left;'}
+      Выберите профессию (от 1 до 3-х специализаций)
+      %span{style: 'color: red;'} *
+    .b-form__checkbox-list
+      = render partial: 'profession_item', collection: @professions

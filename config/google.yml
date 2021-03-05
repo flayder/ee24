@@ -1,0 +1,11 @@
+development:
+  appKey: 754467019213-avkkfjr8cibqcmrt57mjepi4ri5gcl1g.apps.googleusercontent.com # Use localhost:3000
+  appSecret: MxoI7DAvbRz-pZdEevaOeii6
+
+test:
+  appKey: 754467019213-avkkfjr8cibqcmrt57mjepi4ri5gcl1g.apps.googleusercontent.com # Use localhost:3000
+  appSecret: MxoI7DAvbRz-pZdEevaOeii6
+
+staging:
+  appKey: 208773192866-os3mr6i521b6839f889vigihtrfulhur.apps.googleusercontent.com
+  appSecret: DuBfLBJcL00vvAJHzjJ-2M7A

@@ -1,0 +1,51 @@
+<h1>Настройка прав доступа <%= @site.domain %></h1>
+<%= link_to 'Создать доступ', new_admin_site_admin_url %>
+<% if @site_admins.any? %>
+  <table class="table">
+    <tr>
+      <th>Логин</th>
+      <th>Домен</th>
+      <th>Роль</th>
+      <th>Полномочия</th>
+      <th>Действия</th>
+    </tr>
+    <% @site_admins.each do |site_admin| %>
+      <tr>
+        <td><%= site_admin.user.login %></td>
+        <td><%= site_admin.site.domain %></td>
+        <td><%=t site_admin.role %></td>
+        <td>
+          <b>Права на разделы:</b>
+          <ul>
+            <% site_admin.permissions.each do |p| %>
+              <li><%= p.section.title %></li>
+            <% end %>
+          </ul>
+          <b>Права на рубрики:</b>
+          <ul>
+            <% site_admin.rubric_permissions.includes(:rubric).group_by(&:rubric_type).each do |rubric_type, permissions| %>
+              <li>
+                <i><%= t("activerecord.models.#{rubric_type.underscore}") %></i>
+                <ul>
+                  <% permissions.each do |p| %>
+                    <li>
+                      <%# FIX permission should be deleted if rubric is deleted %>
+                      <%= p.rubric.try(:title) %>
+                    </li>
+                  <% end %>
+                </ul>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <%= link_to 'редактировать доступ', edit_admin_site_admin_url(site_admin) %>
+          <% if site_admin.user != current_user %>
+            | <%= link_to 'удалить', admin_site_admin_url(site_admin), :method => :delete, :confirm => 'Вы уверены?' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= link_to 'Создать доступ', new_admin_site_admin_url %>

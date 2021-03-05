@@ -1,0 +1,21 @@
+.l-divider {
+  border-top: 1px solid #9CB4D1;
+  margin-top: 6px;
+  &:before {
+    content: '';
+    display: block;
+    width: 21px;
+    height: 11px;
+    margin: -6px auto 0;
+    background: white image-url('v2/icons/heart.png') no-repeat center center;
+  }
+  &.black {
+    border-top: 2px solid $gray-dark;
+    &:before {
+      background-image: asset-data-url('v2/logo_bw.gif');
+      width: 44px;
+      height: 18px;
+      margin-top: -9px;
+    }
+  }
+}

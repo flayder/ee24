@@ -1,0 +1,11 @@
+.b-injection {
+  width: 610px;
+  height: 460px;
+  margin-bottom: 30px;
+  float: right;
+  overflow: hidden;
+  .b-rubricator {
+    max-height: 360px;
+    overflow-y: auto;
+  }
+}

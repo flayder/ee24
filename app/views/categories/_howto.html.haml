@@ -1,0 +1,40 @@
+.b-howto.js-howto
+  = link_to '', 'javascript:;', class: 'b-howto__close'
+  .b-howto__header
+    .b-howto__title Как это работает
+    .b-howto__description Мы приготовили для вас короткий тур, чтобы вы смогли легко ориентироваться в нашем Сообществе
+    = link_to 'Пятиминутный тур', 'javascript:;', class: 'g-button danger medium tour-trigger', data: {target: '#tour-content'}
+  .b-howto__steps
+    .b-howto__step
+      .icon= image_tag('v2/categories/howto_1.png')
+      .title Задавайте вопросы и получайте ответы
+    .b-howto__step
+      .icon= image_tag('v2/categories/howto_2.png')
+      .title Создавайте группы и находите единомышленников
+    .b-howto__step
+      .icon= image_tag('v2/categories/howto_3.png')
+      .title Коллективные блоги — для тех, кто хочет поделится интересным
+
+#tour-content-wrapper
+  #tour-content
+    = link_to "", "#close_popup", class: "popup-close"
+    .fotorama.tour{data: {width: 1030, nav: false, height: 418}}
+      .slide.first
+        = image_tag('tour/community.png')
+        %h2= "Сообщество"
+        .text= "Мы постарались создать место, где наши пользователи смогут найт"
+      .slide.second
+        = image_tag('tour/categories.png')
+        %h2= "Категории"
+        .text= "Чтобы вы смогли легко ориентироваться в «Сообществе», мы разбил"
+        = link_to "Перейти к категориям", "/categories", class: "link"
+      .slide.third
+        = image_tag('tour/qna.png')
+        %h2= "Вопросы и ответы"
+        .text= "Вы сможете задавать вопросы на интересующие Вас темы, получать"
+        = link_to "Задать вопрос", "/questions/new", class: "link"
+      .slide.fourth
+        = image_tag('tour/groups.png')
+        %h2= "Группы и блоги"
+        .text= "Теперь у Вас появилась возможность сделать собственную группу/блог"
+        = link_to "Создать группу", "/communities/new", class: "link"

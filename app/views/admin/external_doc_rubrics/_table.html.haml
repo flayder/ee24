@@ -1,0 +1,15 @@
+%table.table.table-bordered
+  %thead
+    %th= ExternalDocRubric.human_attribute_name :id
+    %th= ExternalDocRubric.human_attribute_name :title
+    %th= 'Кол-во документов'
+    %th= 'Действия'
+  - external_doc_rubrics.each do |rubric|
+    %tr
+      %td= rubric.id
+      %td= rubric.title
+      %td= rubric.external_docs.count
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_external_doc_rubric_path(rubric)
+          %li= link_to 'Удалить', admin_external_doc_rubric_path(rubric), method: :delete, confirm: 'Вы уверены?'

@@ -1,0 +1,14 @@
+-if @latest_events
+  .g-subheader
+    Новые события:
+  - @latest_events.each do |event|
+    .b-latest-event__item
+      - if event.main_photo.present?
+        .b-latest-event__photo.l-l
+          = image_tag event.main_photo.image.url(:large), alt: event.title, title: event.title, class: 'cover'
+      .b-latest-event__title
+        = link_to event.title, event.url
+      .g-aux.mini.l
+        %span.g-aux__item.views
+          = event.page_views
+        = render partial: 'templates/blocks/comments_counter', locals: {doc: event}

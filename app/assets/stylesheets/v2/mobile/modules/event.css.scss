@@ -1,0 +1,22 @@
+.event-info {
+    position: relative;
+    margin-bottom: 1em;
+    padding: 1em 0.7em;
+    background-color: $bg-event-info;
+
+    .row {
+        margin-top: 0.7em;
+
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    .title {
+        float: left;
+        width: 30%;
+        color: $baseColorLightGray;
+    }
+    .info {
+        margin-left: 30%;
+    }
+}

@@ -1,0 +1,19 @@
+%table.table.table-bordered
+  %thead
+    %th= User.human_attribute_name :id
+    %th= User.human_attribute_name :subdomain
+    %th= User.human_attribute_name :ban
+    %th= "Почта (e-mail)"
+    %th= User.human_attribute_name :created_at
+    %th= 'Действия'
+  - users.each do |user|
+    %tr
+      %td= user.id
+      %td= user.subdomain
+      %td= t user.ban.to_s
+      %td= user.email
+      %td= user.created_at
+      %td
+        %ul.admin_actions
+          - if can? :toggle_ban, user
+            = link_to user.ban? ? 'Отбанить' : 'Забанить', toggle_ban_admin_user_path(user), :method => :put

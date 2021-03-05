@@ -1,0 +1,25 @@
+.b-photo-digest
+  .g-section-subheader
+    %span= link_to 'Фотографии', galleries_path
+  .b-photo-digest__wrapper.js-photoDigest
+    .b-photo-digest__list.js-photoList
+      - @photo_galleries.each do |gallery|
+        .b-media.b-photo-digest__item.js-photoItem
+          = link_to gallery.url, class: 'b-media__link' do
+            = image_tag gallery.main_photo.image.url(:xlarge), alt: gallery.title, width: 480, height: 370 if gallery.main_photo
+            .b-media__descr
+              .b-media__title
+                = gallery.title
+          .b-media__info
+            .g-aux.r.b-media__aux
+              .g-aux__item.comments
+                = render partial: 'templates/blocks/comments_counter_code', locals: {doc: gallery}
+              .g-aux__item.views
+                = gallery.page_views
+              .g-aux__item.date
+                = gallery.created_at.strftime('%d.%m.%Y')
+            = link_to "/users/#{gallery.user.subdomain}", class: 'g-author' do
+              = image_tag(gallery.user.avatar.url(:xsmall), width: 27, height: 27)
+              %span>= gallery.user.fio.present? ? gallery.user.fio : gallery.user.login
+    .b-photo-digest__control.prev.js-prev
+    .b-photo-digest__control.next.js-next

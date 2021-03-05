@@ -1,0 +1,24 @@
+= content_for :title, @global_rubric.title
+
+.container
+  = render 'shared/mobile/doc'
+
+  .doc-subheader Читайте по теме
+  .feed
+    - if @doc.similar_docs.present?
+      - @doc.similar_docs.limit(5).each do |doc|
+        = render 'shared/mobile/doc_item', doc: doc
+
+  - if @doc.tags.present?
+    .text-center
+      = link_to "Читайте все статьи по теме", tag_path(@doc.tags.first)
+
+  .divider
+
+  .doc-subheader Главное
+  .feed
+    - @docs.each do |doc|
+      = render 'shared/mobile/doc_item', doc: doc
+      
+  .text-center
+    = link_to 'Все новости', '/news'

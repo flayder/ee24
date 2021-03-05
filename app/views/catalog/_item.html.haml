@@ -1,0 +1,20 @@
+.b-catalog-companies__item
+  .item__flags
+    - if item.recommend?
+      %i.fa.fa-star.fa-2x
+    - if item.russian_language?
+      = image_tag 'icons/russia-flag.png'
+  .avatar
+    = image_tag item.logo.url(:medium), size: '200x100'
+  = link_to item.title, item.url, class: 'item__title'
+  - if item.annotation.present?
+    .item__description= item.annotation
+  .item__contacts
+    .contact.street
+      = item.street_address
+      - if item.extended_address.present?
+        %span> ,&nbsp;
+        = item.extended_address
+    .contact.phone
+      - item.tel.split(',').each do |phone_number|
+        = phone_number.strip

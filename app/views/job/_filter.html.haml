@@ -1,0 +1,34 @@
+.b-filter{data: {filter: '/job/vacancies/filter', results: '/job/vacancies'}}
+
+  .b-filter__controls.js-controls
+    .b-filter__title Найти работу
+    .b-filter__control.js-control{data: {target: 'industries', param: 'industry_ids', title: 'Все отрасли', activetitle: 'Отрасли'}}
+      %span.js-title Все отрасли
+      %span.js-count
+    .b-filter__control.js-control{data: {target: 'regions', param: 'region_ids', title: 'Все регионы', activetitle: 'Регионы'}}
+      %span.js-title Все регионы
+      %span.js-count
+    .g-button.danger.wide.js-search{'data-activetitle' => 'Обновить'} Найти
+    - if params[:industry_ids].present? || params[:region_ids].present?
+      = link_to 'Сбросить', '/job/vacancies', class: 'g-button default'
+
+    .b-filter__dropdown.js-dropdown.industries
+      - unless @industries.empty?
+        .b-dropdown__list
+          .item
+            = check_box_tag 'industries[all]', 'all', !params[:industry_ids].present?, class: 'item__checkbox js-all'
+            %label.item__label{for: 'industries_all'} Все отрасли
+          - @industries.each do |industry|
+            .item
+              = check_box_tag "industries[#{industry.id}]", industry.id, params[:industry_ids].to_i == industry.id, class: 'item__checkbox js-checkbox'
+              %label.item__label{for: "industries_#{industry.id}"}= industry.title
+
+    .b-filter__dropdown.js-dropdown.regions
+      .b-dropdown__list
+        .item
+          = check_box_tag 'regions[all]', 'all', !params[:region_ids].present?, class: 'item__checkbox js-all'
+          %label.item__label{for: 'regions_all'} Все регионы
+        - Region.all.each do |region|
+          .item
+            = check_box_tag "regions[#{region.id}]", region.id, params[:region_ids].to_i == region.id, class: 'item__checkbox js-checkbox'
+            %label.item__label{for: "regions_#{region.id}"}= region.title

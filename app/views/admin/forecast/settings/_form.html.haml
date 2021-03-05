@@ -1,0 +1,34 @@
+%h1= 'Редактирование настроек Foreca'
+= form_for @settings, :url => { :controller => :'admin/forecast/settings', :action => :update, :id => @settings.id }, :method => :put do |f|
+  = error_messages_for :settings, :object => @settings
+  .control-group
+    .controls
+      = f.label :login
+      = f.text_field :login
+
+    .controls
+      = f.label :password
+      = f.text_field :password
+
+    .controls
+      = f.label :subdomain
+      = f.text_field :subdomain
+
+    .controls
+      = f.label :default_location_id
+      = f.select :default_location_id, Forecast::Location.joins(:district).where(forecast_districts: { site_id: @site.id, active: true }).map { |l| [l.name, l.id] }
+
+    .controls-group
+      - if @settings.background?
+        = image_tag @settings.background.url(:thumb)
+
+      = f.label :background, class: 'control-label'
+      .controls
+        = f.file_field :background
+        = f.hidden_field :background_cache
+      .controls
+        = f.label :remove_background, class: 'control-label'
+        = f.check_box :remove_background, class: 'control-label'
+
+    .controls
+      = f.submit 'Сохранить', class: 'btn'

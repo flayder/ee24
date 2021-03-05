@@ -1,0 +1,126 @@
+-# TODO: refactor this shit! Use b-form
+
+%div.b-account-edit
+  .l-wrapper
+    = form_for @user do |f|
+
+      .b-ae-primary
+        .b-ae-primary__fields
+
+          %label.b-ae-primary__field
+            .title Имя
+            = f.text_field :first_name, class: 'b-ae__input'
+
+          %label.b-ae-primary__field
+            .title Фамилия
+            = f.text_field :last_name, class: 'b-ae__input'
+
+          %label.b-ae-primary__field
+            .title Город
+            = f.text_field :city, class: 'b-ae__input'
+
+          / .b-ae-primary__field.wide
+          /   .title Место работы
+          /   .additional
+          /     = f.check_box :city, title: 'В поиске'
+          /     %label В поиске
+          /   %select{class: 'b-ae__select', title: 'Отрасль'}
+          /   %select{class: 'b-ae__select', title: 'Профессия'}
+          /   %input{class: 'b-ae__input', title: 'Компания'}
+
+          %label.b-ae-primary__field
+            .title Facebook (username)
+            = f.text_field :facebook, class: 'b-ae__input', placeholder: 'Facebook'
+
+          %label.b-ae-primary__field
+            .title Twitter (username)
+            = f.text_field :twitter, class: 'b-ae__input', placeholder: 'Twitter'
+
+          %label.b-ae-primary__field
+            .title Google+ (username)
+            = f.text_field :gplus, class: 'b-ae__input', placeholder: 'Google+'
+
+          %label.b-ae-primary__field
+            .title Вконтакте (username)
+            = f.text_field :vkontakte, class: 'b-ae__input', placeholder: 'Вконтакте'
+
+          %label.b-ae-primary__field
+            .title Instagram (username)
+            = f.text_field :instagram, class: 'b-ae__input', placeholder: 'Instagram'
+
+        .b-ae-primary__avatar#upload_images
+          = image_tag @user.avatar.url(:avatar), class: 'avatar js-avatar'
+          .remove.js-removeAvatar
+            &times;
+            = f.check_box :remove_avatar, class: 'removeCheck'
+
+          .b-form__photo
+            .photo__input-wrapper
+              .g-button.block.primary Загрузить
+              = f.file_field :avatar, class: 'photo__input js-photoInput'
+            .photo__title.js-photoTitle{'data-default' => 'Файл не выбран'} Файл не выбран
+            .photo__actions.js-photoActions
+              .action.danger.js-remove Удалить фото
+
+      .b-ae-secondary
+        .g-subheader Анкета
+        .b-ae-secondary__fields
+          .b-ae-secondary__field.wide.tall.l-r
+            .title Расскажите о себе
+            = f.text_area :about, class: 'b-ae__textarea', placeholder: 'Расскажите о себе'
+          / .b-ae-secondary__field.wide
+          /   .title Где вы родились?
+          /   %input{class: 'b-ae__input', placeholder: 'Страна'}
+          /   %input{class: 'b-ae__input', placeholder: 'Город'}
+          .b-ae-secondary__field.wide.datetime
+            .title Дата рождения
+            = f.date_select :birth, {start_year: 1900}, {class: 'b-ae__input'}
+          .b-ae-secondary__field.wide
+            .title Пол
+            = f.select :male, [['Не определился', nil], ['Мужской', true], ['Женский', false]], {}, {class: 'b-ae__select'}
+          .b-ae-secondary__field.wide
+            .title Образование
+            = f.select :academic, [['Высшее специалист', 'Высшее специалист'], ['Высшее бакалавр', 'Высшее бакалавр'], ['Высшее магистр', 'Высшее магистр'], ['Неоконченное высшее', 'Неоконченное высшее'], ['Кандидат наук', 'Кандидат наук'], ['Доктор наук', 'Доктор наук'], ['Средняя школа', 'Средняя школа'], ['МБА', 'МБА']], {}, {class: 'b-ae__select'}
+
+      .b-ae-secondary
+        .g-subheader Контактная информация
+        .b-ae-secondary__fields
+          .b-ae-secondary__field
+            .title Email
+            = f.text_field :email, class: 'b-ae__input', placeholder: 'Email'
+      .b-ae-secondary
+        .g-subheader Уведомления
+        .b-ae-secondary__fields
+          .b-ae-secondary__field.wide
+            .row
+              = f.check_box :email_notification
+              Присылать email уведомления
+            .row
+              = f.check_box :notify_new_msg
+              Присылать уведомления о новых сообщениях?
+            / .row
+            /   = f.check_box :show_email
+            /   Показывать email в профайле?
+
+      .b-ae-secondary
+        .b-ae-secondary__fields
+          .b-ae-secondary__field.wide
+            .g-subheader Изменение пароля
+            .b-ae-secondary__field
+              .title Новый пароль
+              = f.password_field :password, placeholder: 'Новый пароль', class: 'b-ae__input'
+            .b-ae-secondary__field
+              .title Повторите пароль
+              = f.password_field :password_confirmation, placeholder: 'Повторите пароль', class: 'b-ae__input'
+
+      .b-ae-secondary
+        .b-ae-secondary__fields
+          .b-ae-secondary__field.wide
+            .row
+              = f.check_box :terms
+              Согласие с общими правилами
+            .row
+              = f.check_box :gdpr
+              Согласие на обработку личных данных (EU GDPR)
+
+      = submit_tag 'Сохранить изменения', class: 'g-button primary large submit'

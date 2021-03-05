@@ -1,0 +1,14 @@
+%table.table.table-bordered
+  %thead
+    %th= Forecast::Icon.human_attribute_name :name
+    %th
+    %th= Forecast::Icon.human_attribute_name :background
+    %th= 'Действия'
+  - forecast_icons.each do |icon|
+    %tr
+      %td= icon_message(icon.name)
+      %td= image_tag("weather/icons/110x155/#{icon.name}.png", width: '50px')
+      %td= image_tag(icon.background.url(:thumb)) unless icon.background.blank?
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_forecast_icon_path(icon)

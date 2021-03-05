@@ -1,0 +1,36 @@
+<% tag_page ||= false %>
+<div class="g-box b-items-list">
+  <% if galleries.present? %>
+    <% galleries.each do |gallery| %>
+      <%= div_for(gallery, class: "b-items-list__item") do %>
+        <% if gallery.main_photo %>
+          <%= link_to(image_tag(url_for_file_column(gallery.main_photo, "image", "thumb_150x110"), class: 'photo', alt: gallery.title, title: gallery.title), gallery.url(@site)) %>
+        <% end %>
+        <div class="info">
+          <%= link_to gallery.title, gallery.url(@site), class: "short-description" %>
+          <div class="date"><%= Russian::strftime(gallery.created_at, "%d.%m %H:%M") %></div>
+          <div class="b-gallery__views">
+            <%= image_tag 'icons/views.png', class: "b-gallery__views__counter-icon" %>
+            <%= gallery.page_views %>
+          </div>
+          <div class="actions">
+            <% if can?(:edit, gallery) %>
+              <%= link_to 'Редактировать', edit_gallery_url(gallery), class: 'edit' %>
+            <% end %>
+            <% if can?(:destroy, gallery) %>
+              <%= link_to 'Удалить', gallery_url(gallery), method: :delete, confirm: 'Вы уверены, что хотите удалить фоторепортаж?', class: 'delete' %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <% if tag_page %>
+      <div class="text-center"><%= link_to 'Смотреть все', "/search/photos?search=#{tag_page}" %></div>
+    <% else %>
+      <%= will_paginate_new galleries %>
+    <% end %>
+  <% else %>
+    <% no_info ||= 'Нет фоторепортажей' %>
+    <p class="no-info"><%= no_info %></p>
+  <% end %>
+</div>

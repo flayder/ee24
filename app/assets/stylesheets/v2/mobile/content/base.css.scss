@@ -1,0 +1,97 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    position: relative;
+    font-family: $baseFont;
+    color: $baseColorText;
+    font-size: 15px;
+}
+
+* {
+    text-rendering: optimizelegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+*:focus {
+    outline: none;
+    outline-offset: 0;
+}
+
+.body-container {
+    position: relative;
+    /*padding-bottom: 128px;*/
+    overflow-x: hidden;
+}
+section {
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    margin: 0 auto;
+    padding: 1em 1em 0;
+}
+
+#content-page {
+    padding-top: 105px;
+}
+
+a {
+    transition: all 0.5s ease;
+    color: $baseColorBlue;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+}
+.logo {
+    display: block;
+    position: relative;
+    margin-top: 1em;
+    margin-bottom: 1.7em;
+    width: calc(50% + 28px);
+    /*height: calc(width * 0.29);*/
+    min-height: 45px;
+    max-width: 305px;
+    max-height: 86px;
+    background-image: asset_data_url('v2/logo-420on.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+h2.page-title {
+    margin-bottom: 1em;
+    font-family: $specialFontBold;
+    font-size: 1.7em;
+    text-transform: uppercase;
+    color: $baseColorTitle;
+}
+
+.full_version {
+    display: block;
+    position: relative;
+    margin-left: -1em;
+    padding: 1em;
+    width: 100%;
+    background-color: $baseColorBlue;
+    text-decoration: none;
+    color: #fff;
+}
+
+.divider {
+    display: block;
+    position: relative;
+    margin: 1.8em 0 1em;
+    height: 1px;
+    background-color: $baseColorBlue;
+}
+
+.fotorama img {
+    width: 100%;
+    padding-bottom: 10px;
+}

@@ -1,0 +1,19 @@
+%table.table.table-bordered
+  %thead
+    %th= EventRubric.human_attribute_name :id
+    %th= EventRubric.human_attribute_name :title
+    %th= EventRubric.human_attribute_name :link
+    %th= EventRubric.human_attribute_name :main
+    %th= 'Действия'
+  - event_rubrics.each do |rubric|
+    %tr
+      %td= rubric.id
+      %td= rubric.title
+      %td= rubric.link
+      %td
+        = t rubric.main.to_s if rubric.main
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_event_rubric_path(rubric)
+          %li= link_to 'Удалить', admin_event_rubric_path(rubric), :method => :delete, :confirm => 'Вы уверены?'          
+          %li= link_to_seos rubric

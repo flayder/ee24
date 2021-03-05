@@ -1,0 +1,78 @@
+<%= form_for [:admin, @site_admin] do |f| %>
+  <div>
+    <%= error_messages_for :site_admin %>
+  </div>
+  <div>
+    <%= f.hidden_field :user_id %>
+    <%= f.label :user_email, 'Логин пользователя' %>
+    <%= f.text_field :user_email, :value => (@site_admin.user.present? ? @site_admin.user.email : ''), :placeholder => 'Email' %>
+  </div>
+  <div>
+    <%= f.label :admin_panel_access %>
+    <%= f.check_box :admin_panel_access %>
+  </div>
+  <div>
+    <%= f.label :role %>
+    <%= f.select :role, SiteAdmin::ROLES.map{ |role| [t(role), role] } %>
+  </div>
+  <div id ='sections_select' style ='display:none'>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#" data-toggle="tab" data-content="sections">Права на разделы</a>
+      </li>
+      <li>
+        <a href="#" data-toggle="tab" data-content="docs">Статейные рубрики</a>
+      </li>
+      <li>
+        <a href="#" data-toggle="tab" data-content="photos">Фото рубрики</a>
+      </li>
+      <% if @site.has_section?(:'admin/external_docs') %>
+        <li>
+          <a href="#" data-toggle="tab" data-content="external_docs">Внешние доки</a>
+        </li>
+      <% end %>
+    </ul>
+
+    <ul class='rubric_checkboxes'>
+      <li class='sections active'>
+        <ul>
+          <span class="help-block">ВНИМАНИЕ!!! Тут Вы можете выдать права на раздел целиком, т.е. возможность редактировать, подтверждать любой контент в этом разделе. Воспользуйтесь вкладками справа, чтобы назначит права на конкретную рубрику.</span>
+          <% @site.sections.each do |section| %>
+            <li class="check_box">
+              <%= check_box_tag "site_admin[section_ids][]", section.id, @site_admin.has_permission?(section.controller), :id => "site_admin_section_#{section.id}" %>
+              <%= label_tag "site_admin[section_ids][]", section.title, :for => "site_admin_section_#{section.id}" %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+
+      <% if @site.has_section? :afisha %>
+        <li class='events'>
+          <%= render :partial => 'rubrics_checkboxes', :locals => { :rubric_klass => EventRubric } %>
+        </li>
+      <% end %>
+
+      <% if @site.has_section? :docs %>
+        <li class='docs'>
+          <%= render :partial => 'rubrics_nested_checkboxes', :locals => { :global_rubric_klass => DocGlobalRubric, :rubric_klass => DocRubric } %>
+
+        </li>
+      <% end %>
+
+      <% if @site.has_section? :photo %>
+        <li class='photos'>
+          <%= render :partial => 'rubrics_checkboxes', :locals => { :rubric_klass => PhotoRubric } %>
+        </li>
+      <% end %>
+
+      <% if @site.has_section?(:'admin/external_docs') %>
+        <li class='external_docs'>
+          <%= render :partial => 'rubrics_checkboxes', :locals => { :rubric_klass => ExternalDocRubric } %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div>
+    <%= f.submit 'Сохранить', class: 'btn' %>
+  </div>
+<% end %>

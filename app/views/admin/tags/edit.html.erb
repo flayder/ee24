@@ -1,0 +1,7 @@
+<%= render 'rubrics' %>
+<div class='well'>
+  <%= render 'form' %>
+  <div>
+    <%= @tag.taggings.count %> <%= Russian::pluralize(@tag.taggings.count, 'статья', 'статьи', 'статей') %>
+  </div>
+</div>

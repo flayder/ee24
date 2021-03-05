@@ -1,0 +1,17 @@
+<div class="blk-l">
+	<%= render :partial => "templates/dynamic/laq", :locals => {:object => "Восстановление пароля"} %>
+	<div class="h20px cboth"></div>
+	<div class="grey-t"><div></div></div>
+	<div class="grey"><div class="inn" style="font-size: 11px;">Для восстановления пароля, укажите адрес электронной почты, указанный при регистрации.</div></div>
+	<div class="grey-b"><div></div></div>
+</div>
+<div class="blk-r">
+<div class="h10px cboth"></div>
+В данный момент ваш пароль изменен. Для обеспечения безопасности мы сгенерировали вам пароль из набора случайных символов и чисел.
+<br><br>
+Ваш новый пароль: <b><%= @new_password %></b><br><br>
+<br><br>
+Напоминаем, что вы можете изменить пароль в любое удобное для вас время.
+<br><br>
+<%= link_to "Изменить пароль", user_change_password_url(current_user.subdomain) %>
+</div>

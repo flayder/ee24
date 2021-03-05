@@ -1,0 +1,26 @@
+.b-header__search {
+  @include box-sizing(border-box);
+  height: 30px;
+  border: $blue-regular 1px solid;
+  overflow: hidden;
+
+  .b-search__input {
+    @include box-sizing(border-box);
+    // safari
+    -webkit-appearance: none;
+    width: 90%;
+    height: 28px;
+    padding: 0 10px;
+    margin: 0;
+    border: none;
+    font: normal $font-size_base $font-family_base;
+  }
+
+  .b-search__magnifier-area {
+    width: 28px;
+    height: 28px;
+    float: right;
+    margin-left: -20px;
+    @include serial-background-with-hover('v2/search', 'gif')
+  }
+}

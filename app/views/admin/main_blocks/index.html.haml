@@ -1,0 +1,12 @@
+= render :partial => 'search_form'
+
+%h3
+  Новый блок на главной
+%ul
+  %li= link_to 'Афиша', new_admin_main_block_path(main_block: { doc_type: 'Event' })
+  %li= link_to 'Статейный блок', new_admin_main_block_path(main_block: { doc_type: 'Doc' })
+  %li= link_to 'Внешние документы', new_admin_main_block_path(main_block: { doc_type: 'ExternalDoc' })
+
+= render :partial => 'table', locals: { main_blocks: @main_blocks }
+
+= will_paginate_bootstrap @main_blocks

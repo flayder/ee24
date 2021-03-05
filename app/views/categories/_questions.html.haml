@@ -1,0 +1,11 @@
+- questions.each do |question|
+  .b-cat-list-item.question
+    = image_tag question.category.logo, size: '55x55', class: 'b-cat-list-item__avatar'
+    .b-cat-list-item__title= link_to question.title, [question.category, question], class: 'b-cat-list-item__link'
+    = render 'shared/readmore', item: question
+    .g-aux.l.blue.midi
+      -# TODO: comments
+      = link_to question.category.name, question.category, class: 'g-aux__label'
+      %span.g-aux__item.time= timeleft question.created_at
+      %span.g-aux__item.comments
+        = link_to question.comments.count, category_question_path(question.category, question, :anchor => 'comments')

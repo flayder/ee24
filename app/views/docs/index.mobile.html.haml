@@ -1,0 +1,14 @@
+= content_for :title, @global_rubric.title
+
+.container
+  .logo
+
+  %h2.page-title
+    = @global_rubric.title
+
+  .feed
+    - @docs.each do |doc|
+      = render 'shared/mobile/doc_item', doc: doc
+
+  .text-center
+    = will_paginate @docs, page_links: false

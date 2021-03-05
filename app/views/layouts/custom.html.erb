@@ -1,0 +1,15 @@
+<%= liquidize('layout',
+  'page_content'   => yield,
+  'head_content'   => yield(:head),
+  'page_menu'      => yield(:page_menu),
+  'menu_block'     => render(partial: 'layouts/menu_block'),
+  'head'           => render(partial: 'layouts/liquid_partials/head'),
+  'flashes'        => render("flashes"),
+  'layout_ads_top' => render("layouts/ads/top"),
+  'layout_popup'   => render(partial: "layouts/popup_layout"),
+  'web_analytics'  => web_analytics(@site),
+  'body_class'     => @css_layout || "#{controller_name}-#{action_name}",
+  'layout_header'  => render(partial: "application/layout/header"),
+  'specials'       => render(partial: "layouts/special_projects"),
+  'ad_code'        => ad_code('horizontal_bottom')
+).html_safe %>

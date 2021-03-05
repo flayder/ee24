@@ -1,0 +1,6 @@
+.g-entity-filter photos filter
+- if is_my_profile?(@user)
+  = render 'account/templates/blocks/entity-list'
+- else
+  -#= render 'shared/photoalbums'
+.g-loader= link_to 'Загрузить ещё фотоальбомы', 'javascript:;', class: 'g-loader__link'

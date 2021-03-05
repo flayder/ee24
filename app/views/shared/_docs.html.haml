@@ -1,0 +1,4 @@
+.l-cols.b-doc__list
+  - docs.each do |slice_news|
+    .l-cols-3.l-l.b-doc__item
+      = render partial: 'shared/article', collection: slice_news, as: 'article'

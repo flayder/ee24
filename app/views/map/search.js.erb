@@ -1,0 +1,4 @@
+$('#nothing_found').remove();
+<% unless @found %>
+  $('.map_column').after('<p id=\"nothing_found\" class =\"red\">Ничего не найдено, попробуйте другой запрос.</p>');
+<% end %>

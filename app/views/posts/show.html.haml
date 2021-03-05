@@ -1,0 +1,16 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    = render 'relevant_items', item: @post
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    .b-post
+      = render 'posts/item_header', item: @post
+      - if can? :update, @post
+        .b-question__actions
+          = link_to 'Редактировать', edit_category_community_post_path(@category, @community, @post), class: 'b-question__action abuse'
+          = link_to 'Удалить', category_community_post_path(@category, @community, @post), method: :delete, class: 'b-question__action abuse', confirm: "Вы уверены?"
+
+    .g-comments-wrapper.js-comments{data:{class: 'Post', id: @post.id}}
+      = render 'comments/comment_form_full', doc: @post, visible: false

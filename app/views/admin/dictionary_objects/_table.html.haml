@@ -1,0 +1,21 @@
+%table.table.table-bordered
+  %thead
+    %th= DictionaryObject.human_attribute_name :id
+    %th= DictionaryObject.human_attribute_name :letter
+    %th= DictionaryObject.human_attribute_name :title
+    %th= DictionaryObject.human_attribute_name :text
+    %th= DictionaryObject.human_attribute_name :rubric_id
+    %th= 'Действия'
+  - dictionary_objects.each do |dict_object|
+    %tr    
+      %td= dict_object.id
+      %td= dict_object.letter
+      %td= dict_object.title
+      %td= raw dict_object.text
+      %td= dict_object.rubric.try(:title)
+      %td
+        %ul.admin_actions
+          %li= link_to dict_object.approved? ? 'На сайте' : 'Предпросмотр', dictionary_object_url(:link => dict_object.rubric.dictionary.link, :id => dict_object)
+          %li= link_to dict_object.approved? ? 'Отменить подтверждение' : 'Подтвердить', toggle_approved_admin_dictionary_object_path(dict_object), :method => :put
+          %li= link_to 'Редактировать', edit_admin_dictionary_object_path(dict_object)
+          %li= link_to 'Удалить', admin_dictionary_object_path(dict_object), :method => :delete, :confirm => 'Вы уверены?'

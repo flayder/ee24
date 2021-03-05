@@ -1,0 +1,5 @@
+<%= gmaps({
+  map_options: { raw: "{scrollwheel: false}", zoom: 15, auto_zoom: false},
+  markers:     { data: @place_json, options: {do_clustering: true} }
+}) %>
+<%= render 'map/google_scripts' %>

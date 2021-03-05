@@ -1,0 +1,52 @@
+development:
+  bin_path: '/usr/bin'
+  morphology: "stem_enru"
+  charset_type: "utf-8"
+  # 'utf-8' defaults for English and Russian
+  # charset_table: "0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+430..U+44F"
+  enable_star: 1
+  min_infix_len: 2
+  #load only these models - prevent sloooooowing down in development mode (http://github.com/freelancing-god/thinking-sphinx/issues/closed#issue/90)
+  indexed_models:
+  - Board
+  - Catalog
+  - Doc
+  - Event
+  - Gallery
+  - Reply
+  - Topic
+  - Resume
+  - Vacancy
+  - DictionaryObject
+  #stopwords: <%= File.join(Rails.root, "config", "stopwords.txt") %>
+
+test:
+  morphology: "stem_enru"
+  charset_type: "utf-8"
+  # 'utf-8' defaults for English and Russian
+  # charset_table: "0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+430..U+44F"
+  enable_star: 1
+  min_infix_len: 2
+  #stopwords: <%= File.join(Rails.root, "config", "stopwords.txt") %>
+
+production:
+  searchd_file_path: /srv/onru_rails3/shared/db/sphinx
+  bin_path: '/usr/local/bin'
+  morphology: "stem_enru"
+  charset_type: "utf-8"
+  # 'utf-8' defaults for English and Russian
+  # charset_table: "0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+430..U+44F"
+  enable_star: 1
+  min_infix_len: 2
+  port: 9313
+  #stopwords: <%= File.join(Rails.root, "config", "stopwords.txt") %>
+
+staging:
+  searchd_file_path: /srv/onru_staging/shared/db/sphinx
+  morphology: "stem_enru"
+  charset_type: "utf-8"
+  # 'utf-8' defaults for English and Russian
+  # charset_table: "0..9, A..Z->a..z, _, a..z, U+410..U+42F->U+430..U+44F, U+430..U+44F"
+  enable_star: 1
+  min_infix_len: 2
+  port: 9315

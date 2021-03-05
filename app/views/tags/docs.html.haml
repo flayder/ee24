@@ -1,0 +1,22 @@
+.l-wrapper.l-content
+  .l-page__columns-line
+    .l-section__aside
+      = render partial: 'shared/adv-aside'
+
+    .l-section__main
+      .b-tag
+        %div{class: "b-tag__description#{@branding_logo}"}
+          .b-tag__description__title
+            = @tag.name
+
+        = render "menu"
+
+        .b-tag__content
+          .l-cols.js-loaderByPage.b-doc__list
+            - @docs.in_groups_of(1).each_with_index do |slice_news, index|
+              .l-cols-3.l-l.b-doc__item{class: "col#{index+1}"}
+                = render partial: 'shared/article', collection: slice_news, as: 'article'
+            .g-loader
+              =# link_to "Загрузить ещё статьи", 'javascript:;', data: {page: @docs.next_page}, class: 'g-loader__link js-loader'
+              = will_paginate @docs
+= seo_text @seo

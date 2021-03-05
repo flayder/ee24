@@ -1,0 +1,12 @@
+- if @url
+  %h2= "Запросы для странички #{link_to @url.body, @url.body}".html_safe
+  %table.table.table-bordered
+    %thead
+      %th= MetrikaApiAccount::SearchQuery.human_attribute_name :body
+      %th= MetrikaApiAccount::SearchQuery.human_attribute_name :visits
+      %th= MetrikaApiAccount::SearchQuery.human_attribute_name :page_views
+    - @url.search_queries.each do |query|
+      %tr
+        %td= query.body
+        %td= query.visits
+        %td= query.page_views

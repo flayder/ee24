@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новый CSS шаблон', new_admin_design_stylesheet_path
+= render :partial => 'table', :locals => { :stylesheets => @stylesheets }
+
+= will_paginate_bootstrap @stylesheets

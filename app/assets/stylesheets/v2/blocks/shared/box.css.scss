@@ -1,0 +1,13 @@
+.b-box {
+  padding: 30px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: $blue-light;
+  & &__half {
+    @include box-sizing(border-box);
+    width: 50%;
+    float: left;
+    padding-right: 30px;
+    & + .b-box__half {padding-left: 30px}
+  }
+}

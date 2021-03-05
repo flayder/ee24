@@ -1,0 +1,7 @@
+<% content_for :head do %>
+  <%= raw yandex_header %>
+<% end %>
+
+<script>var cityCoords = <%= [@city.lat, @city.lng] %>;</script>
+
+<div id="b-yandex-map" style="width: 290px; height: 400px;"></div>

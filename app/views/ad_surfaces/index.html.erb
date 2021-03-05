@@ -1,0 +1,31 @@
+<% content_for :head do %>
+    <%= raw yandex_header %>
+<% end %>
+
+<script>var mapSurfaces = <%= raw @map_surfaces.to_json %>;</script>
+<script>var cityCoords = <%= [@city.lat, @city.lng] %>;</script>
+
+<div class="g-box b-large-map-container">
+  <%= form_tag '/ads/search', method: "get", id: "ad_surfaces_form", class: 'b-large-map-container__form', remote: true do %>
+    <div class="b-rubric-title">
+      <h1>Рекламные поверхности</h1>
+      <div class='params'>
+        <%= select_tag 'ad_surface[ad_agency_id]', options_for_select(@ad_agencies.map { |a| [a.title, a.id] }, params[:ad_surface][:ad_agency_id].to_i), prompt: 'Все рекламные агентства' %>
+        <%= label_tag 'ad_surface[street_id]', 'Поиск по улице', id: 'ad_surface_street_id_label' %>
+        <%= select_tag 'ad_surface[street_id]', options_for_select(@streets.map { |s| [s.title, s.id] }, params[:ad_surface][:street_id].to_i), prompt: 'Выбрать улицу' %>
+        <%= label_tag 'ad_surface[ad_format_id]', 'Формат', id: 'ad_surface_ad_format_id_label' %>
+        <%= select_tag 'ad_surface[ad_format_id]', options_for_select(@ad_formats.map { |af| [af.title, af.id] }, (params[:ad_surface][:ad_format_id].present? ? params[:ad_surface][:ad_format_id][:id] : nil)), prompt: 'Все форматы' %>
+        <%= hidden_field_tag 'from_checkbox' %>
+      </div>
+    </div>
+    <% if @ad_surfaces.present? %>
+      <div id="b-yandex-map" class="large-surface" style="width: 100%; height: 600px;"></div>
+      <table class='b-surfaces'>
+        <%= render @ad_surfaces %>
+      </table>
+      <%= will_paginate @ad_surfaces %>
+      <div class='b-map-container'></div>
+    <% end %>
+  <% end %>
+</div>
+<%= seo_text @seo %>

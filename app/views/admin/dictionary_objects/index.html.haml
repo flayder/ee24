@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая словарная статья', new_admin_dictionary_object_path
+= render :partial => 'table', :locals => { :dictionary_objects => @dictionary_objects }
+
+= will_paginate_bootstrap @dictionary_objects

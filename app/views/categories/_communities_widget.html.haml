@@ -1,0 +1,15 @@
+.b-rubricator.extended
+  .b-rubricator__title Группы
+  - if @category.communities
+    .b-list-community.mini
+      - @category.communities.sample(5).each do |community|
+        .b-list-community__item
+          = image_tag community.logo.url(:mini), size: '45x45', class: 'b-list-community__cover'
+          = link_to community.name, [community.category, community], class: 'b-list-community__title'
+          .g-aux.mini-blue.l
+            .g-aux__item.users 0
+            .g-aux__item.docs= community.posts.size
+    = link_to 'Все группы', category_communities_path(@category), class: 'to_all'
+  - else
+    Ни одной группы не найдено, вы можете
+    = link_to 'создать первую.', 'communities/new'

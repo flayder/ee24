@@ -1,0 +1,60 @@
+.l-section {}
+
+//  TODO: remove this shit
+.l-content {
+  padding-bottom: 50px;
+}
+
+.l-page__columns-line {
+  @include clearfix;
+}
+// end
+.l-section__main {
+  @include grid-size(9);
+  float: left;
+}
+
+.l-section__aside {
+  @include grid-size(3);
+  float: right;
+}
+
+.l-wrapper {
+  width: 1240px;
+  margin: 0 auto;
+  @include clearfix;
+}
+
+.l-cols {
+  margin-right: -$dx;
+  @include clearfix;
+  &.has-media {
+    .b-media {
+      margin: 0 $dx $dx -0px;
+      float: left;
+    }
+  }
+}
+
+
+$cols: 2 3 4 5 6 7 8;
+@each $col in $cols {
+  .l-cols-#{$col} {@include grid-size($col);}
+}
+
+.l-l {
+  float: left;
+  margin-right: $dx;
+  &:last-child {margin: 0;}
+}
+.l-r {
+  margin-right: 20px;
+  float: right;
+}
+
+.l-r-important { float: right !important; }
+
+.popup-overlay,
+.popup-layout {
+  display: none;
+}

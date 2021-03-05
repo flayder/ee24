@@ -1,0 +1,45 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+  = stylesheet_link_tag '//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+
+= form_for @question.new_record? ? @question : [@category, @question], html: {class: 'b-form', multipart: true} do |f|
+  = error_messages_for :question
+
+  .b-form__row
+    .l-cols-2.l-l
+      = f.label :category_id
+    .l-cols-7.l-l
+      = f.select :category_id, Category.all.map {|c| [c.name, c.id]}, {}, {class: 'b-form__control select'}
+
+  .b-form__row
+    .l-cols-2.l-l
+      = f.label :title
+    .l-cols-7.l-l
+      = f.text_field :title, class: 'b-form__control input wide'
+
+  .b-form__row
+    .l-cols-2.l-l
+      = f.label :content
+    .l-cols-7.l-l
+      - if can?(:rich_edit, Question)
+        = f.cktext_area :content, class: 'b-form__control textarea', ckeditor: {toolbar: 'StandartToQuestions', language: I18n.locale}
+      - else
+        = f.cktext_area :content, class: 'b-form__control textarea', ckeditor: {toolbar: 'SimpleToQuestions', language: I18n.locale}
+
+  .b-form__row
+    .l-cols-2.l-l
+      &nbsp;
+    .l-cols-7.l-l
+      %ul
+        Правила создания тем в «Сообществе»:
+        %li
+          Раздел «Сообщество» предназначен для общения читателей друг с другом, для обмена мнениями и ценным опытом.
+        %li
+          Здесь строжайше запрещены рекламные публикации, размещение анонсов и перепечатка материалов с других сайтов.
+
+  .b-form__row
+    .l-cols-2.l-l
+      &nbsp;
+    .l-cols-7.l-l
+      = f.submit t('.save'), class: 'g-button medium primary'
+      = link_to t('.back'), :back, class: 'g-button medium primary'

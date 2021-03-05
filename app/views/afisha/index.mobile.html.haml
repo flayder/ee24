@@ -1,0 +1,11 @@
+= content_for :title, 'Афиша'
+
+.container
+  .logo
+
+  .feed
+    - @events.each do |doc|
+      = render 'shared/mobile/doc_item', doc: doc
+
+  .text-center
+    = will_paginate @events, page_links: false

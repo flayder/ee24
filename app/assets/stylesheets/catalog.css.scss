@@ -1,0 +1,22 @@
+/*
+ *= require ./admin/bootstrap-and-overrides
+*/
+
+.catalog-description {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+  margin: 15px 0;
+  padding: 20px 20px 20px 20px;
+  .title {
+    text-align: center;
+    font-weight: bold;
+  }
+  .tab-pane {
+    padding-top: 20px;
+  }
+}
+
+.middle-align {
+  vertical-align: middle;
+}

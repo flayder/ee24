@@ -1,0 +1,10 @@
+%h3 Поиск
+#search_form
+  = simple_form_for @search, url: request.path, class: 'form-horizontal' do |form|
+    .control-group
+      - if params[:taggable_type].present?
+        = hidden_field_tag :taggable_type, params[:taggable_type]
+      .controls
+        = form.input :name_like, :required => false
+      .controls
+        = form.button :submit, 'Найти', class: 'btn'

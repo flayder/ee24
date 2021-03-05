@@ -1,0 +1,28 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+
+%h1=  params[:action] == 'new' ? 'Новая словарная статья' : 'Редактирование словарной статьи'
+= form_for [:admin, @dictionary_object] do |f|
+  = error_messages_for :dictionary_object, :object => @dictionary_object
+
+  = f.label :rubric_id
+  = f.select :rubric_id, option_groups_from_collection_for_select(@site.dictionaries, :rubrics, :title, :id, :title, f.object.rubric_id)
+
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :letter
+  = f.select :letter, ('А'..'Я').to_a
+
+  = f.label :image
+  %p
+    = image_tag @dictionary_object.image.url(:small)
+  = f.file_field :image
+
+  = f.label :text
+  = f.cktext_area :text, ckeditor: {toolbar: 'Full'}
+
+  = f.label :tag_list
+  = f.text_field :tag_list, class: 'with_autocomplete', data: {url: "/tags/autocomplete"}
+
+  = f.submit 'Сохранить', class: 'btn'

@@ -1,0 +1,4 @@
+aside[role="sidebar"] {
+  position: relative;
+  @include transition(left, 0.2s);
+}

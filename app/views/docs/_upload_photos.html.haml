@@ -1,0 +1,27 @@
+.b-form__row#upload_images
+  .l-cols-3.l-l
+    .label= f.object.is_a?(Gallery) ? 'Фото' : 'Фото 610x415'
+  .l-cols-8.l-l
+    = f.fields_for :photos do |photo_form|
+      - if photo_form.object.persisted?
+        .b-form__image
+          = image_tag photo_form.object.image.url(:small)
+
+          .b-form__row
+            = photo_form.text_area :title, rows: '3'
+
+            .b-form__image-control
+              = photo_form.hidden_field :image_cache
+              - if f.object.is_a?(Gallery)
+                = photo_form.check_box :main
+                сделать главной
+              = photo_form.check_box :_destroy
+              удалить картинку
+      - else
+        .b-form__photo
+          .photo__input-wrapper
+            .g-button.block.primary Загрузить
+            = photo_form.file_field :image, multiple: true, class: 'photo__input js-photoInput'
+          .photo__title.js-photoTitle{'data-default' => 'Файл не выбран'} Файл не выбран
+          .photo__actions.js-photoActions
+            .action.danger.js-remove Удалить фото

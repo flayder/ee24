@@ -1,0 +1,5 @@
+<link rel="alternate" type="application/rss+xml" title="<%= @site.domain %>: Афиша: Новые события" href="/afisha.rss" />
+
+<% @site.event_rubrics.each do |rubric| %>
+  <link rel="alternate" type="application/rss+xml" title="<%= @site.domain %>: Афиша: <%= rubric.title%>" href="<%= rubric.url %>.rss" />
+<% end %>

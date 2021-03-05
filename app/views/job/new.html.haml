@@ -1,0 +1,8 @@
+.l-wrapper
+
+  %div.l-content
+    .g-subheader Добавление новой вакансии
+    .b-form
+      = form_for @job_item, html: {multipart: true} do |f|
+        = error_messages_for :job_item
+        = render partial: '/job/vacancy/form', locals: {f: f}

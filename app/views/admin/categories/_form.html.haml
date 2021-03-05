@@ -1,0 +1,22 @@
+%h1= 'Новая категория'
+= form_for [:admin, @category] do |f|
+  = error_messages_for :categories, :object => @category
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :english_name
+    = f.text_field :english_name, class: 'form-control'
+
+  .form-group
+    = f.label :logo
+    = f.file_field :logo
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 4, class: 'form-control'
+
+  .form-group
+    = f.submit 'Сохранить', :class => 'btn btn-default'

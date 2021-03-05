@@ -1,0 +1,76 @@
+= link_to 'Список разделов', "/admin/versions"
+
+%h1 
+  = link_to '<', "/admin/versions/#{params[:item_type]}?month=#{(@date-1.month).month}"
+  Изменения за 
+  = Russian::strftime(@date, "%B %Y")
+  - if params[:item_type].present?
+    = "(#{t(params[:item_type].underscore.pluralize)})"
+  = link_to '>', "/admin/versions/#{params[:item_type]}?month=#{(@date+1.month).month}"
+
+.accordion#accordion2
+  - if @versions.present?
+    - @versions.each do |key, versions|
+      .accordion-group
+        .accordion-heading
+          = link_to("#collapse#{key}", class: 'accordion-toggle', 'data-toggle' => 'collapse', 'data-parent' => '#accordion2') do
+            = Russian::strftime(Date.new(@year, @month, key), "%d %B")
+            \- 
+            %abbr{title: 'Создано'}= versions['create'].count
+            +
+            %abbr{title: 'Удалено'}= versions['destroy'].count
+            +
+            %abbr{title: 'Обновлено'}= versions['update'].count
+        %div{:id => "collapse#{key}", class: 'accordion-body collapse'}
+          .accordion-inner
+            - if versions['create'].present?
+              %table.table.table-bordered
+                %tr
+                  %th{colspan: 3} 
+                    Новые -
+                    = versions['create'].count
+                %tr
+                  %th Объект изменения
+                  %th Дата изменения
+                  %th Кто внёс эти изменения
+                - versions['create'].each do |version|
+                  %tr
+                    %td= link_to version.item.try(:title), version.item.try(:url) 
+                    %td= version.created_at.strftime("%d.%m.%Y %H:%M") 
+                    %td= version.author.login if version.author.present?
+
+            - if versions['destroy'].present?
+              %table.table.table-bordered
+                %tr
+                  %th 
+                    Удалено -
+                    = versions['destroy'].count
+                %tr
+                  %th Объект
+                  %th Дата удаления
+                  %th Автор
+                - versions['destroy'].each do |version|
+                  %tr
+                    %td= version.reify.try(:title)
+                    %td= version.created_at.strftime("%d.%m.%Y %H:%M") 
+                    %td= version.author.login if version.author.present?
+
+            - if versions['update'].present?
+              %table.table.table-bordered
+                %tr
+                  %th{colspan: 5}
+                    Обновления -
+                    = versions['update'].count
+                %tr
+                  %th Объект изменения
+                  %th Дата изменения
+                  %th Кто внёс эти изменения
+                  %th diff
+                  %th История изменений объекта                
+                - versions['update'].each do |version|          
+                  %tr
+                    %td= link_to version.item.try(:title), version.item.try(:url)      
+                    %td= version.created_at.strftime("%d.%m.%Y %H:%M")
+                    %td= version.author.login if version.author.present?
+                    %td= link_to 'diff', admin_version_diff_url(version.id)                    
+                    %td= link_to 'История изменений', "/admin/versions/#{version.item_type}/#{version.item_id}"

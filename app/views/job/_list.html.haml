@@ -1,0 +1,4 @@
+- if @job_items.present?
+  = render partial: 'job_item', collection: @job_items
+- else
+  .b-box.js-vacanciesList Нет информации.

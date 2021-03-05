@@ -1,0 +1,5 @@
+<h1>Регистрация прошла успешно</h1>
+
+<b>Ваш логин:</b> <%= h( if (current_user && current_user.login ) then current_user.login end) %><p></p>
+
+<b>Ваш профайл:</b> <%= link_to "Посмотреть профайл", :controller => "account", :action => "edit", :subdomain => current_user.subdomain %>

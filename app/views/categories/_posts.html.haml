@@ -1,0 +1,11 @@
+- posts.each do |post|
+  .b-cat-list-item.post
+    = image_tag post.community.logo, size: '75x75', class: 'b-cat-list-item__avatar'
+    .b-cat-list-item__title= link_to post.title, [post.community.category, post.community, post], class: 'b-cat-list-item__link'
+    .b-cat-list-item__content= truncate sanitize(post.content, tags: []), length: 350
+    .g-aux.l.midi.blue
+      -# TODO: comments, users
+      = link_to post.community.category.name, post.community.category, class: 'g-aux__label'
+      = link_to post.community.name, [post.community.category, post.community], class: 'g-aux__item users'
+      %span.g-aux__item.date= timeleft post.created_at
+      %span.g-aux__item.comments= post.comments.count

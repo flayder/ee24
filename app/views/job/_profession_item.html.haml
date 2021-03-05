@@ -1,0 +1,3 @@
+.b-form__checkbox-list__item
+  = check_box_tag "#{params[:type]}[profession_ids][]", profession_item.id, (@job_item and @job_item.professions.include?(profession_item))
+  %span= h profession_item.title

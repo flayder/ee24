@@ -1,0 +1,20 @@
+.b-doc__aux_inline
+  .b-doc__info
+    %span.g-aux__item
+      - if doc.user
+        = link_to doc.user.fio_or_login, account_url(doc.user), class: 'username'
+    %time.g-aux__item.date{datetime: Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%d.%m.%Y')}= Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%d.%m.%Y')
+    %time.g-aux__item.time{datetime: Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%H:%M')}= Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%H:%M')
+    %span.g-aux__item.views= doc.page_views
+    %span.g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: doc}
+    -# TODO: для сообщества дополнить %span.g-aux__item.community= rand(20)
+
+    - if doc.is_a?(Gallery) && can?(:manage, Gallery)
+      .manage-links
+        = link_to 'Редактировать', edit_gallery_url(doc), class: 'edit'
+        = link_to 'Удалить', gallery_url(doc), method: :delete, confirm: 'Вы уверены, что хотите удалить фоторепортаж?', class: 'delete'
+        - unless doc.approved?
+          = link_to 'Подтвердить', approve_gallery_url(doc), confirm: 'Вы уверены, что хотите подтвердить фоторепортаж?', class: 'delete'
+
+
+  = render partial: 'templates/dynamic/manage', locals: {doc: doc}

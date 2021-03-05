@@ -1,0 +1,52 @@
+%div.today
+  .top
+    .bg-layer
+    .temperature= number_with_degree(@current_data.temperature)
+    .icon= big_icon(@current_data)
+    .conditions= @current_data.message
+  .bottom
+    .bg-layer
+    .day-time
+      .morning
+        .title утром
+        .temperature= number_with_degree(@morning_data.temperature)
+        .icon= small_icon(@morning_data)
+        .conditions= @morning_data.message
+      .day
+        .title днём
+        .temperature= number_with_degree(@midday_data.temperature)
+        .icon= small_icon(@midday_data)
+        .conditions= @midday_data.message
+      .night
+        .title ночью
+        .temperature= number_with_degree(@evening_data.temperature)
+        .icon= small_icon(@evening_data)
+        .conditions= @evening_data.message
+    .conditions
+      .humidity
+        %span влажность
+        = "#{@current_data.humidity} %"
+      .pressure
+        %span давление
+        = "#{@current_data.pressure} мм рт. ст."
+      .wind
+        %span ветер
+        = "#{@current_data.wind_speed} м/c, #{t('forecast_wind_direction.' + @current_data.wind_direction)}"
+
+%div.days
+  - @datas.each_slice(4) do |datas|
+    .line
+      - datas.each do |data|
+        .card
+          .top
+            .bg-layer
+            .day= Russian::strftime(data.timestamp, "%a")
+            .date= Russian::strftime(data.timestamp, "%d %B")
+            .icon= big_icon(data)
+            .temperature= number_with_degree(data.max_temperature)
+            .description= data.message
+          .bottom
+            .bg-layer
+            .temperature= number_with_degree(data.min_temperature)
+            .icon= small_night_icon(data)
+            .description= data.message

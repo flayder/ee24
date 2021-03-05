@@ -1,0 +1,549 @@
+@import "ultimate/mixins/microstructures";
+@import "ultimate/mixins/css3";
+@import "ultimate/mixins/fonts";
+
+$layout-images-path: "weather";
+
+$font-family_accident:  Helvetica, sans-serif;
+$font-family_custom:  Helvetica, sans-serif;
+$font-family_custom_bold:  Helvetica, sans-serif;
+$font-family_custom_italic:  Helvetica, sans-serif;
+
+$l-footer_height: auto;
+$l-page__width: 830px;
+
+@mixin l-page__center($switch: true) {
+  @if ( $switch ) {
+    width: $l-page__width;
+    margin: 0 auto;
+  } @else {
+    width: auto;
+    margin: 0;
+  }
+}
+
+body.l-weather-page {
+  @include font_base($font-size_base);
+  background-size: 100%;
+  .l-page__header {
+    height: 75px;
+    background: image-url('weather/header-bg.png') repeat-x right center;
+    .l-page__center {
+      padding: 0 5px;
+      @include l-page__center;
+      width: $l-page__width - 10;
+      form {
+        float: left;
+      }
+      .hidden {
+        display: none;
+      }
+      .days {
+        width: 100px;
+        .container {
+          left: -10px;
+        }
+      }
+      .location {
+        .container {
+          left: 10px;
+        }
+      }
+      .days, .location {
+        z-index: 999;
+        @include inline-block;
+        vertical-align: top;
+        .date-select, .location-select {
+          margin-top: 20px;
+          @include inline-block;
+          text-decoration: none;
+          font-size: 21.3px;
+          color: white;
+          font-family: $font-family_custom_bold;
+          .bullet {
+            position: relative;
+            top: -4px;
+          }
+          &.opened {
+            span.bullet {
+              img {
+                @include transform(rotate(180deg));
+              }
+            }
+          }
+        }
+        .location-select {
+          margin-left: 20px;
+        }
+        .container {
+          background-color: rgba(0, 0, 0, 0.9);
+          padding: 10px 5px;
+          @include border-radius(10px);
+          border: 2px solid white;
+          @include transition(opacity, 0.2s);
+          opacity: 1;
+          font-size: 11px;
+          margin-top: 5px;
+          a {
+            font-family: $font-family_custom_italic;
+            padding: 5px;
+            @include border-radius(10px);
+            @include transition(background-color, 0.5s);
+            font-size: 14px;
+            display: block;
+            color: white;
+            text-decoration: none;
+            &:hover {
+              background-color: #383838;
+              text-decoration: none;
+            }
+          }
+          .location {
+            line-height: 23px;
+            display: block;
+            position: relative;
+            > a {
+              position: relative;
+              top: -4px;
+            }
+            &.five-days {
+              .c-7dney, .c-10dney, .c-14dney {
+                display: none;
+              }
+            }
+            &.seven-days {
+              .c-5dney, .c-10dney, .c-14dney {
+                display: none;
+              }
+            }
+            &.ten-days {
+              .c-7dney, .c-5dney, .c-14dney {
+                display: none;
+              }
+            }
+            &.fourteen-days {
+              .c-7dney, .c-5dney, .c-10dney {
+                display: none;
+              }
+            }
+            .districts {
+              display: none;
+              position: relative;
+              left: 100%;
+              bottom: 100%;
+              z-index: 1;
+            }
+            &:hover {
+              > .districts  {
+                margin-top: -20px;
+                background-color: black;
+                padding: 10px 5px;
+                @include border-radius(10px);
+                border: 2px solid white;
+                display: block;
+
+              }
+            }
+          }
+          &.closed {
+            height: 0;
+            opacity: 0;
+            display: none;
+          }
+        }
+      }
+      .logo {
+        float: right;
+        margin: 15px 0 0 0;
+        width: 130px;
+        height: 50px;
+        background: image-url('weather/logo.png') no-repeat center top;
+      }
+    }
+  }
+  .l-page {
+    > .back {
+      @include position(0 none none 0);
+      @include box(100%, 100%);
+      overflow: hidden;
+      > .back-center {
+        width: 200%;
+        height: 100%;
+        left: -50%;
+        text-align: center;
+        > img.back-image {
+          height: 100%;
+        }
+      }
+      &.wide {
+        > .back-center {
+          width: 100%;
+          left: 0;
+          > img.back-image {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+    .l-page__content {
+      overflow: hidden;
+      padding-bottom: 35px;
+      .today {
+        @include l-page__center;
+        @include box-shadow(0 4px 18px black);
+        margin-top: 30px;
+        overflow: hidden;
+        @include border-radius(10px);
+        > .top {
+          overflow: hidden;
+          > .bg-layer {
+            position: absolute;
+            @include linear-gradient(#0e0f0f, #383838);
+            @include opacity(0.7);
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+          }
+          > .temperature {
+            margin-left: 25px;
+            font-family: $font-family_custom_bold;
+            font-size: 90px;
+            color: white;
+            @include text-shadow_hard(0 1px 0 black);
+            @include inline-block;
+          }
+          > .icon {
+            margin-left: 25px;
+            @include inline-block;
+            width: 155px;
+          }
+          > .conditions {
+            padding-bottom: 10px;
+            margin-left: 30px;
+            @include inline-block;
+            width: 370px;
+            font-size: 30px;
+            font-family: $font-family_custom_italic;
+            color: white;
+            @include text-shadow_hard(0 1px 0 black);
+          }
+        }
+        > .bottom {
+          height: 100%;
+          > .bg-layer {
+            position: absolute;
+            @include linear-gradient(#181818, #2b2b2b);
+            @include opacity(0.8);
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+          }
+          .day-time {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            margin-left: 30px;
+            overflow: hidden;
+            @include inline-block;
+            vertical-align: top;
+            font-family: $font-family_custom_italic;
+            .morning, .day, .night {
+              margin-top: 5px;
+              width: 95px;
+              margin-right: 30px;
+              font-size: 18px;
+              color: white;
+              float: left;
+              .title {
+                margin-bottom: 10px;
+              }
+              .temperature {
+                font-size: 24px;
+                font-family: $font-family_custom_bold;
+                @include inline-block;
+              }
+              .icon {
+                @include inline-block;
+                width: 36px;
+                height: 28px;
+                top: -3px;
+              }
+              .conditions {
+                margin-top: 3px;
+                font-family: $font-family_custom_bold;
+                font-size: 14px;
+              }
+            }
+          }
+          > .conditions {
+            top: 20px;
+            font-size: 18px;
+            float: right;
+            width: 365px;
+            margin-left: 50px;
+            .humidity, .pressure, .wind {
+              color: white;
+              @include inline-block;
+              font-family: $font-family_custom_bold;
+              span {
+                font-family: $font-family_accident;
+                display: block;
+                font-size: 14px;
+              }
+            }
+            .humidity {
+              margin-right: 50px;
+            }
+            .wind {
+              margin-top: 10px;
+            }
+          }
+        }
+      }
+      .days {
+        @include l-page__center;
+        margin-top: 20px;
+        clear: both;
+        .card {
+          @include box-shadow(0 4px 18px black);
+          float: left;
+          margin-left: 10px;
+          margin-bottom: 30px;
+          width: 200px;
+          @include border-radius(10px);
+          overflow: hidden;
+          &:first-child {
+            margin-left: 0;
+          }
+          > .top {
+            padding: 15px;
+            height: 190px;
+            color: white;
+            text-align: center;
+            > .bg-layer {
+              position: absolute;
+              @include linear-gradient(#656565, #292929);
+              @include opacity(0.7);
+              width: 100%;
+              height: 100%;
+              z-index: 0;
+              top: 0;
+              left: 0;
+            }
+            .day {
+              text-transform: lowercase;
+              position: absolute;
+              left: 15px;
+              top: 10px;
+              font-size: 21px;
+              font-family: $font-family_custom_bold;
+            }
+            .date {
+              font-family: $font-family_custom_bold;
+              font-size: 16px;
+              position: absolute;
+              right: 15px;
+              top: 15px;
+            }
+            .icon {
+              @include inline-block;
+              top: 0;
+              height: 110px;
+              width: 155px;
+            }
+            .temperature {
+              @include text-shadow_hard(0 1px 0 black);
+              text-align: left;
+              font-size: 30px;
+              font-family: $font-family_custom_bold;
+            }
+            .description {
+              font-family: $font-family_custom_bold;
+              @include text-shadow_hard(0 1px 0 black);
+              font-size: 13px;
+              text-align: left;
+            }
+          }
+          > .bottom {
+            padding: 15px;
+            color: white;
+            height: 75px;
+            .bg-layer {
+              position: absolute;
+              @include linear-gradient(#181818, #2b2b2b);
+              @include opacity(0.8);
+              width: 100%;
+              height: 100%;
+              z-index: 0;
+              top: 0;
+              left: 0;
+            }
+            .icon {
+              @include inline-block;
+              width: 23px;
+              height: 16px;
+              top: -8px;
+            }
+            .temperature {
+              @include inline-block;
+              font-size: 21px;
+              font-family: $font-family_custom_bold;
+            }
+            .description {
+              @include text-shadow_hard(0 1px 0 black);
+              font-size: 13px;
+              font-family: $font-family_custom_bold;
+            }
+          }
+        }
+      }
+    }
+  }
+  .social-links {
+    background: image-url('weather/bg.png') repeat right center;
+    clear: both;
+    height: 55px;
+    line-height: 105px;
+    .l-page__center {
+      @include l-page__center;
+      text-align: center;
+      .set-home {
+        position: relative;
+        top: -15px;
+        display: inline-block;
+        line-height: 17px;
+        height: 17px;
+        margin-top: 20px;
+        margin-right: 30px;
+        font-family: Arial;
+        color: #00d2ff;
+        font-size: 14px;
+        padding-left: 20px;
+        background: image-url('weather/flagpole.png') no-repeat left 0;
+        &:hover {
+          color: #4ec146;
+        }
+      }
+      .share {
+        position: relative;
+        top: -15px;
+        display: inline-block;
+        height: 25px;
+        line-height: 25px;
+        .fb-like {
+          top: -1px;
+          margin-left: 15px;
+          margin-right: 35px;
+        }
+        .twitter-share-button {
+          margin-right: 30px;
+          position: relative;
+          top: -1px;
+          width: 105px !important;
+        }
+        #___plusone_0 {
+          width: 85px !important;
+        }
+        #vk_like {
+          display: inline-block;
+          width: 150px !important;
+        }
+        #ok_shareWidget{
+          display: inline-block;
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+  article {
+    min-height: 50px;
+    background-color: #232323;
+    .l-page__center {
+      padding: 40px 0;
+      @include l-page__center;
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      column-count: 2;
+      -moz-column-gap: 40px;
+      -webkit-column-gap: 40px;
+      column-gap: 40px;
+      color: #c4c4c4;
+      font-size: 18px;
+      line-height: 26px;
+      font-family: $font-family_accident;
+      &.one-collumn {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+        h1 {
+          margin-bottom: 0;
+        }
+      }
+      h1 {
+        margin-bottom: 15px;
+        font-size: 38px;
+        line-height: 44px;
+      }
+      a {
+        color: #00d2ff;
+        &:hover {
+          color: #4ec146;
+        }
+      }
+    }
+  }
+  .l-footer {
+    .bottom {
+      background-color: #484848;
+    }
+    .l-page__center {
+      @include l-page__center;
+      .logo {
+        position: relative;
+        top: 45px;
+        @include inline-block;
+        width: 130px;
+        height: 50px;
+        background: image-url('weather/logo.png') no-repeat center top;
+      }
+      .counters {
+        top: -12px;
+        clear: both;
+        table {
+          width: 200px !important;
+        }
+      }
+      .copyrights {
+        top: 40px;
+        @include inline-block;
+        width: 200px;
+        margin-left: 40px;
+        font-size: 14px;
+        color: #c4c4c4;
+        font-family: $font-family_custom_bold;
+        span {
+          font-family: $font-family_accident;
+          display: block;
+          font-size: 12px;
+        }
+      }
+      .weather {
+        font-family: $font-family_accident;
+        padding-left: 45px;
+        float: right;
+        color: #c4c4c4;
+        font-size: 20px;
+        position: relative;
+        top: 15px;
+        right: 10px;
+        background: image-url('weather/weather-logo.png') no-repeat left center;
+        z-index: 9999;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+@include sticky-footer($l-footer_height, '.l-footer', '.l-page');

@@ -1,0 +1,14 @@
+.b-vacancies-list__item
+  .item__info
+    .item__employment= job_item.try(:busy_title)
+    .item__title= link_to job_item.title, "/job/#{job_type(job_item).pluralize}/#{job_item.id}", class: 'link'
+  .item__aux
+    .item__datetime= timeleft(job_item.created_at)
+    - if job_item.is_a?(Vacancy) && job_item.catalog.present?
+      .item__employer= link_to job_item.catalog.title, job_item.catalog.url
+    - if job_item.company_name.present?
+      .item__employer= job_item.company_name
+    - if job_item.is_a?(Vacancy)
+      .item__location
+        = [job_item.region.try(:title), job_item.region_city.try(:title)].compact.join(', ')
+    = link_to job_item.industry.title, "/job/vacancies?industry_ids=#{job_item.industry_id}", class: 'item__industry'

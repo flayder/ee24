@@ -1,0 +1,8 @@
+- if event.start_date.to_date != event.finish_date.to_date
+  %time.b-docs-item__date #{Russian.strftime(event.start_date, '%-d %B')} — #{Russian.strftime(event.finish_date, '%-d %B')}
+- else
+  %time.b-docs-item__date{datetime: Russian::strftime(event.start_date, '%Y-%m-%d')}
+    %strong #{Russian.strftime(event.start_date, '%A')},
+    = Russian.strftime(event.start_date, '%-d %B')
+= link_to event.title, event.url, class: 'b-docs-item__title'
+.b-docs-item__category= link_to event.rubric.title, event.rubric.url, class: 'b-docs-item__category-link'

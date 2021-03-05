@@ -1,0 +1,33 @@
+= link_to 'Создать портал', new_admin_site_path
+
+.well
+  %h1 Информация о портале
+  %table.table
+    %tr
+      %th ID
+      %th Краткое название
+      %th Название
+      %th Город
+      %th Домен
+      %th Поддомен
+      %th Разделы
+      %th Админы
+      %th Постов
+      %th Создан
+      %th Действия
+    - @sites.each do |site|
+      %tr
+        %td= site.id
+        %td= site.short_title
+        %td= site.portal_title
+        %td= site.city.try(:title)
+        %td= site.domain
+        %td= site.subdomain
+        %td= site.sections.map(&:title).join(', ')
+        %td= site.admins.map(&:email).join(', ')
+        %td= site.docs.count
+        %td= site.created_at.to_date
+        %td
+          - if can? :manage, site
+            = link_to 'ред.', edit_admin_site_url(site)
+            = link_to 'уд.', admin_site_url(site), :method => :delete, :confirm => 'Вы уверены?', :data => { :'confirm-count' => 3 }

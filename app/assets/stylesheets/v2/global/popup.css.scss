@@ -1,0 +1,61 @@
+
+// TODO: old code, need refactoring
+
+.popup-layout {
+  display: none;
+  position: absolute;
+  min-height: 100%;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background: rgba(11,21,32,0.6);
+  background-image: image-url('v2/popup-bg.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  > .popup-window {
+    position: relative;
+    margin: 0 auto;
+    //min-width: 465px;
+    width: 890px;
+
+    .loading-overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: white;
+      opacity: 0.5;
+      z-index: 10;
+      text-align: center;
+      > span {
+        //@include inline-block;
+        vertical-align: middle;
+        &.circle {
+          width: 32px;
+          height: 32px;
+          background: transparent image-url("ajax-loader.gif") center center no-repeat;
+        }
+        &.text {
+          margin-left: 10px;
+          font-size: 20px;
+        }
+      }
+    }
+    .title-bar {
+    }
+  }
+}
+
+.popup-close {
+  position: absolute;
+  right: 25px;
+  top: 17px;
+  width: 35px;
+  height: 35px;
+  background: image_url("v2/popup-close.png") 0 0 no-repeat;
+  z-index: 1;
+  outline: none;
+  cursor: pointer;
+}

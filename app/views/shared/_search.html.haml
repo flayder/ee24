@@ -1,0 +1,4 @@
+.b-search.js-search
+  = form_tag do |f|
+    = submit_tag 'Найти'
+    .b-search__input= text_field_tag :query, nil, placeholder: 'Где в Праге вкусно поесть?'

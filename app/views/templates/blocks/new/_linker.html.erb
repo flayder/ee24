@@ -1,0 +1,6 @@
+<% if @linker && @linker.seo_text.present? %>
+<div class="g-box">
+  <div class="title">Интересное</div>
+  <%= simple_format(@linker.seo_text).html_safe %>
+</div>
+<% end %>

@@ -1,0 +1,55 @@
+.l-wrapper
+  %aside.l-section__aside
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    .b-catalog{itemscope: '', itemtype: 'http://schema.org/Organization'}
+      = render 'aux'
+      .b-company
+
+        .b-company__avatar
+          = image_tag @place.logo.url(:medium), size: '200x100', title: @place.logo_alt, alt: @place.logo_alt, class: 'avatar', itemprop: 'logo'
+
+        .b-company__info
+          %h1.title{itemprop: 'brand'}= @place.title
+          .annotation= @place.annotation
+          .g-aux.l
+            %span.g-aux__item.views= @place.page_views
+            = render partial: 'templates/blocks/comments_counter', locals: {doc: @place}
+          .manage-links
+            - if can? :manage, Version
+              = link_to t('.change_history'), admin_item_versions_url(item_type: 'Catalog', item_id: @place.id)
+            - if can? :edit, @place
+              = link_to t('.edit'), edit_catalog_url(@place)
+            - if can? :destroy, :catalog
+              = link_to t('.delete'), catalog_url(@place), method: :delete, confirm: t('.delete_confirm')
+              = link_to t('.approve'), approve_catalog_url(@place), confirm: 'Вы уверены?'
+          .description= sanitize @place.text, tags: %w(a p br em strong ul ol li img div)
+
+          - if (@place.lat? && @place.lng?)
+            .b-company__location
+              = link_to t('.show_on_map'), 'javascrpit:;', class: 'b-company__location-item map seo-link', data: {link: "#{show_place_map_index_path(id: @place)}"}
+              - if @place.site.map_provider == 'yandex'
+                = link_to t('.route'), 'javascrpit:;', class: 'b-company__location-item svetofor seo-link', data: {link: "#{show_place_map_index_path(id: @place.id, traffic: true)}"}
+
+          .b-company__contacts
+            .contacts__title= t('.contacts')
+            - if @place.email.present?
+              .contacts__item.email{itemprop: 'email'}= @place.email
+            - if @place.site_url.present?
+              .contacts__item.site{itemprop: 'sameas'}= @place.site_url
+            .contacts__item.phone{itemprop: 'telephone'}
+              - @place.tel.split(',').each do |phone_number|
+                = phone_number.strip
+            .contacts__item.address{itemprop: 'address', itemscope: '', itemtype: 'http://schema.org/PostalAddress'}
+              %span.street-address{itemprop: 'streetAddress'}= @place.street_address
+              - if @place.extended_address.present?
+                ,
+                %span.address-extended= @place.extended_address
+
+          = render partial: 'shared/tags', locals: {doc: @place}
+          - if @place.approved
+            .g-comments-wrapper.js-comments{data:{class: @place.class, id: @place.id}}
+              = render 'comments/comment_form_full', doc: @place, visible: false
+
+= seo_text @seo

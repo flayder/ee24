@@ -1,0 +1,8 @@
+<% unless %w(new create edit update).include?(params[:action]) %>
+  <div class="b-rubric-title">
+    РУБРИКИ
+    <div class="b-rubric-container">
+      <%= select_tag('catalog_rubrics', options_from_collection_for_select(@global_rubrics, :id, :title), prompt: 'Выберите рубрику', class: 'rubrics', data: { path: 'list/' }) %>
+    </div>
+  </div>
+<% end %>

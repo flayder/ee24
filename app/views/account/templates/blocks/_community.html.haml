@@ -1,0 +1,14 @@
+- if is_my_profile?(@user)
+
+  .b-account-communities
+    .b-account-communities__title Мои группы:
+    .b-account-communities__list= Faker::Lorem.sentence(30)
+  %ul.g-enity-list.type2
+    - 10.times do
+      %li.g-enity-list__item
+        .item__aux= Faker::Lorem.word()
+        = image_tag 'https://lorempixel.com/50/50/', size: '50x50', class: 'avatar'
+        .item__text= Faker::Lorem.sentence(10)
+
+- else
+  = render 'account/templates/blocks/public-community'

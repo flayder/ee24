@@ -1,0 +1,46 @@
+.b-rated {
+  margin-bottom: $dx;
+  border-top: 1px $gray-dark solid;
+  border-bottom: 1px $gray-dark solid;
+
+  &__title {
+    height: 0;
+    text-align: center;
+    span {
+      padding: 10px 25px;
+      position: relative;
+      top: -9px;
+      font: bold $font-size_subheader $font-family_subheader;
+      text-transform: uppercase;
+      color: $black;
+      background: #fff;
+    }
+  }
+
+  &__tabs {
+    padding: 25px 0 15px;
+    font: normal $font-size_subheader $font-family_subsubheader;
+    text-align: center;
+    border-bottom: 1px $gray-light solid;
+  }
+
+  &__tab {
+    display: inline-block;
+    margin: 0 15px;
+    color: $gray-dark;
+    text-transform: uppercase;
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover {text-decoration: none;}
+    &.active {
+      text-decoration: none;
+      color: $red-dark;
+      cursor: default;
+    }
+  }
+
+  .b-newslist {
+    display: none;
+    &.active {display: block}
+  }
+}

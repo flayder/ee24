@@ -1,0 +1,18 @@
+%table.table.table-bordered
+  %thead
+    %th= MainMenuLink.human_attribute_name :id
+    %th= MainMenuLink.human_attribute_name :title
+    %th= MainMenuLink.human_attribute_name :path
+    %th= MainMenuLink.human_attribute_name :css_class
+    %th= 'Действия'
+  - main_menu_links.each do |link|
+    %tr
+      %td= link.id
+      %td= link.title
+      %td= link_to link.path, link.path, target: '_blank'
+      %td= link.css_class
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_main_menu_link_path(link)
+          %li= link_to 'Удалить', admin_main_menu_link_path(link),
+                method: :delete, confirm: 'Вы уверены?'

@@ -1,0 +1,32 @@
+%div
+  .l-wrapper
+    .l-page__columns-line
+      .l-section__main.l-r-important
+        - if @last_docs.present?
+          .g-subheader3
+            ПОСЛЕДНИЕ СТАТЬИ
+            = link_to_unless_current_account 'Все статьи автора', user_docs_url(@user.subdomain), class: 'pull-right'
+          .b-tag__content
+            .l-cols.js-loaderByPage
+              - @last_docs.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+                .l-cols-3.l-l{class: "col#{index + 1}"}
+                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+        - if @last_events.present?
+          .g-subheader3
+            ПОСЛЕДНИЕ СОБЫТИЯ
+            = link_to_unless_current_account 'Все события автора', user_events_url(@user.subdomain), class: 'pull-right'
+          .b-tag__content
+            .l-cols.js-loaderByPage
+              - @last_events.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+                .l-cols-3.l-l{class: "col#{index+1}"}
+                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+        - if @last_galleries.present?
+          .g-subheader3
+            ПОСЛЕДНИЕ ФОТОРЕПОРТАЖИ
+            = link_to_unless_current_account 'Все фоторепортажи автора', user_photos_url(@user.subdomain), class: 'pull-right'
+          .b-tag__content
+            .l-cols.js-loaderByPage
+              .b-photos
+                .col1= render partial: 'photo/galleries_list_extended', object: @last_galleries
+      .l-section__aside.l-l
+        = render 'account/templates/blocks/aside', user: @user

@@ -1,0 +1,5 @@
+%li.check_box
+  = builder.check_box :_destroy, { checked: builder.object.persisted? }, '0', '1'
+  = builder.label :_destroy, builder.object.rubric.title
+  = builder.hidden_field :rubric_id
+  = builder.hidden_field :rubric_type

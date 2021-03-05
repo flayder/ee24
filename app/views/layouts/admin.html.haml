@@ -1,0 +1,143 @@
+!!!
+%html{lang: "en"}
+  %head
+    %meta{charset: "utf-8", content: "width=device-width, initial-scale=1", name: "viewport"}
+      %title
+        Onru #{"| #{@site.domain}"}
+      = csrf_meta_tags
+      /[if lt IE 9]
+        = javascript_include_tag  "//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"
+      %link{href: "images/apple-touch-icon.png", rel: "apple-touch-icon"}
+      %link{href: "images/apple-touch-icon-72x72.png", rel: "apple-touch-icon", sizes: "72x72"}
+      %link{href: "images/apple-touch-icon-114x114.png", rel:  "apple-touch-icon", sizes: "114x114"}
+      = favicon_link_tag "/favicon.ico", type: "image/png"
+      = javascript_include_tag "admin"
+      = stylesheet_link_tag "admin"
+      = stylesheet_link_tag '//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css', media: 'all'
+      = yield :head
+  %body.admin
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          = link_to "Onru #{"| #{@site.domain}"} ", root_url, class: "navbar-brand", target: '_blank'
+          = link_to "Скрыть меню", "#", class: "handler opened navbar-text"
+
+    .container-fluid
+      = render_admin_flash flash
+      .row-fluid
+        %aside.col-lg-3.opened{ role: 'sidebar' }
+          .well.well-small.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Меню
+              - if can? :manage, @site
+                %li
+                  = link_to_unless_current "Главное меню", admin_main_menu_links_path
+                %li
+                  = link_to_unless_current "Настройки портала", admin_site_path(@site)
+                %li
+                  = link_to_unless_current "Доступы", admin_site_admins_path
+                %li
+                  = link_to_unless_current "Блоки главной", admin_main_blocks_path
+              - if can?(:manage, DictionaryObject)
+                %li
+                  = link_to_unless_current "Словари", admin_dictionaries_path
+              - if @site.has_section?(:'admin/external_docs')
+                - if can?(:manage, ExternalDoc)
+                  %li
+                    = link_to_unless_current "Внешние доки", admin_external_docs_path
+                - if can?(:manage, ExternalDocRubric)
+                  %li
+                    = link_to_unless_current "Рубрики внешних доков", admin_external_doc_rubrics_path
+              - if can?(:manage, StaticDoc)
+                %li
+                  = link_to_unless_current "Статические страницы", admin_static_docs_path
+              - if can? :manage, Seo
+                %li
+                  = link_to_unless_current "SEO тексты", admin_seos_path
+              - if can? :manage, Redirect
+                %li
+                  = link_to_unless_current "Редиректы", admin_redirects_path
+              - if ads_needed? && can?(:manage, AdCode)
+                %li{class: ('active' if (params[:controller] == 'admin/ad_codes'))}
+                  = link_to 'Рекламные баннеры', admin_ad_codes_url
+              - if can?(:manage, SocialWidgetCode)
+                %li{class: ('active' if (params[:controller] == 'admin/social_widget_codes'))}
+                  = link_to 'Коды групп соцсетей', admin_social_widget_codes_url
+              - if can?(:manage, ActsAsTaggableOn::Tag)
+                %li
+                  = link_to_unless_current "Теги", admin_tags_url
+              - if can?(:manage, WebAnalyticsBlock)
+                %li
+                  = link_to_unless_current "Коды счетчиков", admin_web_analytics_blocks_url
+              - if can? :manage, SiteRubric
+                %li{class: ('active' if (params[:controller] == 'admin/site_rubrics'))}
+                  = link_to_unless_current 'Настройка рубрик', admin_site_rubrics_path
+              - if can? :manage, SearchQuery
+                %li
+                  = link_to_unless_current 'Поисковые запросы', admin_search_queries_path
+              - if can? :manage, User
+                %li
+                  = link_to_unless_current 'Пользователи', admin_users_path
+              - if can? :manage, Comment
+                %li
+                  =link_to_unless_current 'Комментарии', admin_comments_path
+              - if can? :manage, NewsRssLink
+                %li
+                  = link_to_unless_current 'RSS выгрузки', admin_news_rss_links_path
+              - if can? :manage, Industry
+                %li
+                  = link_to_unless_current 'Отрасли', admin_industries_path
+              - if can? :manage, Profession
+                %li
+                  = link_to_unless_current 'Профессии', admin_professions_path
+              - if can? :manage, Linker
+                %li
+                  = link_to_unless_current 'Линкеры', admin_linkers_path
+              - if can? :manage, Version
+                %li
+                  = link_to_unless_current 'Статистика изменений', admin_versions_url, title: 'Статистика изменений по разделам'
+              - if can? :manage, Category
+                %li
+                  = link_to_unless_current 'Категории', admin_categories_url
+              - if can? :manage, Community
+                %li
+                  = link_to_unless_current 'Сообщества', admin_communities_url
+              - if can? :manage, Question
+                %li
+                  = link_to_unless_current 'Вопросы', admin_questions_url
+              %li
+                = link_to_unless_current 'Картинки', admin_photos_path, title: 'Картинки'
+              %li
+                = link_to_unless_current 'Заявки', admin_request_forms_path, title: 'Зaявки'
+
+          - if @site.has_section?(:'forecast/locations')
+            .well.well-small.sidebar-nav
+              %ul.nav.nav-list
+                %li.nav-header Foreca
+                - if can?(:manage, Forecast::Settings)
+                  %li
+                    = link_to_unless_current "Настройки", edit_admin_forecast_settings_path
+                - if can?(:manage, Forecast::Icon)
+                  %li
+                    = link_to_unless_current "Иконки с фоном", admin_forecast_icons_path
+                - if can?(:manage, Forecast::District)
+                  %li
+                    = link_to_unless_current "Районы", edit_admin_forecast_districts_path
+          .well.well-small.sidebar-nav
+            %ul.nav.nav-list
+              %li.nav-header Дизайн
+              - if can?(:manage, Design::Template)
+                %li
+                  = link_to_unless_current "Темплейты", admin_design_templates_path
+              - if can?(:manage, Design::Stylesheet)
+                %li
+                  = link_to_unless_current "CSS шаблон", admin_design_stylesheets_path
+          - if current_user.is_admin?
+            .well.well-small.sidebar-nav
+              %ul.nav.nav-list
+                %li.nav-header Меню Evrone
+                %li
+                  = link_to_unless_current "Партнерские порталы", admin_sites_path
+        .col-lg-9{role: 'content'}
+          = yield
+      %footer

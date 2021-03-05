@@ -1,0 +1,78 @@
+.b-vacancies {
+  margin-bottom: 60px;
+  .g-subheader {margin-top: 10px}
+}
+
+.b-vacancies-list {
+  margin-bottom: 20px;
+
+  & &__item {
+    padding: 20px 0;
+    border-bottom: 1px $gray-light solid;
+    &.hot .item__title a {color: $red-dark;}
+  }
+
+  .item__info {@include clearfix;}
+
+  .item__employment {
+    @include grid-size(2);
+    @include ellipsis;
+    float: right;
+    font-size: 16px;
+    text-align: right;
+    color: $gray-mid4;
+  }
+
+  .item__title {
+    @include grid-size(4);
+    font: 700 24px/27px $font-family_proxymanova;
+  }
+
+  .item__aux {
+    @include clearfix;
+    margin-top: 5px;
+  }
+
+  .item__datetime {
+    padding-top: 6px;
+    float: right;
+    font-size: 10px;
+    text-align: right;
+    color: $gray-light2;
+    text-transform: uppercase;
+  }
+
+  .item__employer,
+  .item__location {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 16px;
+  }
+
+  .item__employer {color: $gray-mid2;}
+
+  .item__location {
+    padding-left: 15px;
+    color: $gray-mid4;
+    background: asset_data_url('v2/location_gray_mini.png') left center no-repeat;
+  }
+
+  .item__category {
+    margin-top: 5px;
+    font-size: 11px;
+    text-transform: uppercase;
+    a {color: $blue-regular;}
+  }
+
+  .item__industry {
+    margin-top: 10px;
+    font: 11px $font-family_proxymanova;
+    text-transform: uppercase;
+    color: $blue-light2;
+    &:before {
+      content:"";
+      display:table;
+      clear:both;
+    }
+  }
+}

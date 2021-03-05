@@ -1,0 +1,23 @@
+.g-info {
+  padding: 30px;
+  background: $blue-light;
+  margin-bottom: 20px;
+
+  &__title {
+    margin-bottom: 5px;
+    font: 700 19px $font-family_proxymanova;
+    color: $gray-dark2;
+    text-transform: uppercase;
+  }
+
+  &__text {font-size: 16px}
+
+  &__aux {
+    margin-top: 10px;
+    @include clearfix;
+    .g-button {
+      float: left;
+      margin-right: 15px;
+    }
+  }
+}

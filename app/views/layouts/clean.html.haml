@@ -1,0 +1,33 @@
+!!!
+%html{:lang => "ru-RU"}
+  %head
+    %meta{:charset => "UTF-8"}
+    = raw meta_title
+    = render 'layouts/meta_fields'
+    = raw favicon
+
+    - if Rails.env.development?
+      :javascript
+        var DEBUG_MODE = true;
+    /[if lt IE 9]
+      = javascript_include_tag  "//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"
+    = stylesheet_link_tag "clean"
+    = javascript_include_tag '//userapi.com/js/api/openapi.js?45'
+    :javascript
+      VK.init({apiId: #{vk_app_id}, onlyWidgets: true});
+    = yield :head
+    = csrf_meta_tags
+
+    %body{class: "l-#{@css_layout || "#{controller_name}"} l-clean-page"}
+      = render 'application/layout/flashes'
+      %div
+      -#.logo-line
+            = link_to image_tag(@site.logo.url, :alt => @site.portal_title, :title => @site.portal_title), root_url, class: "logo"
+
+      %table.l-clean-page__table
+        %tr
+          %td.center.popup-window
+            = yield
+      -#.counters-line
+      -#  = render "layouts/clean/footer/counters"
+      = web_analytics @site

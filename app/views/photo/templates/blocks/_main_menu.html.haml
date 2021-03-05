@@ -1,0 +1,21 @@
+%nav.b-site-navigation
+  %div.l-page__center
+    .main-links
+      .line
+        = link_to_current 'Фото', "/photo"
+        - @photo_rubrics.each do |global_rubric|
+          - if @rubric.present? && @rubric.id == global_rubric.id
+            %span.active= global_rubric.title
+          - else
+            = link_to h(global_rubric.title), "/photo/#{global_rubric.link}"
+      .line.user-actions
+        - if logged_in?
+          - if params[:action] == 'my'
+            %span.active Мои фоторепортажи
+          - else
+            = link_to 'Мои фоторепортажи', my_galleries_url
+        - if can?(:manage, Gallery)
+          = link_to_current 'От юзеров', not_approved_users_galleries_url, class: 'red'
+          = link_to_current 'От редакции', not_approved_editors_galleries_url, class: 'red'
+    - if @site.voronezh?
+      = render partial: 'layouts/special_projects_menu'

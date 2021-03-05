@@ -1,0 +1,48 @@
+.feed {
+    position: relative;
+
+    .doc-item {
+        position: relative;
+        margin-bottom: 28px;
+    }
+    .doc-image {
+        position: relative;
+        float: left;
+        width: 30%;
+
+        img {
+            max-width: 100%;
+        }
+    }
+    .doc-content {
+        position: relative;
+        margin-left: calc(30% + 20px);
+    }
+    .doc-info {
+        margin-bottom: 0.2em;
+        font-size: 1.2em;
+        line-height: 1.2em;
+    }
+    .doc-date {
+        font-family: $specialFont;
+        color: $baseColorLightGray;
+    }
+    .doc-category {
+        font-family: $specialFont;
+        text-transform: uppercase;
+        color: $baseColorRed;
+
+        a {
+            color: $baseColorRed;
+        }
+    }
+    .doc-title {
+        font-family: $baseFont;
+        font-size: 1em;
+        line-height: 1.1em;
+
+        a {
+            color: $baseColorText;
+        }
+    }
+}

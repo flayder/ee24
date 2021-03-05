@@ -1,0 +1,68 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    = render partial: '/weather/templates/blocks/right'
+
+  - cache('weather_fragment', expires_in: 1.hour) do
+    - current_weather = get_current_weather
+    - forecast_weather = get_forecast_weather
+    - if current_weather && forecast_weather && current_weather['main']
+      %div.l-section__main
+        %div.l-row
+          %div.l-cols-2.l-l
+            %div.weather-current-title
+              Сейчас
+          %div.l-cols-3.l-l
+            %div.weather-current-city
+              Прага
+            %div.weather-current-temp
+              = image_tag get_icon_url(current_weather)
+              = "#{current_weather['main']['temp'].round} °C"
+            .weather-current-description= current_weather['weather'][0]['description']
+          %div.l-cols-4.l-l
+            %table.b-weather
+              %tr
+                %td Ветер
+                %td= "#{current_weather['wind']['speed']} м/с"
+              %tr
+                %td Давление
+                %td= "#{current_weather['main']['pressure']} hPa"
+              %tr
+                %td Влажность
+                %td= "#{current_weather['main']['humidity']} %"
+              %tr
+                %td Восход
+                %td= "#{Time.at(current_weather['sys']['sunrise']).in_time_zone("Prague").strftime("%H:%M")}"
+              %tr
+                %td Закат
+                %td= "#{Time.at(current_weather['sys']['sunset']).in_time_zone("Prague").strftime("%H:%M")}"
+
+      - if forecast_weather['list']
+        - forecast_weather['list'].each do |weather|
+          - date = Time.at(weather['dt']).in_time_zone("Prague").to_date
+          - if date > Date.today
+            %div.l-row
+              %div.l-cols-5.l-l
+                %div{:class => "weather-forecast-title #{['Сб', 'Вс'].include?(Russian::strftime(date, '%a')) ? 'weekend' : nil}"}
+                  %span.day-num= Russian::strftime(date, '%e %B')
+                  %span.day-value= Russian::strftime(date, ' %a')
+              %div.l-cols-4.l-l
+                %table.b-weather
+                  %tr
+                    %td Температура днем
+                    %td
+                      .weather-forecast-temp
+                        = "#{weather['temp']['day'].round} °C"
+                        = image_tag get_icon_url(weather)
+                      .weather-forecast-description= weather['weather'][0]['description']
+                  %tr
+                    %td Температура ночью
+                    %td= "#{weather['temp']['night'].round} °C"
+                  %tr
+                    %td Давление
+                    %td= "#{weather['pressure']} hPa"
+                  %tr
+                    %td Влажность
+                    %td= "#{weather['humidity']} %"
+
+= seo_text @seo

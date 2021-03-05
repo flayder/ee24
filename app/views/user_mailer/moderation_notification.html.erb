@@ -1,0 +1,8 @@
+Здравсвуйте, <%= @obj.user.login %>
+<br><br>
+<%= t "moderation_email_subjects.new_#{@obj.class.name.underscore}", :title => @obj.title %> Вам придёт уведомление, как только решение о публикации на сайт будет принято.
+
+<br><br>
+С уважением,
+команда <%= Settings.portal_domain %>
+<%= render partial: "user_mailer/unsubscribe_text", locals: { user: @obj.user } %>

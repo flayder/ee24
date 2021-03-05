@@ -1,0 +1,16 @@
+# encoding: utf-8
+#= require jquery
+#= require ultimate/helpers
+#= require ultimate/underscore/underscore
+#= require ultimate/underscore/underscore.string
+#= require ultimate/underscore/underscore.outcasts
+#= require ultimate/jquery.base
+#= require ultimate/flash
+#= require app
+#= require_directory ./widgets/weather
+
+
+@DEBUG_MODE = <%= Rails.env.development? ? 'true' : 'false' %>
+
+$ ->
+  App.start()

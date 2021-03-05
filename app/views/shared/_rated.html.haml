@@ -1,0 +1,31 @@
+-# TODO: глобализовать популярныее новости
+- if @popular_week && @popular_month
+  - unless (@popular_week.empty? and @popular_month.empty?)
+    .b-rated.js-tabs
+      .b-rated__title
+        %span Самое читаемое
+      .b-rated__tabs
+        .b-rated__tab.js-tab.active{'data-tab' => 'week'} За неделю
+        .b-rated__tab.js-tab{'data-tab' => 'month'} За месяц
+      .b-rated__container
+        .b-newslist.week.js-tabContainer.active
+          %ul.b-newslist__content
+            - @popular_week.each do |item|
+              %li.b-newslist__item
+                %span.b-newslist__aux
+                  = link_to item.rubric.title, '#', class: 'b-newslist__rubric'
+                  %span.b-newslist__date
+                    &#47;&#47;
+                    = item.created_at.strftime('%d.%m.%Y')
+                = link_to item.title, item.url, class: 'b-newslist__title'
+
+        .b-newslist.month.js-tabContainer
+          %ul.b-newslist__content
+            - @popular_month.each do |news_doc|
+              %li.b-newslist__item
+                .b-newslist__aux
+                  = link_to news_doc.rubric.title, '#', class: 'b-newslist__rubric'
+                  %span.b-newslist__date
+                    &#47;&#47;
+                    = news_doc.created_at.strftime('%d.%m.%Y')
+                = link_to news_doc.title, news_doc.url, class: 'b-newslist__title'

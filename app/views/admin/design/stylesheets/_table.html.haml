@@ -1,0 +1,14 @@
+%table.table.table-bordered
+  %thead
+    %th= Design::Stylesheet.human_attribute_name :id
+    %th= Design::Stylesheet.human_attribute_name :name
+    %th= 'Действия'
+  - stylesheets.each do |stylesheet|
+    %tr
+      %td= stylesheet.id
+      %td= stylesheet.name
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_design_stylesheet_path(stylesheet)
+
+          %li= link_to 'Удалить', admin_design_stylesheet_path(stylesheet), :method => :delete, :confirm => 'Вы уверены?'

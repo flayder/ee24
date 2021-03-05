@@ -1,0 +1,28 @@
+.b-communities-list {
+  & &__item {
+    min-height: 58px;
+    padding-left: 70px;
+    margin-bottom: 30px;
+    &:last-child {margin-bottom: 0;}
+
+    .avatar {
+      margin: 0 12px 0 -70px;
+      float: left;
+      border: 4px $gray-light4 solid;
+      border-radius: 50%;
+    }
+
+    .title {
+      font-size: 18px;
+      line-height: 21px;
+      color: $blue-mid;
+    }
+
+    .description {
+      margin: 3px 0 10px;
+      font-size: 15px;
+      line-height: 17px;
+      color: $gray-mid2;
+    }
+  }
+}

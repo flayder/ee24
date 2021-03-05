@@ -1,0 +1,6 @@
+- if docs.present?
+  = render partial: 'shared/docs_paginated', object: docs
+- else
+  .b-box
+    - no_info ||= 'По вашему запросу ничего не найдено.'
+    = no_info

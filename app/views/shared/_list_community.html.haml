@@ -1,0 +1,10 @@
+.b-list-community><
+  = image_tag community.logo.url, size: '90x90', class: 'b-list-community__cover'
+  = link_to community.name, [community.category, community], class: 'b-list-community__title'
+  .b-list-community__description= Faker::Lorem.sentence(10)
+  .g-aux.mini-blue.l
+    .g-aux__item.users= rand(100)
+    .g-aux__item.docs= community.posts.size
+  -#.b-list-community__stats
+    = link_to rand(100), 'javascript:;', class: 'b-list-community__users'
+    = link_to community.posts.size, [community.category, community, :posts], class: 'b-list-community__posts'

@@ -1,0 +1,42 @@
+%table.table.table-bordered
+  = simple_form_for @search, :url => admin_photos_path, class: 'form-horizontal' do |form|
+    %thead
+      %th= 'ID'#form.sort_link :id
+      %th= Photo.human_attribute_name :image
+      %th= 'Info'
+      %th= 'Ссылка'
+      %th= 'Документ'
+      %th= Photo.human_attribute_name :title
+      %th= 'Comment'
+      %th= 'Watermarked'#form.sort_link :watermarked
+      %th= 'Тип'
+      %th= 'Создано'#form.sort_link :created_at
+      %th= 'Действия'
+  = form_tag(bulk_update_admin_photos_path, id: 'bulk_edit_form') do |f|
+    - photos.each do |photo|
+      - file = photo.image.file.exists? ? Magick::Image::read(photo.image.file.file).first : nil
+      %tr
+        %td
+          = photo.id
+          = hidden_field_tag "ids[]", photo.id, :id => nil
+        %td
+          %div{style: 'width: 80px; overflow: hidden;'}
+            = image_tag photo.image.url(:xxsmall)
+        %td
+          - if file
+            %span= "#{file.format}: #{file.columns}x#{file.rows}"
+        %td= link_to 'ссылка на картинку', photo.image_url, target: "_blank"
+        %td= link_to 'ссылка на статью', photo.photo.url, target: "_blank"
+        %td= text_field_tag "photo[#{photo.id}][title]", photo.title
+        %td= text_field_tag "photo[#{photo.id}][comment]", file ? file['comment'].try(:force_encoding, "UTF-8") : '', disabled: !file
+        %td
+          = hidden_field_tag "photo[#{photo.id}][watermark]", photo.watermarked ? '1' : ''
+          = check_box_tag "photo[#{photo.id}][watermark]", '1', photo.watermarked, disabled: photo.watermarked || !file
+        %td= photo.photo_type
+        %td= photo.created_at
+        %td
+          = link_to 'ред.', edit_admin_photo_url(photo)
+          = link_to 'уд.', admin_photo_url(photo), :method => :delete, :confirm => 'Вы уверены, что хотите удалить картинку?'
+    %tr
+      %td{colspan: 12}
+        = submit_tag 'Обновить все на странице', class: 'btn btn-primary'

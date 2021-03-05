@@ -1,0 +1,8 @@
+<ul class="nav nav-pills">
+  <li <%= 'class = active' if (params[:action] == 'index') %>><%= link_to "Рабочие (#{@in_work_cnt})", admin_tags_url %></li>
+  <li <%= 'class = active' if (params[:action] == 'without' and params[:taggable_type] == 'Doc') %>><%= link_to "Без статей (#{@without_doc_cnt})", without_admin_tags_url(taggable_type: 'Doc') %></li>
+  <li <%= 'class = active' if (params[:action] == 'without' and params[:taggable_type] == 'Gallery') %>><%= link_to "Без галерей (#{@without_photo_cnt})", without_admin_tags_url(taggable_type: 'Gallery') %></li>
+  <li <%= 'class = active' if (params[:action] == 'without' and params[:taggable_type] == 'Catalog') %>><%= link_to "Без компаний (#{@without_catalog_cnt})", without_admin_tags_url(taggable_type: 'Catalog') %></li>
+  <li <%= 'class = active' if (params[:action] == 'without' and params[:taggable_type] == 'DictionaryObject') %>><%= link_to "Без словарей (#{@without_dict_cnt})", without_admin_tags_url(taggable_type: 'DictionaryObject') %></li>
+  <li <%= 'class = active' if params[:action] == 'without_description' %>><%= link_to "Без описания (#{@without_descr_cnt})", without_description_admin_tags_url %></li>
+</ul>

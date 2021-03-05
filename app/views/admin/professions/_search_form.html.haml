@@ -1,0 +1,9 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_professions_path do |form|
+      = form.input :id_eq, :required => false
+      = form.input :title_eq, :required => false
+      = form.select :industry_id_eq, Industry.all.map { |i| [i.title, i.id] }, :required => false, :prompt => 'Выберите отрасль', :include_blank => 'Все отрасли'
+      %br
+      = form.button :submit, 'Найти', class: 'btn'

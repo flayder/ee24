@@ -1,0 +1,8 @@
+$('#nothing_found').remove();
+<% if @places_json.present? %>
+  Gmaps.large_map.replaceMarkers(<%=raw @places_json %>);
+  Gmaps.large_map.adjustMapToBounds();
+<% else %>
+  $('.map_column').after('<p id=\"nothing_found\" class =\"red\">Ничего не найдено, попробуйте другой запрос.</p>');
+  Gmaps.large_map.clearMarkers();
+<% end %>

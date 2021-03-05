@@ -1,0 +1,5 @@
+- if seo.present?
+  .l-wrapper
+    .g-seo
+      .g-seo__text= raw(seo.text)
+      = link_to 'Редактировать SEO текст', edit_admin_seo_path(seo), target: '_blank' if can?(:manage, Seo)

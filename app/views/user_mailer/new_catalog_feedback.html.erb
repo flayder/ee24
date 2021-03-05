@@ -1,0 +1,9 @@
+Здравсвуйте, <%= @user.login %>
+<br><br>
+Был оставлен новый отзыв о компании "<%= @catalog.title %>".
+<br><br>
+Для просмотра перейдите по ссылке: <%= link_to @catalog.url(@catalog.site), @catalog.url(@catalog.site) %>
+<br><br>
+С уважением,
+команда <%= Settings.portal_domain %>
+<%= render partial: "user_mailer/unsubscribe_text", locals: { user: @user } %>

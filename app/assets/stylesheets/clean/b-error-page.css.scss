@@ -1,0 +1,41 @@
+.b-error-page {
+  text-align: left;
+  width: 400px;
+  height: 360px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -180px;
+  h1.title {
+    font-size: 250px;
+    line-height: 170px;
+    margin-left: -10px;
+    margin-bottom: 0;
+    color: $white;
+    font-family: $font-family_proxymanova;
+    font-weight: normal;
+  }
+  h2.subtitle {
+    font-size: 25px;
+    line-height: 30px;
+    color: $white;
+    font-family: $font-family_nav;
+  }
+  p.message {
+    margin: 40px 0;
+    font-size: 20px;
+    line-height: 22px;
+    color: $white;
+    font-family: $font-family_base;
+  }
+  p.link {
+    a {
+      color: $white;
+      text-transform: uppercase;
+      font-size: 15px;
+      line-height: 22px;
+    }
+
+  }
+}

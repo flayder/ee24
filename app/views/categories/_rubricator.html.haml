@@ -1,0 +1,7 @@
+.b-rubricator.extended
+  .b-rubricator__title= t('.all_category')
+  - @categories.each do |category|
+    .b-rubricator__item
+      .logo= image_tag category.logo, size: '40x40'
+      = link_to_unless_current category.name, category, class: 'link' do
+        %span.active= category.name

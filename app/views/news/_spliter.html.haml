@@ -1,0 +1,7 @@
+.splitter
+  %span
+    - if date == 1.day.ago.to_date
+      %strong Вчера
+    - else
+      %strong= Russian.strftime(date, '%a')
+      = Russian.strftime(date, '%d.%m')

@@ -1,0 +1,11 @@
+test:
+  adapter: mysql2
+  database: 36on_test
+  username: root
+  encoding: utf8
+  
+development:
+  adapter: mysql2
+  database: 36on_development
+  username: root
+  encoding: utf8

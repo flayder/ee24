@@ -1,0 +1,4 @@
+.l-cols
+  - events.each do |slice_events|
+    .l-cols-3.l-l
+      = render partial: 'shared/event', collection: slice_events, as: 'event'

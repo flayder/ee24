@@ -1,0 +1,11 @@
+%h1= "Словарь \"#{@dictionary.title}\""
+
+%h3 Рубрики:
+%ul
+  - @dictionary.rubrics.each do |rubric|
+    %li
+      = rubric.title
+      = link_to 'ред.', edit_admin_dictionary_rubric_path(rubric)
+      = link_to 'уд.', [:admin, rubric], :method => :delete
+      = link_to 'добавить статью', new_admin_dictionary_object_path(:rubric_id => rubric.id)
+= link_to 'Добавить рубрику', new_admin_dictionary_rubric_path(:dictionary_id => @dictionary.id)

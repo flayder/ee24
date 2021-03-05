@@ -1,0 +1,25 @@
+<div class="g-box" style="margin-top: 10px;">
+  <% if galleries.present? %>
+    <% if galleries.first.photos.empty? %>
+      <%= render partial: 'photo/block_links', locals: { docs: galleries.first(5) } %>
+    <% else %>
+      <div class="b-news main">
+        <div class="content">
+          <%= image_tag url_for_file_column(galleries.first.photos.first, 'image', 'micro_gallery'), alt: galleries.first.title, class: "photo" if galleries.first.photos.any? %>
+          <div class="info">
+            <%= link_to galleries.first.title, galleries.first.url(@site), class: "title" %>
+            <time datetime="<%=Russian::strftime(galleries.first.created_at, "%Y")%>">
+              <%= Russian::strftime(galleries.first.created_at, "%d %B %Y, %H:%M") %>
+            </time>
+            <div class="views">
+              <%= image_tag 'icons/views.png', class: "icon" %>
+              <%= galleries.first.page_views %>
+              <%= render partial: 'templates/blocks/comments_counter', locals: {doc: galleries.first} %>
+            </div>
+          </div>
+        </div>
+        <%= render partial: 'photo/block_links', locals: { docs:  galleries[1..5] } %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

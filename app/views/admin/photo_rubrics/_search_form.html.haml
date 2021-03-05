@@ -1,0 +1,8 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_photo_rubrics_path do |form|
+      = form.input :id_eq, :required => false
+      = form.input :title_eq, :required => false
+      = form.input :link_eq, :required => false
+      = form.button :submit, 'Найти', class: 'btn'

@@ -1,0 +1,156 @@
+.b-companies {
+  margin-left: -$dx;
+  margin-bottom: $dx;
+  @include clearfix;
+
+  &__item {
+    display: inline-block;
+    @include box-sizing(border-box);
+    @include grid-size(3);
+    min-height: 285px;
+    margin-left: $dx;
+    margin-bottom: $dx;
+    vertical-align: top;
+    border: 1px $gray-light4 solid;
+
+    .avatar {
+      padding: 20px;
+      height: 100px;
+      margin: 0 auto;
+      img {margin: 0 auto}
+    }
+
+    .item__description {
+      padding: 20px;
+      border-top: 1px $gray-light4 solid;
+      background-color: $gray-light3;
+    }
+
+    .title {
+      @include ellipsis();
+      white-space: normal;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .category {
+      margin-top: 5px;
+      font-size: 12px;
+      text-transform: uppercase;
+      a {
+        color: $gray-dark2;
+        display: block;
+      }
+    }
+
+    .contacts {
+      margin-top: 20px;
+      &__item {
+        height: 20px;
+        padding-left: 25px;
+        margin-bottom: 10px;
+        color: $gray-dark2;
+        background: left center no-repeat;
+        &:last-child {margin-bottom: 0;}
+        &.phone {background-image: asset_data_url('v2/contacts/phone_dark.png');}
+        &.address {background-image: asset_data_url('v2/contacts/house_dark.png');}
+      }
+    }
+    .status {
+      margin-top: 20px;
+    }
+  }
+}
+
+.profile__list-of-companies {
+  margin: 0 20px;
+
+  .b-companies__item {
+    display: block;
+    margin-left: 0;
+    padding-bottom: 20px;
+    min-height: 140px;
+    width: 100%;
+    border-width: 0 0 1px 0;
+    
+    &:first-child {
+      .avatar, .item__description{
+        padding-top: 0;
+      }
+    }
+
+    .company_actions {
+      .g-button {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .avatar {
+    float: left;
+    padding-left: 0;
+  }
+
+  .item__description {
+    margin-left: 220px;
+    border: none;
+    background: transparent;
+
+    .status {
+      margin-top: 0;
+      padding: 6px;
+      border-radius: 4px;
+      background-color: $blue-light;
+    }
+
+    .title {
+      font-weight: normal;
+    }
+  }
+
+  .vacancy_actions {
+    margin-top: 16px;
+  }
+
+  .vacancy__show-more {
+    position: relative;
+    border-bottom: 1px dashed;
+    text-decoration: none;
+
+    &:hover {
+      border-bottom: none;
+    }
+  
+    &:after {
+      content: '▾';
+      position: absolute;
+      top: 0;
+      right: -13px;
+    }
+
+    &.open:after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .vacancy_list {
+    display: none;
+    padding-top: 6px;
+
+    &.open {
+      display: block;
+    }
+
+    p {
+      margin-top: 16px;
+    }
+
+    .vacancy_link-edit {
+      color: $blue-light2;
+    }
+
+    .vacancy_link-remove {
+      color: $red-dark;
+    }
+  }
+}

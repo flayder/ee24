@@ -1,0 +1,14 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <%= render "date_select" %>
+  </aside>
+  <section class="l-page__column right">
+    <%= render partial: "/afisha/templates/blocks/right" %>
+  </section>
+</div>
+
+<div class="g-box">
+  <% if @events.present? -%>
+    <%= render "item", items: @events %>
+  <% end %>
+</div>

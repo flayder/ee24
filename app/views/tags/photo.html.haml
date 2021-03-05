@@ -1,0 +1,21 @@
+.l-wrapper.l-content
+  .l-page__columns-line
+    .l-section__aside
+      = render partial: 'shared/adv-aside'
+
+    .l-section__main
+      .b-tag
+        %div{class: "b-tag__description#{@branding_logo}"}
+          .b-tag__description__title
+            = @tag.name
+
+        = render 'menu'
+
+        .b-tag__content
+          .l-cols.js-loaderByPage
+            .b-photos
+              .col1= render partial: 'photo/galleries_list_extended', object: @galleries
+            .g-loader
+              =# link_to "Загрузить ещё новости", 'javascript:;', data: {page: @galleries.next_page}, class: 'g-loader__link js-loader'
+              = will_paginate @galleries
+= seo_text @seo

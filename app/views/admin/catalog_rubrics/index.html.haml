@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая рубрика компаний', new_admin_catalog_rubric_path
+= render :partial => 'table', :locals => { :catalog_rubrics => @catalog_rubrics }
+
+= will_paginate_bootstrap @catalog_rubrics

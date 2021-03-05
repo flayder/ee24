@@ -1,0 +1,23 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <%= render '/catalog/rubrics' %>
+    <div class="g-box b-catalog">
+      <p>
+        Информация о Вашей фирме получена. Она будет проверена модератором в течение суток и опубликована на сайте в
+        выбранном Вами разделе. Если информация окажется не достоверной – модератор может удалить организацию из
+        каталога.
+      </p>
+        <%= link_to 'Добавить компанию', controller: 'catalog', action: "new", parent_id: params[:id] %>
+        <%= link_to 'Вернуться на главную', controller: "/main", subdomain: false %>
+        <% if can? :edit, @catalog %>
+          <%= link_to 'Редактировать компанию', edit_catalog_path(@catalog) %></li>
+        <% end %>
+        <% if @catalog.approved? %>
+          <%= link_to 'Перейти на страницу компании', @catalog.url %>
+        <% end %>
+    </div>
+  </aside>
+  <section class="l-page__column right">
+    <%= render partial: "/catalog/templates/blocks/right2" %>
+  </section>
+</div>

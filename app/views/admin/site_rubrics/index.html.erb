@@ -1,0 +1,8 @@
+<h1>Настройка рубрик</h1>
+<% SiteRubric::RUBRIC_TYPES.each do |rubric_class| %>
+    <ul>
+      <li>
+        <%= link_to rubric_class.constantize.model_name.human, [:admin, rubric_class.underscore.pluralize] %>
+      </li>
+    </ul>
+<% end %>

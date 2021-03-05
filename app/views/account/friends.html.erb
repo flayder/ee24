@@ -1,0 +1,41 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <%= render 'account/templates/blocks/left' %>
+  </aside>
+  <section class="l-page__column right">
+    <div class='b-rubric-title'>Друзья</div>
+    <div class='g-box'>
+      <% if @friends.present? %>
+        <table class='friends'>
+          <% @friends.each do |friend| %>
+            <tr class='friend_row'>
+              <td class='avatar'>
+                <%= link_to (image_tag(avatar_url(friend, "medium"), alt: friend.login, title: friend.login, width: '60px', height: '60px')), account_url(friend) %>
+              </td>
+              <td class='login'>
+                <%= link_to friend.login, account_url(friend) %>
+                <% if friend.visited_at %>
+                  <div class="last_visit">Последний раз был на сайте <%= Russian.strftime(friend.visited_at, '%d %B %H:%M') %></div>
+                <% end %>
+              </td>
+              <td class='friend_links'>
+                <div>
+                  <%= link_to 'Написать сообщение', user_new_message_url(friend.subdomain), class: 'green' %>
+                </div>
+                <div>
+                  <%= link_to 'Убрать из друзей', user_del_friend_url(friend.subdomain), confirm: "Удалить? Вы уверены?", class: 'grey', method: :delete %>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan='3'><hr class='delimiter' /></td>
+              </tr>
+          <% end %>
+        </table>
+        <%= will_paginate @friends %>
+      <% else %>
+        Нет друзей
+      <% end %>
+    </div>
+  </section>
+</div>

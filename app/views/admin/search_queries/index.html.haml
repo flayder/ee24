@@ -1,0 +1,5 @@
+= render :partial => 'search_form'
+
+= render :partial => 'table', :locals => { :search_queries => @search_queries }
+
+= will_paginate_bootstrap @search_queries

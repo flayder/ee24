@@ -1,0 +1,21 @@
+%table.table.table-bordered
+  %thead
+    %th= Profession.human_attribute_name :id
+    %th= Profession.human_attribute_name :title
+    %th= Profession.human_attribute_name :main
+    %th= Profession.human_attribute_name :industry_id
+    %th= 'Кол-во резюме'
+    %th= 'Кол-во вакансий'
+    %th= 'Действия'
+  - professions.each do |profession|
+    %tr
+      %td= profession.id
+      %td= profession.title
+      %td= t profession.main.to_s
+      %td= profession.industry.try(:title)
+      %td= profession.resumes.count
+      %td= profession.vacancies.count
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_profession_path(profession)
+          %li= link_to 'Удалить', admin_profession_path(profession), :method => :delete, :confirm => 'Вы уверены?'

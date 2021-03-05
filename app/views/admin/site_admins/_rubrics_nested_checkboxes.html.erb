@@ -1,0 +1,17 @@
+<ul>
+  <% @site.rubrics(global_rubric_klass.name).each do |global_rubric| %>
+    <li class="check_box nested_root">
+      <%= check_box_tag "#{global_rubric_klass.name.underscore}_#{global_rubric.id}", true, @site_admin.permitted_rubrics(rubric_klass) == global_rubric.send(rubric_klass.name.underscore.pluralize).pluck(:id), :id => "#{global_rubric_klass.name.underscore}_#{global_rubric.id}" %>
+      <%= label_tag "#{global_rubric_klass.name.underscore}_#{global_rubric.id}", global_rubric.title, :for => "#{global_rubric_klass.name.underscore}_#{global_rubric.id}" %>
+    </li>
+    <ul>
+      <% global_rubric.send(rubric_klass.name.underscore.pluralize).each do |rubric| %>
+        <li class="check_box">
+          <%= hidden_field_tag "site_admin[rubric_permissions_attributes][][rubric_type]", rubric_klass.name %>
+          <%= check_box_tag "site_admin[rubric_permissions_attributes][][rubric_id]", rubric.id, @site_admin.permitted_rubrics(rubric_klass).include?(rubric.id), :id => "site_admin_#{rubric_klass.name}_rubric_permission_#{rubric.id}" %>
+          <%= label_tag "site_admin_#{rubric_klass.name}_rubric_permission_#{rubric.id}", rubric.title %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>

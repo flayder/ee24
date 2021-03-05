@@ -1,0 +1,17 @@
+%div
+  .l-wrapper
+    .l-page__columns-line
+      .l-section__main.l-r-important
+        - if @companies.present?
+          .b-tag
+            .b-tag__content
+              .l-cols.js-loaderByPage
+                .b-photos
+                  .profile__list-of-companies
+                    .col1= render partial: 'shared/profile_company', collection: @companies, as: 'company'
+          = will_paginate_new @companies
+        - else
+          .g-info
+            .g-info__text= is_my_profile?(@user) ? "У вас ещё нет компаний." : "У пользователя нет компаний."
+      .l-section__aside.l-l
+        = render 'account/templates/blocks/aside', user: @user

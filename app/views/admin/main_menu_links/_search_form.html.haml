@@ -1,0 +1,17 @@
+.well
+  %h3 Поиск
+  #search_form.row-fluid
+    .col-lg-4
+      = form_for @search, url: admin_main_menu_links_path do |f|
+        .form-group
+          = f.label :id_eq
+          = f.text_field :id_eq, required: false, class: 'form-control'
+        .form-group
+          = f.label :title_eq
+          = f.text_field :title_eq, required: false, class: 'form-control'
+        .form-group
+          = f.label :path_eq
+          = f.text_field :path_eq, required: false, class: 'form-control'
+        = f.submit 'Найти', class: 'btn btn-default'
+    .col-lg-8
+    .clearfix

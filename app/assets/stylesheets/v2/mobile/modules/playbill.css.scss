@@ -1,0 +1,14 @@
+.doc-playbill-date {
+    display: inline-block;
+    padding: 0.4em 0.5em 0.2em;
+    background-color: $baseColorBlue;
+    color: #fff;
+    font-family: $specialFontBold;
+    font-size: 0.8em;
+    line-height: 0.8em;
+
+    &+.doc-category {
+        display: block;
+        margin-top: 0.2em;
+    }
+}

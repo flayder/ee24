@@ -1,0 +1,19 @@
+.l-wrapper
+
+  -# = render 'howto'
+
+  %aside.l-section__aside
+    = render 'rubricator'
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    / = render 'shared/search'
+    / #= render 'title'
+    .g-title
+      %h1.title= t('.new_questions')
+    = render 'menu'
+
+    .b-cat__digest
+      = render partial: 'questions', object: @questions
+    = will_paginate @questions
+= seo_text @seo

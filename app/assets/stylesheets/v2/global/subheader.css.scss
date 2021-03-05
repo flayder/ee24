@@ -1,0 +1,75 @@
+.g-subheader {
+  margin-bottom: 20px;
+  font: bold $font-size_subheader $font-family_subheader;
+  line-height: $line-height_subheader;
+  text-transform: uppercase;
+  color: $gray-mid2;
+  &.mini {
+    font-size: 13px;
+    line-height: 22px;
+  }
+  &.middle {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  a {color: $gray-mid2;}
+}
+
+.g-subheader2 {
+  font: 400 16px/16px $font-family_subheader;
+  color: $gray-dark;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.g-subheader3 {
+  font: 400 20px/23px $font-family_subheader;
+  color: $black;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  a.pull-right {
+    text-transform: none;
+    float: right;
+    font: 12px/12px "ProximaNova", Verdana, sans-serif;
+  }
+}
+
+.g-section-subheader {
+  height: 0;
+  margin: 30px 0;
+  text-align: center;
+  border-top: 2px $gray-dark solid;
+  &.mini span {
+    font-size: 24px;
+    top: -14px;
+  }
+  &:first-child {margin: 0;}
+  span {
+    padding: 10px 25px;
+    position: relative;
+    top: -20px;
+    font: bold $font-size_header $font-family_subheader;
+    text-transform: uppercase;
+    color: $black;
+    background: #fff;
+  }
+  a {
+    color: $black;
+  }
+}
+
+.g-subheader__rubric {
+  margin-top: 6px;
+  font-size: 26px;
+  line-height: 28px;
+  letter-spacing: 3px;
+  text-align: left !important;
+}
+
+.g-subheader__large {
+  margin-top: 6px;
+  font-size: 26px;
+  line-height: 28px;
+  letter-spacing: 3px;
+  text-align: left !important;
+}

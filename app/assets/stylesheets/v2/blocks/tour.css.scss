@@ -1,0 +1,40 @@
+#tour-content-wrapper {
+  display: none;
+}
+
+.fotorama {
+  &.tour {
+    .fotorama__arr {
+      &.fotorama__arr--prev {
+        background: image-url('tour/arrow_left.png') no-repeat left center;
+      }
+      &.fotorama__arr--next {
+        background: image-url('tour/arrow_right.png') no-repeat left center;
+      }
+    }
+    height: 418px;
+    width: 870px;
+    padding: 80px;
+    background: $white;
+    .slide {
+      padding: 0 84px;
+      h2 {
+        font-weight: bold;
+        color: $blue-light2;
+        margin: 40px 0 20px 0;
+        font-size: $font-size_big;
+      }
+      img {
+        margin: 0 auto;
+      }
+      .text {
+        font-family: $font-family_base;
+        margin-bottom: 20px;
+      }
+      .link {
+        color: $red-mid;
+        font-size: $font-size_base;
+      }
+    }
+  }
+}

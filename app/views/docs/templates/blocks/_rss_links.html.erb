@@ -1,0 +1,4 @@
+<link rel="alternate" type="application/rss+xml" title="<%= @site.domain %>: <%= @global_rubric.title %>" href="/<%= @global_rubric.link %>.rss" />
+<% @global_rubric.doc_rubrics.each do |doc_rubric| %>
+  <link rel="alternate" type="application/rss+xml" title="<%= @site.domain %>: <%= @global_rubric.title %>: <%= doc_rubric.title %>" href="/<%= @global_rubric.link %>/<%= doc_rubric.link %>.rss" />
+<% end %>

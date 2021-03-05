@@ -1,0 +1,12 @@
+.g-comment-form.anonymous.js-commentForm
+  = form_for :comment, html: {data: {type: 'json', remote: true}}, url: comments_path do |f|
+    %img{alt: "Male_small", class: "avatar", height: "60", src: "/assets/v2/default/male_small.png", width: "60"}
+    = f.text_area :text, class: 'g-comment-form__textarea js-commentEditText', rows: 10, disabled: "disabled"
+  %div.notification
+    Для добавления комментария
+    = link_to 'войдите', '/account/login', class: 'js-jump'
+    или
+    = link_to 'зарегистрируйтесь', '/account/signup', class: 'js-jump'
+
+  / = render 'layouts/clean/social_auth_links'
+  %button.g-button.disabled.js-commentSend{disabled: "disabled"} Отправить

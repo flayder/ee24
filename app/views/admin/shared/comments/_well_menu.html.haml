@@ -1,0 +1,9 @@
+.well
+  %h3
+    Комментарии
+  = link_to_unless_current 'Все', q: {commentable_type_eq: ''}
+  = link_to_unless_current 'Новости / Статьи', q: {commentable_type_eq: 'Doc'}
+  = link_to_unless_current 'Афиша', q: {commentable_type_eq: 'Event'}
+  = link_to_unless_current 'Компании', q: {commentable_type_eq: 'Catalog'}
+  = link_to_unless_current 'Фото', q: {commentable_type_eq: 'Gallery'}
+  = link_to_unless_current 'Сообщества', q: {commentable_type_eq: 'Question'}

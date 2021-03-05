@@ -1,0 +1,35 @@
+-# TODO: внести в header
+-#%meta{content: @dictionary.title, itemprop: 'articleSection'}/
+
+.l-wrapper
+
+  %aside.l-section__aside
+    = render partial: 'main_rubricator'
+    = render partial: 'shared/rubricator', locals: {rubrics: @dictionary_object.rubric.dictionary.rubrics, item: @dictionary_object}
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    .b-doc.b-ency{itemscope: '', itemtype: 'http://schema.org/ScholarlyArticle'}
+      .b-doc__lead
+
+        = render partial: 'templates/dynamic/doc_aux', locals: {doc: @dictionary_object}
+
+        .b-doc__mainphoto
+          = image_tag @dictionary_object.image.url(:xxlarge), size: '610x420', class: 'cover'
+          -# TODO: блок для указания источника в админке, нужен ли он?
+          / .source Фото: www.#{Faker::Lorem.word()}.cz
+
+
+      .b-doc__content
+        %h1.b-doc__title{itemprop: 'headline'}
+          = @dictionary_object.title
+        %article{itemprop: 'articleBody'}
+          = @dictionary_object.text.html_safe
+
+        .b-ency__relevant
+          .g-subheader3 Другие #{@dictionary_object.rubric.title}
+          .b-ency__relevant-list
+            - @dictionary_object.rubric.dictionary_objects.sample(3).each do |dictionary_object|
+              .b-ency__relevant-item>
+                = image_tag dictionary_object.image.url(:small), size: '105x105', alt: dictionary_object.title, title: dictionary_object.title, class: 'cover'
+                = link_to dictionary_object.title, dictionary_object.url, class: 'link'

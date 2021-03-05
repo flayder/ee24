@@ -1,0 +1,16 @@
+- if @place
+  :javascript
+    var mapSurfaces = #{raw @place.to_json(only: [:title, :lat, :lng, :address, :link])};
+
+.b-form.short
+  - if @site.has_section?(:catalog) && @rubrics.present?
+    .b-form__row.w4.l-r
+      = form_tag '/map/search', id: 'map_search_form', method: :get, remote: true, class: 'b-search__form', data: {type: 'json'} do
+        %label{for: :address} Найти на карте
+        = search_field_tag :address, params[:address] || nil, title: 'Поиск', placeholder: 'Поиск', class: 'b-form__control search inline js-search'
+        .b-search__magnifier-area
+    .b-form__row.w8.l-l
+      %label{for: 'rubric_select_0'} Поиск по компаниям
+      = select_tag 'rubric_id', options_for_select(@rubrics.map { |r| [r.title, r.id] }), prompt: 'Выберите категорию', id: 'rubric_select_0', class: 'b-form__control select inline js-select'
+      = select_tag 'rubric_id', '', id: 'rubric_select_1', class: 'b-form__control select inline js-select', style: 'display:none;'
+      = select_tag 'rubric_id', '', id: 'rubric_select_2', class: 'b-form__control select inline js-select', style: 'display:none;'

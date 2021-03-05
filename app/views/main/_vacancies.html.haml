@@ -1,0 +1,21 @@
+.b-index-vacancies
+  .g-subheader
+    %span Последние
+    = link_to 'вакансии', '/job/vacancies'
+
+  .b-index-vacancies__content
+    .b-vacancies-list.js-loaderByPage
+      .col1.js-vacanciesList
+        - @job_items.each do |job_item|
+          .b-vacancies-list__item
+            .item__info
+              .item__title= link_to job_item.title, "/job/#{job_type(job_item).pluralize}/#{job_item.id}", class: 'link'
+            - if job_item.company_name.present?
+              .item__aux
+                .item__employer= job_item.company_name
+            - if job_item.is_a?(Vacancy)
+              .item__aux
+                .item__location
+                  = [job_item.region.try(:title), job_item.region_city.try(:title)].compact.join(', ')
+
+    = link_to "Добавить вакансию", "/job/vacancies/new", class: 'seo-link g-button wide medium block primary'

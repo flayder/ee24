@@ -1,0 +1,27 @@
+.b-photos {
+  overflow: hidden;
+  margin-left: -20px;
+  .b-media {
+    float: left;
+    margin: 0 0 30px 20px;
+  }
+  .row {
+    overflow: hidden;
+    .b-media {
+      float: left;
+      margin-right: 20px;
+    }
+  }
+}
+
+.fotorama {
+  margin-bottom: 48px;
+}
+
+.fotorama__caption {
+  text-align: center;
+}
+
+.add_photo_button {
+  margin-top: 10px;
+}

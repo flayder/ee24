@@ -1,0 +1,4 @@
+.well
+  = link_to_unless_current 'Пользователи', admin_users_path, class: 'top_well_menu'
+  = link_to_unless_current 'Статистика пользователей', time_stats_admin_users_path, class: 'top_well_menu'
+  = link_to_unless_current 'Выгрузить в CSV', admin_users_path(format: 'csv'), class: 'top_well_menu'

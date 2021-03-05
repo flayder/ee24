@@ -1,0 +1,53 @@
+.well
+  %h3 Горизонтальный банер на главной странице
+  #search_form
+    = simple_form_for DocAnnounce.new, :url => admin_doc_announces_path, :class => 'form-horizontal' do |form|
+      .control-group
+        .controls
+          = form.input :image
+      .control-group
+        .controls
+          = form.input :url
+      .control-group        
+        .controls
+          = form.button :submit, 'Загрузить', :class => 'btn'
+  %br
+  - if DocAnnounce.last
+    = image_tag DocAnnounce.last.image.url(:medium)
+    %br
+    = link_to DocAnnounce.last.url
+
+= render :partial => 'search_form'
+
+.well
+  = link_to 'Новый код баннера для отдельной страницы', new_admin_ad_code_path
+  %br
+  Используйте эту ссылку только для создания баннеров для конкретной страницы. Для раздела сайта или рубрики используйте вкладку "для рубрик", для всего сайта используйте вкладку "для сайта"
+
+= render 'menu'
+  
+- if @ad_codes.present?
+  %table.table.table-bordered
+    %thead
+      %th= AdCode.human_attribute_name :banner_type
+      %th= AdCode.human_attribute_name :title
+      %th= AdCode.human_attribute_name :code
+      %th= AdCode.human_attribute_name :url
+      %th= AdCode.human_attribute_name :ad_section
+      %th= 'Действия'
+    %tbody
+      - @ad_codes.each do |banner|
+        %tr
+          %td=t ("banners.#{banner.banner_type}")
+          %td= banner.title
+          %td= banner.code
+          %td= banner.url
+          %td
+            - if banner.ad_section.present?
+              = banner.ad_section.class.model_name.human
+              = banner.ad_section.respond_to?(:title) ? banner.ad_section.title : "##{banner.ad_section.id}"
+          %td
+            = link_to 'ред.', edit_admin_ad_code_url(banner)
+            = link_to 'уд.', admin_ad_code_url(banner), :method => :delete, :confirm => 'Вы уверены, что хотите удалить баннер?'
+
+= will_paginate_bootstrap @ad_codes

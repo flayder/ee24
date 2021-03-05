@@ -1,0 +1,13 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    = render partial: '/afisha/templates/blocks/right'
+
+  %div.l-section__main
+    .b-events-aux
+      = render 'dates'
+    - if @events.present?
+      -# TODO: подумать, как воткнуть блок 'что почитать'
+      = render partial: 'shared/docs', object: @events.slice(0, 6).each_slice(3).to_a.transpose
+    - else
+      .b-box Нет информации.

@@ -1,0 +1,16 @@
+%div
+  .l-wrapper
+    .l-page__columns-line
+      .l-section__main.l-r-important
+        - if @galleries.present?
+          .b-tag
+            .b-tag__content
+              .l-cols.js-loaderByPage
+                .b-photos
+                  .col1= render partial: 'photo/galleries_list_extended', object: @galleries
+          = will_paginate_new @galleries
+        - else
+          .g-info
+            .g-info__text= is_my_profile?(@user) ? "У вас ещё нет фоторепортажей." : "У пользователя нет фоторепортажей."
+      .l-section__aside.l-l
+        = render 'account/templates/blocks/aside', user: @user

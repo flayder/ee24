@@ -1,0 +1,14 @@
+.b-account-communities {
+  padding: 30px;
+  background: $blue-light;
+  margin-bottom: 20px;
+
+  &__title {
+    margin-bottom: 5px;
+    font: 700 19px $font-family_proxymanova;
+    color: $gray-dark2;
+    text-transform: uppercase;
+  }
+
+  &__list {font-size: 16px}
+}

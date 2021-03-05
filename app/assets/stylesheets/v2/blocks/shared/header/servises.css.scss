@@ -1,0 +1,11 @@
+.b-header__servises {
+  height: 1.5*$dx;
+  font-size: .9em;
+  line-height: 1.5*$dx;
+  text-align: right;
+
+  .link {
+    color: $red-mid;
+    margin-left: $dx/4;
+  }
+}

@@ -1,0 +1,8 @@
+- if @site.has_dictionaries?
+  = link_to_unless_current "Словарные статьи", admin_dictionary_objects_path
+  = link_to_unless_current "Словарные рубрики", admin_dictionary_rubrics_path
+  
+= link_to 'Новый словарь', new_admin_dictionary_path
+= render :partial => 'table', :locals => { :dictionaries => @dictionaries }
+
+= will_paginate_bootstrap @dictionaries

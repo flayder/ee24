@@ -1,0 +1,21 @@
+%table.table.table-bordered
+  %thead
+    %th= sort_link @search, :created_at, "Дата", default_order: :desc
+    %th ФИО
+    %th Дата рождения
+    %th Email
+    %th Телефон
+    %th Статья
+    %th Комментарий
+    %th
+  - request_forms.each do |request_form|
+    %tr
+      %td= request_form.created_at.strftime('%d-%m-%Y %H:%M')
+      %td= request_form.full_name
+      %td= Russian::strftime(request_form.birthday, '%d %B %Y')
+      %td= request_form.email
+      %td= request_form.phone_number
+      %td
+        = link_to 'link', request_form.docable.url, target: :_blank
+      %td= request_form.comment
+      %td= link_to 'Удалить', admin_request_form_path(request_form), method: :delete, confirm: 'Вы уверены?'

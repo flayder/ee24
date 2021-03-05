@@ -1,0 +1,10 @@
+%h1= 'Выбор районов Foreca'
+= form_tag({ :controller => :'admin/forecast/districts', :action => :update}, method: :put ) do
+  .control-group
+    - @districts.each do |district|
+      .controls
+        = label_tag 'district_ids[]', district.name
+        = check_box_tag 'district_ids[]', district.id, district.active?
+
+    .controls
+      = submit_tag 'Сохранить', class: 'btn'

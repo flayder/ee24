@@ -1,0 +1,14 @@
+.b-breadcrumbs {
+  padding: 5px 10px;
+  line-height: 23px;
+  background-color: #f6f6f6;
+  color: #555555;
+  a {
+    color: #6a8c1e;
+  }
+  span {
+    margin: 0 3px;
+    position: relative;
+    top: 1px;
+  }
+}

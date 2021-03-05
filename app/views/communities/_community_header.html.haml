@@ -1,0 +1,10 @@
+.b-community-header
+  = image_tag @community.logo.url(:large), size: '160x160', class: 'b-community-header__cover'
+  = link_to 'Подписаться', 'javascript:;', class: 'g-button medium primary'
+  .b-community-header__title= @community.name
+  .g-aux.midi.l.darkblue
+    = link_to @community.category.name, @community.category, class: 'g-aux__label'
+    = link_to @community.user.fio_or_login, user_path(@community.user.subdomain), class: 'g-aux__item owner'
+    / %span.g-aux__item.users 999
+    %span.g-aux__item.posts= @community.posts.count
+  / = render 'shared/social_likes'

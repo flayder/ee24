@@ -1,0 +1,34 @@
+.b-auth-popup.s-gray-box
+  - if request.xhr?
+    = link_to '', '#close_popup', class: 'popup-close'
+  - else
+    = link_to '', request.referrer, class: 'popup-close'
+  %h3.s-gray-box__title Вход
+
+  -# TODO: need refactoring
+
+  / = render 'layouts/clean/social_auth_links'
+
+  - if flash[:email_error].present?
+    .flash.error= flash[:email_error]
+
+  .s-gray-box__content
+    .s-gray-box__content__block.with-form
+      = form_tag sessions_path do
+        .label-line= label_tag :email, 'Email'
+        .field-line= text_field_tag :email, nil, class: 'field'
+        .label-line= label_tag :password, 'Пароль'
+        .field-line= password_field_tag :password, nil, class: 'field'
+        .field-line
+          = check_box_tag :remember_me, '1', false, class: 'remember'
+          = label_tag :remember_me, 'Запомнить меня', class: 'remember'
+        .submit-wrapper
+          .button= submit_tag 'Войти', class: 'submit'
+        .restore= link_to 'Забыли пароль?', '/account/restore', class: 'restore-link js-jump'
+        / %p{ style: 'text-align: center' }
+        /   Регистрация временно отключена
+
+    -#на #{link_to @site.domain, root_url}
+    .additional
+      Ещё не зарегистрированы?
+      = link_to 'Давно пора!', '/account/signup', class: 'g-button danger js-jump'

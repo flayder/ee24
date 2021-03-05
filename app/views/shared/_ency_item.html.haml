@@ -1,0 +1,6 @@
+.b-ency__list-item
+  = image_tag ency_item.image.url(:small), size: '105x105', class: 'avatar'
+  .title= link_to ency_item.title, ency_item.path
+  = link_to ency_item.rubric.title, ency_item.rubric.path, class: 'category'
+  .lead= truncate(strip_tags(ency_item.text), length: 300).html_safe
+  = link_to 'Перейти к статье', ency_item.path, class: 'more'

@@ -1,0 +1,58 @@
+.b-auth-popup.s-gray-box
+  - if request.xhr?
+    = link_to '', '#close_popup', class: 'popup-close'
+  - else
+    = link_to '', request.referrer, class: 'popup-close'
+  %h3.s-gray-box__title Регистрация
+  /= render 'layouts/clean/social_auth_links'
+  .s-gray-box__content
+    .s-gray-box__content__block.with-form
+      = form_for @user, :url => {controller: :account, action: :create}, :html => { name: 'reg_form', id: 'reg_form' }  do |f|
+
+        .label-line= f.label :login, 'Логин'
+        .field-line
+          = f.text_field :login, class: 'field'
+          - if @user.errors[:login].present?
+            .error= @user.errors[:login].join(', ')
+
+        .label-line= f.label :email, 'Email'
+        .field-line
+          = f.text_field :email, class: 'field'
+          - if @user.errors[:email].present?
+            .error= @user.errors[:email].join(', ')
+
+        .label-line= f.label :password, 'Пароль'
+        .field-line
+          = f.password_field :password, class: 'field'
+          - if @user.errors[:password].present?
+            .error= @user.errors[:password].join(', ')
+
+        .label-line= f.label :password_confirmation, 'Повторите пароль'
+        .field-line
+          = f.password_field :password_confirmation, class: 'field'
+            - if @user.errors[:password_confirmation].present?
+            .error= @user.errors[:password_confirmation].join(', ')
+
+        .submit-wrapper
+          .button= submit_tag 'Зарегистрироваться', class: 'submit'
+
+        - if user_agreement?
+          .agreement.field-line.small.text-center
+            Нажимая на кнопку «Зарегистрироваться», вы подтверждаете свое согласия с условиями изложенными в
+            = succeed '.' do
+              = link_to 'пользовательском соглашении', '/user_agreement', :target => '_blank', class: 'nowrap'
+
+
+    .additional
+      Уже зарегистрированы?
+      = link_to 'Так входите!', '/account/login', class: 'g-button primary js-jump'
+
+    -# %tr
+      %td
+        %ul.error_list
+          %li
+            = f.text_field :login
+          %li
+            #validate_login
+              - if @user.errors[:login].present?
+                = @user.errors[:login].join(', ')

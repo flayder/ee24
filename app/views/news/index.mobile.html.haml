@@ -1,0 +1,11 @@
+= content_for :title, 'Новости'
+
+.container
+  .logo
+
+  .feed
+    - @docs.each do |doc|
+      = render 'shared/mobile/doc_item', doc: doc
+
+  .text-center
+    = will_paginate @docs, page_links: false

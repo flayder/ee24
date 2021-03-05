@@ -1,0 +1,15 @@
+.l-wrapper
+  %div
+    -#= render partial: 'rubrics'
+    - cache_unless_admin "catalog_index_#{I18n.locale}_#{@site.id}/#{Catalog.last_updated_cache_key}" do
+      .b-catalog
+        = render 'aux'
+
+        .l-cols
+          -# TODO: учитывая макет (https://www.dropbox.com/sh/7b8ta366cr14utz/AABzf589rgADJJVUNnFBMjX_a#lh:null-companies.PSD)
+          -# возможно, придётся расставлять рубрики руками
+          - (0..@catalog_rubrics.count).step(5) do |i|
+            .l-cols-3.l-l
+              = render partial: 'rubric', collection: @catalog_rubrics.slice(i, 5)
+
+= seo_text @seo

@@ -1,0 +1,28 @@
+= form_for @ad_code, :url => {:controller => :'admin/ad_codes', :action => @ad_code.new_record? ? :create : :update }, :method => @ad_code.new_record? ? :post : :put do |f|
+  = error_messages_for :ad_code, :object => @ad_code
+
+  = f.hidden_field :ad_section_type
+  = f.hidden_field :ad_section_id
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :banner_type
+    = f.select :banner_type, AdCode::BANNER_TYPES.map{|ac|[t("banners.#{ac}"), ac]}, {}, class: 'form-control'
+
+  .form-group
+    = f.label :code
+    = f.text_area :code, class: 'form-control'
+
+  - unless @ad_code.ad_section.present?
+    .form-group
+      = f.label :url
+      = f.text_field :url, :placeholder => '/persona', class: 'form-control'
+      %span.help-inline
+        Если Вы хотите указать баннер для конкретной страницы, то введите ее относительный адрес. Иначе оставьте это поле пустым (коды для рубрик создаются из
+        = link_to 'Настройки рубрик', admin_site_rubrics_path
+        )
+  .form-group
+    = f.submit 'Сохранить', class: 'btn btn-default'

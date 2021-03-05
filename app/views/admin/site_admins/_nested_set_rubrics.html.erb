@@ -1,0 +1,16 @@
+<ul>
+  <% Rubricator.generate_select(@site, controller).each_pair do |root, rubrics| %>
+    <li class="check_box nested_root">
+      <%= root %>
+    </li>
+    <ul>
+      <% rubrics.each do |title, id| %>
+        <li class="check_box">
+          <%= hidden_field_tag "site_admin[rubric_permissions_attributes][][rubric_type]", rubric_klass.name %>
+          <%= check_box_tag "site_admin[rubric_permissions_attributes][][rubric_id]", id, @site_admin.permitted_rubrics(rubric_klass).include?(id), :id => "site_admin_#{rubric_klass.name}_permission_#{id}" %>
+          <%= label_tag "site_admin_#{rubric_klass.name}_permission_#{id}", title.gsub(/^[-\s]+/, '') %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>

@@ -1,0 +1,18 @@
+%table.table.table-bordered
+  %thead
+    %th= Industry.human_attribute_name :id
+    %th= Industry.human_attribute_name :title
+    %th= Industry.human_attribute_name :main
+    %th= 'Кол-во профессий'
+    %th= 'Действия'
+  - industries.each do |industry|
+    %tr
+      %td= industry.id
+      %td= industry.title
+      %td= t industry.main.to_s
+      %td= industry.professions.count
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_industry_path(industry)
+          %li= link_to 'Удалить', admin_industry_path(industry), :method => :delete, :confirm => 'Вы уверены?'
+          %li= link_to 'Добавить профессию', new_admin_profession_path(:industry_id => industry.id)

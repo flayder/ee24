@@ -1,0 +1,42 @@
+<% items.in_groups_of(controller_name == 'afisha' ? 6 : 4, false).each do |grouped_items| %>
+  <div class="line">
+    <% grouped_items.each do |item| %>
+      <% if item.rubric.present? %>
+        <div class='b-event'>
+          <% if item.main_photo && item.main_photo.try(:image) %>
+            <div class="photo">
+              <%= link_to image_tag(url_for_file_column(item.main_photo, "image", "thumb_150x110")), item.url, class: 'thumb' %>
+            </div>
+          <% else %>
+            <div class="photo">
+              <p class="no-info">Нет фото</p>
+            </div>
+          <% end %>
+          <div class="content">
+            <div class="date">
+              <% if action_name == "date" %>
+                <%= fancy_archive_search_date(@start_date) %>
+              <% else %>
+                <%= fancy_date(item) %>
+              <% end %>
+            </div>
+            <%= link_to item.title, item.url, class: 'title' %>
+            <% if can? :manage, item %>
+              <div class='manage-links'>
+                <%= link_to 'ред.', edit_event_url(item) %>
+                <%= link_to 'уд.', event_url(item.id), confirm: 'Вы уверены, что хотите удалить событие?', method: :delete %>
+                <% if !item.approved? && can?(:manage, item) %>
+                  <%= link_to 'подтвердить', approve_event_url(item) %>
+                <% end %>
+              </div>
+            <% end %>
+            <div class='views'>
+              <%= image_tag 'icons/views.png' %>
+              <%= item.page_views %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+ <% end %>

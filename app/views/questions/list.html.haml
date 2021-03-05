@@ -1,0 +1,6 @@
+.l-wrapper
+  %aside.l-section__aside
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    = render partial: 'categories/questions', object: @questions if @questions.present?

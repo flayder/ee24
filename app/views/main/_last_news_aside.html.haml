@@ -1,0 +1,12 @@
+.b-last-news-aside
+  .g-subheader.g-subheader__middle Последние новости
+  - @news.each do |news_item|
+    .news_item
+      = link_to news_item.rubric.title, news_item.rubric.url if news_item.rubric.present?
+      %span.news_date
+        \//
+        = news_item.created_at.strftime('%d.%m.%Y')
+      .news_title
+        = link_to news_item.title, news_item.approved ? news_item.url : news_item.preview_secret_url
+
+  = link_to 'Все новости', '/news', class: 'link_to_all_news'

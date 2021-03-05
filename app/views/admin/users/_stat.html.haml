@@ -1,0 +1,6 @@
+%tr
+  %td= period_title
+  %td= @site.users.send(period_scope).from_facebook.count
+  %td= @site.users.send(period_scope).from_vkontakte.count
+  %td= @site.users.send(period_scope).from_form_auth.count
+  %td= @site.users.send(period_scope).count

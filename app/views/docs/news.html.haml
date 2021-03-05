@@ -1,0 +1,28 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    -# TODO: уточнить рубрики
+    = render partial: 'shared/rubricator', locals: {rubrics: @site.doc_global_rubrics}
+    -# TODO: виджет авторских колонок
+    = render partial: 'shared/media_mini', object: @docs.first
+    = render 'shared/adv-aside'
+  %div.l-section__main
+    .b-newslist-mini-aux
+      = link_if_logged 'новость', '/news/new'
+
+      = render 'shared/dates'
+
+    .b-newslist-mini
+      - @docs.group_by {|d| d.created_at.to_date}.each do |date, news_docs|
+        = render partial: 'shared/news_item', collection: news_docs, as: 'news_item'
+        -# TODO: splitter никогда не должен быть последним, без новостей
+        .splitter
+          - if date != Date.today
+            %span
+              - if date == 1.day.ago.to_date
+                %strong Вчера
+              - else
+                %strong= Russian.strftime(date, '%a')
+                = Russian.strftime(date, '%d.%m')
+
+    .l-load-more.active= link_to 'Загрузить предыдущий день', 'javascript:;', class: 'l-load-more__link'

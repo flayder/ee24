@@ -1,0 +1,49 @@
+Backup::Model.new(:onru_old, '36on.ru') do
+  database MySQL do |db|
+    db.name               = "onru_production"
+    db.username           = "root"
+    db.password           = ""
+    db.host               = "localhost"
+    db.port               = 3306
+    db.skip_tables        = ['sessions']
+    db.additional_options = ['--quick', '--single-transaction']
+  end
+
+  store_with S3 do |s3|
+    s3.access_key_id      = ''
+    s3.secret_access_key  = ''
+    s3.region             = 'us-east-1'
+    s3.bucket             = '36on.ru'
+    s3.path               = '/36on.ru'
+    s3.keep               = 60
+  end
+
+  sync_with S3 do |s3|
+    s3.access_key_id     = ""
+    s3.secret_access_key = ""
+    s3.bucket            = "36on.ru"
+    s3.path              = "/36on.ru"
+    s3.mirror            = true
+
+    s3.directories do |directory|
+      directory.add "/srv/onru_old/files"
+    end
+  end
+
+  compress_with Gzip do |compression|
+    compression.fast = true
+  end
+
+  notify_by Mail do |mail|
+    mail.on_success           = true
+    mail.on_failure           = true
+
+    mail.from                 = 'backup@36on.ru'
+    mail.to                   = 'oleg@evrone.ru'
+    mail.address              = 'localhost'
+    mail.domain               = '36on.ru'
+    mail.port                 = 25
+    mail.authentication       = 'plain'
+  end
+end
+

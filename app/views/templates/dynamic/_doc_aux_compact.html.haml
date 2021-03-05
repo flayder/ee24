@@ -1,0 +1,24 @@
+.b-doc__aux-compact
+
+  .b-doc__info
+    - if doc.user
+      = image_tag doc.user.avatar.url(:avatar), size: '70x70', alt: doc.user.login, title: doc.user.login, class: 'avatar'
+      = link_to doc.user.fio_or_login, account_url(doc.user), class: 'username'
+    .g-aux.l.blue
+      %time.g-aux__item.date{datetime: Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%Y-%m-%d')}= Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%d.%m.%Y')
+      %span.g-aux__item.views= doc.page_views
+      %span.g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: doc}
+      -# TODO: для сообщества дополнить %span.g-aux__item.community= rand(20)
+    = render partial: 'shared/tags', locals: {doc: doc}
+    - if doc.is_a?(Gallery) && can?(:manage, Gallery)
+      .manage-links
+        = link_to 'Редактировать.', edit_gallery_url(doc), class: 'edit'
+        = link_to 'Удалить', gallery_url(doc), method: :delete, confirm: 'Вы уверены, что хотите удалить фоторепортаж?', class: 'delete'
+        - unless doc.approved?
+          = link_to 'Подтвердить', approve_gallery_url(doc), confirm: 'Вы уверены, что хотите подтвердить фоторепортаж?', class: 'delete'
+
+  .b-doc__socials
+    - unless params[:preview_secret]
+      = render partial: 'templates/dynamic/doc_share_block', locals: { doc: doc }
+
+  = render partial: 'templates/dynamic/manage', locals: {doc: doc}

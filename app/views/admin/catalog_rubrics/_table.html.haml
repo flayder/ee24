@@ -1,0 +1,21 @@
+%table.table.table-bordered
+  %thead
+    %th= CatalogRubric.human_attribute_name :id
+    %th= CatalogRubric.human_attribute_name :title
+    %th= CatalogRubric.human_attribute_name :main
+    %th= CatalogRubric.human_attribute_name :depth
+    %th= 'Действия'
+  - catalog_rubrics.each do |rubric|
+    %tr
+      %td= rubric.id
+      %td= rubric.title
+      %td
+        = t rubric.main.to_s if rubric.main
+      %td= rubric.depth
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_catalog_rubric_path(rubric)
+          %li= link_to 'Удалить', admin_catalog_rubric_path(rubric), :method => :delete, :confirm => 'Вы уверены?'          
+          - if rubric.depth < 3
+            %li= link_to 'Добавить подрубрику', new_admin_catalog_rubric_path(:catalog_rubric => { :parent_id => rubric.id })
+          %li= link_to_seos rubric

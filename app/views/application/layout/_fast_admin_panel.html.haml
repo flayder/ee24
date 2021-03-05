@@ -1,0 +1,37 @@
+- if can? :view, :fast_admin_panel
+  .b-admin-panel.js-adminPanel
+    .l-wrapper
+      .b-admin-panel__wrapper
+
+        .b-admin-panel__aux
+          .b-admin-panel__stat
+            %span.stat__title Сегодня
+            %span.stat__item
+              сообщений:
+              %span.counter 0
+            %span.stat__item
+              регистраций:
+              %span.counter 0
+          .b-admin-panel__links
+            .line
+              = link_to 'Настройки', admin_path, class: 'link'
+              = link_to 'Запросы', admin_search_queries_path, class: 'link'
+              - if @seo
+                = link_to 'SEO', edit_admin_seo_path(@seo), class: 'link'
+              - else
+                = link_to '+SEO', new_admin_seo_path(seo: { path: request.path }), class: 'link'
+          .b-admin-panel__turn.js-turn
+
+        .b-admin-panel__digest
+          - [ [:news, 'Новости'], [:catalog, 'Компании'], [:realty, 'Недвижимость'], [:magazine, 'Журнал'], [:photo, 'Фото'],
+              [:afisha, 'Афиша'], [:travel, 'Отдых'], [:immigration, 'Иммиграция'], [:questions, 'Посты']].each do |key, title|
+            .digest-item>
+              .digest-item__title= title
+              .digest-item__list
+                .list_item= link_to "От пользователей (#{not_approved_count(key, 'user')})", "/#{key}/not_approved/users", class: "#{'active' if not_approved_count(key, 'user') > 0}"
+                .list_item= link_to "От редакции (#{not_approved_count(key, 'editor')})", "/#{key}/not_approved/editors", class: "#{'active' if not_approved_count(key, 'editor') > 0}"
+
+          .digest-item>
+            .digest-item__title= 'Работа'
+            .digest-item__list
+              .list_item= link_to "От пользователей", "/vacancies/not_approved"

@@ -1,0 +1,4 @@
+= render partial: 'search_form'
+= render partial: 'table', locals: { photos: @photos }
+
+= will_paginate_bootstrap @photos

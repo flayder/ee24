@@ -1,0 +1,175 @@
+.b-account-edit {
+  .b-ae__input,
+  .b-ae__select,
+  .b-ae__textarea {
+    display: block;
+    @include box-sizing(border-box);
+    border: 1px $gray-light2 solid;
+    border-radius: 3px;
+    background: $white;
+  }
+
+  input[type=checkbox] {
+    display: inline-block;
+    @include box-sizing(border-box);
+    @include appearance(none);
+    margin: 0;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    border: 1px #d2d2d2 solid;
+    background: $white;
+    &:checked {background: $white asset_data_url('v2/checkbox-3.png') center center no-repeat;}
+  }
+
+  .b-ae__input {
+    height: 30px;
+    padding: 0 10px;
+  }
+
+  .b-ae__select {
+    height: 30px;
+    padding: 0 10px;
+  }
+  .wide {
+    overflow: hidden;
+    .b-ae__input, .b-ae__select {
+      margin: 0;
+      float: left;
+    }
+  }
+  .submit {
+    display: block;
+    margin: 50px auto 0;
+  }
+}
+
+
+.b-ae-primary {
+  padding: 30px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  font-size: 16px;
+  color: $blue-mid2;
+  background: $blue-light;
+
+  &__avatar {
+    width: 225px;
+    float: left;
+    text-align: center;
+    .avatar {
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      border: 4px $gray-light4 solid;
+    }
+    &:hover .remove { display: block; }
+    .remove {
+      display: none;
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      margin: 0 0 0 -15px;
+      border-radius: 50%;
+      font-size: 26px;
+      background: rgba(255,255,255,.7);
+      cursor: pointer;
+      &:hover {background: rgba(255,255,255,.9);}
+      .removeCheck {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+    }
+  }
+
+  .hide-profile {
+    float: left;
+    margin-top: 30px;
+    margin-left: 40px;
+    color: $blue-mid2;
+  }
+
+  &__fields {
+    width: 955px;
+    float: right;
+    overflow: hidden;
+  }
+
+  &__field {
+    width: 285px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    float: left;
+    &.wide {
+      width: 100%;
+      .b-ae__input + .b-ae__input,
+      .b-ae__select + .b-ae__input,
+      .b-ae__select + .b-ae__select {margin-left: 30px}
+    }
+  }
+
+  .title {margin-bottom: 3px;}
+
+  .additional {
+    position: absolute;
+    top: 0;
+    left: 125px;
+  }
+
+  .b-ae__input,
+  .b-ae__select {font: 16px/33px $font-family_base;}
+  .b-ae__input,
+  .b-ae__select {width: 285px;}
+}
+
+
+.b-ae-secondary {
+  font-size: 20px;
+  color: $blue-mid2;
+
+  .g-subheader {margin-bottom: 20px}
+
+  &__fields {
+    margin-right: -20px;
+    margin-bottom: 50px;
+    overflow: hidden;
+  }
+  &__field {
+    @include grid-size(3);
+    margin-right: $dx;
+    margin-bottom: 20px;
+    float: left;
+    &.wide {@include grid-size(6);}
+    &.tall {height: 250px;}
+    &.l-r {float: right;}
+    &:last-child {margin-right: 0}
+  }
+
+  .title {margin-bottom: 5px;}
+
+  .b-ae__input,
+  .b-ae__select,
+  .b-ae__textarea {font: 20px/31px $font-family_base;}
+
+  .b-ae__input,
+  .b-ae__select {@include grid-size(3);}
+
+  .b-ae__textarea {
+    width: 100%;
+    min-height: 145px;
+    max-height: 215px;
+    resize: vertical;
+    padding: 10px;
+  }
+  .b-ae__input + .b-ae__input,
+  .b-ae__select + .b-ae__input,
+  .b-ae__select + .b-ae__select {margin-left: $dx}
+
+  .datetime .b-ae__input, .b-ae__select {width: auto;}
+
+}

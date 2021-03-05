@@ -1,0 +1,6 @@
+= render partial: 'search_form'
+
+= link_to 'Новая рубрика внешних доков', new_admin_external_doc_rubric_path
+= render partial: 'table', locals: { external_doc_rubrics: @external_doc_rubrics }
+
+= will_paginate_bootstrap @external_doc_rubrics

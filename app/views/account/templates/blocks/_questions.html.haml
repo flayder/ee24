@@ -1,0 +1,8 @@
+.b-cat-questions__list
+  - @questions.each do |question|
+    .b-cat-question
+      .b-cat-list-item__title= link_to question.title, [question.category, question], class: 'b-cat-list-item__link'
+      .b-cat-list-item__stats
+        .b-cat-list-item__stat.datetime= l question.created_at, format: :long_short
+        .b-cat-list-item__stat.comments= rand(15)
+  .g-loader= link_to 'Загрузить ещё вопросы', 'javascript:;', class: 'g-loader__link'

@@ -1,0 +1,20 @@
+= render 'menu'
+%h1
+  Настройка баннеров для рубрик раздела
+  = "«#{@section.section.title}»"
+- if @section.section.controller == 'dictionary_objects'
+  = render 'dictionaries'
+-else
+  %ul
+    - @section.root_site_rubrics.each do |rubric|
+      - if rubric.class.in? [DocGlobalRubric]
+        %li
+          = render :partial => 'rubric', :locals => { :rubric => rubric }
+          %ul
+            - rubric.children.each do |child_rubric|
+              %li
+                = render :partial => 'rubric', :locals => { :rubric => child_rubric }
+      - elsif rubric.class.in? [CatalogRubric, PhotoRubric]
+        = render :partial => 'tree', :locals => { :rubric => rubric } 
+      - else
+        %li= render :partial => 'rubric', :locals => { :rubric => rubric }

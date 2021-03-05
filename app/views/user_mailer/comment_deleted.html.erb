@@ -1,0 +1,9 @@
+Здравствуйте, <%= @user.login %>!
+
+Редактор портала <%= @site.domain %> <a href ="https://<%= @site.domain %>/users/<%= @editor.subdomain %>"><%= @editor.login %></a> удалил Ваш комментарий к статье <a href ="<%= @document.url%>">«<%= @document.title %>»</a>.
+
+<br><br>
+Текст комментария:<br>
+<%= @text %>
+<br><br>
+<%= render partial: "user_mailer/unsubscribe_text", locals: { user: @user, site: @site} %>

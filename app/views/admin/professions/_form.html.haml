@@ -1,0 +1,18 @@
+%h1= 'Новая профессия'
+= form_for [:admin, @profession] do |f|
+  = error_messages_for :profession, :object => @profession
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :industry_id
+    = f.select :industry_id, Industry.all.map { |i| [i.title, i.id] }
+
+  .controls
+    = f.label :main
+    = f.check_box :main
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

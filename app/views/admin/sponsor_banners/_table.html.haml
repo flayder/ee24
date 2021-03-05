@@ -1,0 +1,17 @@
+%table.table.table-bordered
+  %thead
+    %th= SponsorBanner.human_attribute_name :id
+    %th= SponsorBanner.human_attribute_name :url
+    %th= SponsorBanner.human_attribute_name :title
+    %th= SponsorBanner.human_attribute_name :counter
+    %th= 'Действия'
+  - sponsor_banners.each do |sponsor_banner|
+    %tr
+      %td= sponsor_banner.id
+      %td= sponsor_banner.url
+      %td= sponsor_banner.title
+      %td= sponsor_banner.counter
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_sponsor_banner_path(sponsor_banner)
+          %li= link_to 'Удалить', admin_sponsor_banner_path(sponsor_banner), :method => :delete, :confirm => 'Вы уверены?'          

@@ -1,0 +1,27 @@
+%script{:type => "text/javascript",
+        :src  => "/assets/liquid_highlight/codemirror.js"}
+
+%h1= 'Новый CSS шаблон'
+= form_for [:admin, @stylesheet] do |f|
+  = error_messages_for :stylesheet, :object => @stylesheet
+  .control-group
+    .controls
+      = f.label :name
+      = f.text_field :name
+
+    .controls
+      = f.label :body
+      = f.text_area :body, id: :code
+
+    .controls
+      = f.submit 'Сохранить', class: 'btn'
+
+:javascript
+  CodeMirror.fromTextArea('code', {
+    height: "600px",
+    parserfile: "parseliquid.js"  ,
+    stylesheet: ["/assets/liquid/xmlcolors.css", "/assets/liquid/liquidcolors.css"],
+    path: "/assets/liquid_highlight/",
+    textWrapping: false,
+    lineNumbers: true
+  });

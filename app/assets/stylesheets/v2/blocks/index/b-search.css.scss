@@ -1,0 +1,31 @@
+.b-search {
+  background: #5AADED;
+  padding: 15px;
+  border-radius: 4px;
+  &.light {background: $blue-light;}
+  input[type='submit'] {
+    width: 135px;
+    float: right;
+    background: #E62C3F;
+    border: none;
+    color: white;
+    height: 50px;
+    text-align: center;
+    padding: 0;
+    font: 24px/50px 'PT Sans';
+  }
+}
+
+.b-search__input {
+  margin-right: 135px;
+  input[type='text'] {
+    @include box-sizing(border-box);
+    width: 100%;
+    margin-right: 135px;
+    height: 50px;
+    border: none;
+    padding: 0 10px;
+    font: 24px/50px 'PT Sans';
+    @include placeholder {color: #bfbfbf;}
+  }
+}

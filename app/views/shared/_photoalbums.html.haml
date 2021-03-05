@@ -1,0 +1,10 @@
+.b-photoalbums
+
+  -# @photoalbums не существует, паршел пока не используется,
+  -# но пригодится в личном кабинете и на странице тегов
+
+
+  - @photoalbums.each do |album|
+    .b-photoalbums__item
+      .description= Faker::Lorem.sentence(30)
+      = render partial: 'shared/media', object: album

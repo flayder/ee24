@@ -1,0 +1,52 @@
+.l-wrapper.l-content
+  .l-page__columns-line
+    .l-section__aside
+      = render partial: 'shared/adv-aside'
+
+    .l-section__main
+      .b-tag
+        %div{class: "b-tag__description#{@branding_logo}"}
+          .b-tag__description__title
+            = @tag.name
+
+        = render 'menu'
+
+        .b-tag__content
+          - if @news.present? && ['show', 'news'].include?(action_name)
+            .g-subheader3 В новостях
+            .l-cols
+              - @news.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+                .l-cols-3.l-l{class: "col#{index+1}"}
+                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+
+          - if @docs.present? && ['show', 'docs'].include?(action_name)
+            .g-subheader3 В статьях
+            .l-cols
+              - @docs.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+                .l-cols-3.l-l{class: "col#{index+1}"}
+                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+
+          - if @events.present? && ['show', 'afisha'].include?(action_name)
+            .g-subheader3 В афише
+            .l-cols
+              - @events.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+                .l-cols-3.l-l{class: "col#{index+1}"}
+                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+
+          - if @galleries.present? && ['show', 'photo'].include?(action_name)
+            .g-subheader3 В фотографиях
+            .b-photos= render partial: 'photo/galleries_list_extended', object: @galleries
+
+          - if @catalog.present? && ['show', 'catalog'].include?(action_name)
+            .g-subheader3 В компаниях
+            .b-companies= render partial: 'shared/companies', object: @catalog
+
+
+          - if @dictionary_objects.present? && ['show', 'dictionary'].include?(action_name)
+            .g-subheader3 В энциклопедии
+            .b-ency
+              .b-ency__digest
+                - @dictionary_objects.each do |dictionary_object|
+                  = render partial: 'shared/ency_item', object: dictionary_object
+
+= seo_text @seo

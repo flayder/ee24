@@ -1,0 +1,33 @@
+.g-seo {
+  margin: 50px 0 0;
+  padding-top: 30px;
+  border-top: 2px solid $gray-dark;
+  &:before {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 18px;
+    background: $white asset-data-url('v2/logo_bw.gif') center center no-repeat;
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    margin-left: -22px;
+  }
+
+  &__text {
+    font-size: $font-size_inreased;
+    color: $black;
+  }
+
+  p {margin: 5px 0 0}
+  a {color: $black}
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 20px 0 0;
+    font-size: $font-size_inreased;
+    line-height: $line-height_inreased;
+    font-weight: 700;
+    &:first-child {margin-top: 0;}
+  }
+
+}

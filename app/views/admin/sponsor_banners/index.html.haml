@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новый спонсорский баннер', new_admin_sponsor_banner_path
+= render :partial => 'table', :locals => { :sponsor_banners => @sponsor_banners }
+
+= will_paginate_bootstrap @sponsor_banners

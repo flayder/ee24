@@ -1,0 +1,94 @@
+@import "ultimate/mixins/microstructures";
+@import "ultimate/mixins/css3";
+
+.bold {
+  font-weight: bold;
+}
+
+.dashed {
+  text-decoration: none !important;
+  border-bottom: 1px dashed;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.uline {
+  text-decoration: underline;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.inline-block {
+  @include inline-block;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+a.image {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+
+.no-info, .loading {
+  color: gray;
+  font-size: 11px;
+}
+
+.development {
+  @include opacity(0.5);
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+//.clear {
+//  clear: both;
+//}
+
+.clear-left {
+  clear: left;
+}
+
+.clear-right {
+  clear: right;
+}
+
+.g-justify {
+  @include g-justify;
+}
+
+img.middle {
+  vertical-align: middle;
+}
+
+.text-center, .centered {
+  text-align: center;
+}
+
+.red {
+  color: red;
+}
+
+.no-info {
+  padding: 0;
+}

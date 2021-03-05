@@ -1,0 +1,13 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_static_docs_path, class: 'form-horizontal' do |form|
+      .control-group
+        .controls
+          = form.input :link_eq, :required => false
+        .controls
+          = form.input :active_eq, :required => false, :as => :radio_buttons
+        .controls
+          = form.input :main_eq, :required => false, :as => :radio_buttons
+        .controls
+          = form.button :submit, 'Найти', class: 'btn'

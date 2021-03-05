@@ -1,0 +1,42 @@
+.b-dropdown {
+  margin-bottom: 20px;
+  position: relative;
+  font: 14px/17px $font-family_proxymanova;
+  color: $white;
+  text-transform: uppercase;
+  &:hover {
+    .b-dropdown__list {display: block}
+    .b-dropdown__active {background-image: asset_data_url('v2/element-triangle-7.png');}
+  }
+
+  & &__active {
+    height: 13px;
+    padding: 13px 35px 13px 15px;
+    font-weight: 700;
+    background: asset_data_url('v2/element-triangle-6.png') right 10px center no-repeat;
+    cursor: pointer;
+    @include bg-darken($blue-mid4);
+  }
+
+  & &__list {
+    display: none;
+    width: 100%;
+    padding-bottom: 20px;
+    position: absolute;
+    top: 39px;
+    left: 0;
+    z-index: 2;
+    background: $blue-mid;
+    .item {
+      padding-left: 15px;
+      margin-top: 20px;
+      cursor: pointer;
+      a {color: $white}
+    }
+  }
+
+  .g-tabs & {
+    min-width: 130px;
+    float: right;
+  }
+}

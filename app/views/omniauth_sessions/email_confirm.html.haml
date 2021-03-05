@@ -1,0 +1,12 @@
+.b-clean-form.s-gray-box
+  %h3.s-gray-box__title
+    Для продолжения нужен ваш email
+    -##{link_to @site.domain, root_url}
+  .s-gray-box__content.without-social-auth
+    .s-gray-box__content__block.with-form
+      = form_for @user, :url => "/confirm_oauth_sign_up", class: "b-form" do |f|
+        .error= error_messages_for :user
+        .label-line= f.label :email
+        .field-line.centered= f.text_field :email, class: "field b-form__control input"
+        .submit-wrapper
+          .button= f.submit "Регистрация", class: "submit g-button"

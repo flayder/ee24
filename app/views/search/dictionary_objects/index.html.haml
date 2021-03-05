@@ -1,0 +1,41 @@
+.l-wrapper
+
+  %aside.l-section__aside= render partial: '/search/templates/blocks/right'
+
+  %div.l-section__main
+
+    = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+    = render 'search/menu'
+    - if @results.present?
+      .b-ency.js-loaderByPage
+        = render partial: 'shared/ency_items', object: @results
+        .g-loader
+          =# link_to 'Загрузить ещё статьи', 'javascript:;', data: {page: @results.next_page}, class: 'g-loader__link js-loader'
+          = will_paginate @results
+    - else
+      .b-box По вашему запросу ничего не найдено.
+
+    -#= render 'templates/dynamic/docs_index', docs: @results, no_info: 'По вашему запросу ничего не найдено.'
+    -#= yandex_direct_code @site
+= seo_text @seo
+
+
+
+
+-#.l-page__columns-line
+  %aside.l-page__column.left
+    = render 'search/templates/blocks/rubric_title'
+    .g-box
+      = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+      - if @results
+        %table.dictionary-table
+          - @results.each_slice(2) do |docs|
+            %tr
+              - docs.each do |doc|
+                %td
+                  %b= link_to doc.title, doc.url
+      - if @results.empty?
+        %span.no-info По вашему запросу ничего не найдено.
+      - else
+        = will_paginate_new @results
+  %div.l-page__column.right= render partial: "/search/templates/blocks/right"

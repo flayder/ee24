@@ -1,0 +1,15 @@
+%h1= 'Новый линкер'
+= form_for [:admin, @linker] do |f|
+  = error_messages_for :linker, :object => @linker
+  
+  .control_group
+    .controls
+      = f.label :url
+      = f.text_field :url
+
+    .controls
+      = f.label :seo_text
+      = f.text_area :seo_text, :rows => 40, :cols => 20
+    
+    .controls
+      = f.submit 'Сохранить', class: 'btn'

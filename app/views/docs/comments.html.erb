@@ -1,0 +1,85 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <div class="b-rubric-title">
+      СТАТЬИ
+    </div>
+    <div class="g-box b-doc-show">
+      <%= render partial: 'templates/dynamic/doc_share_block', locals: { doc: @doc } %>
+      <div class="manage-links">
+        <% if @doc.is_a?(Doc) && can?(:rest_manage, @doc) %>
+          <% link = @doc.global_rubric.link %>
+          <%= link_to 'редактировать', "/#{link}/#{@doc.id}/edit", class: 'red' %>
+          <%= link_to 'удалить', "/#{link}/#{@doc.id}", method: :delete, confirm: 'Вы уверены?', class: 'red' %>
+          <% if can?(:approve, @doc) && !@doc.approved? %>
+            <%= link_to 'подтвердить', "/#{link}/approve/#{@doc.id}", confirm: 'Вы уверены?', class: 'red' %>
+          <% end %>
+        <% end %>
+        <% if can? :manage, Version  && @doc.respond_to?(:versions) %>
+          <%= link_to 'История изменений', admin_item_versions_url(item_type: @doc.class, item_id: @doc.id) %>
+        <% end %>
+      </div>
+      <h1 class="title"><%= @doc.title %></h1>
+      <% if @doc.has_photos? %>
+        <% unless @doc.is_a?(Doc) && @doc.pictureless? %>
+          <%= render :partial => "/templates/blocks/micro_gallery", locals: { doc: @doc } %>
+          <% if @doc.main_photo %>
+            <% content_for :head do %>
+              <link rel="image_src" href="<%= url_for_file_column(@doc.main_photo, 'image', 'medium') %>" />
+              <meta property="og:image" content="<%= url_for_file_column(@doc.main_photo, 'image', 'micro_gallery') %>">
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <div class="info short">
+        <time datetime="<%= Russian::strftime(@doc.created_at, "%Y-%m-%d")%>"><%= Russian::strftime(@doc.created_at, "%d %B %Y, %H:%M") %></time>
+        <% if @doc.user %>
+          <%= link_to '#', class: 'seo-link author', data: {link: "#{account_url(@doc.user)}"} do %>
+            <%= image_tag(avatar_url(@doc.user, 'small'), size: "15x15", alt: @doc.user.login, title: @doc.user.login) %>
+            <%= @doc.user.fio_or_login %>
+          <% end %>
+        <% end %>
+      </div>
+      <%= render partial: 'shared/tags', locals: {doc: @doc} %>
+      <% content_for :head do %>
+        <meta content='<%= sanitize @doc.annotation %>' property="og:description">
+      <% end %>
+      <div class="doc-content" style="overflow: hidden;">
+        <%=raw strip_and_cut(sanitize(@doc.text, tags: []), 200) %>
+        <p style="margin:10px 0;">
+          <%= link_to 'Вернуться к статье', @doc.url, class: 'comments-link' %>
+        </p>
+      </div>
+      <div id="comments">
+        <%= render partial: 'templates/blocks/comments_widget' %>
+      </div>
+      <div class="doc-links">
+        <%= render partial: 'doc_ratings/rating', locals: {doc: @doc} %>
+      </div>
+      <% if @doc.similar_docs.any? %>
+          <div class="read-more">
+            Читайте также:
+            <div class="b-items-list">
+              <% @doc.similar_docs.limit(5).each  do |news| %>
+                <div class="b-items-list__item">
+                  <% if news.main_photo.present? %>
+                    <%= link_to(image_tag(news.main_photo.image.url(:thumb_150x110), alt: news.title, title: news.title), news.url(@site), class: 'photo') %>
+                  <% end %>
+                  <div class="info">
+                    <%= link_to news.title, (!news.approved? && can?(:manage, news) && news.is_a?(Doc)) ? news.preview_secret_url(@site) : news.url(@site), class: "short-description" %>
+                    <div class="date"><%= Russian::strftime(news.created_at, "%d.%m %H:%M") %></div>
+                    <div class="b-news__views">
+                      <%= image_tag 'icons/views.png', class: "b-news__views__counter-icon" %>
+                      <%= news.page_views %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </aside>
+  <section class="l-page__column right">
+    <%= render partial: "/docs/templates/blocks/right" %>
+  </section>
+</div>

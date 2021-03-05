@@ -1,0 +1,111 @@
+.b-catalog {
+  & &__aux {
+    padding: 10px 10px 10px 0px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    .g-button {float: right;}
+    p {
+      width: 85%;
+      margin-top: 0;
+      font: 24px/30px $font-family_proxymanova;
+      color: $blue-dark2;
+      strong {color: $red-dark;}
+    }
+  }
+
+  & &__content {overflow: hidden;}
+
+  & &__item {
+    padding: 20px 0 0 85px;
+    .icon {
+      float: left;
+      margin-left: -70px;
+    }
+    .title {font-size: 18px;}
+  }
+
+  & &__children {margin-top: 5px;}
+  & &__child {
+    margin-bottom: 5px;
+    font-size: 13px;
+    line-height: 16px;
+    a {color: $gray-dark;}
+  }
+
+  & &-sub {
+    padding-top: 10px;
+    margin-right: -20px;
+    overflow: hidden;
+    font-size: 15px;
+    &__item {
+      display: inline-block;
+      @include box-sizing(border-box);
+      @include grid-size(3);
+      min-height: 25px;
+      padding-left: 30px;
+      margin: 0 20px 15px 0;
+//      float: left;
+      vertical-align: top;
+      line-height: 18px;
+      background: asset_data_url('v2/catalog/folder.png') left top no-repeat;
+      a {
+        @include ellipsis();
+        white-space: normal;
+        color: $gray-dark;
+        &.active {
+          font-weight: 700;
+          color: $red-dark;
+        }
+      }
+    }
+  }
+
+  & &-companies {
+    margin-right: $dx;
+    overflow: hidden;
+
+    &__item {
+      padding: 30px 0 30px 215px;
+      border-bottom: 1px $gray-light solid;
+      @include clearfix;
+      &:last-child {border-bottom: none;}
+      .avatar {
+        width: 200px;
+        height: 100px;
+        float: left;
+        margin: 0 20px 0 -220px;
+        img {margin: 0 auto}
+      }
+      .item__title {
+        font-size: 15px;
+        font-weight: 700;
+        color: $blue-dark4;
+      }
+      .item__description {margin-bottom: 5px;}
+      .item__flags {
+        float: right;
+        color: yellow;
+      }
+      .item__contacts {}
+      .contact {
+        height: 17px;
+        padding-left: 20px;
+        margin-bottom: 5px;
+        line-height: 17px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        background: left center no-repeat;
+      }
+      .street {background-image: asset_data_url('icons/banks_place.png');}
+      .phone {background-image: asset_data_url('icons/phone.png');}
+    }
+
+  }
+
+  .b-rubricator {
+    @include box-sizing(border-box);
+    @include grid-size(3);
+    float: right;
+  }
+}

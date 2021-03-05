@@ -1,0 +1,8 @@
+.share-block
+  .social-likes
+    .facebook{title: t('.facebook_title')} Facebook
+    .twitter{title: t(".twitter_title")} Twitter
+    .vkontakte{title: t('.vkontakte_title')}= t('.vkontakte')
+    .plusone{title: t('.plusone_title')} Google+
+    .pinterest{title: t('.pinterest_title'), data: {media: "#{doc.main_photo ? URI.join(root_url, doc.main_photo.image.url(:xxlarge)) : URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png'))}"}} Pinterest
+    

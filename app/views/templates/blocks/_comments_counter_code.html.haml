@@ -1,0 +1,4 @@
+- if [Doc, Event, Catalog, Gallery].include?(doc.class)
+  = link_to doc.comments.count, doc.url + "#comments"
+- else
+  0

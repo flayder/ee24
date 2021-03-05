@@ -1,0 +1,21 @@
+-# TODO: как-то унифицировать условия и, возможно, ссылки
+- if (doc.is_a?(Doc) && can?(:rest_manage, doc)) or (doc.is_a?(Event) && can?(:manage, doc))
+  .manage-links
+    - if doc.is_a?(Doc) && can?(:rest_manage, doc)
+      - link = doc.global_rubric.link
+      = link_to 'редактировать', "/#{link}/#{doc.id}/edit", class: 'red'
+      = link_to 'удалить', "/#{link}/#{doc.id}", method: :delete, confirm: 'Вы уверены?', class: 'red'
+      - if can?(:approve, doc) && !doc.approved?
+        = link_to 'подтвердить', "/#{link}/approve/#{doc.id}", confirm: 'Вы уверены?', class: 'red'
+    - elsif doc.is_a?(Event) && can?(:manage, doc)
+      = link_to 'редактировать', edit_event_url(doc), class: 'red'
+      = link_to 'удалить', event_url(doc), method: :delete, confirm: 'Вы уверены?', class: 'red'
+      - unless doc.approved?
+        = link_to 'подтвердить', approve_event_url(doc), confirm: 'Вы уверены?', class: 'red'
+    - if can? :manage, Version && doc.respond_to?(:versions)
+      = link_to 'История изменений', admin_item_versions_url(item_type: doc.class, item_id: doc.id)
+    / - if can?(:manage, Gallery)
+    /   = link_to 'Редактировать.', edit_gallery_url(@gallery), class: 'edit'
+    /   = link_to 'Удалить.', gallery_url(@gallery), method: :delete, confirm: 'Вы уверены, что хотите удалить фоторепортаж?', class: 'delete'
+    /   - unless @gallery.approved?
+    /     = link_to 'Подтвердить', approve_gallery_url(@gallery), confirm: 'Вы уверены, что хотите подтвердить фоторепортаж?', class: 'delete'

@@ -1,0 +1,13 @@
+.g-dates
+  - if controller_name == 'afisha'
+    .g-date.active За всё время
+    = link_to 'Сегодня', 'javascript:;', class: 'g-date'
+  - else
+    .g-date.active Сегодня
+  = link_to 'Вчера', 'javascript:;', class: 'g-date'
+  - ['пт', 'чт', 'ср', 'вт', 'пн'].each_with_index do |day, k|
+    = link_to 'javascript:;', class: 'g-date' do
+      %strong= day
+      #{10 - k}.09
+  .g-dates__selector
+    = text_field_tag 'datepicker', '', class: 'js-datepicker', data: {type: controller_name}

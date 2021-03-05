@@ -1,0 +1,22 @@
+.b-account-info {
+  padding: 30px;
+  background: $blue-light;
+  margin-bottom: $dx;
+  font-family: $font-family_proxymanova;
+
+  &__item {
+    margin-bottom: 5px;
+    color: $gray-mid4;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__description {
+    margin-bottom: 20px;
+    margin-left: 0;
+    font-size: 18px;
+    color: $black;
+    &:last-child {margin-bottom: 0;}
+    @include ellipsis()
+  }
+}

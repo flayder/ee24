@@ -1,0 +1,10 @@
+.l-wrapper
+
+  %aside.l-section__aside= render partial: '/search/templates/blocks/right'
+
+  %div.l-section__main
+    = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+    = render 'search/menu'
+    = render 'templates/dynamic/docs_index', docs: @results
+    -#= yandex_direct_code @site
+= seo_text @seo

@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новый редирект', new_admin_redirect_path
+= render :partial => 'table', :locals => { :redirects => @redirects }
+
+= will_paginate_bootstrap @redirects

@@ -1,0 +1,19 @@
+- unless @docs.empty?
+  - @docs.group_by {|d| d.created_at.to_date}.each do |date, news_docs|
+    .l-row.b-newslist-tape
+      .l-cols-2.l-l
+        .news__date.news__date_day
+          = Russian.strftime(date, '%d')
+        .news__date.news__date_month
+          = Russian::strftime(date, "%d %B").split(' ').last
+      .l-cols-7.l-l
+        = render partial: 'news/news_item', collection: news_docs, as: 'news_item'
+- else
+  .l-row.b-newslist-tape
+    .l-cols-2.l-l
+      .news__date.news__date_day
+        = Russian.strftime(date, '%d')
+      .news__date.news__date_month
+        = Russian.strftime(date, '%B')
+    .l-cols-7.l-l
+      .b-newslist-mini__item.message За указанный день новостей нет.

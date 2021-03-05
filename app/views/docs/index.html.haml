@@ -1,0 +1,17 @@
+.l-wrapper
+  - if @global_rubric.present? || @rubric.present?
+    %h1.g-subheader.g-subheader__last-news
+      = @rubric.present? ? @rubric.title : @global_rubric.title
+  %aside.l-section__aside
+    = link_if_logged t('.add'), "/#{@global_rubric.link}/new"
+
+    = render 'shared/adv-aside'
+    = render partial: 'shared/rated'
+
+  %div.l-section__main
+    - if @docs.present?
+      = render partial: 'articles_list', object: @docs
+    - else
+      .b-box Нет информации.
+
+= seo_text @seo

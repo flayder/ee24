@@ -1,0 +1,9 @@
+%h1= 'API Яндекс Метрики'
+
+- if @metrika_api_account.try(:authorized?)
+  = @metrika_api_account.inspect
+- else
+  Вы не подключили аккаунт Яндекс.Метрики
+  = link_to 'Подключить', 'https://oauth.yandex.ru/client/new'
+
+= link_to 'Редактировать аккаунт', edit_admin_metrika_api_account_url(@metrika_api_account)

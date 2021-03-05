@@ -1,0 +1,71 @@
+.b-howto {
+  background: #F2F5F8;
+  padding: 30px 25px;
+  margin-bottom: 20px;
+  overflow: hidden;
+
+  .g-button { margin-top: 20px;}
+
+  & &__header {
+    width: 410px;
+    float: left;
+  }
+
+  & &__title {
+    font-weight: bold;
+    font-size: 44px;
+    color: #00365E;
+  }
+
+  & &__description {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #00365e;
+  }
+
+  & &__tour {
+    margin-top: 25px;
+    display: inline-block;
+    background: #E62C3F;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+  }
+
+  & &__steps {
+    @include display(flex);
+    @include flex-direction(row);
+    @include justify-content(space-around);
+    overflow: hidden;
+    margin-left: 410px;
+    padding-left: 20px;
+  }
+
+  & &__step {
+    text-align: center;
+    width: 210px;
+    float: left; // flex falback
+    & + & {margin-left: 30px;} // flex falback
+    .icon {
+      height: 120px;
+      overflow: hidden;
+      img {margin: 0 auto;}
+    }
+    .title {margin-top: 20px;}
+
+  }
+
+  & &__close {
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    background: #A4A4A4 image-url('v2/icons/close.png') center center no-repeat;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+}

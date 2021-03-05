@@ -1,0 +1,67 @@
+.newslist__head {
+  @include clearfix;
+}
+.g-subheader__last-news {
+  margin-top: 6px;
+  font-size: 26px;
+  line-height: 28px;
+  letter-spacing: 3px;
+  text-align: left !important;
+}
+.b-newslist-tape {
+  margin-top: 40px;
+  @include clearfix;
+}
+.news__date {
+  font-family: "ProximaNova", Verdana, sans-serif;
+
+  &_day {
+    font-size: 70px;
+    line-height: 70px;
+    font-weight: bold;
+  }
+
+  &_month {
+    text-transform: lowercase;
+    font-size: 26px;
+    line-height: 26px;
+  }
+}
+.b-newslist-tape__item {
+  margin-bottom: 55px;
+  @include clearfix;
+
+  .item {
+    &__photo {
+      margin-right: 20px;
+      img {
+        max-width: 190px;
+        max-height: 164px;
+      }
+    }
+
+    &__info {
+      font-size: 12px;
+
+      .date {
+        font-family: "ProximaNova", Verdana, sans-serif;
+        font-size: 16px;
+        color: $gray-light2;
+      }
+
+      .category {
+        margin-left: 8px;
+        text-transform: uppercase;
+        color: $red-dark;
+      }
+    }
+
+    &__title {
+      font-size: 24px;
+      margin-bottom: 6px;
+      a {
+        color: #000;
+      }
+    }
+  }  
+}

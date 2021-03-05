@@ -1,0 +1,13 @@
+- if @sel_industries.present?
+  .b-filter__selected.js-selected{'data-section' => 'industries'}
+    .selected__title Выбранные отрасли
+    .selected__list
+      - @sel_industries.each do |industry|
+        %span.js-selectedItem{'data-id' => industry.id}>= industry.title
+
+- if @sel_regions.present?
+  .b-filter__selected.js-selected{'data-section' => 'regions'}
+    .selected__title Выбранные регионы
+    .selected__list
+      - @sel_regions.each do |region|
+        %span.js-selectedItem{'data-id' => region.id}>= region.title

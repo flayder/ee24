@@ -1,0 +1,11 @@
+%br
+На сайт была добавлена новая статья.
+%br
+- if @doc.approved?
+  = link_to @doc.title, "https://#{@site.domain}#{@doc.url}"
+  %br
+  Статья уже одобрена и выложена в общий доступ.
+- else
+  = link_to @doc.title, "https://#{@site.domain}#{@doc.preview_secret_url}"
+  Статья еще находится в редактировании или ожидает подтверждения.
+%br

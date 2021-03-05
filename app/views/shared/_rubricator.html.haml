@@ -1,0 +1,10 @@
+- item ||= nil
+%ul.b-rubricator
+  - rubrics.each do |rubric|
+    %li.b-rubricator__item
+      - if rubric.url == request.path
+        %span.active= rubric.title
+      - elsif item && item.rubric.url == rubric.url || controller_name == 'afisha' && params[:rubric] == rubric.try(:link)
+        %span.active= link_to rubric.title, rubric.url
+      - else
+        = link_to rubric.title, rubric.url, class: 'link'

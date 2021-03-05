@@ -1,0 +1,17 @@
+.l-wrapper
+
+  %aside.l-section__aside
+
+    = render 'shared/active_users', users: @category.questions.map(&:comments).flatten.group_by {|c| c.user}.sort_by {|c| c.last.count}.first(3)
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    / = render 'shared/search'
+    .g-title
+      %h1.title
+        Вопросы раздела
+        = link_to @category.name, @category
+    = render 'categories/menu'
+
+    .b-cat__digest
+      = render partial: 'categories/questions', object: @questions

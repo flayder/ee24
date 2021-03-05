@@ -1,0 +1,21 @@
+<% if @site.has_section? :news %>
+  <%= auto_discovery_link_tag(:rss, root_url + 'news.rss', {title: @site.domain + ' : Новости'}) %>
+<% end %>
+<% if @site.has_section? :catalog %>
+  <%= auto_discovery_link_tag(:rss, root_url + 'catalog.rss', {title: @site.domain + ' : Компании'}) %>
+<% end %>
+<% if @site.has_section? :job %>
+  <%= auto_discovery_link_tag(:rss, root_url + 'job.rss', {title: @site.domain + ' : Работа'}) %>
+<% end %>
+<% if @site.has_section? :afisha %>
+  <%= auto_discovery_link_tag(:rss, root_url + 'afisha.rss', {title: @site.domain + ' : Афиша'}) %>
+<% end %>
+<% if @site.has_section? :photo %>
+  <%= auto_discovery_link_tag(:rss, root_url + 'photo.rss', {title: @site.domain + ' : Фото'}) %>
+<% end %>
+
+<% if @site.has_section? :docs %>
+  <% @site.doc_global_rubrics.each do |global_rubric| %>
+    <%= auto_discovery_link_tag(:rss, "#{root_url}#{global_rubric.link}.rss", {title: "#{@site.domain}: #{global_rubric.title}"}) %>
+  <% end %>
+<% end %>

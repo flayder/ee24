@@ -1,0 +1,56 @@
+.b-ency-widget {
+  padding: $dx/2 $dx $dx $dx;
+  background: #c6e6eb;
+  .b-ency & {background: $blue-light}
+
+  &__title {
+    display: inline-block;
+    height: 16px;
+    margin: 0 0 15px -27px;
+    padding: 11px 20px 9px 30px;
+    font: bold $font-size_subheader $font-family_subheader;
+    line-height: $line-height_subheader;
+    text-transform: uppercase;
+    color: #fff;
+    background: $green-light;
+    &:before,
+    &:after {
+      display: block;
+      content: '';
+      position: absolute;
+      background: top left no-repeat;
+    }
+    &:before {
+      width: 7px;
+      height: 4px;
+      left: 0;
+      bottom: -4px;
+      background: asset_data_url('v2/element-triangle-3.png');
+    }
+    &:after {
+      width: 18px;
+      height: 36px;
+      right: -18px;
+      top: 0;
+      background: asset_data_url('v2/element-triangle-4.png');
+    }
+  }
+
+  &__link {
+    @include ellipsis;
+    display: block;
+    height: 35px;
+    padding-left: 45px;
+    margin-top: 15px;
+    font-size: 1.14em;
+    line-height: 35px;
+    background: center left no-repeat transparent;
+
+    a {color: $blue-dark3;}
+
+    &.person {background-image: asset_data_url('v2/ency-person.png');}
+    &.sights {background-image: asset_data_url('v2/ency-sights.png');}
+    &.beer {background-image: asset_data_url('v2/ency-beer.png');}
+    &.dict {background-image: asset_data_url('v2/ency-dict.png');}
+  }
+}

@@ -1,0 +1,31 @@
+= render 'menu'
+
+%h1 Коды баннеров
+
+- if @ad_section.present?
+  %h4
+    = @ad_section.class.model_name.human
+    - if @ad_section.respond_to?(:title)
+      = "«#{@ad_section.title}»"
+    - else
+      = "##{@ad_section.id}"
+
+- if @ad_codes.count < AdCode::BANNER_TYPES.count
+  = link_to 'Новый баннер', new_admin_ad_code_url(:ad_code => params[:ad_code])
+
+- if @ad_codes.present?
+  %table.table.table-bordered
+    %thead
+      %th= AdCode.human_attribute_name :banner_type
+      %th= AdCode.human_attribute_name :title
+      %th= AdCode.human_attribute_name :code
+      %th= 'Действия'
+    %tbody
+      - @ad_codes.each do |banner|
+        %tr
+          %td=t ("banners.#{banner.banner_type}")
+          %td= banner.title
+          %td= banner.code
+          %td
+            = link_to 'ред.', edit_admin_ad_code_url(banner)
+            = link_to 'уд.', admin_ad_code_url(banner), :method => :delete, :confirm => 'Вы уверены, что хотите удалить баннер?'

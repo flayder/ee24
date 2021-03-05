@@ -1,0 +1,17 @@
+.l-wrapper
+
+  %aside.l-section__aside
+
+    = render 'categories/rubricator'
+    = render 'shared/adv-aside'
+    = render 'categories/top_5_users'
+
+  %div.l-section__main
+    / = render 'shared/search'
+    .g-title
+      %h1.title= t('.my_questions_header')
+    = render 'categories/menu'
+
+    .b-cat__digest
+      = render partial: 'categories/questions', object: @questions
+    = will_paginate @questions

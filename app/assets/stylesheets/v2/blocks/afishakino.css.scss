@@ -1,0 +1,65 @@
+.b-events-aux {
+  background-color: $blue-light;
+  padding: 15px;
+  h1 {
+    margin-bottom: 10px;
+  }
+  .b-rubric-container {
+    float: left;
+    margin-right: 20px;
+    margin-top: 5px;
+  }
+  .g-dates {
+    float: left;
+  }
+  @include clearfix;
+}
+.movie_results {
+  .theater {
+    .desc {
+      //background-color: lighten(#F2F5F8, 1);
+      background-color: $blue-light;
+      padding: 10px;
+      h2 {
+        font-weight: bold;
+        font-family: $font-family_subheader;
+        font-size: $font-size_subheader;
+        a {
+          font-weight: bold;
+          font-family: $font-family_subheader;
+          font-size: $font-size_subheader;
+        }
+      }
+      .info {
+        font-size: $font-size_mini;
+      }
+    }
+    .showtimes {
+      @include clearfix;
+      margin-bottom: 20px;
+      .show_left, .show_right {
+        width: 350px;
+        padding-left: 20px;
+        margin-right: 100px;
+        float: left;
+        .movie {
+          margin-bottom: 15px;
+          .name {
+            color: $blue-dark;
+            margin-bottom: 2px;
+            font-weight: bold;
+          }
+          .info {
+            font-size: $font-size_mini;
+            margin-bottom: 10px;
+            display: block;
+          }
+          .times {
+            font-weight: bold;
+            font-size: $font-size_mini;
+          }
+        }
+      }
+    }
+  }
+}

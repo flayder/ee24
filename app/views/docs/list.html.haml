@@ -1,0 +1,12 @@
+.l-wrapper
+  %aside.l-section__aside
+    -# TODO: передавать подрубрики
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    -# TODO: передавать нужные доки
+    = render partial: 'articles_list', object: @docs if @docs.present?
+    -#= render 'templates/dynamic/docs_index', docs: @docs
+
+-#= yandex_direct_code @site
+-#= seo_text @seo

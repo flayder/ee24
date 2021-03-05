@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая профессия', new_admin_profession_path
+= render :partial => 'table', :locals => { :professions => @professions }
+
+= will_paginate_bootstrap @professions

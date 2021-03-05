@@ -1,0 +1,28 @@
+= render :partial => 'search_form'
+
+- if @versions.present?
+  %table.table.table-bordered
+    %tr
+      %td Дата изменения
+      %td Тип объекта
+      %td Объект
+      %td действие
+      %td diff
+    - @versions.each do |version|
+      %tr
+        %td= version.created_at.strftime("%d.%m.%Y %H:%M")
+        %td= version.item_type.constantize.model_name.human
+        %td= link_to_unless version.event == 'destroy', version.item.try(:title), version.item.try(:url)
+        %td=t version.event
+        %td= link_to 'diff', admin_version_diff_url(version.id) if version.event == 'update'
+
+  = will_paginate_bootstrap @versions
+
+
+%h4 Статистика изменённых документов по разделам
+
+%ul
+  - Version::OBJECTS.each do |object|
+    %li= link_to t(object.underscore.pluralize), admin_item_type_versions_url(item_type: object)
+
+

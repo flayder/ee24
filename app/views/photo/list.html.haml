@@ -1,0 +1,57 @@
+- content_for :head do
+  - shared_photo_path = @gallery.main_photo ? URI.join(root_url, @gallery.main_photo.image.url(:xxlarge), "?#{@gallery.main_photo.updated_at.to_i}") : URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png'))
+
+  %meta{content: "Чехия Онлайн 420on.cz", property: 'og:site_name'}/
+  - if @gallery.title?
+    %meta{content: strip_tags(@gallery.title).html_safe, property: 'og:title'}/
+  %meta{content: request.url.force_encoding('UTF-8'), property: 'og:url'}/
+  %meta{content: "https://www.facebook.com/420on.cz", property: 'article:publisher'}
+  - if @gallery.annotation?
+    %meta{content: strip_tags(@gallery.annotation).html_safe, property: 'og:description'}/
+  %meta{content: 'article', property: 'og:type'}/
+  %meta{content: shared_photo_path, property: 'og:image'}
+
+  %meta{content: 'summary_large_image', property: 'twitter:card'}
+  %meta{content: '@420on', property: 'twitter:site'}
+  - if @gallery.title?
+    %meta{content: strip_tags(@gallery.title).html_safe, property: 'twitter:title'}
+  - if @gallery.annotation?
+    %meta{content: strip_tags(@gallery.annotation).html_safe, property: 'twitter:description'}
+  %meta{content: shared_photo_path, property: 'twitter:image'}
+  %meta{content: request.url.force_encoding('UTF-8'), property: 'twitter:url'}
+.l-wrapper
+
+  %aside.l-section__aside
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    .b-doc
+      %h1.b-doc__title= @gallery.title
+      = render partial: 'templates/dynamic/doc_aux_inline', locals: {doc: @gallery}
+
+      = @gallery.annotation.try(:html_safe)
+      = render partial: '/photo/templates/blocks/slider', locals: {doc: @gallery }
+
+      .l-cols
+        .b-doc__socials
+          .l-cols-2.l-l
+            .g-subheader.mini Рассказать всем:
+          .l-cols-7.l-l
+            - unless params[:preview_secret]
+              = render partial: 'templates/dynamic/doc_share_block', locals: {doc: @gallery}
+      .l-cols
+        .b-doc__tags
+          .l-cols-2.l-l
+            .g-subheader.mini Темы:
+          .l-cols-7.l-l
+            = render partial: 'shared/tags_colored', locals: {doc: @gallery}
+
+      - if @gallery.similar_docs.any?
+        = render partial: 'shared/relevant', locals: {doc: @gallery}
+
+      - if @gallery.is_commentable?
+        .g-comments-wrapper.js-comments{data:{class: @gallery.class, id: @gallery.id}}
+          = render 'comments/comment_form_full', doc: @gallery, visible: false
+
+
+= seo_text @seo

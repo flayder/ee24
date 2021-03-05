@@ -1,0 +1,8 @@
+%ul.b-account-comments
+  - comments.each do |comment|
+    %li.b-account-comments__item
+      .item__info
+        = timeleft(comment.published_at)
+        = link_to comment.commentable.title, comment.commentable.url
+      .item__text
+        = comment.text

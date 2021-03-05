@@ -1,0 +1,18 @@
+%table.table.table-bordered
+  %thead
+    %th= DictionaryRubric.human_attribute_name :id
+    %th= DictionaryRubric.human_attribute_name :title
+    %th= 'Кол-во статей'
+    %th= 'Действия'
+  - dictionary_rubrics.each do |rubric|
+    %tr
+      %td= rubric.id
+      %td= rubric.title
+      %td= rubric.dictionary_objects.count
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_dictionary_rubric_path(rubric)
+
+          %li= link_to 'Удалить', admin_dictionary_rubric_path(rubric), :method => :delete, :confirm => 'Вы уверены?'          
+          %li= link_to 'Добавить статью', new_admin_dictionary_object_path(:rubric_id => rubric.id)
+          %li= link_to_seos rubric

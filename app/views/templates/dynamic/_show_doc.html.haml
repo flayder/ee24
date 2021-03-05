@@ -1,0 +1,164 @@
+- content_for :head do
+  :ruby
+    shared_photo_path = doc.shared_photo ? URI.join(root_url, doc.shared_photo.image.url, "?#{doc.shared_photo.updated_at.to_i}")
+                                         : (doc.main_photo ? URI.join(root_url, doc.main_photo.image.url(:xxlarge), "?#{doc.main_photo.updated_at.to_i}")
+                                                           : URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png')))
+
+  = javascript_include_tag '//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', async: true
+
+  == <meta property='og:site_name' content="Чехия Онлайн 420on.cz" />
+  == <meta property='og:title' content="#{doc.title}" />
+  == <meta property='og:url' content="#{request.url.force_encoding('UTF-8')}" />
+  == <meta property='article:publisher' content="https://www.facebook.com/420on.cz" />
+  == <meta property='og:description' content="#{doc.annotation}" />
+  == <meta property='og:type' content='article' />
+  == <meta property='og:image' content="#{shared_photo_path}" />
+
+  == <meta property='twitter:card' content='summary_large_image' />
+  == <meta property='twitter:site'  content='@420on' />
+  == <meta property='twitter:title' content="#{doc.title}" />
+  == <meta property='twitter:description' content="#{doc.annotation}" />
+  == <meta property='twitter:image' content="#{shared_photo_path}" />
+  == <meta property='twitter:url' content="#{request.url.force_encoding('UTF-8')}" />
+
+.l-wrapper
+
+  %aside.l-section__aside
+    - if ad_code('vertical_top_right')
+      .b-isikhangiso-aside
+        = ad_code('vertical_top_right').html_safe
+
+    - if controller_name == 'afisha'
+      = link_if_logged 'событие', '/afisha/new'
+    - elsif controller_name == 'docs'
+      = link_if_logged t('.add'), "/#{doc.global_rubric.link}/new"
+
+    = render 'shared/adv-aside'
+    - if controller_name == 'afisha'
+      = render 'latest_events'
+
+    = render partial: 'shared/media_photos'
+
+    - if controller_name != 'afisha'
+      .relap
+        :plain
+          <script id="ol2iN_c3Nc40bXl5">if (window.relap) window.relap.ar('ol2iN_c3Nc40bXl5');</script>
+
+    -# TODO: Глобализовать популярные новости
+    = render partial: 'shared/rated'
+    = render 'shared/adv-aside-smi2'
+
+
+  %div.l-section__main
+    .b-doc
+      .b-doc__lead
+        .b-doc__content{itemscope: true, itemtype: "http://schema.org/NewsArticle"}
+          %meta{itemprop: "datePublished", content: @doc ? @doc.created_at.iso8601 : nil}
+          .b-doc__breadcrumbs
+            %div.inline{itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb"}
+              = link_to root_path, {itemprop: "url"} do
+                %span{itemprop: "title"}= t('.main')
+            →
+            %div.inline{itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb"}
+              - if @doc
+                = link_to "/#{@global_rubric.url}", {itemprop: "url"} do
+                  %span{itemprop: "title"}= @global_rubric.title
+              - elsif @event
+                = link_to '/afisha', {itemprop: "url"} do
+                  %span{itemprop: "title"}= 'Афиша'
+            →
+            %div.inline{itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb"}
+              - if @doc
+                = link_to @doc.rubric.url, {itemprop: "url"} do
+                  %span{itemprop: "title"}= @doc.rubric.title
+              - elsif @event
+                = link_to @event.rubric.url, {itemprop: "url"} do
+                  %span{itemprop: "title"}= @event.rubric.title
+            →
+            %div.inline{itemscope: true, itemtype: "http://data-vocabulary.org/Breadcrumb"}
+              %span{itemprop: "title"}= doc.title
+
+          %h1.b-doc__title{itemprop: "headline"}= doc.title
+          = render partial: 'templates/dynamic/doc_aux_inline', locals: {doc: doc}
+          - unless params[:preview_secret]
+            .share-block-top
+              = render partial: 'templates/dynamic/doc_share_block', locals: { doc: doc }
+          .b-doc__annotation{itemprop: "description"}
+            = doc.annotation
+
+          - if doc.main_photo
+            .source= "Фото: #{doc.main_photo.title}" if doc.main_photo.title.present?
+            .b-doc__mainphoto
+              = image_tag doc.main_photo.image.url(:xxlarge), size: '610x415', alt: doc.title, title: doc.title, class: 'cover', itemprop: "image" if doc.main_photo.present?
+          - if controller_name == 'afisha'
+            .b-event__info
+              - if doc.place.present?
+                .b-event__info-item>
+                  .item__title Место:
+                  .item__content= doc.place
+              - if doc.start_date.present?
+                .b-event__info-item>
+                  .item__title Время:
+                  .item__content
+                    = "#{doc.start_date.strftime('%d.%m.%Y')}"
+                    = "#{doc.start_date.strftime('%H:%M')}" if doc.show_time
+                    - if doc.start_date.to_date != doc.finish_date.to_date
+                      = " - "
+                      = "#{doc.finish_date.strftime('%d.%m.%Y')}"
+                      = "#{doc.finish_date.strftime('%H:%M')}" if doc.show_time
+              - if doc.address.present?
+                .b-event__info-item>
+                  .item__title Адрес:
+                  .item__content= doc.address
+              - if doc.price.present?
+                .b-event__info-item>
+                  .item__title Стоимость:
+                  .item__content
+                    = doc.price
+              - if doc.site_url.present?
+                .b-event__info-item>
+                  .item__title Сайт:
+                  .item__content= link_to doc.site_url, doc.site_url, :rel => 'nofollow'
+              - if doc.promote_link.present?
+                .b-event__info-item>
+                  = link_to 'Купить билеты', doc.promote_link, class: 'g-button primary'
+
+          %div{itemprop: "articleBody"}
+            = article_text(doc)
+
+      - if (banner = ad_code('doc_text_bottom')).present?
+        .l-cols.banner-doc-text-bottom
+          = banner.html_safe
+
+      .l-cols
+        .b-doc__socials
+          .l-cols-2.l-l
+            .g-subheader.mini= t('.social_links')
+          .l-cols-7.l-l
+            - unless params[:preview_secret]
+              = render partial: 'templates/dynamic/doc_share_block', locals: { doc: doc }
+      .l-cols
+        .b-doc__tags
+          .l-cols-2.l-l
+            .g-subheader.mini= t('.themes')
+          .l-cols-7.l-l
+            = render partial: 'shared/tags_colored', locals: {doc: doc}
+
+      - if doc.similar_docs.any?
+        = render partial: 'shared/relevant', locals: {doc: doc}
+
+      - if [Doc, Event].include?(doc.class)
+        .g-comments-wrapper.js-comments{data:{class: doc.class, id: doc.id}}
+          = render 'comments/comment_form_full', doc: doc, visible: doc.class == 'Question'
+
+      - if doc.is_a?(Doc) && doc.similar_docs.present?
+        .b-doc__last-news
+          .g-subheader.g-subheader__last-news Последние новости:
+          = render partial: 'news/news_list'
+
+      - if doc.is_a?(Event)
+        .b-doc__last-news
+          .g-subheader.g-subheader__last-news Ближайшие события:
+        = render partial: 'afisha/events_list'
+
+= seo_text @seo

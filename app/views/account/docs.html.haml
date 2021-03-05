@@ -1,0 +1,18 @@
+%div
+  .l-wrapper
+    .l-page__columns-line
+      .l-section__main.l-r-important
+        %div.l-section__main
+          - if @docs.present?
+            / = render partial: 'docs/', object: @docs.in_groups_of(3).transpose
+            .b-tag__content
+              .l-cols.js-loaderByPage
+                - @docs.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+                  .l-cols-3.l-l{class: "col#{index+1}"}
+                    = render partial: 'shared/article', collection: slice_news, as: 'article'
+            = will_paginate_new @docs
+          - else
+            .g-info
+              .g-info__text= is_my_profile?(@user) ? "У вас ещё нет статей." : "У пользователя нет статей."
+      .l-section__aside.l-l
+        = render 'account/templates/blocks/aside', user: @user

@@ -1,0 +1,10 @@
+<% cache_unless_admin "doc_blocks_#{@site.id}", expires_in: 10.minutes do %>
+  <% @site.doc_blocks.each do |main_block| %>
+    <% if main_block.docs.any? %>
+      <section>
+        <%= link_to main_block.title, main_block.path, class: "b-rubric-title" %>
+        <%= render_main_block(main_block) %>
+      </section>
+    <% end %>
+  <% end %>
+<% end %>

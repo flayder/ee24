@@ -1,0 +1,6 @@
+= content_tag :li, :id => dom_id(rubric) do
+  = render :partial => 'rubric', :locals => { :rubric => rubric }  
+  - unless rubric.leaf?
+    = content_tag :ul do
+      - rubric.children.each do |child_rubric|
+        = render :partial => "tree", :locals => { :rubric => child_rubric }

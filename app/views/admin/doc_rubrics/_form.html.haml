@@ -1,0 +1,26 @@
+%h1= 'Новая подрубрика'
+= form_for [:admin, @doc_rubric] do |f|
+  = error_messages_for :doc_rubric, :object => @doc_rubric
+  
+  .controls
+    = f.label :global_rubric_id
+    = f.select :global_rubric_id, @site.doc_global_rubrics.map { |r| [r.title, r.id] }
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :english_title
+    = f.text_field :english_title
+
+  .controls
+    = f.label :link
+    = f.text_field :link
+
+  .controls
+    = f.label :position
+    = f.text_field :position    
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

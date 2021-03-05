@@ -1,0 +1,5 @@
+- if doc.photos.any?
+  .fotorama{data: {width: '295', ratio: '295/250', nav: 'thumbs', thumbwidth: '78', thumbheight: '78'}}
+    - doc.photos.each do |photo|
+      = link_to url_for_file_column(photo, "image", "medium"), title: h("#{doc.title} #{photo.id}") do
+        = image_tag url_for_file_column(photo, "image", "small"), alt: h("#{doc.title} #{photo.id}")

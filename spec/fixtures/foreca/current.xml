@@ -1,0 +1,45 @@
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<weather generated="2013-04-22T06:45:00Z">
+
+<loc id="100466806">
+<step dt="2013-04-22T10:30:00" station="Ð¡Ð°Ð½ÐºÑ‚-ÐŸÐµÑ‚ÐµÑ€Ð±ÑƒÑ€Ð³" station_en="St. Peterburg" t="7" s="d000" dist="11" tf="7" ws="1.0" wn="" rh="53" p="767" v="10000" />
+</loc>
+
+<loc id="100499099">
+<step dt="2013-04-22T10:30:00" station="Ð¡Ð°Ð¼Ð°Ñ€Ð°" station_en="Samara" t="13" s="d000" dist="33" tf="13" ws="5.0" wn="NW" rh="47" p="743" v="10000" />
+</loc>
+
+<loc id="100501175">
+<step dt="2013-04-22T10:30:00" station="Ð Ð¾ÑÑ‚Ð¾Ð²-Ð½Ð°-Ð”Ð¾Ð½Ñƒ" station_en="Rostov-Na-Donu" t="11" s="d400" dist="9" tf="11" ws="6.0" wn="N" rh="76" p="750" v="10000" />
+</loc>
+
+<loc id="100520555">
+<step dt="2013-04-22T10:30:00" station="ÐÐ¸Ð¶Ð½Ð¸Ð¹ ÐÐ¾Ð²Ð³Ð¾Ñ€Ð¾Ð´ / Ð¡Ñ‚Ñ€Ð¸Ð³Ð¸Ð½Ð¾" station_en="Nizhny Novgorod/Strigino" t="7" s="d300" dist="18" tf="4" ws="5.0" wn="N" rh="57" p="755" v="9000" />
+</loc>
+
+<loc id="100524901">
+<step dt="2013-04-22T10:00:00" station="ÐœÐ¾ÑÐºÐ²Ð°" station_en="Moskva" t="5" s="d000" dist="9" tf="4" ws="2.0" wn="NE" rh="66" p="752" v="10000" />
+</loc>
+
+<loc id="100551487">
+<step dt="2013-04-22T10:30:00" station="ÐšÐ°Ð·Ð°Ð½ÑŒ" station_en="Kazan'" t="7" s="d400" dist="5" tf="4" ws="5.0" wn="N" rh="87" p="747" v="10000" />
+</loc>
+
+<loc id="101486209">
+<step dt="2013-04-22T12:00:00" station="Ð•ÐºÐ°Ñ‚ÐµÑ€Ð¸Ð½Ð±ÑƒÑ€Ð³" station_en="Ekaterinburg" t="14" s="d400" dist="3" tf="14" ws="4.0" wn="E" rh="42" p="731" v="55000" />
+</loc>
+
+<loc id="101496153">
+<step dt="2013-04-22T13:30:00" station="ÐžÐ¼ÑÐº" station_en="Omsk" t="21" s="d100" dist="7" tf="21" ws="3.0" wn="S" rh="30" p="750" v="6000" />
+</loc>
+
+<loc id="101496747">
+<step dt="2013-04-22T13:30:00" station="ÐÐ¾Ð²Ð¾ÑÐ¸Ð±Ð¸Ñ€ÑÐº" station_en="NOVOSIBIRSK" t="10" s="d300" dist="5" tf="8" ws="4.0" wn="S" rh="62" p="755" v="10000" />
+</loc>
+
+<loc id="101508291">
+<step dt="2013-04-22T12:00:00" station="Ð§ÐµÐ»ÑÐ±Ð¸Ð½ÑÐº-Ð³Ð¾Ñ€Ð¾Ð´" station_en="CHELYABINSK-GOROD" t="17" s="d100" dist="8" tf="17" ws="1.0" wn="SE" rh="36" p="735" v="10000" />
+</loc>
+
+</weather>

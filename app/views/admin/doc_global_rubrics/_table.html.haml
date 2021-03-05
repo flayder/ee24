@@ -1,0 +1,19 @@
+%table.table.table-bordered
+  %thead
+    %th= DocGlobalRubric.human_attribute_name :id
+    %th= DocGlobalRubric.human_attribute_name :title
+    %th= DocGlobalRubric.human_attribute_name :link
+    %th= 'Кол-во подрубрик'
+    %th= 'Действия'
+  - global_rubrics.each do |rubric|
+    %tr
+      %td= rubric.id
+      %td= rubric.title
+      %td= rubric.link
+      %td= rubric.doc_rubrics.count
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_doc_global_rubric_path(rubric)
+          %li= link_to 'Удалить', admin_doc_global_rubric_path(rubric), :method => :delete, :confirm => 'Вы уверены?'          
+          %li= link_to 'Добавить подрубрику', new_admin_doc_rubric_path(:doc_rubric => { :global_rubric_id => rubric.id })
+          %li= link_to_seos rubric

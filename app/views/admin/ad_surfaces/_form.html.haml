@@ -1,0 +1,53 @@
+%h1= 'Новая рекламная поверхность'
+= form_for [:admin, @ad_surface] do |f|
+  = error_messages_for :ad_surface, :object => @ad_surface
+  
+  .control_group
+    .controls
+      = f.label :title
+      = f.text_field :title
+
+    .controls
+      = f.label :street_id
+      = f.select :street_id, @site.streets.map { |s| [s.title, s.id] }
+
+    .controls
+      = f.label :address
+      = f.text_field :address
+
+    .controls
+      = f.label :description
+      = f.text_area :description, :rows => 40, :cols => 20
+
+    .controls
+      = f.label :ad_agency_id
+      = f.select :ad_agency_id, AdAgency.all.map { |a| [a.title, a.id] }
+
+    .controls
+      = f.label :ad_format_id
+      = f.select :ad_format_id, AdFormat.all.map { |a| [a.title, a.id] }
+    
+    .controls
+      - if @ad_surface.photo?
+        = image_tag @ad_surface.photo.url
+      = f.label :photo, class: 'control-label'
+      = f.file_field :photo
+      = f.hidden_field :photo_cache
+    
+    .controls
+      = f.label :remove_photo
+      = f.check_box :remove_photo
+
+    .controls
+      - if @ad_surface.second_photo?
+        = image_tag @ad_surface.second_photo.url
+      = f.label :second_photo, class: 'control-label'
+      = f.file_field :second_photo
+      = f.hidden_field :second_photo_cache
+
+    .controls
+      = f.label :remove_second_photo
+      = f.check_box :remove_second_photo
+
+    .controls
+      = f.submit 'Сохранить', class: 'btn'

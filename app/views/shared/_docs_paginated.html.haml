@@ -1,0 +1,10 @@
+.l-cols{class: "#{'js-loaderByPage' if docs_paginated.next_page}"}
+  - docs_paginated.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+    .l-cols-3.l-l{class: "col#{index+1}"}
+      = render partial: 'shared/article', collection: slice_news, as: 'article'
+  .g-loader
+    - items = params[:controller] == 'afisha' ? 'события' : 'статьи'
+    =# link_to "Загрузить ещё #{items}", 'javascript:;', data: {page: docs_paginated.next_page}, class: 'g-loader__link js-loader'
+    = will_paginate docs_paginated
+
+-#  - articles.each_slice(3).to_a.select {|i| i.size == 3}.transpose.each_with_index do |slice, index|

@@ -1,0 +1,22 @@
+.b-doc-mini {
+  & + & { margin-left: 12px; }
+  .b-tag__see-also__list > & {
+    width: 190px;
+    float: left;
+  }
+}
+
+.b-doc-mini__cover {
+  width: 190px;
+  height: 160px;
+  overflow: hidden;
+  a { display: block; }
+  img { width: 190px; }
+}
+
+.b-doc-mini__title {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #121212;
+}

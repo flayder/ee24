@@ -1,0 +1,6 @@
+- active_url ||= request.path
+%ul.b-rubricator
+  - { 'Работа' => '/job', 'Вакансии' => '/job/vacancies', 'Карьера' => '/job/career'}.each do |rubric|
+    %li.b-rubricator__item
+      = link_to_unless rubric[1] == active_url, rubric[0], rubric[1], class: 'link' do
+        %span.active= rubric[0]

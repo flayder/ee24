@@ -1,0 +1,35 @@
+%nav.b-nav
+  -# .b-nav__submenu-button
+  -#   %ul.b-nav__submenu
+  -#     - {'Шоппинг' => '/travel/shopping',
+  -#       'О Чехии' => '/travel/about_czech',
+  -#       'О Праге' => '/travel/about_prague',
+  -#       'Образование' => '/immigration/education',
+  -#       'Карьера' => '/immigration/business',
+  -#       'Бизнес' => '/immigration/business',
+  -#       'Жизнь' => '/immigration/life',
+  -#       'Рынок недвижимости' => '/realty/realty_market',
+  -#       'Стиль  ' => '/magazine/style',
+  -#       'Дом и семья' => '/magazine/home',
+  -#       'Культура' => '/magazine/culture',
+  -#       'Еда ' => '/magazine/food',
+  -#       'Здоровье' => '/magazine/health',
+  -#       'Путешествия' => '/travel/world',
+  -#       'Технологии' => '/magazine/technology',
+  -#       'Новостройки ' => '/realty/new_realty'}.each do |name, path|
+  -#       %li.b-nav__submenu-item= link_to name, path, class: 'b-nav__submenu-link'
+
+  .b-nav__links
+
+    - @site.main_menu_links.sort_by(&:position).each do |l|
+      = link_to l.title, l.path, class: "link#{' active' if current_page?(l.path) or (l.path[1..-1] == params[:controller]) or (l.path[1..-1] == params[:global_rubric])}"
+
+  - if @sub_rubrics
+    .b-nav__sublinks
+      %li.b-nav__sublinks-item= link_to t('menu.all'), '/' + (@global_rubric.try(:url) || controller_name), class: "b-nav__sublinks-link #{'active' if current_page?('/' + (@global_rubric.try(:url) || controller_name))}"
+      - if controller_name == 'job' || @global_rubric.try(:link) == 'job'
+        - { 'Вакансии' => '/job/vacancies'}.each do |l|
+          %li.b-nav__sublinks-item= link_to l[0], l[1], class: "b-nav__sublinks-link#{' active' if current_page?(l[1]) or (l[1][1..-1] == params[:controller]) or (l[1][1..-1] == params[:global_rubric])}"
+
+      - @sub_rubrics.each do |l|
+        %li.b-nav__sublinks-item= link_to l.title, l.url, class: "b-nav__sublinks-link#{' active' if current_page?(l.url) or (l.url[1..-1] == params[:controller]) or (l.url[1..-1] == params[:global_rubric])}"

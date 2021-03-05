@@ -1,0 +1,59 @@
+.b-interviews {
+  &__item {
+    padding: 30px 20px 10px 160px;
+    margin-top: $dx;
+    position: relative;
+    background: $blue-light;
+  }
+
+  &__image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  &__person {
+    margin-bottom: 10px;
+    font: bold $font-size_subheader $font-family_subheader;
+    text-transform: uppercase;
+    @include ellipsis;
+    word-wrap: normal;
+    color: $gray-mid3;
+  }
+
+  &__cite {
+    &:before {
+      display: inline;
+      content: '\00ab';
+      margin-right: 3px;
+      font-size: 30px;
+      line-height: 0;
+      color: $gray-mid;
+    }
+    &:after {
+      display: inline;
+      content: '\00bb';
+      margin-left: 3px;
+      font-size: 20px;
+      line-height: 0;
+      color: $gray-mid2;
+    }
+  }
+
+  &__link {
+    font-size: $font-size_index-interviews;
+    font-style: italic;
+    color: $red-mid;
+  }
+
+  &__info {
+    margin-top: 5px;
+    @include clearfix;
+  }
+
+  &__aux {
+    max-width: 50%;
+    margin: 15px 0;
+    float: right;
+  }
+}

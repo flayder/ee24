@@ -1,0 +1,27 @@
+%h1= 'Новая рубрика компаний'
+= form_for [:admin, @catalog_rubric] do |f|
+  = error_messages_for :catalog_rubric, :object => @catalog_rubric
+
+  - if f.object.parent
+    %h2= "для #{f.object.parent.title}"
+
+  = f.hidden_field :parent_id
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :english_title
+    = f.text_field :english_title
+
+  .controls
+    = f.label :link
+    = f.text_field :link
+
+  .controls
+    = f.label :main
+    = f.check_box :main
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

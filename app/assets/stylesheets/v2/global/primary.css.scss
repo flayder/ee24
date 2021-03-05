@@ -1,0 +1,12 @@
+h1 {
+  margin: 30px 0;
+  font: 700 30px/33px $font-family_proxymanova;
+  color: $black;
+  &:first-child {margin-top: 0}
+}
+
+.more {
+  font: 20px/20px $font-family_proxymanova;
+  color: $blue-mid4;
+  text-transform: uppercase;
+}

@@ -1,0 +1,146 @@
+@import "ultimate/mixins/microstructures";
+@import "ultimate/mixins/css3";
+
+html {
+  -webkit-text-size-adjust: none;
+  height: 100%;
+  background: transparent !important;
+}
+
+body.l-mobile-page {
+  width: 320px;
+  min-width: 320px;
+  font-size: 14px;
+  line-height: 16px;
+//  background: transparent asset_data_url('mobile/background.png') !important;
+  > .l-page {
+    overflow: hidden;
+    > .b-article {
+      > .head {
+        padding: 15px;
+        > .ribbon {
+          position: absolute;
+          right: 0;
+          top: 0;
+          visibility: hidden;
+          background-image: asset_data_url("mobile/ribbonNew@2x.png");
+          background-size: 28px 30px;
+          width: 28px;
+          height: 30px;
+        }
+        > .thumb {
+          background: asset_data_url('mobile/stubImage@2x.png') no-repeat left center;
+          background-size: 90px 75px;
+          padding: 3px 5px;
+          border: 1px solid #d5d5d5;
+          @include inline-block;
+          @include border-radius(2px);
+          @include box-shadow(#d5d5d5 0px 1px 2px);
+          height: 70px;
+          width: 80px;
+          > img {
+            height: 70px;
+            width: 80px;
+          }
+        }
+        > .info {
+          margin-left: 10px;
+          @include inline-block;
+          .title {
+            margin-top: 5px;
+            margin-bottom: 10px;
+            color: #096FB1;
+          }
+          .date, .views {
+            @include inline-block;
+            font-size: 11px;
+            color: #333;
+          }
+          .views {
+            margin-left: 10px;
+            line-height: 18px;
+            vertical-align: top;
+            .ico {
+              margin-top: -5px;
+              @include inline-block;
+              margin-right: 5px;
+              width: 13px;
+              height: 8px;
+              background-image: asset_data_url("mobile/iconGlaz@2x.png");
+              background-size: 13px 8px;
+            }
+          }
+        }
+        > .info.with-photo > .title {
+          width: 160px;
+        }
+      }
+      > .content {
+        background: asset_data_url('mobile/shadowVerh@2x.png') repeat-x center top;
+        padding: 15px;
+        text-align: left;
+        div, p, span, strong, b, em, a {
+          text-align: left !important;
+          font-size: 14px !important;
+          font-style: normal !important;
+          font-weight: normal !important;
+          text-decoration: none !important;
+        }
+        .table-wrapper {
+          border: none;
+        }
+        .pinned {
+          border: none;
+        }
+        hr {
+          display: none;
+        }
+        table {
+          width: 290px !important;
+          border: none;
+          cellspacing: 0;
+          td {
+            img {
+              height: auto;
+            }
+          }
+          div, p, span, strong, b, em, a {
+            font-size: 12px !important;
+          }
+        }
+        iframe {
+          max-width: 290px;
+          height: auto !important;
+        }
+        img {
+          height: auto !important;
+          border: none;
+          margin: 0;
+          padding: 0;
+          max-width: 290px;
+        }
+        .vk-poll {
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 10;
+        }
+        ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          li {
+            -webkit-text-size-adjust: none !important;
+          }
+        }
+        .pinned {
+          background: transparent asset_data_url('mobile/background.png') !important;
+        }
+        .scrollable {
+          min-height: 140px;
+        }
+      }
+    }
+  }
+}
+

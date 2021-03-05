@@ -1,0 +1,60 @@
+!!!
+%html{lang: "ru-RU"}
+  %head
+    %meta{charset: "UTF-8", name: 'viewport', content: "width=device-width, initial-scale=1"}
+
+    = stylesheet_link_tag 'mobile'
+    = javascript_include_tag 'mobile'
+    = javascript_include_tag 'adriver.core.2'
+
+    = raw meta_title
+    = raw meta_description
+    = raw meta_keywords
+
+    = render 'layouts/meta_fields'
+    = render 'layouts/sitename_google_search'
+
+    = yield :head
+    == <link rel='canonical' href="#{url_for(params.except(:_mobile_view).merge(only_path: false))}">
+    = csrf_meta_tags
+
+  %body
+    .body-container
+      %header
+        .header-content
+          = link_to '#', class: "nav-open pull-left" do
+            = image_tag 'v2/burger.png', size: '30x30'
+          -# = link_to '', '#', class: "search-link pull-right"
+
+          %nav
+            = link_to '', '#', class: "nav-close"
+            %ul
+              %li{ class: ('active' if current_page?(root_path)) }
+                = link_to 'Главная', root_path
+              %li{ class: ('active' if current_page?('/news')) }
+                = link_to 'Новости', '/news'
+              %li{ class: ('active' if current_page?('/afisha')) }
+                = link_to 'Афиша', '/afisha'
+              %li{ class: ('active' if current_page?('/job/career')) }
+                = link_to 'Карьера', '/job/career'
+              %li{ class: ('active' if current_page?('/travel')) }
+                = link_to 'Отдых', '/travel'
+              %li{ class: ('active' if current_page?('/immigration')) }
+                = link_to 'Иммиграция', '/immigration'
+              %li{ class: ('active' if current_page?('/realty')) }
+                = link_to 'Недвижимость', '/realty'
+              %li{ class: ('active' if current_page?('/magazine')) }
+                = link_to 'Журнал', '/magazine'
+
+          %h1.page-title= yield :title
+
+      = yield
+
+      %br
+      %br
+      = link_to "Полная версия сайта", params.merge(_mobile_view: 'no'), class: 'text-center full_version'
+
+    .l-footer__content__analitics{style: "display: none"}
+      = web_analytics(@site)
+
+    %script{'data-ad-client' => "ca-pub-4210860558654007", :async => true, :src => "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"}

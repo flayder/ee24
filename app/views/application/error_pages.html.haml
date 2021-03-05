@@ -1,0 +1,46 @@
+!!!
+%html{:lang => "ru-RU"}
+  %head
+    %meta{:charset => "UTF-8"}
+    %title= "Ошибка #{response.status}"
+    = favicon_link_tag "/favicon.png", :type => "image/png"
+    /[if lt IE 9]
+      = javascript_include_tag  "//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"
+    = stylesheet_link_tag "clean", :debug => false
+
+  %body.l-clean-page.l-error-page
+    %table.l-clean-page__table
+      %tr
+        %td.center
+          .b-error-page.s-gray-box
+            %h1.title= "Ошибка #{response.status}"
+            %p.message
+              - case response.status
+              - when 403
+                Доступ к контенту запрещен.
+              - when 404
+                Вероятно, данная страница устарела или была перемещена.
+                %br
+                Попробуйте найти нужную информацию, начав с #{link_to "главной страницы", root_url}.
+                %br
+                %br
+                Если вы встретили неработающую ссылку,
+                %br
+                пожалуйста, напишите об этом на #{mail_to "mailbox@evrone.ru", nil, :encode => "hex"}
+              - when 422
+                Ваше действие отклонено,
+                %br
+                попробуйте выйти на #{link_to "главную страницу", root_url}.
+              - when 503
+                В данный момент на сервере проводятся работы.
+                %br
+                Просим вас немного подождать.
+              - else
+                Мы в курсе проблемы и скоро её исправим.
+                %br
+                Попробуйте выйти на #{link_to "главную страницу", root_url}.
+
+
+          .counters-line
+            = render "layouts/clean/footer/counters"
+            = web_analytics @site

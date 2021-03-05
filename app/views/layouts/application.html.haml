@@ -1,0 +1,100 @@
+!!!
+%html
+  %head
+    - @layout_params ||= {}
+    = render partial: "main/templates/blocks/rss_links"
+    = raw meta_title
+    = raw meta_description
+    = raw meta_keywords
+    /= raw meta_news_keywords
+    = render 'layouts/meta_fields'
+    = render 'layouts/sitename_google_search'
+    = favicon_link_tag "#{@site.favicon.url}"
+    /[if lt IE 9]
+      = javascript_include_tag  '//oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js'
+    = javascript_include_tag '//maps.googleapis.com/maps/api/js'#, async: true
+    = javascript_include_tag '//relap.io/api/v6/head.js?token=S2MacY8L3CHcDwoP', async: true
+
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'v2/application'
+
+    - if Rails.env.development?
+      :javascript
+        var DEBUG_MODE = true;
+
+    - if @site.background_link?
+      :javascript
+        var backgroundLink = "#{@site.background_link}";
+    - if @site.background?
+      :javascript
+        backgroundUrl = "#{@site.background.url}";
+    :javascript
+      var backgroundRepeat = #{@site.repeat_background};
+
+    = javascript_include_tag 'application', async: Rails.env.production?
+
+    = yield :head
+    == <link rel='canonical' href="#{url_for(params.except(:_mobile_view).merge(only_path: false))}">
+
+    -# %script{type: "text/javascript", src: "//vk.com/js/api/openapi.js?116"}
+    -# %script{type: "text/javascript"}
+    -#   VK.init({apiId: 4946642, onlyWidgets: true});
+
+  - cruise_plus = "background: url(/assets/branding/cruise-plus-background.png) top center repeat-y"
+  - extra_style = if controller_name == 'tags' && params[:id] == 'Cruise-Plus' then cruise_plus else '' end
+  %body{class: "l-#{@css_layout || "#{controller_name}"} #{@css_tag}", style: extra_style }
+    = render 'application/layout/flashes'
+    = render 'cookies_eu/consent_banner'
+    %div
+      .l-wrapper
+        = render 'layouts/ads/top'
+        = render partial: 'application/layout/header'
+        = render partial: 'layouts/menu'
+
+    -# TODO: подумать о необходимости этого куска
+    -#%div
+      .l-wrapper
+        -#.l-page__center= render partial: "layouts/special_projects"
+        = render partial: '/templates/blocks/new/broad_new' unless current_page?(root_url)
+        = yield :page_menu
+
+    %div
+      = yield
+      - if ads_needed?
+        .l-wrapper
+          = raw ad_code('horizontal_bottom')
+
+    .l-wrapper
+      %br
+      %br
+      = link_to 'Мобильная версия', params.merge(_mobile_view: 'yes'), class: "g-button primary seo-link block medium"
+
+    = render partial: 'application/layout/footer'
+    - if current_user && current_user.can_access_admin_panel?(@site)
+      = render 'application/layout/fast_admin_panel'
+    .popup-overlay
+    = render partial: 'layouts/popup_layout'
+
+    #fb-root
+    %script
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3&appId=200973800055014";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+    :javascript
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-4210860558654007",
+        enable_page_level_ads: true
+      });
+
+    - if controller_name == 'catalog'
+      %script
+        window.intercomSettings = {app_id: "t3l0kp09"};
+
+      %script
+        (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/t3l0kp09';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()

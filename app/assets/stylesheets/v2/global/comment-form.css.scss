@@ -1,0 +1,60 @@
+.g-comment-form {
+  min-height: 60px;
+  padding: 0 0 0 85px;
+  text-align: right;
+  .g-button {
+    margin-top: 20px;margin-left: 100px;
+  }
+  &.anonymous {
+    .notification {
+      color: $gray-mid;
+      text-align: left;
+      font-size: 13px;
+      padding: 25px 0;
+    }
+    .g-button {
+      margin-top: 0;
+      cursor: not-allowed;
+      &:hover {
+        color: $gray-mid2;
+        background-color: $gray-light2;
+      }
+    }
+  }
+  .avatar {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    border-radius: 50%;
+  }
+  & &__textarea {
+    display: block;
+    @include box-sizing(border-box);
+    width: 100%;
+    min-height: 150px;
+    padding: 5px 10px;
+    resize: vertical;
+    font-size: 14px;
+    border: 1px $gray-light2 solid;
+    border-radius: 2px;
+  }
+  .social-button {
+    display: block;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px $dx 0;
+    float: left;
+    background: $gray-light;
+    font: 12px / 34px $font-family_subsubheader;
+    text-transform: uppercase;
+    text-align: center;
+    color: $white;
+    border-radius: 3px;
+    @include remove_link_decoration;
+    &.fb {@include bg-darken(#004b95);}
+    &.tw {@include bg-darken(#1cacdf);}
+    &.vk {@include bg-darken(#346290);}
+    &.gp {@include bg-darken(#c20e1d);}
+  }
+
+}

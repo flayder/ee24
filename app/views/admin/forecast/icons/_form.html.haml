@@ -1,0 +1,22 @@
+%h1= 'Иконка погоды'
+= form_for [:admin, @forecast_icon] do |f|
+  = error_messages_for :forecast_icon, :object => @forecast_icon
+
+  .controls
+    = f.label :name
+    = f.text_field :name
+
+  .controls-group
+    - if @forecast_icon.background?
+      = image_tag @forecast_icon.background.url(:thumb)
+
+    = f.label :background, class: 'control-label'
+    .controls
+      = f.file_field :background
+      = f.hidden_field :background_cache
+    .controls
+      = f.label :remove_background, class: 'control-label'
+      = f.check_box :remove_background, class: 'control-label'
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

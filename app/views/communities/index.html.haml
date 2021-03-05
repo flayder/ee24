@@ -1,0 +1,16 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    = link_to 'Создать группу', new_community_path, class: 'g-button large primary block'
+
+  %div.l-section__main
+    = render 'shared/search'
+
+.l-wrapper
+  .g-title
+    %span.title Все группы
+  - Category.all.each do |category|
+    .b-list-category__title
+      = image_tag category.logo, size: '95x85'
+      = category.name
+    = render 'shared/communities_list', communities: category.communities

@@ -1,0 +1,7 @@
+.g-comment-form-wrapper{class: ('collapsed' unless visible)}
+  .g-subheader2 Добавить комментарий
+  - if current_user.present?
+    = render 'comments/comment_form', doc: doc
+  - else
+    = render 'comments/comment_form_anonymous', doc: doc
+    -#.b-box Комментировать могут только зарегистрированные и авторизованные пользователи.

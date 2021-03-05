@@ -1,0 +1,13 @@
+%table.table.table-bordered
+  %thead
+    %th= AdFormat.human_attribute_name :id
+    %th= AdFormat.human_attribute_name :title
+    %th= 'Действия'
+  - ad_formats.each do |ad_format|
+    %tr
+      %td= ad_format.id
+      %td= ad_format.title
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_ad_format_path(ad_format)
+          %li= link_to 'Удалить', admin_ad_format_path(ad_format), :method => :delete, :confirm => 'Вы уверены?'          

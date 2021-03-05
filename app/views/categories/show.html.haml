@@ -1,0 +1,27 @@
+.l-wrapper
+  %aside.l-section__aside
+    = render 'rubricator'
+    -#= link_to 'Создать группу', new_community_path, class: 'g-button large primary block'
+    -#= render 'communities_widget'
+    -#= render 'shared/active_users'
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+
+    / = render 'shared/search'
+    -#= render 'title'
+
+
+    .b-cat__digest
+      .g-title
+        %span.title= @category ? @category.name : 'Последнее'
+      = render 'menu'
+      -# TODO: надо показывать вопросы и публикации хронологически, см макет https://www.dropbox.com/sh/7b8ta366cr14utz/AABzf589rgADJJVUNnFBMjX_a#lh:null-community_page_v2.psd
+      = render partial: 'questions', object: @questions
+      -#= render partial: 'posts', object: @category.posts
+
+    -#= render 'shared/question_list', questions: @category.questions.last(8)
+    -#= link_to 'Все вопросы', [@category, :questions], class: 'b-list-questions__link'
+    -#= render 'shared/communities_list', communities: @category.communities
+    = will_paginate @questions
+= seo_text @seo

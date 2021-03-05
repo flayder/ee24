@@ -1,0 +1,16 @@
+%table.table.table-bordered
+  %thead
+    %th= PhotoRubric.human_attribute_name :id
+    %th= PhotoRubric.human_attribute_name :title
+    %th= PhotoRubric.human_attribute_name :link
+    %th= 'Действия'
+  - photo_rubrics.each do |rubric|
+    %tr
+      %td= rubric.id
+      %td= rubric.title
+      %td= rubric.link
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_photo_rubric_path(rubric)
+          %li= link_to 'Удалить', admin_photo_rubric_path(rubric), :method => :delete, :confirm => 'Вы уверены?'          
+          %li= link_to_seos rubric

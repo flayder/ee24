@@ -1,0 +1,12 @@
+%ul.g-enity-list.type1
+  - 10.times do
+    %li.g-enity-list__item
+      .item__info= link_to Faker::Lorem.word(), 'javascript:;', class: 'item__category'
+      .item__aux
+        = link_to 'Удалить', 'javascript:;', class: 'g-button danger delete'
+        = link_to 'Редактировать', 'javascript:;', class: 'g-button default edit'
+        .g-aux.mini.r
+          %span.g-aux__item.comments= rand(20)
+          %span.g-aux__item.views= rand(300)
+          %span.g-aux__item.date= Faker::Number.number(6)
+      = link_to Faker::Lorem.sentence(10), 'javascript:;', class: 'item__title'

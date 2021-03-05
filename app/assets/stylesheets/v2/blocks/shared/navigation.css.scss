@@ -1,0 +1,104 @@
+.b-nav {
+  margin: $dx 0;
+  @include clearfix;
+  background: $blue-light;
+  font-family: $font-family_nav;
+
+  & &__links {
+    // TODO: заменить на числа
+    width: 1120px;
+    height: 16px;
+    padding: 16px 0 16px 40px;
+    float: left;
+    font-size: $font-size_nav;
+    text-align: justify;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 0;
+    }
+
+    .link.active {
+      font-weight: 700;
+      color: $red-dark;
+      text-decoration: none;
+    }
+  }
+
+  & &__sublinks {
+    width: 1200px;
+    height: 16px;
+    padding: 16px 0 16px 40px;
+    float: left;
+    letter-spacing: 1px;
+    background: $blue-mid5;
+    &-item {
+      height: $dx;
+      margin: 0 $dx*1.3 .5*$dx 0;
+      float: left;
+      @include ellipsis();
+    }
+
+    &-link {
+      color: #fff;
+      font-size: $font-size_nav;
+      text-align: justify;
+      text-transform: uppercase;
+      &.active {
+        font-weight: bold;
+        text-decoration: none;
+      }
+    }
+  }
+
+  & &__submenu {
+    display: none;
+    width: 380px;
+    padding: $dx 0 .5*$dx 1.5*$dx;
+    @include position(absolute, 2.4*$dx 0 null null);
+    z-index: 10;
+    overflow: hidden;
+    font-size: $font-size_nav;
+    font-family: $font-family_base;
+    background: $red-dark;
+    color: #fff;
+
+    &-item {
+      width: 170px;
+      height: $dx;
+      margin: 0 $dx .5*$dx 0;
+      float: left;
+      @include ellipsis();
+    }
+
+    &-link {color: #fff;}
+  }
+
+  & &__submenu-button {
+    width: 2.4*$dx;
+    height: 2.4*$dx;
+    float: right;
+    position: relative;
+    background: asset_data_url('v2/flash.png') center center no-repeat;
+    &:hover {
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: 0;
+        left: -2.4*$dx;
+        border-bottom: 2.4*$dx solid transparent;
+        border-left: 2.4*$dx solid transparent;
+      }
+      background: $red-dark asset_data_url('v2/flash_hover.png') center center no-repeat;
+      .b-nav__submenu {display: block;}
+    }
+  }
+
+}

@@ -1,0 +1,14 @@
+%h1= 'Новая отрасль'
+= form_for [:admin, @industry] do |f|
+  = error_messages_for :industry, :object => @industry
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :main
+    = f.check_box :main
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

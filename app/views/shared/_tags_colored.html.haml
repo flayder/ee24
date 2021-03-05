@@ -1,0 +1,3 @@
+- if doc.respond_to?(:tags) and doc.tags.present?
+  .b-tags.b-tags_colored
+    = doc.tags.map { |t| link_to t.name, tag_url(t), title: "Новости с тегом #{t.name}" }.join(' ').html_safe

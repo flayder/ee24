@@ -1,0 +1,99 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    = link_to "Добавить вакансию", '/job/vacancies/new', class: "g-button primary seo-link block medium "
+    = render 'shared/adv-aside'
+    = render partial: 'shared/rated'
+
+  %div.l-section__main
+
+    - if params[:type] == 'vacancy' && action_name != 'not_actual'
+      = render partial: 'filter'
+
+    .l-cols.b-vacancies
+      - if params[:type] != 'vacancy'
+        .l-col-3.l-r
+          .g-subheader.mini Крупнейшие работодатели
+          .b-employers-list
+            - @catalog.each do |catalog|
+              .b-employers-list__item
+                = link_to catalog.first.url, class: 'item__link' do
+                  .item__image
+                    = image_tag catalog.first.logo.url(:medium), size: '200x100'
+                  %span.item__title
+                    = catalog.first.title
+                .item__info
+                  = catalog.last
+                  = Russian.pluralize(catalog.last, 'вакансия', 'вакансии', 'вакансий')
+      - elsif params[:type] == 'vacancy'
+        .l-col-3.l-r
+          .g-subheader.mini Работа в отраслях
+          .b-employers-list
+            - Vacancy.for_main.group_by(&:industry).sort_by {|v| v.last.count}.reverse.first(15).each do |industry, catalog|
+              .b-employers-list__item
+                = link_to "/job/vacancies?industry_ids=#{industry.id}", class: 'item__link' do
+                  %span.item__title
+                    = industry.title
+                .item__info
+                  = catalog.count
+                  = Russian.pluralize(catalog.count, 'вакансия', 'вакансии', 'вакансий')
+
+      .l-cols-6.l-l
+        .g-subheader
+          - if action_name == 'not_actual'
+            = link_to 'Последние вакансии', job_path
+          - else
+            Последние вакансии
+          - if current_user && current_user.has_privileges?(@site)
+            |
+            - if action_name != 'not_actual'
+              = link_to 'Неактуальные вакансии', not_actual_vacancies_path
+            - else
+              Неактуальные вакансии
+        - unless @job_items.empty?
+          .b-vacancies-list.js-loaderByPage
+            = render partial: 'job/job_items', object: @job_items
+            - if params[:type].present?
+              .g-loader
+                = will_paginate_new @job_items
+                =# link_to 'Загрузить ещё вакансии', 'javascript:;', data: {page: @job_items.next_page}, class: 'g-loader__link js-loader'
+        - else
+          .b-box По вашему запросу ничего не найдено.
+
+    - if params[:type] != 'vacancy'
+      = link_to 'Все вакансии', '/job/vacancies', class: 'more'
+      .g-section-subheader.mini
+        %span Свежие материалы
+      = render partial: 'shared/docs', object: @career_docs.each_slice(1).to_a
+      = link_to 'Все статьи', '/job/career', class: 'more'
+= seo_text @seo
+
+
+-#.l-page__columns-line
+  %aside.l-page__column.left
+    .b-rubric-title
+      = params[:type].present? ? t(params[:type].pluralize) : "Работа #{@site.short_title}"
+      - if @industries.present? and !%w(new create edit update).include?(params[:action])
+        .b-rubric-container
+          = select_tag('industry', raw(options_for_select(@industries.map{|i| [i.title, i.id]}, params[:industry_id].to_i)), name: nil, class: 'rubrics', prompt: 'Выберите рубрику', data: {path: "#{params[:type].pluralize}/industry/"})
+    .g-box
+      - if params[:action] == 'industry' and @industry
+        %h1= @industry.title
+      - elsif params[:action] == 'profession' and @profession
+        %h1= @profession.title
+      - if @job_items.present?
+        = render partial: 'job_item', collection: @job_items
+        = will_paginate_new @job_items, inner_window: 2
+      - else
+        %p.no-info Нет информации.
+    = yandex_direct_code @site
+    = seo_text @seo
+  %div.l-page__column.right
+    = link_to "Добавить "+(params[:type] == 'resume' ? 'вакансию' : 'резюме'), "#", data: {link: url_for(action: :new, type: opposite(params[:type]))}, class: 'seo-link g-button orange'
+    = render 'layouts/ads/right'
+    = render partial: 'block_industries'
+    = seo_about @seo_about
+    = seo_sub_text @seo_sub_text
+    - if @linker
+      = render partial: "/templates/blocks/new/linker"
+    = render partial: '/templates/blocks/new/social_widgets'

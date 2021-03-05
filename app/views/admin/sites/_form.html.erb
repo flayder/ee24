@@ -1,0 +1,139 @@
+<%= form_for [:admin, @site_], class: 'form-horizontal' do |f| %>
+  <%= error_messages_for :site, :object => @site_ %>
+  <div class="control-group">
+    <%= f.label :short_title, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :short_title %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :portal_title, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :portal_title %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :domain, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :domain %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :robots, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :robots, value: f.object.robots.gsub("\n","\r") %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.label :pictureless, class: 'control-label' %>
+      <%= f.check_box :pictureless, class: 'control-label' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :city_id, class: 'control-label' %>
+    <div class="controls">
+      <%= f.select :city_id, City.abc_order.collect { |c| [ c.title, c.id ] }, {:include_blank => 'Можно указать город' } %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :time_zone, "Часовой пояс, #{Time.now.in_time_zone(f.object.time_zone)}" %>
+    <div class="controls">
+      <%= f.text_field :time_zone %>
+    </div>
+  </div>
+  <div class="control-group">
+    <% if @site_.logo? %>
+      <%= image_tag @site_.logo.url %>
+    <% end %>
+    <%= f.label :logo, class: 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :logo %>
+      <%= f.hidden_field :logo_cache %>
+    </div>
+  </div>
+  <div class="control-group">
+    <% if @site_.favicon? %>
+      <%= image_tag @site_.favicon.url %>
+    <% end %>
+    <%= f.label :favicon, class: 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :favicon %>
+      <%= f.hidden_field :favicon_cache %>
+    </div>
+  </div>
+  <div class="control-group">
+    <% if @site_.background? %>
+        <%= image_tag @site_.background.url(:thumb) %>
+    <% end %>
+    <%= f.label :background, class: 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :background %>
+      <%= f.hidden_field :background_cache %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :background_link, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :background_link, :placeholder => 'https://36on.ru/blah-blah' %>
+    </div>
+    <div class="controls">
+      <%= f.label :remove_background, class: 'control-label' %>
+      <%= f.check_box :remove_background, class: 'control-label' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :repeat_background, class: 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :repeat_background %>
+    </div>
+  </div>
+  <div class="control-group">
+    <% if @site_.watermark? %>
+      <%= image_tag @site_.watermark.url %>
+    <% end %>
+    <%= f.label :watermark, class: 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :watermark %>
+      <%= f.hidden_field :watermark_cache %>
+    </div>
+  </div>
+  <% if @site_.city.present? %>
+    <div class="control-group">
+      <%= f.label :map_provider, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :map_provider, ['yandex', 'google'] %>
+      </div>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :email, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :placeholder => "info@36on.ru" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :omniauth_enabled, class: 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :omniauth_enabled %>
+    </div>
+  </div>
+  <% if @site_.persisted? %>
+    <div class="control-group">
+      <%= f.label 'site[section_ids][]', 'Разделы:' %>
+      <%= hidden_field_tag 'site[section_ids][]', nil %>
+      <% @site_.available_sections.each do |section| %>
+        <%= label_tag dom_id(section), class: 'checkbox' do %>
+          <%= check_box_tag 'site[section_ids][]', section.id, @site_.section_ids.include?(section.id), :id => dom_id(section), :disabled => section.with_city? && !@site_.city %>
+          <%= section.title %>
+        <% end %>
+      <% end %>
+      <% unless @site_.city %>
+        <span class="help-block">Укажите город, чтобы добавить разделы Банкоматы, Погода, Расписание Кино и Карта.</span>
+      <% end %>
+    </div>
+  <% end %>
+  <%= f.submit class: 'btn' %>
+<% end %>

@@ -1,0 +1,33 @@
+.b-latest-items {
+  padding: 20px 40px 20px 20px;
+  background: #F2F5F8;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.b-latest-items__title {
+  text-transform: uppercase;
+  font: 16px $font-family_proxymanova;
+  color: #272727;
+  letter-spacing: 1px;
+}
+
+.b-latest-item {
+  padding: 5px 0;
+  & + & {
+    border-top: 1px solid #ECECEC;
+  }
+}
+
+.b-latest-item__title {
+  font-size: 15px;
+  color: #224260;
+}
+
+.b-latest-item__answers {
+  margin-top: 5px;
+  padding-left: 20px;
+  font-size: 15px;
+  color: #434343;
+  background: asset-data-url('v2/icons/aux-comments-blue.png') 0 center no-repeat;
+}

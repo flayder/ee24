@@ -1,0 +1,16 @@
+= form_for [@category, @community, @post], html: {class: 'b-form', multipart: true} do |f|
+  = error_messages_for :post
+
+  .b-form__row
+    = f.label :community_id, 'Сообщество'
+    = grouped_collection_select(:post, :community_id, Category.all, "communities.where('open = true OR user_id=#{current_user.id}')", :name, :id, :name, {prompt: 'Выберите сообщество'}, class: 'b-form__control select')
+
+  .b-form__row
+    = f.label :title, 'Заголовок'
+    = f.text_field :title, class: 'b-form__control input wide'
+
+  .b-form__row
+    = f.label :content, 'Содержание'
+    = f.text_area :content, class: 'b-form__control textarea'
+
+  = f.submit 'Отправить', class: 'g-button medium primary'

@@ -1,0 +1,9 @@
+<% if object.mb_chars.size > 26 %>
+<%# if object.chars.to_a.size > 26 %>
+<div class="laq"><div><div><div style="font-size: 12px; line-height: 14px;"><b><%= object %></b></div></div></div></div>
+<% elsif object.mb_chars.size > 11 %>
+<%# elsif object.chars.to_a.size > 11 %>
+<div class="laq"><div><div><div style="font-size: 12px;"><b><%= object %></b></div></div></div></div>
+<% else %>
+<div class="laq"><div><div><div><%= object %></div></div></div></div>
+<% end %>

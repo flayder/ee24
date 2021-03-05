@@ -1,0 +1,38 @@
+%h1= 'Новый спонсорский баннер'
+= form_for [:admin, @sponsor_banner] do |f|
+  = error_messages_for :sponsor_banner, :object => @sponsor_banner
+  
+  .control_group
+    .controls
+      = f.label :title
+      = f.text_field :title
+
+    .controls
+      = f.label :url
+      = f.text_field :url
+
+    .controls
+      = f.label :link
+      = f.select :link, SponsorBanner::LINKS
+
+    .controls
+      = f.label :start_date
+      = f.date_select :start_date
+    
+    .controls
+      = f.label :finish_date
+      = f.date_select :finish_date
+
+    .controls
+      - if @sponsor_banner.image?
+        = image_tag @sponsor_banner.image.url
+      = f.label :image, class: 'control-label'
+      = f.file_field :image
+      = f.hidden_field :image_cache
+
+    .controls
+      = f.label :remove_image
+      = f.check_box :remove_image
+
+    .controls
+      = f.submit 'Сохранить', class: 'btn'

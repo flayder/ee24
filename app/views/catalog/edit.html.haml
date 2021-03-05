@@ -1,0 +1,12 @@
+.l-wrapper
+
+  %div.l-content
+    .g-subheader= t('.edit_company_title')
+    .b-form
+      = form_for @catalog, url: {action: :update, id: @catalog.id}, html: {class: 'b-form', multipart: true} do |f|
+        - unless @catalog.errors.empty?
+          .error_msg
+            Внимание! При редактировании организации были допущены ошибки:
+            %br/
+            = error_messages_for :catalog, object: @catalog
+        = render partial: '/catalog/form/form', locals: {f: f}

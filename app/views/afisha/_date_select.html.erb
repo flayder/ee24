@@ -1,0 +1,12 @@
+<% unless action_name == "date" -%>
+  <% params[:year] ||= Time.now.strftime("%Y") -%>
+  <% params[:month] ||= Time.now.strftime("%m") -%>
+  <% params[:day] ||= Time.now.strftime("%d") -%>
+<% end -%>
+
+<div class="b-rubric-title ">
+  СОБЫТИЯ
+  <%= form_tag('afisha/date', method: "get") do %>
+    <%= render partial: 'templates/dynamic/date_select', locals: {day_select: true, link: 'afisha' } %>
+  <% end %>
+</div>

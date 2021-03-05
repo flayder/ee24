@@ -1,0 +1,9 @@
+- if controller_name != 'main'
+  .b-docs-item__category
+    = link_to externaldoc.rubric.title, externaldoc.rubric.url, class: 'b-docs-item__category-link'
+= link_to externaldoc.title, externaldoc.approved ? externaldoc.url : externaldoc.preview_secret_url, class: 'b-docs-item__title'
+.g-aux.l
+  %time.g-aux__item.date{datetime: Russian::strftime(externaldoc.created_at, '%Y-%m-%d')}
+    = externaldoc.created_at.strftime('%d.%m.%Y')
+  .g-aux__item.comments
+    = render partial: 'templates/blocks/comments_counter_code', locals: {doc: externaldoc}

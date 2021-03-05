@@ -1,0 +1,705 @@
+ru:
+  main:
+    index:
+      community: Сообщество
+      create_new_question: Создать тему
+  docs:
+    index:
+      add: материал
+  catalog:
+    meta_title: Справочная информация о компании в Чехии
+    meta_description: Описание услуг в каталоге компаний, контакты и адреса компании, справочная информация о %{title}, Чехия и Прага
+    list:
+      add_company: компанию
+    aux:
+      in_rubrics: 'В рубриках:'
+      add_company: компанию
+      catalog_count:
+        one: В нашем каталоге <strong>%{show_count}</strong> компания
+        few: В нашем каталоге <strong>%{show_count}</strong> компании
+        many: В нашем каталоге <strong>%{show_count}</strong> компаний
+        other: В нашем каталоге <strong>%{show_count}</strong> компаний
+    aux_element:
+      companies: Компании
+    show:
+      change_history: история изменений
+      edit: редактировать
+      delete: удалить
+      delete_confirm: Вы уверены, что хотите удалить компанию?
+      approve: подтвердить
+      show_on_map: Показать на карте
+      route: Маршрут с учётом пробок
+      contacts: Контакты
+    edit:
+      edit_company_title: Редактирование организации
+    new:
+      add_new_company_title: Добавление новой организации
+      error_notice: 'Внимание! При добавлении новой организации были допущены ошибки:'
+    form:
+      form:
+        required_fields: обязательные для заполнения поля
+        rubrics_placeholder: Можно выбрать до 3х рубрик
+        galleries_promt: Без галереи
+        street_address_placeholder: Введите адрес следуя подсказкам
+        extended_address_notice: "Сведения о местонахождении внутри здания.</br>Например: БЦ 'Сенатор', 2 эт., оф. 228-230"
+        logo_notice: 'Размер: 200х100'
+        catalog_description_title: 'Описание компании на различных языках:'
+        save_button: Сохранить
+        back_button: Назад
+  questions:
+    form:
+      save: Сохранить
+      back: Назад
+    my:
+      my_questions_header: Мои темы
+    popular:
+      popular_questions_header: Популярные темы
+    new:
+      new_post: Новый пост
+    edit:
+      edit_header: Редактирование вопроса
+    show:
+      edit_link: Редактировать
+      remove_link: Удалить
+      last_five_header: 'Последние 5 новых тем:'
+  categories:
+    menu:
+      add_question: тему
+      new: Новые
+      popular: Популярные
+      my: Мои
+    index:
+      new_questions: Новые темы
+    rubricator:
+      all_category: Все категории
+  shared:
+    social_likes:
+      share_with_friends: Рассказать друзьям
+      facebook_share: Share
+      vkontakte_share: Поделиться
+      twitter_share: Tweet
+  templates:
+    dynamic:
+      show_doc:
+        main: Главная
+        social_links: 'Рассказать всем:'
+        themes: Темы
+        add: материал
+      doc_share_block:
+        facebook_title: Поделиться ссылкой на Фейсбуке
+        twitter_title: Поделиться ссылкой в Твиттере
+        vkontakte_title: Поделиться ссылкой во Вконтакте
+        vkontakte: Вконтакте
+        plusone_title: Поделиться ссылкой в Гугл-плюсе
+        pinterest_title: Поделиться ссылкой в Pinterest
+  menu:
+    all: Все
+  time:
+    formats:
+      long_short: "%d.%m.%Y %H:%M"
+      only_date: "%d.%m.%Y"
+      only_time: "%H:%M"
+  'true': 'Да'
+  'false': 'Нет'
+  dms:
+    format: "%{degrees}°%{minutes}'%{seconds}\"%{direction}"
+  label:
+    omniauth_strategy:
+      credentials:
+        client_id: ID приложения
+        client_secret: Секретный ключ
+  helpers:
+    link:
+      add: Добавить
+    submit:
+      comment:
+        update: "Обновить комментарий"
+  activerecord:
+    errors:
+      models:
+        catalog:
+          attributes:
+            locality:
+              blank: Вы не указали населенный пункт
+            tel:
+              blank: Вы не указали телефон
+            street_address:
+              blank: Вы не указали адрес
+            base:
+              title_not_present_error: Необходимо заполнить название компании хотя бы на одном языке.
+              not_selected_rubric_error: Необходимо выбрать хотя бы одну рубрику.
+              many_selected_rubric_error: Слишком много рубрик. Допустимо не более 3.
+        doc:
+          attributes:
+            param:
+              blank: Не удалось параметризировать название статьи. Убедитесь что язык заголовка соответствует языку статьи.
+
+    models:
+      vacancy: Вакансия
+      resume: Резюме
+      doc_rubric: Статейная рубрика
+      site_section: Раздел сайта
+      photo_rubric: Рубрика фото
+      news doc: Новость
+      doc: Статья
+      event: Событие
+      photo: Фото
+      gallery: Фоторепортаж
+      catalog: Компания
+      contest part: 'Участие в конкурсе'
+      photo: Фото
+      contest_part_photo: Фото
+      site: Портал
+      section: Раздел
+      person: Персона
+      medical: Медицинский справочник
+      vrn_object: Воронежская область
+      dictionary: Словарь
+      dictionary_object: Словарная статья
+      dictionary_rubric: Словарная рубрика
+      acts_as_taggable_on/tag: 'Тэг'
+      omniauth_strategy: Способ аутентификации
+      seo: SEO текст
+      static_doc: Статичная страница
+      twitte_accounts: Аккаунт твиттера
+      search_query: Поисковый запрос
+      metrika_api_account: Аккаунт Яндекс.Метрики
+      metrika_api_account/url: 'URL странички'
+      metrika_api_account/search_query: 'Поисковый запрос'
+      user: Пользователь
+      ad_code: Код баннера
+      news_rubric: Новостная рубрика
+      doc_rubric: Статейная рубрика
+      photo_rubric: Фото
+      social_widget_code: Код группы соцсети
+      catalog_rubric: Рубрика компаний
+      linker: Линкер
+      sponsor_banner: Спонсорский баннер
+      ad_agency: Рекламное агенство
+      ad_surface: Рекламная поверхность
+      ad_format: Формат рекламной поверхности
+      event_rubric: Рубрика афиши
+      doc_global_rubric: Глобальная рубрика статей
+      web_analytics_block: Код счётчика
+      main_block: Блок доков на главной
+      main_block_rubric: Рубрика блока на главной
+      redirect: Редирект
+      design/stylesheet: 'CSS шаблон'
+      design/template: 'HTML шаблон'
+      external_doc: Внешний документ
+      external_doc_rubric: Рубрика внешних документов
+      forecast/settings: 'Настройки Foreca'
+      forecast/icon: 'Иконка погоды с фоном'
+      main_menu_link: 'Главное меню'
+      black_list_word: Плохое слово
+      category:
+        post: 'публикации'
+        question: 'вопросы'
+    attributes:
+      user:
+        password: Пароль
+        password_confirmation: Подтверждения пароля
+        login: Логин
+        first_name: Имя
+        last_name: Фамилия
+        phone_number: Телефон
+        email: Email
+        subdomain: Поддомен (логин)
+        ban: Забанен
+        created_at: Дата регистрации
+      ad_code:
+        code: Код
+        title: Название
+        banner_type: Тип баннера
+        ad_section: Раздел/Рубрика
+      vacancy:
+        title: Требуется
+        professions: Профессии
+        text: Текст вакансии
+        text_hash: Текст вакансии
+        industry: Отрасль
+        company_name: Название организации
+        money: Заработная плата
+        contacts: Контакты
+        busy: Занятость
+        approved: Подтверждение
+        catalog: Компания
+        link: Ссылка
+        region_city: Город
+        created_at: Дата размещения
+        closed: Закрыть вакансию
+      resume:
+        title: Должность
+        professions: Профессии
+        text: Текст резюме
+        text_hash: Текст резюме
+        industry: Отрасль
+        money: Заработная плата
+        contacts: Контакты
+        busy: Занятость
+        approved: Подтверждение
+      doc:
+        title: Заголовок
+        annotation: Аннотация
+        text: Текст
+        text_hash: Текст
+        doc_rubric_id: Рубрика
+        city: Тип новости
+        image: Фото
+        not_in_rss: Не отображать в yandex rss
+        skip_sponsor_banner: Убрать брендирование
+        tag_list: Теги (ключевые слова)
+        approved: Подтверждение
+        approve_on: Подтвердить на дату
+        important: Отметить важной
+        meta_title: Meta title
+        meta_description: Meta description
+        meta_keywords: Meta keywords
+        param: URL параметр
+        created_at: Дата создания
+        main: Показывать на главной
+        no_watermark: Не ставить вотермарк
+        pictureless: Не выводим картинку
+        main: Показывать на главной
+        is_commentable: Комментарии
+        long_image: Удлиненная картинка в ленте
+        quote: Цитата
+        hero: Герой
+        user_id: Пользователь
+        top_main: Самое главное
+      event:
+        title: Заголовок
+        annotation: Аннотация
+        text: Текст
+        text_hash: Текст
+        event_rubric_id: Рубрика
+        start_date: Дата начала
+        finish_date: Дата окончания
+        main: Выводить в блок на главной афиши
+        tag_list: Теги (ключевые слова)
+        approved: Подтверждение
+        meta_title: Meta title
+        meta_description: Meta description
+        meta_keywords: Meta keywords
+        param: URL параметр
+        created_at: Дата создания
+        is_commentable: Комментарии
+        place: Место проведения
+        address: Адрес
+        site_url: Сайт
+        price: Цена
+        promote_link: Сайт покупки билетов
+        show_time: Показывать время
+        long_image: Удлиненная картинка в ленте
+        user_id: Автор
+      catalog_description:
+        title: Название
+        annotation: Описание
+        text: Текст
+      catalog:
+        remove_logo: Удалить логотип
+        approved: Подтверждение
+        position: Позиция
+        locality: Населенный пункт
+        annotation: Аннотация
+        text: Текст
+        tag_list: Теги (ключевые слова)
+        is_commentable: Комментарии
+        russian_language: Говорят на русском
+        user_id: Пользователь
+        recommend: Рекомендовать
+        rubric_ids: Рубрики
+        gallery_ids: Галереи
+        email: Электронная почта
+        site_url: Сайт
+        tel: Телефон
+        fax: Факс
+        street_address: Адрес
+        extended_address: Подробности расположения
+        logo: Логотип
+      comment:
+        commentable: Пост
+        text: Текст комментария
+        user: Пользователь
+      question:
+        approved: Подтверждение
+        category_id: Категория
+        title: Заголовок
+        content: Текст
+      photo:
+        image: Фото
+        main:  Главная
+        site: Сайт
+        title: Подпись
+      gallery:
+        photo_rubric_id: Рубрика
+        title: Заголовок
+        annotation: Аннотация
+        text: Текст
+        photos: Фотографии
+        post_lj: Запостить в LiveJournal
+        approved: Подтверждение
+        no_watermark: Не ставить вотермарк
+        not_on_main: Не выводить на главной
+        tag_list: Теги (ключевые слова)
+        is_commentable: Комментарии
+        user_id: Автор
+      site:
+        domain: Домен
+        subdomain: Поддомен
+        short_title: Краткое название
+        portal_title: Название портала
+        logo: Логотип
+        map_provider: Провайдер карты
+        omniauth_enabled: Аутентификация через сторонние сервисы
+        time_zone: Часовой пояс
+        background: Фон
+        background_link: Ссылка фона
+        remove_background: Пустой фон
+        pictureless: Не выводим картинки в новостях
+        robots: robots.txt
+        email: Электронная почта
+      site_admin:
+        admin: Пользователь
+        user_id: Пользователь
+        section_ids: Права на раздел целиком
+        role: Роль
+        admin_panel_access: Доступ в админку
+      news_rubric:
+        title: Название
+        link: Ссылка
+      doc_rubric:
+        title: Название
+        link: Ссылка
+        position: Позиция
+        global_rubric_id: Глобальная рубрика
+      catalog_rubric:
+        title: Название
+        link: Роут (параметр в ссылке)
+        depth: Глубина вложенности
+      dictionary:
+        title: Название
+        link: Ссылка
+        description: Описание
+      dictionary_object:
+        title: Название
+        text: Текст
+        letter: Буква
+        rubric_id: Словарная рубрика
+        approved: На сайте
+        tag_list: Теги (ключевые слова)
+      dictionary_rubric:
+        dictionary_id: Словарь
+        title: Название
+      acts_as_taggable_on/tag:
+        link: Ссылка
+        name: Название
+      omniauth_strategy:
+        credentials: Секретные ключи
+        type: Провайдер
+        site_id: Сайт
+      seo:
+        path: Относительный путь
+        site_id: Сайт
+        title: Meta Title
+        description: Meta Description
+        keywords: Meta Keywords
+        text: Текст
+        news_keywords: News Keywords
+      static_doc:
+        title: Название
+        text: Текст
+        main: В нижнем меню
+        active: Активная
+        meta_title: Meta Title
+        meta_description: Meta Description
+        meta_keywords: Meta Keywords
+        site_id: Сайт
+        position: Позиция
+        link: Ссылка
+      twitter_account:
+        site_id: Сайт
+        hash_tags: Хэш тэги
+        login: Логин
+        password: Пароль
+        secret: Секретный ключ
+        token: Секретный токен
+        authrorized?: Статус
+        active: Включен
+      search_query:
+        site_id: Сайт
+        query: Фраза
+        created_at: Время создания
+      metrika_api_account:
+        app_id: ID приложения
+        app_password: Секретный ключ
+        token: Токен
+        site_id: Сайт
+        counter_id: ID счетчика
+      metrika_api_account/url:
+        body: URL
+        metrika_api_account_id: Аккаунт Метрики
+      metrika_api_account/search_query:
+        body: Фраза
+        visits: Юников
+        page_views: Просмотров
+        url_id: URL
+      linker:
+        url: URL
+        site_id: Сайт
+        seo_text: SEO-текст
+        counter: Счетчик
+      sponsor_banner:
+        title: Название
+        url: Ссылка
+        image: Изображение
+        remove_image: Без изображения
+        counter: Счетчик
+        start_date: Начало акции
+        finish_date: Завершение акции
+        link: Место
+      ad_agency:
+        title: Название
+      ad_format:
+        title: Название
+      ad_surface:
+        title: Название
+        street_id: Улица
+        address: Адрес
+        description: Описание
+        ad_agency_id: Рекламное агенство
+        ad_format_id: Формат рекламной поверхности
+        remove_photo: Удалить изображение
+        remove_second_photo: Удалить изображение
+      event_rubric:
+        title: Название
+        link: Роут (параметр в ссылке)
+        main: Показывать на главной
+        afisha_main: Показывать блок рубрики на главной раздела
+        afisha_main_position: Позиция блока рубрики на главной раздела
+        description: Описание
+        position: Позиция
+        main_banner: Маленький баннер на главной
+      doc_global_rubric:
+        title: Название
+        link: Роут (параметр в ссылке)
+        position: Позиция
+      web_analytics_block:
+        body: Код
+        code_type: Тип
+        comment: Комментарий
+      main_block:
+        doc_type: Тип доков
+        position: Позиция
+        title: Заголовок
+        path: URL
+        banner: Маленький баннер после блока
+      main_block_rubric:
+        main_block_id: Блок доков на главной
+        rubric_id: Рубрика блока на главной
+        rubric_type: Рубрика блока на главной
+      social_widget_code:
+        code: Код
+        widget_type: Соцсеть
+      redirect:
+        from: Откуда
+        to: Куда
+      design/stylesheet:
+        name: Название
+        body: CSS
+      design/template:
+        name: Название
+        body: HTML
+      external_doc:
+        url: URL
+        site_id: Сайт
+        title: Название
+        main: Показывать на главной
+        image: Картинка
+        remove_image: Удалить картинку
+        external_doc_rubric_id: Рубрика внешних документов
+        approved: Подтверждение
+        photo: Фото
+        remove_photo: Удалить фото
+      external_doc_rubric:
+        title: Название
+      forecast/settings:
+        login: Логин
+        password: Пароль
+        background: Фон
+        remove_background: Удалить фон
+        subdomain: Поддомен
+        default_location_id: Место по умолчанию
+      forecast/icon:
+        name: Имя
+        background: Фон
+        remove_background: Удалить фон
+      main_menu_link:
+        title: Название
+        path: Адрес
+        css_class: Css класс
+        position: Позиция
+      black_list_word:
+        lemma: Основа слова
+      industry:
+        title: Название
+        main: На главной
+      profession:
+        title: Название
+        main: На главной
+        industry_id: Отрасль
+  meta_search:
+    predicates:
+      equals: "%{attribute}"
+      in: "%{attribute}"
+      contains: "%{attribute} содержит"
+      is_blank: "%{attribute} пусто"
+    attributes:
+      dictionary_object:
+        type: Тип
+      dictionary_object:
+        dict_type: Тип
+
+  without:
+    gallery: галерей
+    doc: статей
+    catalog: компаний
+    dictionary_object: словарей
+
+  gender:
+    male: Мужской
+    female: Женский
+    not_set: 'Не определился'
+  resume: Резюме
+  vacancy: Вакансия
+  resumes: Резюме
+  vacancies: Вакансии
+  new_resume: Новое резюме
+  new_vacancy: Новая вакансия
+  new_resume: Новое резюме
+  edit_resume: Редактирование резюме
+  edit_vacancy: Редактирование вакансии
+  vacancy_destroyed: 'Вакансия удалена'
+  resume_destroyed: 'Резюме удалено'
+  councils: 'Советы'
+  career: 'Карьера'
+  personnel-department: 'Отдел кадров'
+  admin: Администратор
+  editor: Редактор
+  moderator: Модератор
+  user: Пользователь
+  observer: Наблюдатель
+
+  dictionary_objects: Словари
+  events: События
+  catalogs: Компании
+
+  search:
+    news: новостям
+    companies: компаниям
+    photos: фотографиям
+    docs: статьям
+    events: событиям
+    vacancies: вакансиям
+    resumes: резюме
+    dictionary_objects: словарям
+
+  #вакансии evrone и astrum nival
+  job_job: "Вакансия &laquo;Ruby on Rails разработчик&raquo;"
+  job_job_html: "Вакансия &laquo;HTML верстальщик&raquo;"
+  job_astrum_nival: "Должность: Community Manager"
+
+  #объявления (для я-недвижимости)
+  sdam: аренда
+  prodam: продажа
+
+  flat: квартира
+  room: комната
+  house: дом
+  house_with_lot: дача
+  lot: участок
+
+  person: Персона
+  vrn_object: Воронежская область
+
+  create: создание
+  update: обновление
+  destroy: удаление
+
+  prompt_person: Выбрать рубрику
+  prompt_medical: Выбрать рубрику
+  prompt_economic: Выбрать рубрику
+  prompt_vrn_object: Выбрать район
+
+  banners:
+    horizontal_top: верхний горизонтальный
+    horizontal_bottom: нижний горизонтальный
+    vertical_right: баннер справа
+    vertical_right_main: баннер справа на главной
+    vertical_top_right: баннер справа сверху
+    doc_text_bottom: баннер в статьях после текста
+
+  errors:
+    messages:
+      wrong_size: "некорректный размер файла (должен быть %{file_size})"
+      size_too_small: "файл слишком маленький (должен быть больше %{file_size})"
+      size_too_big: "файл слишком большой (должен быть меньше %{file_size})"
+      extension_white_list_error: "неправильный формат"
+
+  will_paginate:
+    previous_label: '<img src="/assets/v2/arrow-left.png" alt="left"> Назад '
+    next_label: 'Вперед <img src="/assets/v2/arrow-right.png" alt="right">'
+    page_gap: "&hellip;"
+  simple_form:
+    "yes": Да
+    "no": Нет
+  moderation_email_subjects:
+    new_catalog: "Ваша компания \"%{title}\" находится на модерации."
+    new_vacancy: "Ваша вакансия \"%{title}\" находится на модерации."
+    new_resume: "Ваше резюме \"%{title}\" находится на модерации."
+    new_event: "Ваше событие \"%{title}\" находится на модерации."
+    new_doc: "Ваша статья \"%{title}\" находится на модерации."
+    new_gallery: "Ваша галерея \"%{title}\" находится на модерации."
+  approval_email_subjects:
+    new_catalog: "Ваша компания \"%{title}\" подтверждена."
+    new_vacancy: "Ваша вакансия \"%{title}\" подтверждена."
+    new_resume: "Ваше резюме \"%{title}\" подтверждено."
+    new_event: "Ваше событие \"%{title}\" подтверждено."
+    new_doc: "Ваша статья \"%{title}\" подтверждена."
+    new_gallery: "Ваша галерея \"%{title}\" подтверждена."
+  new_catalog_feedback_subject: "Новый отзыв о компании \"%{title}\"."
+  forecast_days_numbers:
+    5dney: 5 дней
+    7dney: 7 дней
+    10dney: 10 дней
+    14dney: 14 дней
+  forecast_data_message:
+    cloudiness:
+      0: небо чистое
+      1: 'небольшая облачность'
+      2: облачно
+      3: 'прерывистая облачность'
+      4: пасмурно
+    precipitation_rate:
+      0: 'без осадков'
+      1: небольшой
+      2: умеренный
+      3: сильный
+      4: 'очень сильный'
+    precipitation_type:
+      0: ' дождь'
+      1: ' дождь со снегом'
+      2: ' снег'
+  forecast_wind_direction:
+    N: северный
+    NE: северо-восточный
+    SE: юго-восточный
+    S: южный
+    NW: северо-западный
+    E: восточный
+    SW: юго-западный
+    W: западный
+
+  recaptcha:
+    errors:
+      verification_failed: Вы не прошли проверку каптчи. Пожалуйста, повторите попытку.

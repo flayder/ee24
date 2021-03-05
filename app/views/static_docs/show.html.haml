@@ -1,0 +1,4 @@
+.l-wrapper
+  %h1= @doc.title
+  %article= @doc.text.try(:html_safe)
+= seo_text @seo

@@ -1,0 +1,11 @@
+<div align="left">
+  <%= link_to image_tag(@site.logo.url(:small)), "https://#{@site.domain}" if @site.logo %>
+</div>
+<br>
+<%= yield %>
+<br>
+<br>
+<font color="black">
+  <hr size="1">
+</font>
+<%= @site.portal_title %> — <%= link_to @site.domain, "https://#{@site.domain}" %>

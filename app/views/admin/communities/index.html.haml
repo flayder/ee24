@@ -1,0 +1,19 @@
+= link_to 'Новoе сообщество', new_admin_community_path
+
+%table.table.table-bordered
+  %thead
+    %th= Community.human_attribute_name :id
+    %th= Community.human_attribute_name :name
+    %th= Community.human_attribute_name :category_id
+    %th= 'Действия'
+  - @communities.each do |community|
+    %tr
+      %td= community.id
+      %td= community.name
+      %td= community.category.name
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_community_path(community)
+          %li= link_to 'Удалить', admin_community_path(community), :method => :delete, :confirm => 'Вы уверены?'
+
+=# will_paginate_bootstrap @categories

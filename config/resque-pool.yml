@@ -1,0 +1,13 @@
+production:
+  'onru_production_photo_watermark_job': 1
+  'onru_production_page_views_job, onru_production_black_list_job': 1
+  'onru_production_reply_notifications_job,onru_production_mailer': 1
+  'onru_production_default_rubric_generator_job,onru_production_lj_job,onru_production_doc_publication_job': 1
+  gallery_photo_job: 1
+staging:
+  'onru_staging_photo_watermark_job': 1
+
+development:
+  onru_development_photo_watermark_job: 1
+  onru_development_mailer: 1
+  onru_development_doc_publication_job: 1

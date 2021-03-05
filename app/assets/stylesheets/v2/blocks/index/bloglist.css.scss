@@ -1,0 +1,41 @@
+.b-bloglist {
+  margin-right: $dx;
+
+  &__item {
+    padding-left: 100px;
+    margin: 35px 0 0;
+    @include clearfix;
+  }
+
+  &__image {
+    display: block;
+    float: left;
+    margin: 0 25px 0 -100px;
+    border-radius: 50%;
+  }
+
+  &__title {
+    font-size: $font-size_subheader;
+    color: $gray-dark2;
+    margin-bottom: 3px;
+    @include ellipsis;
+    display: block;
+    word-wrap: normal;
+  }
+
+  &__subtitle {
+    font-size: $font-size_mini;
+    color: $gray-mid;
+    margin: 3px 0 5px;
+    @include ellipsis;
+    display: block;
+    word-wrap: normal;
+  }
+
+  &__link {
+    font-size: $font-size_subheader;
+    color: $blue-dark2;
+  }
+
+  .g-aux {margin: 10px 0 0}
+}

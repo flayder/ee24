@@ -1,0 +1,12 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_search_queries_path, class: 'form-horizontal' do |form|
+      .control-group
+        .controls
+          = form.input :query_contains, :required => false
+        .controls
+          = form.multiparameter_field :created_at_between,
+    {:field_type => :date_select}, {:field_type => :date_select}
+        .controls
+          = form.button :submit, 'Найти', class: 'btn'

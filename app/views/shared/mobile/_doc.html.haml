@@ -1,0 +1,72 @@
+<!--  AdRiver code START. Type:AjaxJS Site: 420on.cz PZ:1 BN:1 -->
+#adriver_banner_866129108
+:javascript
+  new adriver("adriver_banner_866129108", {sid:188490, bt:52, bn:1, pz:1});
+<!--  AdRiver code END  -->
+
+.article
+  .doc-info
+    %span.doc-author
+      - if @doc.user
+        = link_to @doc.user.fio_or_login, account_url(@doc.user), class: 'username'
+    .doc-date= @doc.created_at.strftime("%d.%m.%y")
+    .doc-time= @doc.created_at.strftime("%H:%M")
+    .doc-views= @doc.page_views
+
+  .doc-title= @doc.title
+  .doc-annotation= @doc.annotation
+
+  .doc-image
+    = image_tag @doc.main_photo.image.large.url if @doc.main_photo
+
+  - if @doc.is_a?(Event)
+    .event-info
+      - if @doc.place.present?
+        .row
+          .title Место:
+          .info= @doc.place
+
+      .row
+        .title Дата:
+        .info
+          = "#{@doc.start_date.strftime('%d.%m.%Y')}"
+          = "#{@doc.start_date.strftime('%H:%M')}" if @doc.show_time
+          - if @doc.start_date.to_date != @doc.finish_date.to_date
+            = " - "
+            = "#{@doc.finish_date.strftime('%d.%m.%Y')}"
+            = "#{@doc.finish_date.strftime('%H:%M')}" if @doc.show_time
+
+      - if @doc.address.present?
+        .row
+          .title Адрес:
+          .info= @doc.address
+
+      - if @doc.site_url.present?
+        .row
+          .title Веб:
+          .info= @doc.site_url
+
+      - if @doc.price.present?
+        .row
+          .title Стоимость:
+          .info= @doc.price
+
+  .doc-text= article_text(@doc)
+
+  - if (banner = ad_code('doc_text_bottom')).present?
+    .l-cols.banner-doc-text-bottom
+      = banner.html_safe
+
+  .doc-tags
+    - @doc.tags.each do |tag|
+      = link_to tag.name, tag_url(tag)
+
+
+  .doc-socials
+    .doc-subheader.mini Рассказать всем:
+    .share-block
+      .social-likes
+        .facebook Facebook
+        .vkontakte Vkontakte
+        .twitter Twitter
+        .plusone Google+

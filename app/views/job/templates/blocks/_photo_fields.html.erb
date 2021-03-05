@@ -1,0 +1,21 @@
+<% i = 1 %>
+<ul class="photo_fields">
+  <%= f.fields_for :photos, @job_item.photos do |photo_form| %>
+    <li>
+      <p class="f14">Изображение <%= i %></p>
+      <div>
+        <%= photo_form.file_field :image, :size => 0 %>
+      </div>
+      <% unless photo_form.object.new_record? %>
+        <div>
+          Удалить картинку: <%= photo_form.check_box :_destroy %>
+        </div>
+        <div class ="h5px"></div>
+        <div>
+          <%= image_tag(url_for_file_column(photo_form.object, "image", "small")) %>
+        </div>
+      <% end %>
+    </li>
+    <% i = i+1 %>
+  <% end %>
+</ul>

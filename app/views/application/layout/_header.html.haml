@@ -1,0 +1,55 @@
+%header
+  .b-header__aux
+    .b-header__auth-links
+      - if current_user
+        - if current_user.avatar.present?
+          = link_to "/users/#{current_user.subdomain}", class: 'profile' do
+            = image_tag current_user.avatar.url(:xsmall), size: '27x27'
+            %span.link= current_user.fio_or_login
+        - else
+          = link_to current_user.fio_or_login, "/users/#{current_user.subdomain}", class: 'link'
+        = link_to 'Выход', '/account/logout', class: 'link logout', method: :delete
+      - else
+        = link_to 'Вход', new_session_path, class: 'link login js-jump', remote: true, rel: 'nofollow'
+        = link_to 'Регистрация', account_signup_path, class: 'link js-jump', remote: true, rel: 'nofollow'
+      - cache('current_exchange_rates', expires_in: 3.hour) do
+        - exchange_rate = ExchangeRate.find(:first, order: 'updated_at DESC')
+        - if exchange_rate
+          .exchange_rates
+            .currency
+              EUR
+            .rate
+              = exchange_rate.eur_czk_rate.round(2)
+            .currency
+              USD
+            .rate
+              = exchange_rate.usd_czk_rate.round(2)
+            .currency
+              RUB
+            .rate
+              = exchange_rate.rub_czk_rate.round(2)
+            .currency
+              UAH
+            .rate
+              = exchange_rate.uah_czk_rate.round(2)
+    .b-header__search.js-search
+      = form_tag "/search/#{@search_action}", id: 'header_search_form', method: :get, class: 'b-search__form' do
+        .b-search__container
+          .b-search__magnifier-area
+          = search_field_tag :search, '', title: 'Поиск по сайту', placeholder: 'Поиск по сайту', class: 'b-search__input'
+
+    .b-header__servises
+      = link_to 'Энциклопедия', '/dictionaries/attractions', class: 'link'
+      = link_to 'Карта', '/map', class: 'link'
+      = link_to 'Погода', '/weather', class: 'link'
+
+  - current_weather = get_current_weather
+  - if current_weather && current_weather['weather'] && current_weather['main']
+    .header-current-weather
+      = image_tag get_icon_url(current_weather)
+      = "#{current_weather['main']['temp'].try(:round)} °C" if current_weather['main']['temp'].present?
+
+  = link_to image_tag('header_logo.png', size: '257x73', alt: 'Городской информационный портал Праги и Чехии 420on.cz'), root_path, class: 'b-header__logo', title: "Размер 200х100"
+
+  .b-header__promo
+    = ad_code('logo').try(:html_safe)

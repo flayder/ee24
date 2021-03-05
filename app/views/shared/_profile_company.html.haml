@@ -1,0 +1,26 @@
+.b-companies__item
+  .avatar= image_tag company.logo.url(:medium), size: '200x100'
+  .item__description
+    - if can? :edit, company
+      %div.status.l-r
+        - if company.approved
+          подтверждена
+        - else
+          на модерации
+    .title= link_to company.title, company.url
+    .company_actions
+      - if can? :edit, company
+        = link_to 'Редактировать', edit_catalog_url(company), class: 'g-button'
+        = link_to 'Удалить', '#', class: 'g-button danger'
+    -#.vacancy_actions
+      = link_to '4 вакансии', '#', class: 'vacancy__show-more'
+      .vacancy_list.open
+        %p
+          = link_to 'Специалист по обработке сувенирной продукции', '#' 
+          (#{link_to 'редактировать', '#', class: 'vacancy_link-edit'} / #{link_to 'удалить', '#', class: 'vacancy_link-remove'})
+        %p
+          = link_to 'Специалист по обработке сувенирной продукции', '#' 
+          (#{link_to 'редактировать', '#', class: 'vacancy_link-edit'} / #{link_to 'удалить', '#', class: 'vacancy_link-remove'})
+        %p
+          = link_to 'Добавить вакансию'
+

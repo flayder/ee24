@@ -1,0 +1,109 @@
+body.l-tags.branding  {
+
+  .b-tag__content {
+    @include clearfix;
+  }
+
+  .b-tag__description__title {
+    display: none;
+  }
+
+  .l-cols-3 {
+    width: auto;
+    .b-docs-item {
+      @include clearfix;
+      .b-docs-item__title {
+        font-size: $font-size_header;
+      }
+    }
+
+  }
+
+  .l-l {
+    float: none;
+  }
+
+  .b-docs-item__image {
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .b-tag__description__title {
+    display: none;
+  }
+
+  .b-companies {
+    @include clearfix;
+    .b-companies__item {
+      width: 452px;
+    }
+  }
+
+  .g-subheader3 {
+    display: none;
+  }
+
+  &.lvtv{
+    background: image-url('branding/lvtv-background.png') top center repeat-y;
+
+    .b-tag__description__lvtv{
+      background: image-url('branding/lvtv-logo.png') center no-repeat;
+      height: 326px;
+    }
+  }
+
+  &.menhouse{
+    background: image-url('branding/menhouse-background.jpg') top center repeat-y;
+
+    .b-tag__description__menhouse{
+      background: image-url('branding/menhouse_logo.jpg') center no-repeat;
+      height: 326px;
+    }
+
+
+  }
+
+  &.pivovar{
+    background: #f0e3d8 image-url('branding/pivovar-background.jpg') top center repeat-y;
+
+    .b-tag__description__kinshperskiy_pivovar {
+      background: image-url('branding/pivovar-logo.png') center no-repeat;
+      height: 326px;
+    }
+
+    .b-tag__description__restoran-u-zajice{
+      background: image-url('branding/u_zajice-logo.jpg') center no-repeat;
+      height: 326px;
+    }
+
+    .g-tabs {
+      a.g-tab {
+        color: #d80100;
+        &.active {
+          color: #fff;
+          background: #d80100;
+        }
+      }
+    }
+  }
+
+  &.radio-vmeste{
+    background: image-url('branding/radio-vmeste-background.jpg') top center repeat-y;
+
+    .b-tag__description__radio-vmeste{
+      background: image-url('branding/radio-vmeste_logo.jpg') center no-repeat;
+      height: 326px;
+    }
+  }
+
+  &.rufm{
+    background: image-url('branding/rufm-background.jpg') top center repeat-y;
+
+    .b-tag__description__rufm{
+      background: image-url('branding/rufm-logo.jpg') center no-repeat;
+      height: 326px;
+    }
+  }
+
+}

@@ -1,0 +1,82 @@
+.b-character
+  .b-character__info
+    = image_tag user.avatar.url(:avatar), class: 'avatar'
+    .b-character__name= user.fio_or_login
+    / .b-character__occupation Программист
+    / - if user.city?
+    /   .b-character__location= user.city
+    - if is_my_profile?(user)
+      = link_to 'Изменить профиль', edit_user_url(user.subdomain), class: 'g-button edit'
+    - else
+      = link_to 'Написать сообщение', user_messages_path(user.subdomain), class: 'g-button message'
+
+  - if user.twitter? || user.facebook? || user.instagram? || user.gplus? || user.vkontakte?
+    .b-character__socials
+      - if user.twitter?
+        .character__socials
+          = link_to social_account_url(host: "https://twitter.com", account: user.twitter), target: :_blank, rel: :nofollow do
+            = image_tag "v2/social/twitter.png"
+      - if user.facebook?
+        .character__socials
+          = link_to social_account_url(host: "https://www.facebook.com", account: user.facebook), target: :_blank, rel: :nofollow do
+            = image_tag "v2/social/fb.png"
+      - if user.instagram?
+        .character__socials
+          = link_to social_account_url(host: "https://instagram.com", account: user.instagram), target: :_blank, rel: :nofollow do
+            = image_tag "v2/social/instagram.png"
+      - if user.gplus?
+        .character__socials
+          = link_to social_account_url(host: "https://plus.google.com", account: user.gplus), target: :_blank, rel: :nofollow do
+            = image_tag "v2/social/google.png"
+      - if user.vkontakte?
+        .character__socials
+          = link_to social_account_url(host: "https://vk.com", account: user.vkontakte), target: :_blank, rel: :nofollow do
+            = image_tag "v2/social/vk.png"
+
+.b-account-menu
+  / .b-account-menu__part
+  /   = link_to_active_with_counter 'Сообщения', user.messages.not_viewed.size, account_url(user), class: 'b-account-menu__link'
+  /   = link_to_active_with_counter 'Комментарии', '5', 'javascript:;', class: 'b-account-menu__link'
+  /   .b-account-menu__subpart
+  /     %span.title Сообщество
+  /     = link_to_active_with_counter 'Вопросы', '5', 'javascript:;', class: 'b-account-menu__link'
+  /     = link_to_active_with_counter 'Группы', '2', 'javascript:;', class: 'b-account-menu__link'
+
+  .b-account-menu__part
+    - if is_my_profile?(user)
+      = link_to_unless_current_account "Сообщения", user_messages_url(user.subdomain), class: "b-account-menu__link"
+    = link_to_unless_current_account 'Комментарии', user_comments_url(user.subdomain), class: 'b-account-menu__link'
+    = link_to_unless_current_account 'Статьи', user_docs_url(user.subdomain), class: 'b-account-menu__link'
+    = link_to_unless_current_account 'События', user_events_url(user.subdomain), class: 'b-account-menu__link'
+    = link_to_unless_current_account 'Фоторепортажи', user_photos_url(user.subdomain), class: 'b-account-menu__link'
+    %hr
+    = link_to_unless_current_account 'Компании', user_companies_url(user.subdomain), class: 'b-account-menu__link'
+
+/ - else
+/ .b-account-menu
+/   = link_to_unless_current_account 'Комментарии', 'javascript:;', class: 'b-account-menu__link active'
+/   = link_to_unless_current_account 'Компании', 'javascript:;', class: 'b-account-menu__link' if @site.has_section? :catalog
+/   = link_to_unless_current_account 'Статьи', user_docs_url(user.subdomain), class: 'b-account-menu__link' if @site.has_section? :docs
+/   = link_to_unless_current_account 'События', 'javascript:;', class: 'b-account-menu__link' if @site.has_section? :afisha
+/   = link_to_unless_current_account 'Фоторепортажи', 'javascript:;', class: 'b-account-menu__link' if @site.has_section? :photo
+
+%dl.b-account-info
+
+  - if user.birth?
+    %dt.b-account-info__item Дата рождения:
+    %dd.b-account-info__description= Russian::strftime(user.birth, "%d %B %Y")
+
+  %dt.b-account-info__item Пол:
+  %dd.b-account-info__description= t "gender.#{user.gender}"
+
+  - if user.academic?
+    %dt.b-account-info__item Образование:
+    %dd.b-account-info__description= user.academic
+
+  - if user.show_skype?
+    %dt.b-account-info__item Skype:
+    %dd.b-account-info__description= user.skype
+
+  - if user.about?
+    %dt.b-account-info__item О себе:
+    %dd.b-account-info__description= user.about

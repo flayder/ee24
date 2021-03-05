@@ -1,0 +1,21 @@
+<%= render 'rubrics' %>
+<div class='well'>
+  <h1><%= @tag.name %> <%= link_to 'ред.', edit_admin_tag_url(@tag.id) %> <%= link_to 'уд.', admin_tag_url(@tag), :method => :delete, :confirm => 'Вы уверены?' %></h1>
+
+  <div>
+    <%= @tag.taggings.count %> <%= Russian::pluralize(@tag.taggings.count, 'статья', 'статьи', 'статей') %>
+  </div>
+  <div>
+    Ссылка: <%= link_to @tag.url, @tag.url %>
+  </div>
+  <ul>
+    <% @tag.taggings.each do |n| %>
+        <% if n.taggable.present? %>
+          <li>
+            <%= link_to n.taggable.title, n.taggable.url %> |
+            <%= link_to 'удалить', remove_from_doc_admin_tag_url(@tag.id, :model => n.taggable.class.to_s, :doc_id => n.taggable.id), :method => :delete, :confirm => 'Вы уверены?', :title => 'Удалить тег у статьи' %>
+          </li>
+        <% end %>
+    <% end %>
+  </ul>
+</div>

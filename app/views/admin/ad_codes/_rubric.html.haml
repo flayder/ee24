@@ -1,0 +1,4 @@
+= rubric.title
+&nbsp;|&nbsp;
+= link_to 'Баннеры', list_admin_ad_codes_url(:ad_code => {:ad_section_type => rubric.class, :ad_section_id => rubric.id}) if rubric.respond_to?(:ad_codes)
+&nbsp;

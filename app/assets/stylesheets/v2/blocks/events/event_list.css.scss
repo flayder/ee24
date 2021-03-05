@@ -1,0 +1,83 @@
+.b-event__item {
+  @include clearfix;
+  padding: 30px 0;
+  border-top: 1px solid #dbdbdb;
+
+  &:first-child {
+    border: none;
+  }
+
+  .b-event{
+    &__date {
+      font-family: "ProximaNova", Verdana, sans-serif;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    &__day {
+      color: $red-dark;
+      font-size: 40px;
+      line-height: 41px;
+    }
+
+    &__month {
+      color: $red-dark;
+      font-size: 28px;
+      line-height: 30px;
+    }
+
+    &__time {
+      font-size: 18px;
+      line-height: 20px;
+    }
+
+    &__start-date {
+      font-family: "ProximaNova", Verdana, sans-serif;
+      font-weight: bold;
+      color: $red-dark;
+      font-size: 28px;
+      line-height: 30px;
+
+      span {
+        font-size: 18px;
+        font-weight: normal;
+      }
+    }
+
+    &__finish-date {
+      font-family: "ProximaNova", Verdana, sans-serif;
+      font-weight: bold;
+      color: $gray-mid4;
+      font-size: 22px;
+      line-height: 24px;
+
+      span {
+        font-size: 18px;
+        font-weight: normal;
+      }
+    }
+
+    &__category {
+      text-transform: uppercase;
+      color: $red-dark;
+    }
+
+    &__title {
+      font-size: 24px;
+      a {
+        color: #000;
+      }
+    }
+  }
+}
+.b-latest-event__item {
+  margin-bottom: 15px;
+  .b-latest-event {
+    &__title {
+      font-size: 19px;
+      a {
+        color: #000;
+      }
+    }
+  }
+}

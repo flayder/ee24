@@ -1,0 +1,20 @@
+.l-wrapper.l-content
+  .l-page__columns-line
+    .l-section__aside
+      = render partial: 'shared/adv-aside'
+
+    .l-section__main
+      .b-tag
+        %div{class: "b-tag__description#{@branding_logo}"}
+          .b-tag__description__title
+            = @tag.name
+
+        = render 'menu'
+
+        .b-tag__content
+          .b-companies.js-loaderByPage
+            .col1= render partial: 'shared/companies', object: @catalog
+            .g-loader
+              =# link_to 'Загрузить ещё компании', 'javascript:;', data: {page: @catalog.next_page}, class: 'g-loader__link js-loader'
+              = will_paginate @catalog
+= seo_text @seo

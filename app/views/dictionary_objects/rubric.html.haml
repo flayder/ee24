@@ -1,0 +1,24 @@
+.l-wrapper
+
+  %aside.l-section__aside
+    = render partial: 'main_rubricator'
+    = render partial: 'shared/rubricator', locals: {rubrics: @dictionary.rubrics}
+    = render 'shared/adv-aside'
+
+  %div.l-section__main
+    .b-ency
+
+      = render partial: 'menu'
+
+      - if @dictionary_objects.empty?
+        Пока нет ни одной статьи.
+      - else
+        .b-ency__sections
+          - @dictionary_objects.group_by(&:letter).sort_by(&:first).each do |letter, statements|
+            .b-ency__section
+              .title
+                %span= letter
+              .links
+                - statements.each do |statement|
+                  .link= link_to statement.title, statement.url
+= seo_text @seo

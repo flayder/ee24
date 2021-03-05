@@ -1,0 +1,19 @@
+.b-auth-popup.b-account-restore.s-gray-box
+  - if request.xhr?
+    = link_to '', '#close_popup', class: 'popup-close'
+  - else
+    = link_to '', request.referrer, class: 'popup-close'
+  %h3.s-gray-box__title Восстановление пароля
+
+  - if flash[:notice].present?
+    .flash.notice= flash[:notice]
+  - else
+    - unless flash[:error].present? and action_name == 'restore_password'
+      .field-line.small.text-center Укажите адрес электронной почты, указанный при регистрации.
+      .s-gray-box__content.without-social-auth
+        .s-gray-box__content__block.with-form
+          = form_tag '/users/restore_pwd' do
+            .label-line= label_tag :email, "Email"
+            .field-line= text_field_tag :email, nil, class: "field"
+            .submit-wrapper
+              .button= submit_tag "Отправить", class: "submit"

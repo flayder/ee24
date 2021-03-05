@@ -1,0 +1,11 @@
+= form_for [:admin, @web_analytics_block] do |f|
+  = error_messages_for :web_analytics_block, :object => @web_analytics_block
+  
+  = f.label :body
+  = f.text_area :body, class: 'admin_text_area'
+  %span.help-block
+    Содержимое этого поля будет вставлено непосредственно перед тэгом 
+    %strong='</body>'
+  %div= f.select :code_type, WebAnalyticsBlock::CODE_TYPES 
+  
+  = f.submit 'Сохранить', class: 'btn'

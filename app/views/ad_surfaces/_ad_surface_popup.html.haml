@@ -1,0 +1,9 @@
+= div_for ad do
+  -#= link_to 'Закрыть', '#', class: 'b-map-container___close'
+  #b-yandex-map_popup{style: "width: 300px; height: 300px;"}
+  .description= ad.description
+  .photos
+    - if ad.photo.present?
+      = image_tag(ad.photo.url(:popup))
+    - if ad.second_photo.present?
+      = image_tag(@ad_surface.second_photo.url(:popup))

@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /bankomats/
+Disallow: /bankomats?atm
+Disallow: /account/
+Disallow: /sessions
+Disallow: /search
+Disallow: /weather
+Disallow: /auth
+Disallow: /job/resumes/profession/
+Disallow: /*comments
+Disallow: /*?industry
+Disallow: /users
+Disallow: /*?past
+Disallow: /*?preview_secret
+Host: 420on.cz
+Sitemap: https://420on.cz/sitemap.xml.gz
+Sitemap: https://420on.cz/sitemap_google_news.xml.gz

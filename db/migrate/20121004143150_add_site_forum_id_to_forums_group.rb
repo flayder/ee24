@@ -1,0 +1,7 @@
+class AddSiteForumIdToForumsGroup < ActiveRecord::Migration
+  def change
+    add_column :forums_groups, :site_forum_id, :integer
+    add_index :forums_groups, :site_forum_id
+    remove_column :forums_groups, :site_id
+  end
+end

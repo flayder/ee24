@@ -1,0 +1,13 @@
+<font size="3"><b>Вам поступило новое сообщение</b></font>
+<br><br>
+
+<font size="2">
+  Ваш логин: <%= @login %>
+</font>
+<br><br>
+
+Чтобы прочитать Ваши сообщения пройдите по ссылке:<br>
+
+<% link = "https://#{Settings.portal_domain}/users/#{@subdomain}" %>
+<a href="<%= link %>"><%= link %></a>
+<%= render partial: "user_mailer/unsubscribe_text", locals: { user: @user } %>

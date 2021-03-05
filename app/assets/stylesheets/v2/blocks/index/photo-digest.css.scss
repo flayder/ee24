@@ -1,0 +1,38 @@
+.b-photo-digest {
+  width: 100%;
+  margin: 100px 0 65px;
+  position: relative;
+  border-bottom: 2px $gray-dark solid;
+  &:hover .b-photo-digest__control {display: block;}
+
+  & &__wrapper {overflow: hidden;}
+
+  & &__list {
+    height: 370px;
+    padding: 35px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  & &__item {float: left;}
+
+  & &__control {
+    display: none;
+    width: 72px;
+    height: 440px;
+    position: absolute;
+    top: 0;
+    background: rgba(255,255,255,.3) center center no-repeat;
+    cursor: pointer;
+    opacity: .8;
+    &:hover {opacity: 1}
+    &.prev {
+      left: 0;
+      background-image: asset_data_url('v2/element-triangle-10.png');
+    }
+    &.next {
+      right: 0;
+      background-image: asset_data_url('v2/element-triangle-9.png');
+    }
+  }
+}

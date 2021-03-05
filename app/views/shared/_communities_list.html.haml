@@ -1,0 +1,4 @@
+.b-category-communities-list
+  .b-category-communities-list__list
+    - communities.each do |community|
+      = render 'shared/list_community', community: community

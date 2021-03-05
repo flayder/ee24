@@ -1,0 +1,13 @@
+%table.table.table-bordered
+  %thead
+    %th= Redirect.human_attribute_name :from
+    %th= Redirect.human_attribute_name :to
+    %th= 'Действия'
+  - redirects.each do |rubric|
+    %tr
+      %td= rubric.from
+      %td= rubric.to
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_redirect_path(rubric)
+          %li= link_to 'Удалить', admin_redirect_path(rubric), :method => :delete, :confirm => 'Вы уверены?'

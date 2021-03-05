@@ -1,0 +1,15 @@
+.exchange_rates {
+  margin-top: 4px;
+  font-size: .9em;
+  text-align: right;
+  .currency {
+    display: inline;
+  }
+  .rate {
+    display: inline;
+    margin-right: 8px;
+  }
+  .rate:last-child {
+    margin-right: 0px;
+  }
+}

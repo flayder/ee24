@@ -1,0 +1,18 @@
+<% if @site.has_section?(:comments) and doc.respond_to?(:is_commentable) and doc.is_commentable? and hypercomments_widget_id.present? %>
+  <div style='margin:10px 0'>
+    <%= link_to 'Обсудить', doc.comments_url(@site, request.host_with_port), id: 'comments-link', class: 'comments-link' %>
+    <script type="text/javascript">
+    _hcwp = window._hcwp || [];
+    _hcwp.push({widget:"Bloggerstream", widget_id: <%= hypercomments_widget_id %>, selector: '#comments-link', label: 'Обсудить ({%COUNT%})' });
+    (function() {
+    if("HC_LOAD_INIT" in window)return;
+    HC_LOAD_INIT = true;
+    var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage ||  "en").substr(0, 2).toLowerCase();
+    var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+    hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/<%= hypercomments_widget_id %>/"+lang+"/widget.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hcc, s.nextSibling);
+    })();
+    </script>
+  </div>
+<% end %>

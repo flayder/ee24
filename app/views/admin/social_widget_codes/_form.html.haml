@@ -1,0 +1,13 @@
+= form_for [:admin, @social_widget_code] do |f|
+  = error_messages_for :social_widget_code, :object => @social_widget_code
+
+  .controls
+    = f.label :widget_type
+    = f.select :widget_type, ['vk', 'fb', 'vktv', 'fb_vktv', 'hypercomments']
+  
+  .controls
+    = f.label :code
+    = f.text_area :code
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

@@ -1,0 +1,126 @@
+.b-vacancy {
+  @include clearfix;
+
+  & &__relevant {
+    @include grid-size(2);
+    float: right;
+    .relevant__title {
+      margin-bottom: 15px;
+      font: 700 12px/12px $font-family_proxymanova;
+      color: $gray-mid5;
+      text-transform: uppercase;
+    }
+    .relevant__list {
+      .item {
+        padding: 15px 0;
+        overflow: hidden;
+        border-bottom: 1px $gray-light solid;
+        &:last-child {border-bottom: none;}
+      }
+      .title {font-size: 15px}
+      .employer {
+        padding: 3px 0;
+        font-size: 12px;
+        a {color: $gray-mid4}
+      }
+      .location {
+        height: 15px;
+        padding-left: 12px;
+        font-size: 12px;
+        line-height: 17px;
+        color: $gray-mid4;
+        background: asset_data_url('v2/location_gray_mini.png') left center no-repeat;
+      }
+    }
+  }
+
+  & &__employer {
+    margin-bottom: 50px;
+    .avatar {
+      width: 200px;
+      height: 100px;
+      margin-bottom: 5px;
+      margin-left: -10px;
+      border: 1px $gray-light solid;
+      img {margin: 0 auto}
+    }
+    .title {
+      font: 16px/19px $font-family_proxymanova;
+      text-align: center;
+    }
+  }
+
+  & &__content {
+    @include grid-size(7);
+    float: left;
+  }
+
+  & &__title {
+    margin: 30px 0 5px;
+    font-size: 24px;
+  }
+
+  & &__datetime {
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: $gray-light2;
+    text-transform: uppercase;
+  }
+
+  & &__summary {
+    padding: 15px 20px;
+    background: $blue-light;
+    .row {
+      @include clearfix;
+      margin-bottom: 10px;
+      &:last-child {margin-bottom: 0}
+    }
+    .dt {
+      width: 170px;
+      float: left;
+      margin-right: 20px;
+      font: 700 11px/18px $font-family_proxymanova;
+      color: $gray-mid4;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .dd {
+      width: 470px;
+      float: left;
+      font: 18px/18px $font-family_proxymanova;
+      color: $blue-mid;
+      &.salary {
+        font-weight: 700;
+        color: $red-dark
+      }
+    }
+  }
+
+  & &__contacts {
+    margin: 20px 0;
+    padding: 15px 20px;
+    background: $blue-light;
+    .title {
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: $gray-dark2;
+    }
+
+  }
+
+  & &__text, &__responsibility, &__requirements {
+    margin: 15px 0;
+    padding: 10px 0;
+    .title {
+      font: bold 16px "ProximaNova", Verdana, sans-serif;
+      color: $gray-dark2;
+      text-transform: uppercase;
+    }
+
+    .link_title {
+      font: bold 14px "ProximaNova", Verdana, sans-serif;
+      color: $gray-dark2;
+    }
+
+  }
+}

@@ -1,0 +1,28 @@
+<script type ="text/javascript">
+  var link = '<%= link %>';
+  var rubric = '<%= @rubric.try(:link) %>';
+</script>
+<span>ГОД:</span>
+<% year_array = (2009..Time.now.year).map{ |y| [y.to_s, y] } %>
+
+<%= select_tag(:year, options_for_select(year_array, (params[:year].present? ? [params[:year].to_s, params[:year].to_i] : Time.now.year)),
+    :name => "year_select",
+    class: "on_change_submit",
+    :id => "year_select",
+    :include_blank => true ) %>
+
+<span>МЕСЯЦ:</span>
+<%= select_tag(:month, options_for_select([['', ''], ['Январь', 1], ['Февраль', 2], ['Март', 3], ['Апрель', 4], ['Май', 5], ['Июнь', 6], ['Июль', 7], ['Август', 8], ['Сентябрь', 9], ['Октябрь', 10], ['Ноябрь', 11], ['Декабрь', 12]], params[:month].present? ? [params[:month].to_s, params[:month].to_i] : Time.now.month),
+  :name => "month_select",
+  class: "on_change_submit",
+  :id => "month_select"
+  ) %>
+
+<% if day_select %>
+  <span>ЧИСЛО:</span>
+  <%= select_tag(:day, options_for_select([''] + (1..31).map { |day| [day.to_s, day]}, params[:day].present? ? [params[:day].to_s, params[:day].to_i] : Time.now.day),
+    :name => "day_select",
+    class: "on_change_submit",
+    :id => "day_select"
+    ) %>
+<% end %>

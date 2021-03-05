@@ -1,0 +1,31 @@
+.b-index-events {
+  margin-top: 28px;
+
+  .g-subheader {
+    padding: 28px 0 0 30px;
+    margin-bottom: 0;
+  }
+
+  .b-event__item {
+    position: relative;
+    border-top: none;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 5%;
+      width: 90%;
+      border-top: 1px solid #dbdbdb;
+    }
+
+    &:first-child:before {
+      display: none;
+    }
+  }
+
+  .b-event__content {
+    padding-right: 45px;
+  }
+}

@@ -1,0 +1,11 @@
+%ul.b-account-companies
+  - 10.times do
+    %li.b-account-companies__item
+      .avatar= image_tag 'https://lorempixel.com/50/50/', size: "#{['100', '200', '70'].sample}x100"
+      = link_to Faker::Lorem.word(), 'javascript:;', class: 'item__title'
+      .item__aux
+        = succeed link_to 'Удалить', 'javascript:;', class: 'g-button danger delete' do
+          = link_to 'Редактировать', 'javascript:;', class: 'g-button default edit'
+      .item__vacancies
+        = link_to '4 вакансии', 'javascript:;'
+        = link_to 'Добавить вакансию', 'javascript:;'

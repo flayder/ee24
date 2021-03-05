@@ -1,0 +1,11 @@
+-#.g-subheader.g-subheader__rubric Название рубрики
+.l-cols.has-media.js-loaderByPage.b-doc__list
+  - articles_list.each do |article|
+    .l-cols-3.l-l.b-doc__item
+      = render partial: 'shared/article', object: article, as: 'article'
+  .g-loader
+    = will_paginate @docs || @events
+  -# if articles_list.next_page
+    -# .g-loader
+      -# items = params[:controller] == 'afisha' ? 'события' : 'статьи'
+      =# link_to "Загрузить ещё #{items}", 'javascript:;', data: {page: articles_list.next_page}, class: 'g-loader__link js-loader'

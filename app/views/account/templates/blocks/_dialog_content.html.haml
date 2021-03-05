@@ -1,0 +1,24 @@
+.b-dialogs__content
+  -if @messages.present?
+    .b-messages
+      - grouped_messages = @messages.group_by{|m| m.created_at.to_date}
+      - grouped_messages.each_pair do |time, messages|
+        - if grouped_messages.first.first != time
+          .divider
+            %span= time
+        - messages.each do |message|
+          .b-message
+            = raw avatar_img(message.sender, "small")
+            .b-message__info
+              .datetime= l message.created_at, format: :only_time
+              = link_to message.sender.fio_or_login, account_url(message.sender), class: 'username'
+            .b-message__content= raw message.text
+  .b-message-form.b-form
+    = form_for :message, url: user_create_message_url(user_id: @user.subdomain) do |f|      
+      .b-form__row
+        = f.text_area :text, class: "b-message-form__textarea", placeholder: "Текст сообщения", rows: 3
+      
+      = f.submit "Отправить", class: "g-button medium primary"
+
+:javascript
+  $('.b-message-form__textarea').elastic();

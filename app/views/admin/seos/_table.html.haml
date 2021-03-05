@@ -1,0 +1,25 @@
+%table.table.table-bordered
+  %thead
+    %th= Seo.human_attribute_name :id
+    %th= Seo.human_attribute_name :title
+    %th= Seo.human_attribute_name :about
+    %th= Seo.human_attribute_name :text
+    %th= Seo.human_attribute_name :path
+    %th= 'Действия'
+  - seos.each do |seo|
+    %tr    
+      %td= seo.id
+      %td= seo.title
+      %td= raw seo.about
+      %td= raw seo.text
+      %td
+        - if seo.path?
+          = link_to "страница (#{seo.path})", seo.path
+        - elsif seo.seo.present?
+          = link_to "рубрика (#{seo.seo.url})", seo.seo.url
+        - else
+          unused
+      %td
+        %ul.admin_actions                    
+          %li= link_to 'Редактировать', edit_admin_seo_path(seo)
+          %li= link_to 'Удалить', admin_seo_path(seo), :method => :delete, :confirm => 'Вы уверены?'

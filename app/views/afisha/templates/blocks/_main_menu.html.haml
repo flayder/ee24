@@ -1,0 +1,22 @@
+%nav.b-site-navigation
+  %div.l-page__center
+    .main-links
+      = link_to_current "Афиша", events_path
+      - active_g_rubric_link = params[:id]
+      - active_g_rubric_link = @event.rubric.link if (params[:action] == "show_event") and params[:controller] == "afisha"
+      - @event_rubrics.in_groups_of(10) do |rub|
+        .line
+          - rub.each do |rubric|
+            - if rubric.present?
+              = link_to_current rubric.title, "/afisha/#{rubric.link}"
+      .line.user-actions
+        - if logged_in?
+          - if params[:action] == "my"
+            %span.active Мои события
+          - else
+            = link_to "Мои события", my_events_url
+        - if can? :manage, Event
+          = link_to_current 'От юзеров', not_approved_users_events_path, class: 'red'
+          = link_to_current 'От редакции', not_approved_editors_events_path, class: 'red'
+    - if @site.voronezh?
+      = render partial: 'layouts/special_projects_menu'

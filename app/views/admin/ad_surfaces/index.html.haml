@@ -1,0 +1,7 @@
+= render :partial => 'admin/shared/ad_agency/well_menu'
+= render :partial => 'search_form'
+
+= link_to 'Новая рекламная поверхности', new_admin_ad_surface_path
+= render :partial => 'table', :locals => { :ad_surfaces => @ad_surfaces }
+
+= will_paginate_bootstrap @ad_surfaces

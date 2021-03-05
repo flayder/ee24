@@ -1,0 +1,53 @@
+@import "ultimate/mixins/css3";
+@import "ultimate/mixins/microstructures";
+
+.popup-layout {
+  display: none;
+  position: absolute;
+  min-height: 100%;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  > .popup-window {
+    position: relative;
+    margin: 0 auto;
+    //min-width: 465px;
+    width: 890px;
+    @include transition(all, 0.2s);
+    .loading-overlay {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: white;
+      @include opacity(0.5);
+      z-index: 10;
+      text-align: center;
+      > span {
+        @include inline-block;
+        vertical-align: middle;
+        &.circle {
+          width: 32px;
+          height: 32px;
+          background: transparent image-url("ajax-loader.gif") center center no-repeat;
+        }
+        &.text {
+          margin-left: 10px;
+          font-size: 20px;
+        }
+      }
+    }
+    .title-bar {
+      > .close {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        width: 21px;
+        height: 21px;
+        background: image_url("popup/close.png") 0 0 no-repeat;
+        z-index: 1;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

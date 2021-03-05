@@ -1,0 +1,4 @@
+- if ads_needed?
+  - right_banner = ad_code(controller_name == 'main' ? 'vertical_right_main' : 'vertical_right')
+  - if right_banner.present?
+    .b-isikhangiso-aside= right_banner.html_safe

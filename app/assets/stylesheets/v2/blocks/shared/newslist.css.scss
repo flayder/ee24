@@ -1,0 +1,35 @@
+.b-newslist {
+  @include grid-size(3);
+  overflow: hidden;
+
+  .g-subheader {margin-top: $dx;}
+
+  &__content {}
+
+  &__item {
+    display: block;
+    margin: .7*$dx 0;
+  }
+
+  &__aux {
+    margin-bottom: 3px;
+    height: 14px;
+    line-height: $line-height_mini;
+    overflow: hidden;
+  }
+
+  &__rubric {
+    color: $blue-mid;
+  }
+
+  &__date {
+    color: $gray-mid;
+    font-size: .85em;
+  }
+
+  &__title {
+    color: $gray-dark2;
+    @include ellipsis;
+    white-space: normal;
+  }
+}

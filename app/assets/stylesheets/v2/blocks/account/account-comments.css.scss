@@ -1,0 +1,25 @@
+.b-account-comments {
+  &__item {
+    padding-left: 25px;
+    margin-bottom: 30px;
+    background: asset_data_url('v2/element-triangle-5.png') 5px 2px no-repeat;
+  }
+
+  .item__info {
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: $gray-mid;
+    a {color: $blue-mid;}
+  }
+
+  .item__text {
+    font-size: 15px;
+    color: $black;
+  }
+
+  .new-replies {
+    margin-top: 10px;
+    color: $red-dark;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,33 @@
+%nav.b-site-navigation
+  %div.l-page__center
+    .main-links
+      .line
+        = link_to_current "Работа", job_url
+        = link_to_current "Вакансии", vacancies_url
+        = link_to_current 'Резюме', resumes_url
+        - if doc_global_rubric
+          - doc_global_rubric.doc_rubrics.each do |doc_rubric|
+            = link_to_current doc_rubric.title, "/job/#{doc_rubric.link}"
+        - if (params[:action] == 'new' and params[:type] == 'vacancy')
+          %span.active Добавить вакансию
+        - else
+          = link_to_current 'Добавить вакансию', "#", data: {link: "#{new_vacancy_url}"}, class: "seo-link"
+        - if (params[:action] == 'new' and params[:type] == 'resume')
+          %span.active Добавить резюме
+        - else
+          = link_to_current 'Добавить резюме', "#", data: {link: "#{new_resume_url}"}, class: "seo-link"
+      .line
+        - if logged_in?
+          - if (params[:action] == 'new' and params[:type] == 'resume')
+            %span.active Мои резюме
+          - else
+            = link_to_current 'Мои резюме', '/resumes/my'
+          - if (params[:action] == 'new' and params[:type] == 'vacancy')
+            %span.active Мои вакансии
+          - else
+            = link_to_current 'Мои вакансии', '/vacancies/my'
+        - if can?(:manage, Vacancy) && can?(:manage, Resume)
+          = link_to_current 'Новые резюме', '/resumes/not_approved', class: 'red'
+          = link_to_current 'Новые вакансии', '/vacancies/not_approved', class: 'red'
+    - if @site.voronezh?
+      = render partial: 'layouts/special_projects_menu'

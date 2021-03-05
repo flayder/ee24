@@ -1,0 +1,15 @@
+<% docs.each do |doc| %>
+  <div class="b-news short">
+    <time datetime="<%= Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, "%Y-%m-%d") %>">
+      <%= Russian::strftime(doc.created_at, "%d.%m %H:%M") %>
+    </time>
+    <div class="b-news__title">
+      <%= link_to doc.title, doc.url, class: "b-news__title__link" %>
+      <span class="b-news__views">
+        <%= image_tag 'icons/views.png', class: "b-news__views__counter-icon" %>
+        <%= doc.page_views %>
+      </span>
+      <%= render partial: 'templates/blocks/comments_counter', locals: {doc: doc} %>
+    </div>
+  </div>
+<% end %>

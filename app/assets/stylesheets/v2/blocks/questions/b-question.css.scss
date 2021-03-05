@@ -1,0 +1,128 @@
+.b-question {
+  margin-bottom: 45px;
+}
+
+.b-question__header {
+  background: #F2F5F8;
+  padding: 15px 15px 10px;
+}
+
+.b-question__header__cover {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 36px;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.b-question__header__content {
+  display: inline-block;
+  vertical-align: middle;
+  width: 450px;
+  margin-left: 15px;
+}
+
+.b-question__header__user-name {
+  color: $blue-dark4;
+}
+
+.b-question__header__stats {
+  margin-top: 10px;
+}
+.b-question__header__stat {
+  display: inline-block;
+  padding-left: 20px;
+  font-size: 18px;
+  & + & { margin-left: 20px; }
+  &.community {
+    background: asset-data-url('v2/icons/community.png') 0 2px no-repeat;
+    padding-left: 25px;
+  }
+  &.date { background: asset-data-url('v2/icons/time.png') 0 center no-repeat; }
+}
+
+.b-question__header__actions {
+  display: inline-block;
+  vertical-align: middle;
+  width: 345px;
+}
+
+.b-question__title {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 22px;
+  color: $blue-dark4;
+}
+
+.b-question__content {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #272727;
+}
+
+
+.b-question__actions {
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.b-question__action {
+  float: left;
+  &.abuse {
+    color: #e43044;
+    float: right;
+    padding-left: 10px;
+  }
+}
+
+
+.b-question__answer {
+  background: $blue-light;
+  margin-top: 40px;
+  .title {
+    height: 20px;
+    padding: 10px 20px;
+    background: $blue-mid4;
+    text-transform: uppercase;
+    font: 16px/23px $font-family_proxymanova;
+    letter-spacing: 1px;
+    color: white;
+  }
+
+  .content {
+    padding: 20px;
+    font-size: 17px;
+    color: #171717;
+
+    .g-aux { margin-top: 20px;}
+  }
+}
+
+
+.b-question__answer__stats {
+  overflow: hidden;
+  padding: 0 15px 20px;
+}
+
+.b-question__answer__stat {
+  float: left;
+  padding-left: 20px;
+  font-size: 15px;
+  color: #304b83;
+  &.datetime {
+    background: image-url('v2/icons/time_red.png') 0 0 no-repeat;
+  }
+  &.link {
+    margin-left: 35px;
+    background: image-url('v2/icons/hash_red.png') 0 0 no-repeat;
+  }
+  &.author {
+    float: right;
+    font-style: italic;
+  }
+}

@@ -1,0 +1,19 @@
+.l-wrapper
+
+  %aside.l-section__aside= render partial: '/search/templates/blocks/right'
+
+  %div.l-section__main
+    = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+    = render 'search/menu'
+
+    - unless @results.empty?
+      .b-photos.js-loaderByPage
+        .col1= render partial: 'photo/galleries_list_extended', object: @results
+        .g-loader
+          =# link_to 'Загрузить ещё альбомы', 'javascript:;', data: {page: @results.next_page}, class: 'g-loader__link js-loader'
+          = will_paginate @results
+    - else
+      .b-box По вашему запросу ничего не найдено.
+
+    -#= yandex_direct_code @site
+= seo_text @seo

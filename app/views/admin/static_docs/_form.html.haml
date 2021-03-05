@@ -1,0 +1,45 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+
+%h1= 'Новая статичная страница'
+= form_for [:admin, @static_doc] do |f|
+  = error_messages_for :static_doc, :object => @static_doc
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :link
+    = f.text_field :link
+
+  .controls
+    = f.label :main
+    = f.check_box :main
+
+  .controls
+    = f.label :active
+    = f.check_box :active
+
+  .controls
+    = f.label :position
+    = f.text_field :position
+
+  .controls
+    = f.label :text
+    = f.cktext_area :text, ckeditor: {toolbar: 'Full'}
+
+  .controls
+    = f.label :meta_title
+    = f.text_field :meta_title
+
+  .controls
+    = f.label :meta_keywords
+    = f.text_area :meta_keywords
+
+  .controls
+    = f.label :meta_description
+    = f.text_area :meta_description
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

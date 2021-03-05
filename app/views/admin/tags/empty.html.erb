@@ -1,0 +1,22 @@
+<div class='well'>
+  <%= render 'rubrics' %>
+  <%= render 'search_form' %>
+</div>
+
+<div class='well'>
+  <div style='margin-bottom: 10px;'>
+    <%= link_to 'Новый тег', new_admin_tag_url, class: 'btn btn-primary' %>
+  </div>
+
+  <h1>
+    Без
+    <% if params[:action] == 'without' %>
+      <%= t("without.#{params[:taggable_type].underscore}") %>
+    <% else %>
+      описания
+    <% end %>
+  </h1>
+
+  <%= render 'list' %>
+
+</div>

@@ -1,0 +1,10 @@
+<%= render 'layouts/ads/right' %>
+
+<% if params[:action].include?('show') %>
+    <% if @linker %>
+        <div class="h10px"></div>
+        <%= render :partial => "/templates/blocks/new/linker" %>
+        <div class="h10px"></div>
+    <% end %>
+<% end %>
+<%= render :partial => '/templates/blocks/new/social_widgets' %>

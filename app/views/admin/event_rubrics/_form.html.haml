@@ -1,0 +1,42 @@
+%h1= 'Новая рубрика афиши'
+= form_for [:admin, @event_rubric] do |f|
+  = error_messages_for :event_rubric, :object => @event_rubric
+  
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :english_title
+    = f.text_field :english_title
+
+  .controls
+    = f.label :description
+    = f.text_area :description
+
+  .controls
+    = f.label :link
+    = f.text_field :link
+
+  .controls
+    = f.label :main
+    = f.check_box :main
+
+  .controls
+    = f.label :main_banner
+    = f.text_area :main_banner
+
+  .controls
+    = f.label :position
+    = f.text_field :position
+
+  .controls
+    = f.label :afisha_main
+    = f.check_box :afisha_main
+
+  .controls
+    = f.label :afisha_main_position
+    = f.text_field :afisha_main_position    
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

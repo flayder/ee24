@@ -1,0 +1,32 @@
+.b-docs-item {
+  margin-bottom: 45px;
+
+  & &__image {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  & &__category, & &__date {
+    height: 11px;
+    margin: 10px 0;
+    font: 12px/12px $font-family_subsubheader;
+    text-transform: uppercase;
+    color: $gray-mid4;
+    @include ellipsis;
+    display: block;
+
+    &-link {color: $red-dark;}
+  }
+
+  & &__title {
+    font-size: $font-size_news-item;
+    color: $black;
+  }
+
+  .g-aux {
+    margin: 10px 0 0;
+    font-size: $font-size_mini;
+    color: $gray-light2;
+    a {color: $gray-light2;}
+  }
+}

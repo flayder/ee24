@@ -1,0 +1,3 @@
+<% if can?(:view_ip, ip_object) && ip_object.try(:ip) %>
+  <span class ="sender-ip">ip отправителя: <%= ip_object.ip.ip %></span>
+<% end %>

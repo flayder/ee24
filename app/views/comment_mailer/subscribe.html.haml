@@ -1,0 +1,23 @@
+%br
+= "Здравствуйте, #{@user.fio_or_login}"
+%br
+%br
+= raw "К материалу «#{link_to @comment.commentable.title, 'https://' + @site.domain + @comment.commentable.url}» был добавлен новый комментарий от пользователя #{link_to @comment.user.fio_or_login, "https://#{@site.domain}/users/#{@comment.user.login}"}:"
+%br
+%br
+= @comment.text
+%br
+%br
+= "---"
+%br
+С уважением,
+информационный портал “Чехия Онлайн” -
+= link_to "420on.cz", "https://420on.cz"
+%br
+%br
+= link_to image_tag(attachments['logo.png'].url, height: "40px"), "https://#{@site.domain}"
+%br
+%br
+%span{style: "font-size: 10px; collor: #5B5B5B"}
+  Отписаться от рассылки Вы можете на странице материала по ссылке:
+  = link_to "https://#{@site.domain}#{@comment.commentable.url}", "https://#{@site.domain}#{@comment.commentable.url}"

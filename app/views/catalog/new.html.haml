@@ -1,0 +1,12 @@
+.l-wrapper
+
+  %div.l-content
+    .g-subheader= t('.add_new_company_title')
+    .b-form.l-cols
+      = form_for @catalog, url: {controller: :catalog, action: :create}, html: {method: :post, multipart: true} do |f|
+        - unless @catalog.errors.empty?
+          .error_msg
+            = t('.error_notice')
+            %br/
+            = error_messages_for :catalog
+        = render partial: '/catalog/form/form', locals: {f: f}

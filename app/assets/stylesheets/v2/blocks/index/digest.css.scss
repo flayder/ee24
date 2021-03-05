@@ -1,0 +1,14 @@
+.b-digest {
+  @include clearfix;
+
+  .b-media {float: left;}
+  .b-newslist {float: right;}
+}
+
+.b-promo {
+  @include grid-size(9);
+  height: 225px;
+  margin-top: $dx;
+  overflow: hidden;
+  background: #fc9;
+}

@@ -1,0 +1,34 @@
+.l-wrapper
+
+  %aside.l-section__aside= render partial: '/search/templates/blocks/right'
+
+  %div.l-section__main
+
+    = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+    = render 'search/menu'
+    - unless @results.empty?
+      .b-vacancies-list.js-loaderByPage
+        = render partial: 'job/job_items', object: @results
+        - if @results.next_page
+          .g-loader
+            = link_to 'Загрузить ещё вакансии', 'javascript:;', data: {page: @results.next_page}, class: 'g-loader__link js-loader'
+    - else
+      .b-box По вашему запросу ничего не найдено.
+
+
+    -#= yandex_direct_code @site
+= seo_text @seo
+
+
+
+-#.l-page__columns-line
+  %aside.l-page__column.left
+    = render 'search/templates/blocks/rubric_title'
+    .g-box
+      = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+      - if @results and !@results.empty?
+        = render partial: 'job/job_item', collection: @results
+        = will_paginate_new @results
+      - else
+        %span.no-info По вашему запросу ничего не найдено.
+  %div.l-page__column.right= render partial: "/search/templates/blocks/right"

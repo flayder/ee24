@@ -1,0 +1,8 @@
+stage:
+  before:
+    - cp config/samples/secret_token.rb config/initializers/secret_token.rb
+  database:
+    - rake db:drop db:create
+    - curl https://dl.dropboxusercontent.com/u/2766400/420on.dump.gz > /apps/teatro/420on.dump.gz
+    - gunzip -c /apps/teatro/420on.dump.gz | mysql -uroot -D teatro
+    - rake db:migrate

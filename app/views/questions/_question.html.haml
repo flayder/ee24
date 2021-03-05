@@ -1,0 +1,5 @@
+%div{class:"b-#{relation}-item"}
+  = link_to question.title, [question.category, question], class: "b-#{relation}-item__title"
+  %div{class: "b-#{relation}-item__answers"}
+    = question.comments.count
+    = Russian.p(question.comments.count, 'ответ', 'ответа', 'ответов')

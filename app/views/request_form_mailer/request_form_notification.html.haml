@@ -1,0 +1,23 @@
+%p Новая заявка на сайте.
+%br
+
+%p
+  %strong ФИО:
+  = @request_form.full_name
+%p
+  %strong Дата рождения:
+  = Russian::strftime(@request_form.birthday, '%d %B %Y')
+%p
+  %strong Email:
+  = @request_form.email
+%p
+  %strong Статья:
+  = link_to @request_form.docable.title, "https://#{@site.domain}#{@request_form.docable.url}"
+-if @request_form.phone_number.present?
+  %p
+    %strong Телефон:
+    = @request_form.phone_number
+-if @request_form.comment.present?
+  %p
+    %strong Комментарий:
+    = @request_form.comment

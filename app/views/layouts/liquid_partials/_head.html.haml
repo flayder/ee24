@@ -1,0 +1,27 @@
+- @layout_params ||= {}
+- if @layout_params[:rss_links_folder]
+  = render partial: "/#{@layout_params[:rss_links_folder]}/templates/blocks/rss_links"
+= raw meta_title
+= raw meta_description
+= raw meta_keywords
+/= raw meta_news_keywords
+= render 'layouts/meta_fields'
+= raw favicon
+
+= csrf_meta_tags
+
+- if Rails.env.development?
+  :javascript
+    var DEBUG_MODE = true;
+
+= javascript_include_tag '//userapi.com/js/api/openapi.js?45'
+
+:javascript
+  VK.init({apiId: "#{vk_app_id}", onlyWidgets: true});
+
+= javascript_include_tag 'application'
+
+- if @site.background_link?
+  :javascript
+    var backgroundLink = "#{@site.background_link}",
+        backgroundUrl = "#{@site.background.url}";

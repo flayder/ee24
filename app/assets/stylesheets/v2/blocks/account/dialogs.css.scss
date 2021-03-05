@@ -1,0 +1,109 @@
+.b-dialogs {
+  @include clearfix;
+
+  &__list {
+    @include grid-size(3);
+    float:left;
+    border-top: 1px $gray-light solid;
+  }
+
+  &__content {
+    @include grid-size(6);
+    float: right;
+  }
+
+  &__item {
+    padding: 15px 10px 15px 105px;
+    border-bottom: 1px $gray-light solid;
+    @include clearfix;
+    &.active {background: $blue-light;}
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      margin: 0 25px 0 -95px;
+      float: left;
+      border-radius: 50%;
+    }
+
+    .username {
+      font-size: 16px;
+      color: $black;
+    }
+
+    .count,
+    .last-message {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    
+    .count {color: $blue-dark4;}
+    .last-message {
+      color: $gray-mid3;
+      @include ellipsis();
+      display: block;
+    }
+    .date {color: $gray-mid5;}
+  }
+}
+
+.b-messages {
+  padding: 25px;
+  overflow: scroll;
+  border: $gray-light solid;
+  border-width: 1px 1px 0 1px;
+  max-height: 400px;
+
+  .divider {
+    height: 0;
+    margin-bottom: 30px;
+    border-top: 1px $gray-light solid;
+    text-align: center;
+    span {
+      padding: 0 15px;
+      position: relative;
+      top: -10px;
+      font: 15px $font-family_proxymanova;
+      color: $gray-mid5;
+      background: #fff;
+    }
+  }
+}
+
+.b-message {
+  padding: 0 0 30px 65px;
+  @include clearfix;
+
+  &__info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    .datetime {
+      float: right;
+      color: $gray-mid5;
+    }
+  }
+
+  .avatar {
+    margin: 0 15px 0 -65px;
+    float: left;
+    border-radius: 50%;
+  }
+
+}
+
+.b-message-form {
+  color: $gray-light;
+
+  .g-button {
+    float: right;
+  }
+}
+
+.b-message-form__textarea {
+  width: 588px;
+  padding: 10px;
+  resize: none;
+  font-size: 14px;
+  border: 1px $gray-light solid;
+}

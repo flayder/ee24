@@ -1,0 +1,17 @@
+.flash {
+  width: 100%;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: $white;
+  background: $blue-mid3;
+  z-index: 9999;
+  opacity: .8;
+  a {color: white;}
+  &.error {background-color: #c6071d;}
+  &.alert {background-color: $gray-mid;}
+  &.notice {background-color: #09356e;}
+}

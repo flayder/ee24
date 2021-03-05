@@ -1,0 +1,140 @@
+body.admin { padding-top: 60px; }
+body.admin h1{margin-bottom: 10px;}
+
+// Set the correct sprite paths
+@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+.ui-menu .ui-menu-item {
+    clear: left;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.ui-widget-content {
+    color: #222222;
+    border: 1px solid #222222;
+}
+.ui-widget-content li{
+    background: #FFFFFF;
+}
+.ui-widget {
+    font-family: Verdana,Arial,sans-serif;
+}
+.ui-menu {
+    list-style: none outside none;
+}
+.ui-autocomplete {
+    cursor: default;
+    width: 220px;
+}
+.ui-menu .ui-menu-item a {
+    display: block;
+    line-height: 1.5;
+    padding: 0.2em 0.4em;
+    text-decoration: none;
+}
+.ui-widget-content a {
+    color: #222222;
+}
+.ui-widget-content {
+    background: #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #222222;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+    background: #DADADA;
+    border: 1px solid #999999;
+    color: #212121;
+    font-weight: normal;
+}
+.ui-state-hover a, .ui-state-hover a:hover {
+    color: #212121;
+    text-decoration: none;
+}
+
+.admin .pagination em, .admin .pagination span.previous_page, .admin .pagination span.next_page, .admin .pagination span.gap {
+    float: left;
+    border-color: #DDDDDD;
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    float: left;
+    line-height: 34px;
+    padding: 0 14px;
+}
+
+ul.admin_actions {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.controls {
+    clear: both;
+    margin-bottom: 5px;
+
+    input[type='text'], textarea {
+        width: 475px;
+    }
+
+    textarea {
+        height: 200px;
+    }    
+
+    span.radio {
+        float: left;
+        margin-left: 5px;
+    }
+}
+
+.alert {
+    text-align: center;
+}
+
+.alert-notice {
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+}
+
+.top_well_menu {
+    margin: 0 5px;
+}
+
+.row-fluid {
+  position: relative;
+}
+
+.well {
+  #chart {
+    height: 550px;
+  }
+}
+
+table {
+  max-width: none;
+}
+
+.table {
+  max-width: none;   
+}
+
+tr.board_row {
+  cursor: pointer;
+}
+
+aside ul.nav li a {
+  padding-left: 0px;
+}

@@ -1,0 +1,13 @@
+.l-wrapper
+
+  %div.l-content
+    .g-subheader Редактирование вакансии
+    .b-form
+      = form_for @job_item, html: {multipart: true} do |f|
+        - unless @job_item.errors.empty?
+          .error_msg
+            Внимание! При редактировании вакансии были допущены ошибки:
+            %br/
+            = @job_item.errors.full_messages
+            =# error_messages_for :catalog
+        = render partial: '/job/vacancy/form', locals: {f: f}

@@ -1,0 +1,15 @@
+= link_to 'Новая внешняя ссылка', new_admin_external_doc_path
+
+%table.table.table-bordered
+  %thead
+    %th= ExternalDoc.human_attribute_name :title
+    %th= ExternalDoc.human_attribute_name :url
+    %th Действия
+  - @external_docs.each do |doc|
+    %tr
+      %td= doc.title
+      %td= link_to doc.url, doc.url
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_external_doc_path(doc)
+          %li= link_to 'Удалить', admin_external_doc_path(doc), method: :delete, confirm: 'Вы уверены?'

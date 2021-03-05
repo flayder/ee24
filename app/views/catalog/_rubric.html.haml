@@ -1,0 +1,10 @@
+- unless rubric.blank?
+  .b-catalog__item
+    = image_tag catalog_rubric_icon(rubric), alt: rubric.title, class: 'icon'
+    = link_to "/catalog/list/#{rubric.id}", class: 'title' do
+      %strong= rubric.title
+      (#{rubric.counter})
+    - unless rubric.children.blank?
+      %ul.b-catalog__children
+        - rubric.children.each do |category|
+          %li.b-catalog__child= link_to "#{category.title}&nbsp;(#{category.counter})".html_safe, "/catalog/list/#{category.id}"

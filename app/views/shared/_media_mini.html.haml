@@ -1,0 +1,11 @@
+.b-media.mini
+  .b-media__sticker= media_mini.rubric.title
+  - if media_mini.photos.present?
+    = link_to image_tag(media_mini.photos.first.image.url(:medium), alt: media_mini.title, size: '295x250'), media_mini.url, class: 'b-media__link'
+  .b-media__descr
+    .b-media__author= media_mini.user.fio
+    = link_to media_mini.title, media_mini.url, class: 'b-media__title'
+    .b-media__info
+      .g-aux.l.mini
+        .g-aux__item.views= media_mini.page_views
+        .g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: media_mini}

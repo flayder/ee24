@@ -1,0 +1,110 @@
+<div class='b-rubric-title'><%= is_my_profile?(@user) ? "Ваш профайл" : "Профайл" %></div>
+<div class='g-box'>
+  <%= link_to @user.login, account_url(@user), class: 'login' %>
+  <% if can?(:view_ip, :all) %>
+    <div class="ip"><%= @user.last_ip %></div>
+  <% end %>
+  <%= link_to raw(avatar_img(@user, "avatar")), account_url(@user), class: 'photo' %>
+  <% if is_my_profile?(@user) %>
+    <%= link_to "Изменить аватар", user_change_avatar_url(@user.subdomain), class: 'small' %>
+    <%= link_to_current "Личные сообщения (#{@user.messages.not_viewed.size})", account_url(@user) %>
+    <%= link_to_current "Мои друзья (#{@user.friends.size})", user_friends_url(@user.subdomain) %>
+    <% if @site.has_section? :job %>
+      <%= link_to_current "Мои вакансии (#{@user.vacancies.site(@site.id).count})", '/vacancies/my' %>
+      <%= link_to_current "Мои резюме (#{@user.resumes.site(@site.id).count})", '/resumes/my' %>
+    <% end %>
+    <% if @site.has_section?(:catalog) %>
+      <%= link_to_current "Мои организации (#{@user.catalogs.site(@site.id).count})", my_catalogs_url %>
+    <% end %>
+    <% if @site.has_section? :docs %>
+      <%= link_to_current "Мои статьи (#{@user.docs.site(@site.id).count})", user_docs_url(@user.subdomain) %>
+    <% end %>
+    <% if @site.has_section? :afisha %>
+      <%= link_to_current "Мои события (#{@user.events.site(@site.id).count})", my_events_url %>
+    <% end %>
+    <% if @site.has_section? :photo %>
+      <%= link_to_current "Мои фоторепортажи (#{@user.galleries.site(@site.id).count})", my_galleries_url %>
+    <% end %>
+  <% else %>
+    <% if current_user.have_friend?(@user) %>
+      <%= link_to "Удалить из друзей", user_del_friend_url(@user.subdomain), confirm: "Удалить? Вы уверены?", method: :delete %>
+      <%= link_to_unless_current "Написать сообщение", user_new_message_url(@user.subdomain) %>
+      <%= link_to_unless_current "Показать переписку", user_messages_url(@user.subdomain) %>
+    <% elsif !current_user.friends_approve?(@user) %>
+      <%= link_to "Добавить в друзья", user_add_friend_approve_url(@user.subdomain), method: :post %>
+    <% end %>
+  <% end %>
+</div>
+<div class='g-box'>
+  <% if @user.last_name? %>
+    <div class="row">
+      <b>Фамилия:</b>
+      <%= @user.last_name %>
+    </div>
+  <% end %>
+  <% if @user.first_name? %>
+    <div class="row">
+      <b>Имя:</b>
+      <%= @user.first_name %>
+    </div>
+  <% end %>
+  <% if @user.birth? %>
+    <div class="row">
+      <b>Дата рождения:</b>
+      <%= Russian::strftime(@user.birth, "%d %B %Y") %>
+    </div>
+  <% end %>
+  <div class="row">
+    <b>Пол:</b>
+    <%= t "gender.#{@user.gender}" %>
+  </div>
+  <% if @user.academic? %>
+    <div class="row">
+      <b>Образование:</b>
+      <%= @user.academic %>
+    </div>
+  <% end %>
+  <% if @user.show_email? %>
+    <div class="row">
+      <b>E-mail:</b>
+      <%= @user.email %>
+    </div>
+  <% end %>
+  <% if @user.show_icq? %>
+    <div class="row">
+      <b>ICQ:</b>
+      <%= @user.icq %>
+    </div>
+  <% end %>
+  <% if @user.show_skype? %>
+    <div class="row">
+      <b>Skype:</b>
+      <%= @user.skype %>
+    </div>
+  <% end %>
+  <% if @user.city? %>
+    <div class="row">
+      <b>Город:</b>
+      <%= @user.city %>
+    </div>
+  <% end %>
+  <% if @user.about? %>
+    <div class="row">
+      <b>О себе:</b>
+      <%= @user.about %>
+    </div>
+  <% end %>
+  <% if @user.interests? %>
+    <div class="row">
+      <b>Интересы:</b>
+      <%= @user.interests %>
+    </div>
+  <% end %>
+  <% if is_my_profile?(@user) %>
+    <%= link_to 'Сменить пароль', user_change_password_url(@user.subdomain), class: 'small green'  %>
+    <%= link_to 'Редактировать профайл', edit_user_url(@user.subdomain), class: 'small green'  %>
+  <% end %>
+  <% if is_admin_or_editor? %>
+    <%= link_to 'удалить пользователя', user_url(@user.subdomain), method: :delete, confirm: 'Вы уверены?', class: 'small green' %>
+  <% end %>
+</div>

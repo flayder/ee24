@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новый темплейт', new_admin_design_template_path
+= render :partial => 'table', :locals => { :templates => @templates }
+
+= will_paginate_bootstrap @templates

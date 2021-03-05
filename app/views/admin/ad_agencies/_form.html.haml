@@ -1,0 +1,11 @@
+%h1= 'Новое рекламное агенство'
+= form_for [:admin, @ad_agency] do |f|
+  = error_messages_for :ad_agency, :object => @ad_agency
+  
+  .control_group
+    .controls
+      = f.label :title
+      = f.text_field :title
+
+    .controls
+      = f.submit 'Сохранить', class: 'btn'

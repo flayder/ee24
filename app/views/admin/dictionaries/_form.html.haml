@@ -1,0 +1,20 @@
+%h1= 'Новый словарь'
+= form_for [:admin, @dictionary] do |f|
+  = error_messages_for :dictionary, :object => @dictionary
+
+  .form-group
+    = f.label :link
+    = f.text_field :link, :placeholder => 'persona', class: 'form-control'
+    %span.help-block
+      = "https://#{@site.domain}/dictionaries/<strong>persona</strong>".html_safe
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 4, class: 'form-control'
+
+  .form-group
+    = f.submit 'Сохранить', class: 'btn btn-default'

@@ -1,0 +1,26 @@
+%tr.ad_surface{id: "ad_surface_#{ad_surface.id}"}
+  %td.info
+    .title
+      = check_box_tag 'ad_surface_ids[]', ad_surface.id, (!params[:ad_surface_ids].present? || params[:ad_surface_ids].include?(ad_surface.id.to_s))
+      = link_to ad_surface.title, ad_surface_path(ad_surface.id), class: 'map-popup', remote: true
+    .address
+      = ad_surface.full_address
+    - if ad_surface.ad_agency.present?
+      .description
+        Рекламное агентство: #{link_to ad_surface.ad_agency.title, "/ads?ad_surface[ad_agency_id]=#{ad_surface.ad_agency.id}"}
+        (#{ad_surface.ad_agency.ad_surfaces.count})
+  %td.format
+    = ad_surface.ad_format.title
+  %td.photos
+    .inlarger
+      = link_to "#" do
+        - if ad_surface.photo.present?
+          = image_tag ad_surface.photo.url(:small), class: "resize-thumb"
+          %span
+            = image_tag ad_surface.photo.url(:popup)
+    .inlarger
+      = link_to "#" do
+        - if ad_surface.second_photo.present?
+          = image_tag ad_surface.second_photo.url(:small), class: "resize-thumb"
+          %span
+            = image_tag ad_surface.second_photo.url(:popup )

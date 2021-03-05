@@ -1,0 +1,7 @@
+.b-correspondence
+  - if current_user.messages.any?
+    .b-dialogs
+      = render "account/templates/blocks/dialogs_list", user: @user, dialog_user: nil
+  - else
+    .g-info
+      .g-info__text У вас ещё нет сообщений.

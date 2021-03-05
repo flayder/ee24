@@ -1,0 +1,5 @@
+.b-list-question
+  .b-list-question__cover
+  .b-list-question__content
+    = link_to question.title, [question.category, question], class: 'b-list-question__title'
+    .b-list-question__answers= "#{(answers_count = (0...10).to_a.sample)} #{Russian.p(answers_count, 'ответ', 'ответа', 'ответов')}"

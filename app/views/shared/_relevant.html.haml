@@ -1,0 +1,10 @@
+.b-doc__relevant
+  .l-cols
+    .l-cols-2.l-l
+      .g-subheader.middle
+        Читайте
+        %br
+        по теме&nbsp;
+    .l-cols-7.l-l  
+      .b-newslist-mini
+        = render partial: 'news/news_item', collection: doc.similar_docs.limit(4), as: 'news_item'

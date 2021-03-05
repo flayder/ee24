@@ -1,0 +1,20 @@
+.b-companies__item>
+  .avatar= image_tag company.logo.url(:medium), size: '200x100'
+  .item__description
+    .title= link_to company.title, company.url
+    .category
+      - company.rubrics.each do |rubric|
+        = link_to rubric.title, rubric.url
+    .contacts
+      .contacts__item.phone= company.tel
+      .contacts__item.address
+        = company.street_address
+        = company.extended_address if company.extended_address.present?
+      .status
+        - if can? :edit, company
+          = link_to 'Редактировать', edit_catalog_url(company)
+          %div
+            - if company.approved
+              подтверждена
+            - else
+              на модерации

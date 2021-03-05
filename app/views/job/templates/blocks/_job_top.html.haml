@@ -1,0 +1,13 @@
+%div{:class => "type #{job_item.photos.empty? ? 'without-images' : 'with-images'}"}
+  - unless params[:type].present?
+    = link_to t(job_item.job_type.pluralize).mb_chars, "/job/#{job_item.job_type.pluralize}"
+    ,
+  = link_to job_item.industry.title, "/job/#{job_type.pluralize}/industry/#{job_item.industry_id}"
+.creation.date
+  Дата создания:
+  \#{timeleft(job_item.created_at)}
+- if params[:action] == 'show'
+  %h1= job_item.title
+- else
+  = link_to job_item.title, "/job/#{job_type.pluralize}/#{job_item.id}", class: "title"
+= render partial: '/templates/blocks/ip', locals: { ip_object: job_item }

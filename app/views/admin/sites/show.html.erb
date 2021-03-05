@@ -1,0 +1,72 @@
+<div class='well'>
+  <h1>Информация о портале</h1>
+  <% if @site.logo? %>
+      <%= image_tag @site.logo.url %>
+  <% end %>
+  <table class='table'>
+    <tr>
+      <td>Краткое название портала</td>
+      <td><%= @site.short_title %></td>
+    </tr>
+    <tr>
+      <td>Название портала</td>
+      <td><%= @site.portal_title %></td>
+    </tr>
+    <tr>
+      <td>Домен</td>
+      <td><%= @site.domain %></td>
+    </tr>
+    <tr>
+      <td>Аутентификация через сторонние сервисы</td>
+      <td><%= tb @site.omniauth_enabled, :true => 'Включена', :false => 'Выключена' %></td>
+    </tr>
+    <tr>
+      <td>Разделы</td>
+      <td><%= @site.sections.map(&:title).join(', ') %></td>
+    </tr>    
+    <% if @site.city.present? %>
+        <tr>
+          <td>Провайдер карты</td>
+          <td><%= @site.map_provider %></td>
+        </tr>
+    <% end %>
+  </table>
+  <% if can? :edit, @site %>
+    <%= link_to 'ред.', edit_admin_site_url(@site) %>
+  <% end %>
+</div>
+
+<% cache "#{@site.domain}_stat_counters", :expires_in => 1.day do %>
+  <%= javascript_include_tag 'https://www.google.com/jsapi' %>
+  <script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable(
+        <%= load_time_counters(@site) %>
+      );
+
+      var options = {
+        title: 'Статистика <%= @site.domain %>',
+        fontName: 'proxima-nova, sans-serif',
+        interpolateNulls: true,      
+        height: '800px',
+        hAxis: {
+          showTextEvery: 3
+        },          
+        chartArea: {
+          top: '30px',
+          height: '800px'
+        }
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('chart'));
+      chart.draw(data, options);
+    }
+  </script>
+
+  <div class='well'> 
+    <div id='chart'>
+    </div>
+  </div>
+<% end %>

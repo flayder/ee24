@@ -1,0 +1,27 @@
+<%= form_for @tag, (@tag.persisted? ? {:url => admin_tag_url(@tag), :method => :put} : {:url => admin_tags_url, :method => :post}) do |f| %>
+    <div>
+      <%= error_messages_for :tag %>
+    </div>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :link %>
+      <%= f.text_field :link %>
+    </div>    
+    <div style='margin-top:10px;'>
+      <% @tag.taggings.each do |tagging| %>
+        <div>
+          <%= check_box_tag :tagging_ids,
+                            tagging.id,
+                            @tag.taggings.include?(tagging),
+                            :name => 'acts_as_taggable_on_tag[tagging_ids][]' %>
+          <%= link_to tagging.taggable.title, tagging.taggable.url %>
+        </div>
+      <% end %>
+    </div>
+    <div>
+      <%= f.submit 'Сохранить', class: 'btn' %>
+    </div>
+<% end %>

@@ -1,0 +1,19 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <%= render 'account/templates/blocks/left' %>
+  </aside>
+  <section class="l-page__column right">
+    <div class='b-rubric-title'>Новое сообщение</div>
+    <div class='g-box'>
+      <%= form_for :message, url: user_create_message_url(user_id: @user.subdomain) do |f| %>
+        Тема:<br/>
+        <%= f.text_field :title, style: "width: 300px;" %>
+        <br/>
+        Текст:<br/>
+        <%= f.text_area "text", style: "width: 300px;" %>
+        <br><br>
+        <%= f.submit "Отправить" %>
+      <% end %>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,6 @@
+%h1= 'Код веб счетчиков'
+
+%p= simple_format escape_once(@web_analytics_block.body) || "Пока что тут пусто. Добавьте коды #{link_to 'Гугл Аналитики', 'https://www.google.ru/analytics/', :target => '_blank'} или #{link_to 'Яндекс Метрики', 'https://metrika.yandex.ru', :target => '_blank'}.".html_safe
+
+= link_to 'Редактировать код счетчиков', edit_admin_web_analytics_block_url
+= link_to 'Аккаунт Яндекс Метрики', admin_metrika_api_account_url(@site.metrika_api_account)

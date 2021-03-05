@@ -1,0 +1,16 @@
+development:
+  #apiId: 2243331 # apiId Ани - 36on.local
+  #secret: Y8JxWaFgn2YUge5mka18
+  apiId: 4995988 # Use localhost:3000
+  secret: IRrLPOo01o5JatbGL87b
+test:
+  apiId: 2243331
+  secret: Y8JxWaFgn2YUge5mka18
+production:
+  apiId: 2694055
+  secret: bk2VxLWxhSzfvWZXZksL
+  # alt - 2243407
+  #key - ZvLOFolY9Knios32uI4F
+staging:
+  apiId: 2711774 #2694055
+  secret: 6lOqUSuW4IQ47vv9FUIU #bk2VxLWxhSzfvWZXZksL

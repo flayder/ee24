@@ -1,0 +1,17 @@
+%table.table.table-bordered
+  %thead
+    %th= Linker.human_attribute_name :id
+    %th= Linker.human_attribute_name :url
+    %th= Linker.human_attribute_name :seo_text
+    %th= Linker.human_attribute_name :counter
+    %th= 'Действия'
+  - linkers.each do |linker|
+    %tr
+      %td= linker.id
+      %td= linker.url
+      %td= linker.seo_text
+      %td= linker.counter
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_linker_path(linker)
+          %li= link_to 'Удалить', admin_linker_path(linker), :method => :delete, :confirm => 'Вы уверены?'          

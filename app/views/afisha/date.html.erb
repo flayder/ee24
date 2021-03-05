@@ -1,0 +1,37 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <%= render "date_select" %>
+  </aside>
+  <section class="l-page__column right">
+    <%= render partial: "/afisha/templates/blocks/right" %>
+  </section>
+</div>
+
+<div class="g-box afisha-items">
+  <% if @events.present? or @cinema.present? or @exhibition.present? or @theatre.present? %>
+    <% if @cinema.present? -%>
+      <section>
+        <div class="b-rubric-title">Кино</div>
+        <%= render "afisha/item", items: @cinema %>
+      </section>
+    <% end %>
+    <% if @events.present?%>
+      <section>
+        <div class="b-rubric-title">Мероприятия</div>
+        <%= render "afisha/item", items: @events %>
+      </section>
+    <% end %>
+    <% if @exhibition.present? -%>
+      <section>
+        <div class="b-rubric-title">Выставки</div>
+        <%= render "afisha/item", items: @exhibition %>
+      </section>
+    <% end %>
+    <% if @theatre.present? -%>
+      <div class="b-rubric-title">Театр</div>
+      <%= render "afisha/item", items: @theatre %>
+    <% end %>
+  <% else %>
+    <p class="no-info">Событий нет</p>
+  <% end %>
+</div>

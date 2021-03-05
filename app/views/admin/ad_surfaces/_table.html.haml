@@ -1,0 +1,15 @@
+%table.table.table-bordered
+  %thead
+    %th= AdSurface.human_attribute_name :id
+    %th= AdSurface.human_attribute_name :title
+    %th= AdSurface.human_attribute_name :ad_agency_id
+    %th= 'Действия'
+  - ad_surfaces.each do |ad_surface|
+    %tr
+      %td= ad_surface.id
+      %td= ad_surface.title
+      %td= ad_surface.ad_agency.title
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_ad_surface_path(ad_surface)
+          %li= link_to 'Удалить', admin_ad_surface_path(ad_surface), :method => :delete, :confirm => 'Вы уверены?'          

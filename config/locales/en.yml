@@ -1,0 +1,142 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  main:
+    index:
+      community: Community
+      create_new_question: New question
+  menu:
+    all: All
+  docs:
+    index:
+      add: article
+  catalog:
+    meta_title: Background information on the company in the Czech Republic
+    meta_description: Description of the services in the catalog companies, contacts and addresses, information about %{title}, the Czech Republic and Prague
+    list:
+      add_company: company
+    aux:
+      in_rubrics: 'In rubrics:'
+      add_company: company
+      catalog_count:
+        one: In our catalog of <strong>%{show_count}</strong> company
+        other: In our catalog of <strong>%{show_count}</strong> companies
+    aux_element:
+      companies: Companies
+    show:
+      change_history: change history
+      edit: edit
+      delete: delete
+      delete_confirm: Are you sure want to delete the company?
+      approve: approve
+      show_on_map: Show on the map
+      route: The route taking into account traffic jams
+      contacts: Contacts
+    edit:
+      edit_company_title: Edit organization
+    new:
+      add_new_company_title: Add a new organization
+      error_notice: 'Attention! When you add the new organization were errors:'
+    form:
+      form:
+        required_fields: required fields
+        rubrics_placeholder: You can select up to 3 rubrics
+        galleries_promt: No gallery
+        street_address_placeholder: Enter the address following the prompts
+        extended_address_notice: "Information about the location inside the building.</br>For example: BC 'Senator', 2 fl., Office. 228-230"
+        logo_notice: 'Size: 200х100'
+        catalog_description_title: 'Company description in other languages:'
+        save_button: Save
+        back_button: Back
+  questions:
+    form:
+      save: Save
+      back: Back
+    my:
+      my_questions_header: My questions
+    popular:
+      popular_questions_header: Popular questions
+    new:
+      new_post: New post
+    edit:
+      edit_header: Edit question
+    show:
+      edit_link: Edit
+      remove_link: Remove
+      last_five_header: 'Last 5 questions:'
+  categories:
+    menu:
+      add_question: Question
+      new: New
+      popular: Popular
+      my: My
+    index:
+      new_questions: Last questions
+    rubricator:
+      all_category: All category
+  helpers:
+    link:
+      add: Add
+  shared:
+    social_likes:
+      share_with_friends: Share with friends
+      facebook_share: Share
+      vkontakte_share: Share
+      twitter_share: Tweet
+  templates:
+    dynamic:
+      show_doc:
+        main: Main
+        social_links: Shared links
+        themes: Themes
+        add: article
+      doc_share_block:
+        facebook_title: Share on Facebook
+        twitter_title: Share on Twitter
+        vkontakte_title: Share on VKontakte
+        vkontakte: VKontakte
+        plusone_title: Share on Google+
+        pinterest_title: Share on Pinterest
+  time:
+    formats:
+      long_short: "%d.%m.%Y %H:%M"
+      only_date: "%d.%m.%Y"
+      only_time: "%H:%M"
+  activerecord:
+    errors:
+      models:
+        catalog:
+          attributes:
+            locality:
+              blank: You have not specified locality.
+            tel:
+              blank: Phone must be present.
+            street_address:
+              blank: Address must be present.
+            base:
+              title_not_present_error: You must fill in the title of at least one language.
+              not_selected_rubric_error: You must select at least one rubric.
+              many_selected_rubric_error: Too many rubrics. Select no more than 3.
+        doc:
+          attributes:
+            param:
+              blank: Unable to parameterize the title of the article. Make sure that the language of the title corresponds to the language of the article.
+    attributes:
+      catalog_description:
+        title: Title
+        annotation: Annotation
+        text: Text
+      catalog:
+        rubric_ids: Rubrics
+        gallery_ids: Galleries
+        email: E-mail
+        site_url: Site
+        tel: Phone
+        fax: Fax
+        street_address: Address
+        extended_address: Details location
+        logo: Logo
+        russian_language: Speak Russian
+      doc:
+        language: Language of site

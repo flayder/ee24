@@ -1,0 +1,12 @@
+%ul
+  - @dictionaries.each do |dict|
+    %li
+      = dict.title
+      &nbsp;|&nbsp;
+      = link_to 'баннеры', list_admin_ad_codes_url(:ad_code => {:ad_section_type => 'Dictionary', :ad_section_id => dict.id})
+      %ul
+        - dict.rubrics.each do |dict_rubric|
+          %li
+            = dict_rubric.title
+            &nbsp;|&nbsp;
+            = link_to 'баннеры', list_admin_ad_codes_url(:ad_code => {:ad_section_type => 'DictionaryRubric', :ad_section_id => dict_rubric.id})

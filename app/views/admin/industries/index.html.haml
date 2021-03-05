@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая отрасль', new_admin_industry_path
+= render :partial => 'table', :locals => { :industries => @industries }
+
+= will_paginate_bootstrap @industries

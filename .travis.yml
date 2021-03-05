@@ -1,0 +1,6 @@
+rvm:
+  - 1.9.3
+before_script:
+  - "cp config/database.yml.ci config/database.yml"
+  - "RAILS_ENV=test bundle exec rake db:create db:structure:load db:migrate"
+script: "CODECLIMATE_REPO_TOKEN=e7c4bb53c40a160d2bad5ee7e6a1227d8a2d63a71c67fcb286acd222cb6e36b1 bundle exec rspec spec/"

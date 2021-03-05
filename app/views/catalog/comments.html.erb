@@ -1,0 +1,154 @@
+<div class="l-page__columns-line" itemscope itemtype="http://schema.org/Organization">
+  <aside class="l-page__column left">
+    <%= render '/catalog/rubrics' %>
+    <div class="g-box b-catalog-show">
+      <% unless @place.logo.blank? %>
+        <%= image_tag(url_for_file_column(@place, "logo"), size: "100x100", title: @place.logo_alt, alt: @place.logo_alt)%>
+      <% end %>
+      <h1 class="title" itemprop="name">
+        <%= @place.title %>
+        <span class="views">
+          <%= image_tag 'icons/eye.png', title: 'Просмотров', alt: 'Просмотров' %>
+          <%= @place.page_views %>
+        </span>
+      </h1>
+      <div class="manage-links">
+        <% if can? :manage, Version %>
+          <%= link_to 'История изменений', admin_item_versions_url(item_type: 'Catalog', item_id: @place.id) %>
+        <% end %>
+        <% if can? :edit, @place %>
+          <%= link_to 'редактировать', edit_catalog_url(@place) %>
+        <% end %>
+        <% if can? :destroy, :catalog %>
+          <%= link_to 'удалить', catalog_url(@place), method: :delete, confirm: 'Вы уверены, что хотите удалить компанию?' %>
+          <%= link_to 'подтвердить', approve_catalog_url(@place), confirm: 'Вы уверены?' %>
+        <% end %>
+      </div>
+      <%= render partial: 'shared/tags', locals: {doc: @place} %>
+      <div class="contacts" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <div class="title">Контакты:</div>
+        <% if @place.postal_code.present? %>
+          <div class="postal" itemprop="postalCode">
+            <%= image_tag 'icons/banks_place.png', title: 'Адрес', alt: 'Адрес' %>
+            <%= @place.postal_code %>
+          </div>
+        <% end %>
+        <div class="region-extended">
+          <% if @place.region_extension.blank? %>
+            <% if @place.city.present? && @place.city.region? %>
+               <span class="region">
+                 <%= @place.city.region %>
+               </span>
+            <% end %>
+            <% if @place.city.present? && (@place.locality == @place.city.title || @place.locality.blank?) %>
+              <span class="city">
+                <%= @place.city.title %>
+              </span>
+            <% else %>
+              <span class="locality">
+                <%= @place.locality %>
+              </span>
+            <% end %>
+          <% else %>
+            <% if @place.city.present? && @place.city.region? %>
+              <span class="region">
+                <%= @place.city.region %>
+              </span>
+            <% end %>
+              <span class="region">
+                <%= @place.region_extension %>
+              </span>
+              <span class="locality" itemprop="addressLocality">
+                <%= @place.locality %>
+              </span>
+          <% end %>
+        </div>
+        <div class="street-address" itemprop="streetAddress">
+          <%= @place.street_address %>
+        </div>
+        <% if @place.extended_address.present? %>,
+          <div class="address-extended">
+            <%= @place.extended_address %>
+          </div>
+        <% end %>
+        <div class="phone" itemprop="telephone">
+          <% @place.tel.split(",").each do |phone_number| %>
+            <% phone_number.strip %>
+            <div>
+              <%= image_tag 'icons/phone.png', title: 'Телефон', alt: 'Телефон' %>
+              <%= phone_number.strip %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="location">
+        <% if (@place.lat? && @place.lng?)  %>
+          <%= link_to "#", class: 'seo-link', data: {link: "#{show_place_map_index_path(id: @place)}"} do %>
+            <%= image_tag 'icons/map.gif', title: 'Посмотреть на карте', alt: 'Посмотреть на карте'%>
+          <% end %>
+          <% if @place.site.map_provider == 'yandex' %>
+            <%= link_to "#",class: 'seo-link', data: {link: "#{show_place_map_index_path(id: @place.id, traffic: true)}"} do %>
+              <%= image_tag 'icons/svetofor.gif', title: 'Маршрут с учетом пробок', alt: 'Маршрут с учетом пробок'%>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="annotation">
+        <p><%= @place.annotation %></p>
+        <p>
+          <%=raw strip_and_cut(sanitize(@place.text, tags: []), 200) %>
+        </p>
+        <p style="margin:10px 0;">
+          <%= link_to 'Вернуться к статье', @place.url, class: 'comments-link' %>
+        </p>
+      </div>
+
+      <div class="photo">
+        <% if @place.galleries.present? %>
+          <div class="title">
+            Фотографии <%= @place.title %>
+          </div>
+          <% slice = (@place.galleries.size / 2) + (@place.galleries.size % 2) %>
+          <% @place.galleries.first(4).each_slice(slice) do |galleries| %>
+            <% galleries.each do |gallery| %>
+              <% if gallery.main_photo %>
+               <div class="photo">
+                 <%= link_to image_tag(url_for_file_column(gallery.main_photo, "image", "thumb_150x110"), size: "150x110", alt: gallery.title, title: gallery.title), gallery.list_url %>
+                 <%= link_to gallery.title, gallery.list_url, class: 'title'  %>
+               </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div id="comments">
+        <%= render 'templates/blocks/comments_widget' %>
+      </div>
+
+      <% if @place.similar_docs.any? %>
+        <div class="read-more">
+          Читайте также:
+          <div class="b-items-list">
+            <% @place.similar_docs.limit(5).each  do |catalog| %>
+              <div class="b-items-list__item">
+                <% if catalog.logo.present? %>
+                  <%= image_tag(url_for_file_column(catalog, "logo"), size: "100x100", title: catalog.logo_alt, alt: catalog.logo_alt)%>
+                <% end %>
+                <div class="info">
+                  <%= link_to catalog.title, catalog.url(@site), class: "short-description" %>
+                  <div class="date"><%= Russian::strftime(catalog.created_at, "%d.%m %H:%M") %></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <%= yandex_direct_code @site %>
+    </div>
+    <%= seo_text @seo %>
+  </aside>
+  <section class="l-page__column right">
+    <%= render partial: "/catalog/templates/blocks/right2_for_show" %>
+  </section>
+</div>

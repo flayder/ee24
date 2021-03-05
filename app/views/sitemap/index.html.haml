@@ -1,0 +1,91 @@
+- content_for :head do
+  = javascript_include_tag 'sitemap'
+
+.l-wrapper
+  %h1 Карта сайта
+  #sitemap
+    %ul
+      %li{"data-jstree" => '{"opened":true}'}
+        %a{href: root_path} Главная
+        %ul
+          %li
+            Теговые страницы
+            %ul
+              - @tags.each do |tag|
+                %li
+                  %a{href: tag_path(tag.link)}= tag.name
+          %li
+            %a{href: news_index_path} Новости
+            %ul
+              - @news_rubric.doc_rubrics.each do |rubric|
+                %li
+                  %a{href: rubric.url}= rubric.title
+          %li
+            %a{href: events_path} Афиша
+            %ul
+              - @afisha_rubrics.each do |rubric|
+                %li
+                  %a{href: afisha_rubric_path(rubric.link)}= rubric.title
+          %li
+            %a{href: catalogs_path} Компании
+            %ul
+              - @catalog_rubrics.each do |rubric|
+                %li
+                  %a{href: catalog_list_path(rubric.id)}= rubric.title
+                  %ul
+                    - rubric.children.each do |child_rubric|
+                      %li
+                        %a{href: catalog_list_path(child_rubric.id)}= child_rubric.title
+          %li
+            %a{href: job_path} Работа
+            %ul
+              %li
+                %a{href: vacancies_path} Вакансии
+              - @job_rubric.doc_rubrics.each do |rubric|
+                %li
+                  %a{href: rubric.url}= rubric.title
+          %li
+            %a{href: "/immigration"} Иммиграция
+            %ul
+              - @immigration_rubric.doc_rubrics.each do |rubric|
+                %li
+                  %a{href: rubric.url}= rubric.title
+          %li
+            %a{href: "/travel"} Отдых
+            %ul
+              - @travel_rubric.doc_rubrics.each do |rubric|
+                %li
+                  %a{href: rubric.url}= rubric.title
+          %li
+            %a{href: "/magazine"} Журнал
+            %ul
+              - @magazine_rubric.doc_rubrics.each do |rubric|
+                %li
+                  %a{href: rubric.url}= rubric.title
+          %li
+            %a{href: galleries_path} Фото
+            %ul
+              - @photos_rubrics.each do |rubric|
+                %li
+                  %a{href: rubric.url}= rubric.title
+          %li
+            %a{href: "/realty"} Недвижимость
+            %ul
+              - @realty_rubric.doc_rubrics.each do |rubric|
+                %li
+                  %a{href: rubric.url}= rubric.title
+          %li
+            %a{href: map_index_path} Карта
+          %li
+            %a{href: weather_path} Погода
+
+= seo_text @seo
+
+:javascript
+  $(document).ready(function(){
+    $("#sitemap").on("changed.jstree", function(e, data){
+      var url = data.node.a_attr.href;
+      if (url != "#")
+        window.open(url, "_blank");
+    }).jstree();
+  })

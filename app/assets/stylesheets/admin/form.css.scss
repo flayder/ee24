@@ -1,0 +1,24 @@
+form ul {
+  list-style :none;
+}
+
+li.check_box {
+  label {
+    display: inline;
+    vertical-align: -3px;
+  }
+}
+
+ul.rubric_checkboxes {
+  li {
+    display: none;
+  }
+
+  li.active, li.check_box {
+    display: block;
+  }
+}
+
+textarea.admin_text_area{
+  width: 700px;
+}

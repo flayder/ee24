@@ -1,0 +1,612 @@
+/*
+* @author: Oleg Chulakov Studio
+* @email: hello@chulakov.ru
+*/
+body {
+  font: 15px/1.4 Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+a {
+  color: #40444b;
+  outline: none;
+  text-decoration: none;
+}
+i {
+  font-style: italic;
+}
+b,
+strong {
+  font-weight: bold;
+}
+p {
+  margin-bottom: 14px;
+}
+.clear {
+  font-size: 0;
+  clear: both;
+  overflow: hidden;
+  line-height: 0;
+}
+.ghost-label {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+}
+/* Main styles */
+.banner {
+  position: relative;
+  overflow: hidden;
+  width: 300px;
+  height: 500px;
+  background: #000000 url(../images/logo.png) 187px 94% no-repeat;
+}
+.numbers-wrapper {
+  height: 250px;
+  width: 235px;
+}
+.banner h1 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.18;
+}
+.steps {
+  position: absolute;
+  top: 0px;
+  left: 300px;
+  width: 300px;
+  height: 500px;
+}
+.steps-shell {
+  padding: 28px 30px;
+}
+.s1 {
+  left: 0;
+}
+#modal {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 300px;
+  height: 500px;
+  outline: none;
+}
+.select,
+.numbers-wrapper {
+  display: none;
+}
+.select,
+.numbers li {
+  margin-bottom: 12px;
+}
+.select {
+  height: 32px;
+}
+.select select {
+  width: 190px;
+}
+.numbers li {
+  position: relative;
+  font-weight: bold;
+  line-height: 1;
+  /*padding: 0 0 0 10px;*/
+  background-color: #cacdd0;
+  color: #000;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s ease;
+  -moz-transition: background-color 0.3s ease;
+  -ms-transition: background-color 0.3s ease;
+  -o-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+}
+.numbers li:hover {
+  background-color: #fff;
+}
+.numbers li:active {
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+.s1 .price,
+.s1 .number {
+  height: 15px;
+  padding: 10px 0 10px 10px;
+}
+.number {
+  font-size: 16px;
+}
+.price {
+  position: absolute;
+  top: 0;
+  right: 0px;
+  z-index: 20;
+  font-size: 14px;
+  float: right;
+  width: 90px;
+  padding-left: 8px;
+  color: #fff;
+  background: url(../images/number-bg.png) 0 center repeat-x;
+  -webkit-border-radius: 6px 0;
+  -moz-border-radius: 6px 0;
+  border-radius: 6px 0;
+}
+/*
+.price.gold {
+	background: #e26129 url(../images/small-gradient.png) 0 0 repeat-x;
+}
+
+.price.silver {
+	background-color: #999;
+}
+
+.price.platina {
+	color: #000;
+	background-color: #fff;
+}*/
+.steps .reload {
+  position: relative;
+  font-size: 12px;
+  font-weight: normal;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url(../images/reload-button.png) 0 0 no-repeat;
+  border-bottom: 1px dashed;
+  cursor: pointer;
+  margin-top: 10px;
+  background-size: 25px 25px;
+  border: 0;
+}
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(360deg);
+  }
+  to {
+    -webkit-transform: rotate(0deg);
+  }
+}
+.steps .reload img {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.steps .reload:hover img {
+  -webkit-animation-name: rotate;
+  -webkit-animation-duration: 0.6s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.s1 {
+  display: block;
+}
+.loading {
+  background: url(../images/loading.gif) center 52% no-repeat;
+}
+/*.s2 .steps-shell,
+.s3 .steps-shell {
+  padding-top: 16px;
+}*/
+.s2 .number {
+  font-weight: bold;
+  line-height: 1.4;
+  padding: 0;
+}
+.s2 ul {
+  margin-bottom: 26px;
+}
+.s2 li {
+  margin-bottom: 12px;
+}
+.s2 li:first-child {
+  margin-bottom: 14px;
+}
+.s2 label {
+  font-size: 15px;
+  display: block;
+  font-weight: normal;
+}
+.s2 input,
+.s2 textarea {
+  font: normal 15px/1.3 "Tele2RussiaText", Arial, Helvetica, sans-serif;
+  border: none;
+  background-color: #cbcbcb;
+  -webkit-border-radius: 0 8px;
+  -moz-border-radius: 0 8px;
+  border-radius: 0 8px;
+  border: 3px solid #000;
+  margin-left: -3px;
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -ms-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
+  transition: all 0.8s ease;
+}
+.s2 input:hover,
+.s2 textarea:hover {
+  background-color: #fff;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.s2 input:focus,
+.s2 textarea:focus {
+  border: 3px solid #bbb;
+  background-color: #fff;
+  outline: none;
+}
+.s2 textarea {
+  overflow: auto;
+  width: 175px;
+  height: 36px;
+  padding: 7px;
+  resize: none;
+}
+.s2 input {
+  width: 230px;
+  height: 35px;
+  padding-left: 10px;
+}
+.s2 textarea.error,
+.s2 input.error {
+  border: 3px solid #ff0000;
+}
+.s3 ul {
+  margin-bottom: 0;
+  padding-top: 10px;
+}
+.s3 li {
+  position: relative;
+  /*margin-bottom: 20px;*/
+
+}
+.ls {
+  margin-left: 30px;
+}
+.s3 .label {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 7px;
+  cursor: pointer;
+}
+.s3 .desc {
+  font-size: 14px;
+  font-weight: normal;
+  cursor: default;
+}
+.s4 h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+/*.s4 div {
+  font-size: 13px;
+}*/
+.checkbox-hidden {
+  position: absolute;
+  z-index: 0;
+}
+.custom-checkbox {
+  position: relative;
+  display: block;
+}
+.custom-checkbox ins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 17px;
+  height: 17px;
+  background: url(../images/checkbox2.png) 0 0px no-repeat;
+}
+ins.st1 {
+  background-position: 0 0px;
+  z-index: 5;
+}
+ins.st2 {
+  opacity: 0;
+  background-position: 0 -17px;
+  z-index: 10;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+ins.st3 {
+  opacity: 0;
+  background-position: 0 -34px;
+  z-index: 15;
+}
+ins.st4 {
+  opacity: 0;
+  background-position: 0 -51px;
+  z-index: 20;
+}
+ins.st5 {
+  opacity: 0;
+  background-position: 0 -68px;
+  z-index: 25;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+.custom-checkbox:hover .st2 {
+  opacity: 1;
+}
+.custom-checkbox:active .st3 {
+  opacity: 1;
+}
+.custom-checkbox.checked .st4 {
+  opacity: 1;
+}
+.custom-checkbox.checked:hover .st5 {
+  opacity: 1;
+}
+/* Button */
+.button,
+.button ins {
+  display: block;
+  width: 86px;
+  height: 37px;
+  font-size: 0;
+  border: none;
+  outline: none;
+}
+.button {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  float: left;
+  padding: 0;
+  overflow: hidden;
+}
+.button ins {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0;
+  width: 100%;
+}
+ins.default {
+  z-index: 60;
+  background: url(../images/next.png) 0 0 no-repeat;
+}
+ins.hover {
+  z-index: 70;
+  background: url(../images/next.png) 0 -37px no-repeat;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -o-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+/* Events */
+.button:hover ins.hover {
+  opacity: 1;
+}
+.button:active .default {
+  background: url(../images/next.png) 0 -74px no-repeat;
+}
+.button:active ins.hover {
+  opacity: 0;
+}
+.button.confirm,
+.button.confirm ins {
+  width: 185px;
+  height: 37px;
+}
+.button.confirm ins.default {
+  z-index: 60;
+  background: url(../images/confirm.png) 0 0 no-repeat;
+}
+.button.confirm ins.hover {
+  z-index: 70;
+  background: url(../images/confirm.png) 0 -37px no-repeat;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -o-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+.button.confirm:hover ins.hover {
+  opacity: 1;
+}
+.button.confirm:active .default {
+  background: url(../images/confirm.png) 0 -74px no-repeat;
+}
+.button.confirm:active ins.hover {
+  opacity: 0;
+}
+.button.confirm {
+  display: none;
+}
+.button.choosenumber,
+.button.choosenumber ins {
+  width: 133px;
+  height: 37px;
+}
+.button.choosenumber ins.default {
+  z-index: 60;
+  background: url(../images/choose_number.png) 0 0 no-repeat;
+}
+.button.choosenumber ins.hover {
+  z-index: 70;
+  background: url(../images/choose_number.png) 0 -37px no-repeat;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease;
+  -moz-transition: opacity 0.2s ease;
+  -o-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+}
+.button.choosenumber:hover ins.hover {
+  opacity: 1;
+}
+.button.choosenumber:active .default {
+  background: url(../images/choose_number.png) 0 -74px no-repeat;
+}
+.button.choosenumber:active ins.hover {
+  opacity: 0;
+}
+.x {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 20;
+  font-size: 12px;
+  font-weight: bold;
+  font-weight: normal;
+  color: #f37021;
+  border-bottom: 1px dashed;
+  -webkit-transition: color 0.3s ease;
+  -moz-transition: color 0.3s ease;
+  -ms-transition: color 0.3s ease;
+  -o-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+.x:hover {
+  color: #fff;
+}
+.delivery-city {
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+.delivery-types li {
+  display: block;
+  overflow: hidden;
+}
+.delivery-types label {
+  margin-bottom: 25px;
+}
+/* Select */
+.sbHolder {
+  position: relative;
+  z-index: 100;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  width: 240px;
+  height: 30px;
+  background-color: #cacdd0;
+  -webkit-border-radius: 6px 0;
+  -moz-border-radius: 6px 0;
+  border-radius: 6px 0;
+  -webkit-transition: background 0.3s;
+  -moz-transition: background 0.3s;
+  -ms-transition: background 0.3s;
+  -o-transition: background 0.3s;
+  transition: background 0.3s;
+}
+.showed .sbHolder {
+  -webkit-border-radius: 6px 0 0;
+  -moz-border-radius: 6px 0 0;
+  border-radius: 6px 0 0;
+}
+.sbHolder:hover {
+  background-color: #fff;
+}
+.sbSelector {
+  display: block;
+  height: 30px;
+  left: 0;
+  line-height: 30px;
+  outline: none;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 10px;
+  top: 0;
+  width: 210px;
+}
+.sbSelector:link,
+.sbSelector:visited,
+.sbSelector:hover {
+  outline: none;
+  text-decoration: none;
+}
+.showed .sbSelector {
+  background-color: #fff;
+  -webkit-border-radius: 10px 0 0;
+  -moz-border-radius: 10px 0 0;
+  border-radius: 10px 0 0;
+}
+.sbToggle {
+  background: url(../images/arrow.png) 7px -61px no-repeat;
+  display: block;
+  height: 30px;
+  outline: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+  width: 30px;
+}
+.sbToggleOpen {
+  background: #ffffff url(../images/arrow.png) 8px 12px no-repeat;
+}
+.sbToggleOpen:hover {
+  /*background: url(../images/arrow.png) center center no-repeat;*/
+
+}
+.sbHolderDisabled {
+  background-color: #3C3C3C;
+  border: solid 1px #515151;
+}
+.sbOptions {
+  background-color: #fff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 30px;
+  width: 240px;
+  max-height: 160px !important;
+  z-index: 1;
+  overflow-y: auto;
+}
+.sbOptions a {
+  display: block;
+  outline: none;
+  padding: 7px 0 7px 10px;
+  -webkit-transition: background 0.3s ease;
+  -moz-transition: background 0.3s ease;
+  -ms-transition: background 0.3s ease;
+  -o-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+.sbOptions a:link,
+.sbOptions a:visited {
+  color: #000;
+  text-decoration: none;
+}
+.sbOptions a:hover,
+.sbOptions a:focus,
+.sbOptions a.sbFocus {
+  background-color: #ddd;
+  -webkit-transition: background 0.0s ease;
+  -moz-transition: background 0.0s ease;
+  -ms-transition: background 0.0s ease;
+  -o-transition: background 0.0s ease;
+  transition: background 0.0s ease;
+}
+.sbOptions .sbDisabled {
+  color: #999;
+  display: block;
+  padding: 7px 0 7px 3px;
+}
+.sbOptions .sbGroup {
+  display: block;
+  font-weight: bold;
+  padding: 7px 0 7px 3px;
+}
+.sbOptions .sbSub {
+  padding-left: 17px;
+}

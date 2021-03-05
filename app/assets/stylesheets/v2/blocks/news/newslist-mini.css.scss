@@ -1,0 +1,88 @@
+.b-newslist-mini-aux {
+  margin-bottom: 20px;
+  @include clearfix;
+
+  .g-button {float: right;}
+  .g-dates {float: left;}
+}
+
+.b-newslist-mini {
+  margin-left: -(2*$dx + $cell);
+  margin-bottom: 50px;
+  font-size: 14px;
+  @include clearfix;
+
+  &__item {
+    @include grid-size(3);
+    height: 70px;
+    padding: 15px 0 15px 105px;
+    margin-left: 2*$dx + $cell;
+    margin-bottom: 0px;
+    float: left;
+    overflow: hidden;
+    &.message {height: auto;}
+
+    .cover {
+      margin: 0 20px 0 -105px;
+      float: left;
+    }
+
+    .item__info {
+      height: 15px;
+      color: $gray-mid;
+      margin-bottom: 5px;
+      .category {font-size: 14px;}
+      .date {
+        font-size: 12px;
+        color: $gray-mid2;
+      }
+
+    }
+    .item__title {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+      .link {
+        color: $gray-mid2;
+        @include ellipsis();
+        white-space: normal;
+        max-height: 46px;
+      }
+    }
+    .item__aux {
+      margin-top: -5px;
+      float: right;
+      @include clearfix;
+      .g-button {
+        display: block;
+        float: right;
+        margin-left: 20px;
+      }
+    }
+    .g-aux {
+      float: left;
+      margin-top: 2px;
+    }
+  }
+
+  .splitter {
+    height: 0;
+    @include grid-size(9);
+    margin: 25px 0 25px (2*$dx + $cell);
+    float: left;
+    position: relative;
+    text-align: center;
+    font: 16px $font-family_proxymanova;
+    color: $blue-mid;
+    text-transform: uppercase;
+    border-top: 1px $blue-mid3 solid;
+    &:first-child {display: none;}
+
+    span {
+      padding: 0 10px;
+      position: relative;
+      top: -9px;
+      background: $white;
+    }
+  }
+}

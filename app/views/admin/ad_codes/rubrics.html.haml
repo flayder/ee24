@@ -1,0 +1,8 @@
+= render 'menu'
+%h1 Настройка баннеров для рубрик
+- @sections.each do |site_section|
+  %ul
+    %li
+      = link_to_if site_section.section.with_rubrics?, site_section.section.title, section_admin_ad_codes_url(:section_id => site_section.id), :title => 'дочерние рубрики'
+      &nbsp;|&nbsp;
+      = link_to 'баннеры', list_admin_ad_codes_url(:ad_code => {:ad_section_type => 'SiteSection', :ad_section_id => site_section.id})

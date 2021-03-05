@@ -1,0 +1,65 @@
+.b-character {
+  padding: 30px;
+  background: $blue-light;
+  margin-bottom: $dx;
+
+  &__info {
+    padding-left: 80px;
+    @include clearfix;
+  }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+    margin: 0 15px 0 -95px;
+    float: left;
+    border: 4px $gray-light4 solid;
+    border-radius: 50%;
+  }
+
+  &__name {
+    display: block;
+    margin-bottom: 5px;
+    overflow: hidden;
+    font: bold 18px/21px $font-family_proxymanova;
+    color: $blue-dark2;
+    word-wrap: break-word;
+  }
+
+  &__occupation {
+    font-family: $font-family_proxymanova;
+    color: $gray-mid3;
+  }
+
+  &__location {
+    font-family: $font-family_proxymanova;
+    font-size: 11px;
+    color: #76859b;
+  }
+
+  .g-button {
+    padding-left: 35px;
+    margin-top: 15px;
+    &.edit {
+      background: asset_data_url('v2/icons/settings_mini.png') 10px center no-repeat;
+      @include bg-darken(#c6e3ff);
+      color: #435c6f;
+    }
+    &.message {
+      background: asset_data_url('v2/icons/message_mini_light.png') 10px center no-repeat;
+      @include bg-darken($blue-dark2);
+      color: $white;
+    }
+  }
+
+  &__socials {
+    padding-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+.character__socials {
+  float: left;
+  margin-right: 15px;
+}
+.character__socials img { width: 32px; }

@@ -1,0 +1,4 @@
+- galleries_list_extended.each do |gallery|
+  .row
+    = render partial: 'shared/media', object: gallery
+    = truncate(strip_tags(gallery.annotation), length: 600).html_safe

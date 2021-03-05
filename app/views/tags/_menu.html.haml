@@ -1,0 +1,32 @@
+.g-tabs
+  = link_to 'Главное', tag_path(params[:id] || params[:tag_id]), class: "g-tab #{'active' if action_name == 'show'}"
+
+  = link_to_if @news.present?, "Новости (#{@news.size})", tag_news_path(params[:id] || params[:tag_id]), class: "g-tab #{'active' if action_name == 'news'}" do
+    .g-tab Новости
+
+  = ' '
+
+  = link_to_if @docs.present?, "Статьи (#{@docs.size})", tag_docs_path(params[:id] || params[:tag_id]), class: "g-tab #{'active' if action_name == 'docs'}" do
+    .g-tab Статьи
+
+  = ' '
+  
+  = link_to_if @events.present?, "События (#{@events.size})", tag_afisha_path(params[:id] || params[:tag_id]), class: "g-tab #{'active' if action_name == 'afisha'}" do
+    .g-tab События
+
+  = ' '
+  
+  = link_to_if @galleries.present?, "Фото (#{@galleries.size})", tag_photo_path(params[:id] || params[:tag_id]), class: "g-tab #{'active' if action_name == 'photo'}" do
+    .g-tab Фото
+
+  = ' '
+
+  = link_to_if @catalog.present?, "Компании (#{@catalog.size})", tag_catalog_path(params[:id] || params[:tag_id]), class: "g-tab #{'active' if action_name == 'catalog'}" do
+    .g-tab Компании
+
+  = ' '
+
+  = link_to_if @dictionary_objects.present?, "Энциклопедия (#{@dictionary_objects.size})", tag_dictionary_path(params[:id] || params[:tag_id]), class: "g-tab #{'active' if action_name == 'dictionary'}" do
+    .g-tab Энциклопедия
+
+-#  пробелы выставлены принудительно в связи со слепливанием на проде (после ссылок)

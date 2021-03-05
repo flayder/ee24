@@ -1,0 +1,6 @@
+- if @photos.any?
+  .fotorama{data: {ratio: '940/630', width: '940', max_width: '100%', fit: 'scaledown', nav: 'thumbs', thumbwidth: '78', thumbheight: '78', hash: 'true'}}
+    - @photos.each do |photo|
+      = image_tag url_for_file_column(photo, "image", "xxxlarge"), data: {caption: photo.title}
+- else
+  .no-info Нет фотографий в альбоме

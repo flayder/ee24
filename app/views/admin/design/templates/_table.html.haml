@@ -1,0 +1,14 @@
+%table.table.table-bordered
+  %thead
+    %th= Design::Template.human_attribute_name :id
+    %th= Design::Template.human_attribute_name :name
+    %th= 'Действия'
+  - templates.each do |template|
+    %tr
+      %td= template.id
+      %td= template.name
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_design_template_path(template)
+
+          %li= link_to 'Удалить', admin_design_template_path(template), :method => :delete, :confirm => 'Вы уверены?'

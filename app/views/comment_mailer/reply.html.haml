@@ -1,0 +1,20 @@
+%br
+= "Здравствуйте, #{@user.fio_or_login}"
+%br
+%br
+= raw "На ваш комментарий к статье «#{link_to @comment.commentable.title, 'https://' + Settings.portal_domain + @comment.commentable.url}» поступил новый ответ от пользователя #{link_to @comment.user.fio_or_login, "https://#{Settings.portal_domain}/users/#{@comment.user.login}"}:"
+%br
+%br
+= @comment.text
+%br
+%br
+= "---"
+%br
+С уважением,
+информационный портал “Чехия Онлайн” -
+= link_to "420on.cz", "https://420on.cz"
+%br
+%br
+= link_to image_tag(attachments['logo.png'].url), "https://#{Settings.portal_domain}"
+%br
+= render partial: "user_mailer/unsubscribe_text", locals: { user: @user }

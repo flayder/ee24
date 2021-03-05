@@ -1,0 +1,11 @@
+development:
+  36on.ru: "qaNWhzPjojq7TXEsOiTQ"
+
+staging:
+  36on.ru: "FaC1RNir83okUMopRBB1"
+
+test:
+  qaNWhzPjojq7TXEsOiTQ
+
+production:
+  36on.ru: "qaNWhzPjojq7TXEsOiTQ"

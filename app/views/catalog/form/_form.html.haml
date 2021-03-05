@@ -1,0 +1,154 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+  = javascript_include_tag 'catalog'
+  = stylesheet_link_tag '//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+  = stylesheet_link_tag 'catalog.css'
+.b-form__row
+  .l-cols-3.l-l
+    &nbsp;
+  .l-cols-8.l-l
+    %p
+      %span{:style => "color: red;"} *
+      = "- #{t('.required_fields')}"
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :rubric_ids do
+      %span{:style => "color: red;"} *
+      = Catalog.human_attribute_name(:rubric_ids)
+  .l-cols-8.l-l
+    = f.select :rubric_ids, grouped_options_for_select(generate_rubric_select(:catalog), @catalog.rubric_ids), {include_blank: true}, {multiple: true, id: 'rubric-select', placeholder: t('.rubrics_placeholder')}
+- if can?(:manage, f.object) && @site.has_section?(:photo)
+  .b-form__row
+    .l-cols-3.l-l
+      = f.label :gallery_ids
+    .l-cols-8.l-l
+      = f.select :gallery_ids, @site.galleries.order('title').map{|g|[g.title, g.id]}, {prompt: t('.galleries_promt')}, class: 'b-form__control select'
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :email
+  .l-cols-3.l-l
+    = f.text_field :email, class: 'b-form__control wide'
+
+  .l-cols-2.l-l
+    = f.label :site_url
+  .l-cols-3.l-l
+    = f.text_field :site_url, class: 'b-form__control wide'
+
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :tel do
+      %span{:style => "color: red;"} *
+      = Catalog.human_attribute_name(:tel)
+  .l-cols-3.l-l
+    = f.text_field :tel, class: 'b-form__control wide'
+
+  .l-cols-2.l-l
+    = f.label :fax
+  .l-cols-3.l-l
+    = f.text_field :fax, class: 'b-form__control wide'
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :street_address do
+      %span{:style => "color: red;"} *
+      = Catalog.human_attribute_name(:street_address)
+  .l-cols-8.l-l
+    = f.text_field :street_address, class: 'b-form__control wide address', type: 'text', placeholder: t('.street_address_placeholder')
+  .b-form__row
+    .l-cols-3.l-l
+      = f.label :extended_address
+    .l-cols-8.l-l
+      = f.text_field :extended_address, class: 'b-form__control wide'
+      .notice
+        = t('.extended_address_notice').html_safe
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :logo
+  .l-cols-8.l-l
+    - if @catalog.logo?
+      = image_tag @catalog.logo.url(:medium)
+      = f.label :remove_logo
+      = f.check_box :remove_logo
+    = f.file_field :logo
+    = f.hidden_field :logo_cache
+    .notice
+      = t('.logo_notice')
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :tag_list
+  .l-cols-8.l-l
+    = f.text_field :tag_list, class: 'b-form__control with_autocomplete', data: {url: "/tags/autocomplete"}
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :position
+  .l-cols-8.l-l
+    = f.text_field :position, class: 'b-form__control'
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :russian_language
+  .l-cols-8.l-l
+    = f.check_box :russian_language
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :is_commentable
+  .l-cols-8.l-l
+    = f.check_box :is_commentable
+- if can?(:manage, f.object)
+  .b-form__row
+    .l-cols-3.l-l
+      = f.label :recommend
+    .l-cols-8.l-l
+      = f.check_box :recommend
+  .b-form__row
+    .l-cols-3.l-l
+      = f.label :approved
+    .l-cols-8.l-l
+      = f.check_box :approved
+  .b-form__row
+    .l-cols-3.l-l
+      = f.label :user_id
+    .l-cols-8.l-l
+      = f.text_field :user_id, value: @catalog.user.try(:email), class: 'b-form__control'
+.catalog-description
+  .title= t('.catalog_description_title')
+  %ul.nav.nav-tabs
+    - I18n.available_locales.each do |locale|
+      %li{class: "#{locale == I18n.locale ? 'active' : ''}"}
+        = link_to ApplicationHelper::LANGUAGE_LIST[I18n.locale][locale], "##{locale}-tab", data: {toggle: 'tab'}
+  .tab-content
+    - I18n.available_locales.each do |locale|
+      - catalog_description = nil
+      - @catalog.catalog_descriptions.each do |element|
+        - catalog_description = element if element.language == locale.to_s
+      - catalog_description ||= @catalog.catalog_descriptions.build(language: locale)
+      .tab-pane{class: "#{locale == I18n.locale ? 'active' : ''}", id: "#{locale}-tab"}
+        = f.fields_for :catalog_descriptions, catalog_description do |ff|
+          = ff.hidden_field :language
+          .b-form__row
+            .l-cols-3.l-l
+              = ff.label :title do
+                %span{:style => "color: red;"} *
+                = CatalogDescription.human_attribute_name(:title)
+            .l-cols-8.l-l
+              = ff.text_field :title, class: 'b-form__control wide'
+          .b-form__row
+            .l-cols-3.l-l
+              = ff.label :annotation
+            .l-cols-8.l-l
+              = ff.text_area :annotation, class: 'b-form__control textarea wide'
+          - if can? :manage, f.object
+            .b-form__row
+              .l-cols-3.l-l
+                = ff.label :text
+              .l-cols-8.l-l
+                = ff.cktext_area :text, class: 'b-form__control textarea', ckeditor: {language: I18n.locale}
+- if @city.present? && @city.region?
+  .b-form__row
+    .l-cols-3.l-l
+      %label
+        Россия, #{@city.region}
+.b-form__row
+  .l-cols-3.l-l
+    &nbsp;
+  .l-cols-8.l-l
+    = submit_tag t('.save_button'), class: 'g-button medium primary'
+    = link_to t('.back_button'), :back, class: 'g-button medium primary middle-align'

@@ -1,0 +1,9 @@
+.l-wrapper
+  .b-large-map-container.js-map
+    = render 'header'
+    - if @places_json.present?
+      = gmaps(map_options: {container_class: 'b-google-map-container', container_id: 'large_map_container', id: 'large_map', raw: "{scrollwheel: false, zoom: #{@city.map_zoom? ? @city.map_zoom : 10}}", 'center_latitude' => @city.lat, 'center_longitude' => @city.lng}, 'markers' => {'data' => @places_json})
+    - else
+      = gmaps(map_options: {container_class: 'b-google-map-container', container_id: 'large_map_container', id: 'large_map', raw: "{scrollwheel: false, zoom: #{@city.map_zoom? ? @city.map_zoom : 10}}", 'center_latitude' => @city.lat, 'center_longitude' => @city.lng})
+    = render 'map/google_scripts'
+= seo_text @seo

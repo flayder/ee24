@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая фото рубрика', new_admin_photo_rubric_path
+= render :partial => 'table', :locals => { :photo_rubrics => @photo_rubrics }
+
+= will_paginate_bootstrap @photo_rubrics

@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Новая рубрика афиши', new_admin_event_rubric_path
+= render :partial => 'table', :locals => { :event_rubrics => @event_rubrics }
+
+= will_paginate_bootstrap @event_rubrics

@@ -1,0 +1,179 @@
+.js-jobNew
+  .b-form__row
+    .l-cols-3.l-l
+      &nbsp;
+    .l-cols-8.l-l
+      %p.notice
+        %span{style: "color: red;"} *
+        \- обязательные для заполнения поля
+
+
+  = render partial: 'industry_fields', locals: {f: f}
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label
+        Требуется
+        %span{style: "color: red;"} *
+    .l-cols-8.l-l
+      = f.text_field :title, class: 'b-form__control wide'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label Занятость
+    .l-cols-8.l-l
+      = f.select :busy, JobItem::BUSY_STATES.map{ |key, value| [value, key] }, {}, class: 'b-form__control select'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label Заработная плата
+    .l-cols-3.l-l
+      = f.text_field :money, class: 'b-form__control wide'
+
+    .l-cols-2.l-l
+      %label Валюта
+    .l-cols-3.l-l
+      = f.select :currency, JobItem::CURRENCY.map{ |key, value| [value, key] }, {}, class: 'b-form__control select'
+
+  .b-form__row
+    .l-cols-3.l-l
+      &nbsp;
+    .l-cols-8.l-l
+      %label.label-left
+        Выберите компанию или введите её название
+
+    - if current_user.site_admin_for @site
+      .l-row
+        .l-cols-3.l-l
+          %label
+            Компания
+            %span{style: "color: red;"} *
+        .l-cols-8.l-l
+          = f.text_field :catalog_id, class: 'b-form__control wide'
+          %br
+          = f.object.catalog.try(:title)
+    - elsif current_user.catalogs.present?
+      .l-row
+        .l-cols-3.l-l
+          %label
+            Компания
+            %span{style: "color: red;"} *
+        .l-cols-8.l-l
+          = f.select :catalog_id, current_user.catalogs.map{ |c|[c.title, c.id] }, {}, class: 'b-form__control select'
+
+    .l-cols-3.l-l
+      %label
+        Название компании
+    .l-cols-8.l-l
+      = f.text_field :company_name, class: 'b-form__control wide'
+
+      - if !current_user.catalogs.present?
+        .notice
+          Для возможности выбора необходимо сначала
+          = link_to 'создать компанию', new_catalog_path
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label Регион
+    .l-cols-3.l-l
+      = f.select :region_id, @regions.map{ |c|[c.title, c.id] }, {}, class: 'b-form__control select js-jobRegionSelect'
+
+    .l-cols-2.l-l
+      %label Город
+    .l-cols-3.l-l
+      = f.select :region_city_id, @cities.map{ |c|[c.title, c.id] }, {}, class: 'b-form__control select js-jobRegionCities'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label
+        Описание
+        %span{style: "color: red;"} *
+    .l-cols-8.l-l
+      = f.text_area :text, class: 'b-form__control textarea'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label Условия
+    .l-cols-8.l-l
+      = f.text_area :terms, class: 'b-form__control textarea'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label Требования
+    .l-cols-8.l-l
+      = f.text_area :requirements, class: 'b-form__control textarea'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label
+        Контактное ФИО
+        %span{style: "color: red;"} *
+    .l-cols-8.l-l
+      = f.text_field :contacts_name, class: 'b-form__control wide'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label
+        Контактный email
+        %span{style: "color: red;"} *
+    .l-cols-8.l-l
+      = f.text_field :contacts_email, class: 'b-form__control wide'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label Контактный телефон
+    .l-cols-8.l-l
+      = f.text_field :contacts_phone, class: 'b-form__control wide'
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label
+        Срок размещения
+        %span{style: "color: red;"} *
+    .l-cols-2.l-l
+      = f.select :posted_for, [['15 дней', 15], ['30 дней', 30]], {}, class: 'b-form__control select wide'
+
+    .l-cols-2.l-l
+      = f.label :created_at
+    .l-cols-4.l-l
+      = f.datetime_select :created_at, {}, {class: 'b-form__control inline-block'}
+
+  - if can? :manage, f.object
+    .b-form__row
+      .l-cols-3.l-l
+        %label
+          Ссылка
+      .l-cols-8.l-l
+        = f.text_field :link, class: 'b-form__control wide'
+
+
+  .b-form__row
+    .l-cols-3.l-l
+      %label Дополнительная информация
+    .l-cols-8.l-l
+      = f.text_area :additional_info, class: 'b-form__control textarea'
+
+  - if can? :manage, f.object
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :approved
+      .l-cols-8.l-l
+        = f.check_box :approved
+
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :hot
+      .l-cols-8.l-l
+        = f.check_box :hot
+
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :closed
+      .l-cols-8.l-l
+        = f.check_box :closed
+
+  .b-form__row
+    .l-cols-3.l-l
+      &nbsp;
+    .l-cols-8.l-l
+      = f.submit 'Разместить вакансию', class: 'g-button medium primary'

@@ -1,0 +1,181 @@
+.b-site-navigation {
+  .age {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    margin: 13px 20px 0 0;
+    border: 2px solid white;
+    @include box-shadow(0 0 1px 0 black);
+    @include border-radius(50%);
+    height: 50px;
+    width: 50px;
+    background-color: #61b300;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    line-height: 52px;
+    font-weight: bold;
+    z-index: 10;
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+  .l-page__center {
+    padding: 10px 15px;
+    background-color: #022632;
+    position: relative;
+    width: 960px;
+    min-height: 80px;
+    .new-special-projects {
+      margin-top: 15px;
+      margin-right: 20px;
+      display: inline-block;
+      a {
+        font-size: 14px;
+        margin-right: 10px;
+      }
+    }
+    .main-links {
+      margin-left: -5px;
+      color: $c-white;
+      font-size: 16px;
+      overflow: hidden;
+      span {
+        &:first-child{
+          margin-right: 0;
+        }
+      }
+      .line {
+        overflow: hidden;
+        float: left;
+        &.user-actions {
+          float: none;
+          width: 100%;
+        }
+        a {
+          &:first-child {
+            padding-left: 5px;
+            margin-left: 0px;
+          }
+        }
+        span {
+          &:first-child{
+            margin-right: 0;
+          }
+        }
+      }
+      span, a {
+        float: left;
+        border-right: 1px solid white;
+        padding: 0 5px;
+        height: 15px;
+        line-height: 15px;
+        margin-bottom: 10px;
+        &:last-child {
+          padding-right: 0;
+          border-right: none;
+        }
+        &:first-child {
+          //border-right: 1px solid white;
+          padding-right: 5px;
+        }
+      }
+      .red {
+        color: red;
+      }
+      .green {
+        color: #61b300;
+      }
+      .active {
+        color: grey;
+      }
+    }
+    .submenu {
+      margin-top: 20px;
+      color: $c-white;
+      span {
+        color: $c-placeholder;
+      }
+      &:first-child {
+        margin-top: 15px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: $c-white;
+      &:hover {
+        text-decoration: underline;
+      }
+      &.yellow {
+        color: $c-link-yellow;
+      }
+    }
+  }
+}
+.b-special-projects {
+  padding: 5px 0;
+  overflow: hidden;
+  > .logo {
+    float: left;
+    margin-left: 10px;
+  }
+  #yandex_ad {
+    @include inline-block;
+    width: 735px;
+  }
+  > .b-projects {
+    margin-left: 240px;
+    overflow: hidden;
+    > .b-adriver_200 {
+      width: 200px;
+      float: left;
+      margin-left: 40px;
+    }
+    &.b-projects_420on {
+      margin-left: 280px;
+      padding: 23px 0;
+      > .b-adriver_200 {
+        margin-left: 35px;
+      }
+    }
+    &.b-projects_niere {
+      margin-left: 280px;
+      line-height: 100px;
+      > .niere {
+        @include inline-block(190px);
+        margin-left: 40px;
+        color: black;
+        text-decoration: none;
+        > img {
+          height: 80px;
+          vertical-align: middle;
+        }
+        > .description {
+          @include inline-block;
+          margin-left: 10px;
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+  .b-satellites {
+    @include inline-block;
+    margin-top: 20px;
+    .action {
+      margin-left: 30px;
+      @include inline-block;
+      width: 200px;
+      .description {
+        @include inline-block;
+        margin-left: 10px;
+        margin-top: 6px;
+        font-size: 13px;
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

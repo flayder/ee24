@@ -1,0 +1,21 @@
+= form_for [:admin, @global_rubric] do |f|
+  = error_messages_for :doc_global_rubric, :object => @global_rubric
+  
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :english_title
+    = f.text_field :english_title
+
+  .controls
+    = f.label :link
+    = f.text_field :link
+
+  .controls
+    = f.label :position
+    = f.text_field :position
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

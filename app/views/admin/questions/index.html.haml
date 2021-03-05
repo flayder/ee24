@@ -1,0 +1,18 @@
+%table.table.table-bordered
+  %thead
+    %th= Question.human_attribute_name :id
+    %th= Question.human_attribute_name :title
+    %th= Question.human_attribute_name :content
+    %th= Question.human_attribute_name :category_id
+    %th= 'Действия'
+  - @questions.each do |question|
+    %tr
+      %td= question.id
+      %td= question.title
+      %td= question.content.html_safe
+      %td= question.category.name
+      %td
+        %ul.admin_actions
+          %li= link_to 'Удалить', admin_question_path(question), :method => :delete, :confirm => 'Вы уверены?'
+
+=# will_paginate_bootstrap @questions

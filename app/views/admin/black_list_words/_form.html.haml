@@ -1,0 +1,10 @@
+%h1= 'Добавить слово в черных список'
+= form_for [:admin, @black_list_words], url: admin_black_list_words_path do |f|
+  = error_messages_for :black_list_words, :object => @black_list_words
+
+  .controls
+    = f.label :words
+    = f.text_area :words
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn'

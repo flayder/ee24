@@ -1,0 +1,20 @@
+<% content_for :head do %>
+  <%= raw yandex_header %>
+<% end %>
+
+<script>var cityCoords = <%= [@city.lat, @city.lng] %>;</script>
+
+<%= link_to 'Добавить компанию!', "#", data: {link: "/catalog/new#{(params[:id].present? && params[:action] == 'list') ? '?parent_id='+params[:id] : ''}"}, class: 'seo-link g-button orange' %>
+
+<%= render 'layouts/ads/right' %>
+<%= render 'layouts/sidebar_photo_slider' %>
+
+<%= seo_about @seo_about %>
+<%= seo_sub_text @seo_sub_text %>
+
+<% if @linker %>
+  <%= render partial: "/templates/blocks/new/linker" %>
+<% end %>
+
+
+<%= render partial: '/templates/blocks/new/social_widgets' %>

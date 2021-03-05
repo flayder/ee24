@@ -1,0 +1,9 @@
+<% if ads_needed? %>
+  <% ad_code = ad_code('vertical_right') %>
+  <% if ad_code.present? %>
+    <div class="g-box ad-banner">
+      <div class="title">Реклама</div>
+      <%= raw ad_code %>
+    </div>
+  <% end %>
+<% end %>

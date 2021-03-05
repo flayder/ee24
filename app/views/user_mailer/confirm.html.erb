@@ -1,0 +1,34 @@
+<div align="left">
+  <%= link_to (image_tag @site.logo.url(:small)), "https://#{@site.domain}"%>
+</div>
+<br>
+
+<font size="3"><b>Большое спасибо за регистрацию на нашем сайте!</b></font>
+<br><br>
+
+
+<font size="2">
+  Ваш логин: <%= @login %>
+</font>
+<br><br>
+
+
+Чтобы мы могли знать, что это Ваш настоящий e-mail адрес, пройдите по ссылке:<br>
+<a href="https://<%= @site.domain %>/users/<%= @user.subdomain %>/confirm?confirmation_token=<%= @user.confirmation_token %>">https://<%= @site.domain %>/users/<%= @user.subdomain %>/confirm?confirmation_token=<%= @user.confirmation_token %></a>
+
+
+<br><br>
+Если ссылка по каким-то причинам не работает, то скопируйте этот текст и вставьте в адресную строку браузера:<br>
+-----------------------<br>
+https://<%= @site.domain %>/users/<%= @user.subdomain %>/confirm?confirmation_token=<%= @user.confirmation_token %><br>
+-----------------------
+<br><br>
+
+
+Заранее спасибо.<br>
+
+<font color="black">
+  <hr size="1">
+</font>
+
+<%= @site.portal_title %> — <%= link_to @site.domain, "https://#{@site.domain}" %>

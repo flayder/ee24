@@ -1,0 +1,7 @@
+%h3
+  Редактировать комменатрий
+
+= simple_form_for [:admin, @comment] do |f|
+  = f.input :text, as: :text, input_html: {rows: 4}
+  = f.submit class: 'btn btn-primary'
+  = link_to 'Отмена', [:admin, :comments], class: 'btn'

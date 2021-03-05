@@ -1,0 +1,18 @@
+= link_to 'К списку разделов', "/admin/versions/#{@version.item_type}"
+&nbsp;|&nbsp;
+= link_to 'К истории изменений объекта', "/admin/versions/#{@version.item_type}/#{@version.item_id}"
+
+%h1
+  Diff by
+  = @version.author.login if @version.author.present?
+  (
+  = @version.created_at.strftime("%d.%m.%Y %H:%M")
+  )
+
+%div
+  - if @version.changeset.present?
+    %table.table.table-bordered
+      - @version.changeset.each do |key, changes|
+        %tr
+          %td= @version.item.class.human_attribute_name(key)
+          %td=raw Differ.diff_by_word(changes.second.to_s, changes.first.to_s)

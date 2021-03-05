@@ -1,0 +1,17 @@
+%table.table.table-bordered
+  %thead
+    %th= StaticDoc.human_attribute_name :title
+    %th= StaticDoc.human_attribute_name :link
+    %th= StaticDoc.human_attribute_name :main
+    %th= StaticDoc.human_attribute_name :active
+    %th= 'Действия'
+  - static_docs.each do |static_doc|
+    %tr    
+      %td= static_doc.title
+      %td= static_doc.link
+      %td= t static_doc.main.to_s
+      %td= t static_doc.active.to_s
+      %td
+        %ul.admin_actions
+          %li= link_to 'Редактировать', edit_admin_static_doc_path(static_doc)
+          %li= link_to 'Удалить', admin_static_doc_path(static_doc), :method => :delete, :confirm => 'Вы уверены?'

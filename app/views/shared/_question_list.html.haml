@@ -1,0 +1,5 @@
+.b-list-questions
+  .b-list-questions__title Последние вопросы
+  = link_to 'Задать вопрос', 'javascript:;', class: 'b-list-questions__ask'
+  .b-list-questions__list
+    = polymorphic_render questions, :list

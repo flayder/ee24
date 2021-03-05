@@ -1,0 +1,5 @@
+.js-commentInlineEdit
+  = form_for comment, method: :put, html: {data: {type: 'json', remote: true}, class: 'js-commentInlineEditForm'}, url: comment_path(comment) do |f|
+    = f.text_area :text, class: 'g-comment__textarea', rows: 3
+    %span.g-button.js-commentCancelEdit Отмена
+    %button.g-button.primary.js-commentSendEdit{data: { disable_with: 'Отправка' }} Обновить

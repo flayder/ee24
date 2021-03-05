@@ -1,0 +1,6 @@
+.b-form__row
+  .l-cols-3.l-l
+    = f.label :industry_id, 'Выберите отрасль', {class: 'required'}
+  .l-cols-8.l-l
+    = f.select :industry_id, @industries.map{|i|[i.title, i.id]}, {include_blank: true}, class: 'b-form__control select js-jobIndustrySelect'
+    #professions= render partial: 'job/professions'

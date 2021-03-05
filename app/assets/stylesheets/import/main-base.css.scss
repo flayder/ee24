@@ -1,0 +1,48 @@
+@import "ultimate/mixins/fonts";
+
+$font-family_base: Arial, sans-serif;
+$font-size_base: 12px;
+$line-height-addition_base: 2px;
+$font-family_accident: Verdana, sans-serif;
+$font-family_accident_bold: false;
+
+$l-page__width: 990px;
+$l-page__column_right__width: 655px;
+$l-page__header__height: 120px;
+
+$c-pitch-black: #000000;
+$c-black: #333333;
+$c-gray: #8f8f8f;
+$c-light-gray: #ccc;
+$c-white: #ffffff;
+$c-blue: #4bc9e5;
+$c-light-blue: #0089D0;
+$c-deep-blue: #4f739a;
+$c-orange: #e05301;
+$c-green: #219100;
+$c-red: #de0e01;
+$c-placeholder: #999999;
+$c-text-light-gray: #666666;
+$c-text-dark-gray: #666666;
+$c-link-blue: #096f8d;
+$c-link-yellow: #fefc45;
+
+
+@mixin invert_link_decoration($class: '') {
+  a#{$class} {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+@mixin l-page__center($switch: true) {
+  @if ( $switch ) {
+    width: $l-page__width;
+    margin: 0 auto;
+  } @else {
+    width: auto;
+    margin: 0;
+  }
+}

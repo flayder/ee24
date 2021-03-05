@@ -1,0 +1,21 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_photos_path, class: 'form-horizontal' do |form|
+      .control-group
+        .controls
+          = form.input :id_eq, :required => false
+        .controls
+          = form.input :title_like, :required => false
+        .controls
+          .control-group
+            = form.label 'Документ содержит', required: false
+            .controls
+              = text_field_tag 'doc_content', @doc_content, :required => false
+        .controls
+          = form.input :photo_type_like, required: false, label: 'Тип документа'
+        .controls
+          = form.check_box :commented_is_false, :required => false, label: 'Без комментария'
+          = form.label 'Без комментария', required: false
+        .controls
+          = form.button :submit, 'Найти', class: 'btn'

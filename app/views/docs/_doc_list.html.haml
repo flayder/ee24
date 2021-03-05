@@ -1,0 +1,13 @@
+.b-list-doc
+  .b-list-doc__cover
+    = link_to doc.url do
+      - if doc.photos.any?
+        = image_tag doc.photos.first.image.medium.url
+      - else
+        = image_tag "https://lorempixel.com/#{(3..6).to_a.sample}00/#{(5..6).to_a.sample}00/#{%w(abstract animals business cats city food nightlife fashion people nature sports technics transport).sample}"
+  .b-list-doc__category= link_to doc.rubric.title, doc.rubric.url
+  .b-list-doc__title= link_to doc.title, doc.url
+  .b-list-doc__stats
+    .b-list-doc__stat.date= l doc.created_at.to_date
+    .b-list-doc__stat.views= doc.page_views
+    .b-list-doc__stat.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: doc}

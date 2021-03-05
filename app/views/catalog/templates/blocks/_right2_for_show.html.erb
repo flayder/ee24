@@ -1,0 +1,11 @@
+<%= render 'layouts/ads/right' %>
+
+<%= seo_about @seo_about %>
+<%= seo_sub_text @seo_sub_text %>
+
+<% if @linker %>
+  <%= render partial: "/templates/blocks/new/linker" %>
+<% end %>
+
+<%= render partial: '/templates/blocks/new/social_widgets' %>
+

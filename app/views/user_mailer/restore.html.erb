@@ -1,0 +1,11 @@
+Здравствуйте, <%= @login %>.<br><br>
+Кто-то, возможно Вы, запрашивал изменение пароля на <%= @site.domain %> и указал Ваш e-mail.<br>
+Если это были не Вы, просто удалите это письмо.
+<br><br>
+Если же Вы хотите получить новый пароль, перейдите по этой ссылке
+<br><br>
+<a href="https://<%= @site.domain %>/account/restore_password/<%= @token %>">https://<%= @site.domain %>/account/restore_password/<%= @token %></a><br><br>
+<br><br>
+После перехода по ссылке Вы получите письмо с новым паролем.
+_____________________________<br>
+<%= @site.portal_title %> — <%= link_to @site.domain, "https://#{@site.domain}" %>

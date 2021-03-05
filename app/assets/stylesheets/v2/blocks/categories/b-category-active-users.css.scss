@@ -1,0 +1,57 @@
+.b-category-active-users {
+  background: $blue-light;
+  padding: 25px 15px 40px;
+}
+
+.b-category-active-users__title {
+  color: #292929;
+  text-transform: uppercase;
+  text-align: center;
+  font: bold 18px/1 $font-family_proxymanova;
+  letter-spacing: 1px;
+}
+
+.b-category-active-users__list {
+
+}
+
+.b-category-active-user {
+  margin: 40px 0 0;
+}
+
+.b-category-active-user__avatar {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 36px;
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  img {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+.b-category-active-user__content {
+  margin-left: 15px;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 170px;
+}
+
+.b-category-active-user__title {
+}
+
+.b-category-active-user__role {
+  margin: 2px 0;
+  color: $gray-mid3;
+  font: italic 14px/1 'PT Sans';
+}
+
+.b-category-active-user__comments {
+  background: image-url('v2/icons/aux-comments-blue.png') 0 center no-repeat;
+  padding-left: 15px;
+  margin-top: 5px;
+  color: #417fbf;
+  text-decoration: none;
+}

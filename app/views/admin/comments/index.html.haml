@@ -1,0 +1,22 @@
+= render :partial => 'admin/shared/comments/well_menu'
+%table.table.table-bordered
+  %thead
+    %th= Comment.human_attribute_name :text
+    %th= Comment.human_attribute_name :user
+    %th= 'Действия'
+  - @comments.each do |comment|
+    %tr
+      %td= link_to truncate(comment.text, length: 100), comment.commentable.try(:url)
+      %td
+        = comment.user.fio_or_login
+        - if can? :toggle_ban, comment.user
+          = link_to comment.user.ban? ? 'Разбанить' : 'Забанить', toggle_ban_admin_user_path(comment.user), :method => :put
+      %td
+        %ul.admin_actions
+          %li
+            = link_to 'Редактировать', edit_admin_comment_path(comment)
+          %li
+            = link_to 'Удалить', admin_comment_path(comment), method: :delete, confirm: 'Вы уверены?', class: 'menu__item js-commentRemove'
+          %li
+            = link_to 'Удалить все коментарии пользователя', admin_comment_by_user_delete_path(comment), method: :post, confirm: 'Вы уверены?'
+= will_paginate_bootstrap @comments

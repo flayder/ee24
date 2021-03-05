@@ -1,0 +1,39 @@
+html {
+  height: 100%;
+}
+
+body.l-clean-page {
+  height: 100%;
+  background-image: image-url('v2/popup-bg.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  &.l-error-page {
+    background-image: image-url('v2/404.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  table.l-clean-page__table {
+    height: 100%;
+    width: 100%;
+    td.center {
+      text-align: center;
+      vertical-align: middle;
+      padding: 40px 60px 60px;
+      > .logo-line {
+        margin-bottom: 30px;
+      }
+
+      > .counters-line {
+        margin-top: 30px;
+        a {
+          margin: 0 10px;
+        }
+      }
+      .b-auth-popup {
+        margin: 0 auto;
+      }
+    }
+  }
+}

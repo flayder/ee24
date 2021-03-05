@@ -1,0 +1,6 @@
+.b-index-events
+  .g-subheader.g-subheader__large
+    =link_to 'Ближайшие события', '/afisha'
+  .l-cols
+    - @events.each do |event|
+      = render partial: 'afisha/event_item', object: event, as: 'event'

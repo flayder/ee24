@@ -1,0 +1,32 @@
+<div>
+  <%= f.label :title, nil, {class: 'required'} %>
+  <%= f.text_field :title, class: 'grey' %>
+</div>
+<%= render :partial => 'industry_fields', :locals => {:f => f} %>
+<div>
+  <%= f.label :busy %>
+  <%= f.select :busy, JobItem::BUSY_STATES.map { |key, value| [value, key] } %>
+</div>
+<div>
+  <%= f.label :money, raw('Заработная плата <small>(в рублях)</small>') %>
+  <%= f.text_field :money, class: 'grey' %>
+</div>
+<div>
+  <%= f.label :text, nil, {class: 'required'} %>
+  <%= f.text_area :text %>
+</div>
+<%= render :partial => '/job/templates/blocks/photo_fields', :locals => {:f => f} %>
+<div>
+  <%= f.label :contacts, nil, {class: 'required'} %>
+  <p class="notice">Укажите ваши контактные данные</p>
+  <%= f.text_area :contacts %>
+</div>
+<% if can? :manage, f.object %>
+    <div>
+      <%= f.label :approved %>
+      <%= f.check_box :approved %>
+    </div>
+<% end %>
+<div class="submit">
+  <%= f.submit 'Разместить резюме', class: 'submit' %>
+</div>

@@ -1,0 +1,56 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+
+%h1
+  = @seo.persisted? ? 'Редактирование SEO-текста' : 'Новый SEO текст'
+  - if @seo.seo
+    = "для рубрики '#{@seo.seo.title}'"
+  - else
+    для конкретной страницы
+= form_for @seo, :url => {:controller => :'admin/seos', :action => @seo.new_record? ? :create : :update }, :method => @seo.new_record? ? :post : :put do |f|
+  = error_messages_for :seo, :object => @seo
+
+  = f.hidden_field :seo_type
+  = f.hidden_field :seo_id
+
+  .form-group
+    = f.label :language
+    = f.select :language, Admin::AdminHelper::LIST_OF_LANGUAGES.collect{|e| [e[1], e[0]]}, {}, class: 'form-control'
+
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 4, class: 'admin-text-area form-control'
+
+  .form-group
+    = f.label :keywords
+    = f.text_area :keywords, rows: 4, class: 'form-control'
+
+  .form-group
+    = f.label :news_keywords
+    = f.text_field :news_keywords, :placeholder => 'Футбол, Марадонна, Кубок Мира 2012', class: 'form-control'
+
+  .form-group
+    = f.label :about
+    = f.cktext_area :about, ckeditor: {toolbar: 'Full'}
+
+  .form-group
+    = f.label :text
+    = f.cktext_area :text, ckeditor: {toolbar: 'Full'}
+
+  .form-group
+    = f.label :sub_text
+    = f.text_area :sub_text, rows: 4, class: 'form-control'
+
+  .form-group
+    = f.label :path
+    = f.text_field :path, :placeholder => '/persona', class: 'form-control'
+    %span.help-inline
+      Если Вы хотите указать SEO для конкретной страницы, то введите ее относительный адрес. Иначе оставьте это поле пустым (SEO для рубрик создается из
+      = link_to 'Настройки рубрик', admin_site_rubrics_path
+      )
+  .form-group
+    = f.submit 'Сохранить', class: 'btn btn-default'

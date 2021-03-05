@@ -1,0 +1,4 @@
+- if @places.present?
+  = render partial: 'catalog/item', collection: @places, as: :item
+- else
+  .b-box Нет информации.

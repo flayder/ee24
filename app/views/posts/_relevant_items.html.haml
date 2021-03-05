@@ -1,0 +1,17 @@
+.b-relevant-items
+  .b-relevant-items__title Похожие темы
+  .b-relevant-items__list
+    - if item.is_a?(Question)
+      - item.category.questions.where("id != ?", item.id).last(4).each do |question|
+        .b-relevant-item
+          = link_to question.title, [item.category, question], class: 'b-relevant-item__title'
+          .b-relevant-item__answers
+            = question.comments.count
+            = Russian.p(question.comments.count, 'ответ', 'ответа', 'ответов')
+    - elsif item.is_a?(Post)
+      - item.community.posts.where("id != ?", item.id).last(4).each do |post|
+        .b-relevant-item
+          = link_to post.title, [item.community.category, item.community, post], class: 'b-relevant-item__title'
+          .b-relevant-item__answers
+            = post.comments.count
+            = Russian.p(post.comments.count, 'ответ', 'ответа', 'ответов')

@@ -1,0 +1,27 @@
+.g-comment__rate.js-commentRate
+
+  - if current_user.present?
+    - if can?(:create, Rating)
+      - unless comment.has_rating_from(current_user)
+        = link_to ratings_path(rateable_id: comment.id, rateable_type: comment.class.to_s), remote: true, method: :post, class: 'js-rate' do
+          %span.rate.down
+      - else
+        %span.rate.down.disabled{title: 'Ваш голос учтён'}
+    - else
+      %span.rate.down.disabled{title: 'Вы не можете участвовать в голосовании'}
+  - else
+    = link_to '', new_session_path, remote: true, rel: 'nofollow', class: 'rate down disabled js-jump', title: 'Чтобы проголосовать, нужно авторизоваться'
+
+  %span.num.js-commentRate= comment.rating
+
+  - if current_user.present?
+    - if can?(:create, Rating)
+      - unless comment.has_rating_from(current_user)
+        = link_to ratings_path(rateable_id: comment.id, rateable_type: comment.class.to_s, positive: true), remote: true, method: :post, class: 'js-rate' do
+          %span.rate.up
+      - else
+        %span.rate.up.disabled{title: 'Ваш голос учтён'}
+    - else
+      %span.rate.up.disabled{title: 'Вы не можете участвовать в голосовании'}
+  - else
+    = link_to '', new_session_path, remote: true, rel: 'nofollow', class: 'rate up disabled js-jump', title: 'Чтобы проголосовать, нужно авторизоваться'

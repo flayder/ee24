@@ -1,0 +1,33 @@
+.l-wrapper
+  .l-cols
+    %aside.l-section__aside
+      = render partial: 'shared/adv-aside'
+      = render 'popular_news'
+
+    %div.l-section__main.js-loaderByDate
+      .l-row.newslist__head
+        .l-cols-6.l-l
+          .g-subheader.g-subheader__last-news
+            - if action_name == 'index'
+              Последние новости
+            - else
+              = "Новости: #{@rubric.title}"
+
+        .l-cols-3.l-l
+          - if logged_in?
+            = link_to "Добавить новость", 'javascript:;', data: {link: '/news/new'}, class: "l-r g-button primary seo-link"
+          - else
+            = link_to "Добавить новость", 'javascript:;', data: {link: new_session_path}, class: "l-r g-button primary seo-link js-jump"
+          .l-r
+            = render 'dates'
+      .clearfix
+
+      - if @docs.present?
+        .b-newslist-tape.js-list
+          = render partial: 'news_list'
+        .g-loader
+          = will_paginate @docs
+      - else
+        .b-box Нет информации.
+
+= seo_text @seo

@@ -1,0 +1,54 @@
+.b-company {
+  overflow: hidden;
+
+  & &__avatar {
+    width: 200px;
+    float: right;
+    .avatar {margin: 20px auto;}
+  }
+
+  & &__info {
+    @include grid-size(7);
+    float: left;
+
+    h1 {margin-bottom: 0px;}
+    .g-aux {margin-bottom: 10px;}
+    .annotation {margin: 7px 0 10px;}
+    .description {margin: 20px 0;}
+  }
+
+  & &__location {
+    margin: 30px 0;
+    overflow: hidden;
+  }
+
+  & &__location-item {
+    display: block;
+    height: 45px;
+    padding-left: 60px;
+    margin-right: 20px;
+    float: left;
+    line-height: 50px;
+    &.map {background: asset_data_url('v2/element-map.png') 10px center no-repeat;}
+    &.bankomat {background: asset_data_url('v2/element-cards.png') 10px center no-repeat;}
+  }
+
+  & &__contacts {
+    padding: 20px;
+    background: $blue-light;
+    color: $gray-dark2;
+
+    .contacts__title {
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .contacts__item {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      background-repeat: no-repeat;
+      &:last-child {margin-bottom: 0;}
+      &.phone {background-image: asset_data_url('v2/contacts/phone_dark.png');}
+      &.address {background-image: asset_data_url('v2/contacts/house_dark.png');}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+# encoding: utf-8
+#= require jquery
+#= require jquery_ujs
+#= require jquery.ui.autocomplete
+#= require jquery.ui.datepicker
+#= require jquery.ui.datepicker-ru
+
+#= require cocoon
+#= require_directory ./initializers
+#= require plugins/swfobject
+#= require plugins/jquery.role
+#= require social-likes.min
+#= require fotorama
+#= require jquery.slick
+#= require ultimate/improves/form
+#= require ultimate/helpers
+#= require ultimate/underscore/underscore
+#= require ultimate/underscore/underscore.string
+#= require ultimate/underscore/underscore.outcasts
+#= require ultimate/jquery.base
+#= require ultimate/flash
+#= require app
+#= require_directory ./widgets
+#= require gmaps-auto-complete
+#= require plugins/selectize
+#= require cookies_eu
+
+@DEBUG_MODE = <%= Rails.env.development? ? 'true' : 'false' %>
+
+$ ->
+  App.start()

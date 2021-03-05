@@ -1,0 +1,26 @@
+%h1= 'Редактирование свойст фото'
+%div{style: 'margin-bottom: 10px;'}
+  = image_tag @photo.image.url(:large)
+= form_for [:admin, @photo], html: {multipart: true} do |f|
+  = error_messages_for :photo, :object => @photo
+  - file = @photo.image.file.exists? ? Magick::Image::read(@photo.image.file.file).first : nil
+
+  .controls
+    = f.label :title
+    = f.text_field :title
+
+  .controls
+    = f.label :comment
+    = text_field_tag 'comment', file ? file['comment'].try(:force_encoding, "UTF-8") : '', disabled: !file
+
+  .controls
+    = f.label :watermark
+    = check_box_tag 'watermark', '1', @photo.watermarked, disabled: @photo.watermarked || !file
+
+  .controls
+    = f.label 'Заменить файл на:'
+    = f.file_field :image
+
+  .controls
+    = f.submit 'Сохранить', class: 'btn btn-primary'
+    = link_to 'Отмена', [:admin, :photos], class: 'btn btn-primary'

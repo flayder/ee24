@@ -1,0 +1,17 @@
+%table.table.table-bordered
+  %thead
+    %th= MainBlock.human_attribute_name :id
+    %th= MainBlock.human_attribute_name :doc_type
+    %th= MainBlock.human_attribute_name :rubric_id
+    %th= MainBlock.human_attribute_name :position
+    %th= 'Действия'
+  - main_blocks.each do |main_block|
+    %tr
+      %td= main_block.id
+      %td= main_block.doc_type
+      %td= main_block.rubrics.pluck(:title).join(', ')
+      %td= main_block.position
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_main_block_path(main_block)
+          %li= link_to 'Удалить', admin_main_block_path(main_block), method: :delete, confirm: 'Вы уверены?'

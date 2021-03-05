@@ -1,0 +1,10 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_catalog_rubrics_path do |form|
+      = form.input :id_eq, :required => false
+      = form.input :title_eq, :required => false
+      = form.input :link_eq, :required => false
+      = form.select :depth_eq, (0..3), :required => false, :include_blank => 'Глубина вложенности'
+      .controls
+        = form.button :submit, 'Найти', class: 'btn'

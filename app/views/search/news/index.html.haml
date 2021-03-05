@@ -1,0 +1,31 @@
+.l-wrapper
+
+  %aside.l-section__aside= render partial: '/search/templates/blocks/right'
+
+  %div.l-section__main
+
+    = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+    = render 'search/menu'
+    - if @results.present?
+      = render 'templates/dynamic/docs_index', docs: @results
+    - else
+      .b-box По вашему запросу ничего не найдено.
+
+    -#= yandex_direct_code @site
+= seo_text @seo
+
+
+
+
+
+
+-#- content_for :page_menu do
+-#  = render '/search/menu'
+-#.l-page__columns-line
+-#  %aside.l-page__column.left
+-#    = render 'search/templates/blocks/rubric_title'
+-#    = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+-#    = render 'templates/dynamic/docs_index', docs: @results, no_info: 'По вашему запросу ничего не найдено.'
+-#    = yandex_direct_code @site
+-#    = seo_text @seo
+-#  %div.l-page__column.right= render partial: "/search/templates/blocks/right"

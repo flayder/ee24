@@ -1,0 +1,45 @@
+.b-index-vacancies {
+  margin-top: 44px;
+  padding: 21px 16px 0;
+  border: 2px solid $blue-mid3;
+
+  .g-subheader span {
+    letter-spacing: 2px;
+  }
+
+  .b-vacancies-list {
+    .b-vacancies-list__item {
+      padding: 12px 0;
+      border-top: 1px solid $gray-light;
+      border-bottom: 0;
+
+      &:first-child {
+        border: none;
+      }
+    }
+
+    .item {
+      &__title {
+        width: auto;
+        font-size: 16px;
+        line-height: 20px;
+      }
+
+      &__employer {
+        font-size: 14px;
+        color: $gray-mid4;
+        a {
+          color: $gray-mid4;
+        }
+      }
+
+      &__location {
+        font-size: 12px;
+        color: $gray-mid4;
+        a {
+          color: $gray-mid4;
+        }
+      }
+    }
+  }
+}

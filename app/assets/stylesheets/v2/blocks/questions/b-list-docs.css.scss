@@ -1,0 +1,66 @@
+.b-list-docs {
+  overflow: hidden;
+}
+
+.b-list-docs__column {
+  float: left;
+  & + & {
+    margin-left: 20px;
+  }
+}
+
+.b-list-doc {
+  width: 295px;
+  overflow: hidden;
+  & + & {
+    margin-top: 50px;
+  }
+}
+
+.b-list-doc__cover {
+  img {
+    width: 295px;
+  }
+
+}
+
+.b-list-doc__category {
+  margin-top: 5px;
+  a {
+    text-transform: uppercase;
+    font: 12px $font-family_proxymanova;
+    color: #b50027;
+  }
+}
+
+.b-list-doc__title {
+  a {
+    font-size: 19px;
+    color: #020610;
+  }
+}
+
+.b-list-doc__stats {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.b-list-doc__stat {
+  display: inline-block;
+  padding-left: 20px;
+  color: #adadad;
+  & + & { margin-left: 10px; }
+  &.date {
+    padding-left: 0;
+  }
+  &.views {
+    background: image-url('v2/icons/views_gray.png') 0 center no-repeat;
+  }
+  &.comments {
+    background: image-url('v2/icons/answers_gray.png') 0 center no-repeat;
+  }
+}
+
+.read-more-link {
+  display: block;
+}

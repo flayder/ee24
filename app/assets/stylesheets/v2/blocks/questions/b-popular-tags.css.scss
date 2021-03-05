@@ -1,0 +1,34 @@
+.b-popular-tags {
+  margin-top: 50px;
+}
+
+.b-popular-tags__title {
+  text-align: center;
+  &:before {
+    content: '';
+    display: block;
+    border-bottom: 1px solid #121212;
+    margin-bottom: -10px;
+  }
+  span {
+    text-transform: uppercase;
+    color: #121212;
+    font: 18px $font-family_proxymanova;
+    display: inline-block;
+    padding: 0 20px;
+    background: white;
+  }
+}
+
+.b-popular-tags__list {
+  padding: 20px 0 20px 20px;
+  border-bottom: 1px solid #121212;
+}
+
+.b-popular-tag {
+  margin-top: 15px;
+  a {
+    font-size: 20px;
+    color: $blue-dark4;
+  }
+}

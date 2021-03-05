@@ -1,0 +1,9 @@
+news:
+  controller: docs
+  rubric_klass: DocRubric
+  rubrics:
+    economics: Экономика
+    polytics: Политика
+    society: Общество
+    sport: Спорт
+    culture: Культура

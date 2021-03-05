@@ -1,0 +1,5 @@
+.b-social-widget {
+  @include grid-size(3);
+  overflow: hidden;
+  margin-top: $dx;
+}

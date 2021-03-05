@@ -1,0 +1,310 @@
+/* AFTER line 43, ../../../app/assets/stylesheets/v2/layout.css.scss */
+.l-cols-9 {
+  width: 905px;
+}
+
+.b-realty {
+  margin-bottom: 60px;
+  .g-subheader {
+    margin-top: 10px;
+  }
+  .back {
+      font-size: 15px;
+      margin-bottom: 20px;
+  }
+  .b-realty-list, .b-realty-item {
+    .broker-help .b-form__row {
+      margin-bottom: 0px;
+    }
+
+    .item__address {
+      color: $gray-mid2;
+      font-size: 15px;
+      height: 17px;
+      padding-left: 20px;
+      margin-bottom: 5px;
+      line-height: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background: left center no-repeat;
+      background-image: asset_data_url('icons/banks_place.png');
+    }
+
+    .item__description {
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+
+  .item__price  {
+      line-height: 26px;
+      .item__price__amount {
+        font-size: 30px;
+        color: #434343;
+        font-weight: bold;
+        margin-bottom: 2px;
+      }
+
+      .item__price__type {
+        font-size: 13px;
+        color: #434343;
+        margin: -7px 1px 10px 0;
+      }
+
+      .item__price .item__price__realtor {
+        display: inline-block;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        height: 30px;
+        min-width: 35px;
+        padding: 8px 10px 9px;
+        font-size: 12px;
+        line-height: 14px;
+        text-decoration: none;
+        text-align: center;
+        white-space: nowrap;
+        color: #00365e;
+        background-color: #d9e0e8;
+        border: none;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .b-realty-list {
+    margin-bottom: 20px;
+
+    .item__info {
+      @include clearfix;
+      line-height: 18px;
+    }
+
+    .item__price {
+      width: 190px;
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      float: right;
+      text-align: right;
+    }
+
+    .item__title {
+      @include grid-size(4);
+      font: 700 24px/27px $font-family_proxymanova;
+      width: 750px;
+      margin-bottom: 10px;
+    }
+
+    .item__location {
+      display: inline-block;
+      margin-right: 15px;
+      padding-left: 15px;
+      color: $gray-mid4;
+      background: asset_data_url('v2/location_gray_mini.png') left center no-repeat;
+    }
+
+    .item__datetime {
+      padding-top: 6px;
+      float: right;
+      font-size: 10px;
+      text-align: right;
+      color: #adadad;
+      text-transform: uppercase;
+    }
+
+    .item__address {
+      color: $gray-mid2;
+      font-size: 15px;
+      height: 17px;
+      padding-left: 20px;
+      margin-bottom: 5px;
+      line-height: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      background: left center no-repeat;
+      background-image: asset_data_url('icons/banks_place.png');
+    }
+
+  }
+
+  .b-realty-list__item {
+    padding: 20px 0;
+    border-bottom: 1px #bfc5c7 solid;
+    .image {
+      width: 236px;
+      height: 200px;
+      float: left;
+      margin: 0 20px 0 0;
+    }
+  }
+
+  .b-realty-item {
+     @include clearfix;
+    .fotorama {
+      width: 373px;
+    }
+
+    .b-realty-item-col {
+      float: left;
+    }
+    .b-google-map-container {
+      margin-top: 20px;
+    }
+
+    .item__title {
+      font: 700 24px/27px $font-family_proxymanova;
+      margin-bottom: 10px;
+      color: $blue-dark4;
+    }
+
+    .item__description {
+      margin-top: 5px;
+    }
+    .item__price {
+      .item__price__amount {
+        display: inline-block;
+      }
+      .item__price__type {
+        display: inline-block;
+      }
+    }
+    .item__options {
+      .item__option {
+        padding: 10px 15px;
+        border-bottom: 1px solid #ccc;
+        label {
+          width: 60%;
+          font-weight: bold;
+          display: inline-block;
+          vertical-align: top;
+        }
+        span {
+          display: inline-block;
+          width: 39%;
+        }
+        .item__description span {
+          width: 100%;
+        }
+      }
+      .item__option:last-child {
+        border-bottom: none;
+      }
+      .item__location {
+        display: inline-block;
+        margin-right: 15px;
+        padding-left: 15px;
+        font-size: 12px;
+        color: $gray-mid4;
+        background: asset_data_url('v2/location_gray_mini.png') left center no-repeat;
+      }
+    }
+
+  }
+}
+
+// Callback form
+
+//@import "v2/import/mixins";
+
+.b-callback-popup {
+  .popup-window & {
+    width: 420px;
+    padding: 25px;
+    margin: 0 auto;
+    background: $white;
+    border-radius: 5px;
+
+    & .s-gray-box {
+      &__title {
+        display: block;
+        min-height: 30px;
+        margin: 5px 0 20px;
+        font: normal 24px / 24px $font-family_subsubheader;
+        color: $gray-mid;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      &__subtitle {
+        display: block;
+        min-height: 30px;
+        margin: 5px 0 40px;
+        font: normal 18px / 18px $font-family_subsubheader;
+        color: $gray-mid4;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+    .field-line {margin-bottom: 20px;}
+
+    .urgent-call {
+      font-size: 13px;
+      .hidden {
+        display: none;
+      }
+      .urgent-call-deactivate {
+        color: $blue-mid4;
+      }
+    }
+
+    & .s-gray-box__content {
+      border-top: $gray-light2 1px solid;
+
+      .label-line {
+        display: block;
+        margin: 25px 0 10px;
+        height: 16px;
+        font: 16px $font-family_subsubheader;
+        color: $blue-dark4;
+        text-transform: uppercase;
+      }
+
+      .field {
+        display: block;
+        @include box-sizing(border-box);
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        font: 18px / 40px $font-family_base;
+        color: $black;
+        background: $gray-light3;
+        border: $gray-light3 1px solid;
+        border-radius: 5px;
+        &:focus {border-color: $blue-regular}
+
+      }
+      textarea.field {
+          height: 80px;
+        }
+
+      .submit {
+        display: block;
+        width: 100%;
+        height: 60px;
+        @include bg-darken(#004b95);
+        font: 16px / 62px $font-family_subsubheader;
+        text-transform: uppercase;
+        text-align: center;
+        color: $white;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .additional {
+        width: 100%;
+        height: 0;
+        position: relative;
+        top: 50px;
+        text-align: center;
+        font-family: $font-family_proxymanova;
+        color: $white;
+        .g-button {margin-left: 20px}
+      }
+    }
+  }
+}
+

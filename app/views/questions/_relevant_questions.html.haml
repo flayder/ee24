@@ -1,0 +1,4 @@
+.b-relevant-items
+  .b-relevant-items__title Похожие темы
+  .b-relevant-items__list
+    = render partial: 'question', collection: questions, locals: {relation: 'relevant'}

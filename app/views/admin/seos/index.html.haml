@@ -1,0 +1,10 @@
+= render :partial => 'search_form'
+
+= link_to 'Новый SEO текст', new_admin_seo_path, :confirm => 'Вы хотите создать SEO для конкретной страницы?'
+/
+  %span.help-inline 
+  Используйте эту ссылку только для создания SEO текстов конкретной страницы. Для рубрики используйте 
+  =# link_to 'настройку рубрик', admin_site_rubrics_path
+= render :partial => 'table', :locals => { :seos => @seos }
+
+= will_paginate_bootstrap @seos

@@ -1,0 +1,6 @@
+= render :partial => 'search_form'
+
+= link_to 'Пополнить список плохих слов', new_admin_black_list_word_path
+= render :partial => 'table', :locals => { :black_list_words => @black_list_words }
+
+= will_paginate_bootstrap @black_list_words

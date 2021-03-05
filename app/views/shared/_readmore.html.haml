@@ -1,0 +1,4 @@
+.b-post__content
+  - if item.pure_content.include?('<!--more-->')
+    = sanitize(item.pure_content.partition("<!--more-->")[0])
+    = link_to 'Читать дальше', [item.category, item], class: 'read-more-link'

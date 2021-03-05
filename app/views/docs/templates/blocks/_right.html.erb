@@ -1,0 +1,13 @@
+<%= link_to 'Прислать статью', "/#{@global_rubric.link}/new", class: 'g-button orange' %>
+
+<%= render 'layouts/ads/right' %>
+<%= render 'layouts/sidebar_photo_slider' %>
+
+<%= seo_about @seo_about %>
+<%= seo_sub_text @seo_sub_text %>
+
+<% if @linker %>
+  <%= render partial: "/templates/blocks/new/linker" %>
+<% end %>
+
+<%= render partial: '/templates/blocks/new/social_widgets' %>

@@ -1,0 +1,15 @@
+%table.table.table-bordered
+  %thead
+    %th= SocialWidgetCode.human_attribute_name :id
+    %th= SocialWidgetCode.human_attribute_name :widget_type
+    %th= SocialWidgetCode.human_attribute_name :code
+    %th= 'Действия'
+  - social_widget_codes.each do |code|
+    %tr
+      %td= code.id
+      %td= code.widget_type
+      %td= code.code
+      %td
+        %ul.admin_actions      
+          %li= link_to 'Редактировать', edit_admin_social_widget_code_path(code)
+          %li= link_to 'Удалить', admin_social_widget_code_path(code), :method => :delete, :confirm => 'Вы уверены?'

@@ -1,0 +1,72 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+  = stylesheet_link_tag '//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+
+.b-form
+  = form_for @gallery do |f|
+    = error_messages_for :gallery
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :photo_rubric_id
+      .l-cols-8.l-l
+        = f.select :photo_rubric_id, @site.photo_rubrics.map{|pr|[pr.title, pr.id]}, class: 'b-form__control select'
+
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :title
+      .l-cols-8.l-l
+        = f.text_field :title, class: 'b-form__control wide'
+
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :annotation
+      .l-cols-8.l-l
+        - if can?(:rich_edit, Gallery)
+          = f.cktext_area :annotation, class: 'b-form__control textarea', ckeditor: {toolbar: 'Full'}
+        - else
+          = f.cktext_area :annotation, class: 'b-form__control textarea', ckeditor: {toolbar: 'Basic'}
+
+    = render partial: 'docs/upload_photos', locals: { f: f, doc: @gallery }
+
+    - if can?(:manage, Gallery)
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :approved
+        .l-cols-8.l-l
+          = f.check_box :approved
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :tag_list
+        .l-cols-8.l-l
+          = f.text_field :tag_list, class: 'b-form__control wide with_autocomplete', data: {url: "/tags/autocomplete"}
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :created_at
+        .l-cols-8.l-l
+          = f.datetime_select :created_at, {}, {class: 'b-form__control inline-block'}
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :not_on_main
+        .l-cols-8.l-l
+          = f.check_box :not_on_main
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :is_commentable
+        .l-cols-8.l-l
+          = f.check_box :is_commentable
+
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :user_id
+        .l-cols-8.l-l
+          = f.text_field :user_id, value: @gallery.user.try(:email), class: 'b-form__control wide'
+
+    .b-form__row
+      .l-cols-3.l-l
+        &nbsp;
+      .l-cols-8.l-l
+        = f.submit 'Отправить', class: 'g-button medium primary'

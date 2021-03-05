@@ -1,0 +1,13 @@
+<div class="user">
+  <% if user %>
+      <%= image_tag(avatar_url(user, 'small'),
+                    :size => "15x15",
+                    :alt => user.login, :title => user.login)
+      %>&nbsp;<%= link_to( user.login, '#', class: 'seo-link', data: {link: "#{account_url(user)}"}) %>
+  <% else %>
+      <%= image_tag("/images/user_icon/no_avatar_male_50.jpg",
+                    :size => "15x15",
+                    :alt => "Анонимно", :title => "Анонимно") %>&nbsp;Анонимно
+  <% end %>
+
+</div>

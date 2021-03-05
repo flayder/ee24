@@ -1,0 +1,6 @@
+.g-entity-filter articles filter
+- if is_my_profile?(@user)
+  = render 'account/templates/blocks/entity-list'
+- else
+  = render 'account/templates/blocks/public-articles'
+.g-loader= link_to 'Загрузить ещё статей', 'javascript:;', class: 'g-loader__link'

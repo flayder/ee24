@@ -1,0 +1,22 @@
+@import "ultimate/mixins/microstructures";
+@import "ultimate/mixins/css3";
+@import "ultimate/mixins/fonts";
+
+$layout-images-path: "layout";
+
+$font-family_base: "Trebuchet MS", Tahoma, Arial, sans-serif;
+$font-size_base: 14px;
+$line-height-addition: 4px;
+
+$l-page_width: 980px;
+
+$c-pitch-black: #000;
+$c-black: #333;
+$c-white: #fff;
+$c-blue: #05c;
+$c-red: #d13838;
+
+$c-body: $c-white;
+$c-font_base: $c-black;
+$c-link: $c-blue;
+$c-link_hover: $c-red;

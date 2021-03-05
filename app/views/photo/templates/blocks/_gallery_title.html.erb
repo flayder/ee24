@@ -1,0 +1,28 @@
+<div class="b-doc-show">
+  <%= render partial: 'templates/dynamic/doc_share_block', locals: { doc: doc } %>
+  <% if params[:action] == 'list' %>
+    <h1 class="title"><%= doc.title %></h1>
+    <%= render partial: 'shared/tags', locals: {doc: @gallery} %>
+    <div class="info short">
+      <div class="date"><%= Russian::strftime(doc.created_at, "%d.%m.%Y") %></div>
+      <% if doc.user %>
+        <div class="author">
+          Добавлено пользователем: &nbsp;&nbsp;
+          <%= image_tag(avatar_url(doc.user, 'small'), size: "15x15", alt: doc.user.login, title: doc.user.login) %>
+          <%= link_to doc.user.fio_or_login, "#", data: {link: "#{account_url(doc.user)}"}, class: 'seo-link' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="annotation"><%= doc.annotation.try(:html_safe) %></div>
+
+<% end %>
+  <% if can?(:manage, Gallery) %>
+    <div class="manage-links">
+      <%= link_to 'Редактировать.', edit_gallery_url(@gallery), class: 'edit' %>
+      <%= link_to 'Удалить.', gallery_url(@gallery), method: :delete, confirm: 'Вы уверены, что хотите удалить фоторепортаж?', class: 'delete' %>
+      <% unless @gallery.approved? %>
+        <%= link_to 'Подтвердить', approve_gallery_url(@gallery), confirm: 'Вы уверены, что хотите подтвердить фоторепортаж?', class: 'delete'  %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

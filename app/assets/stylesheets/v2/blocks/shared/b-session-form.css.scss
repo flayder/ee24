@@ -1,0 +1,115 @@
+.b-auth-popup {
+  .popup-window & {
+    width: 400px;
+    padding: 15px 20px;
+    margin: 0 auto;
+    margin-top: -25px;
+    background: $white;
+    border-radius: 5px;
+
+    & .s-gray-box {
+      &__title {
+        display: block;
+        min-height: 30px;
+        margin: 5px 40px 15px;
+        font: normal 24px / 30px $font-family_subsubheader;
+        color: $gray-mid;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+
+    .social-auth {
+      display: block;
+      margin-right: -$dx;
+      padding-bottom: $dx/2;
+      @include clearfix;
+    }
+
+    .social-button {
+      display: block;
+      width: 190px;
+      height: 40px;
+      margin: $dx/2 $dx/2 4px 4px;
+      float: left;
+      background: $gray-light;
+      font: 14px / 44px $font-family_subsubheader;
+      text-transform: uppercase;
+      text-align: center;
+      color: $white;
+      border-radius: 5px;
+      @include remove_link_decoration;
+      &.fb {@include bg-darken(#004b95);}
+      &.tw {@include bg-darken(#1cacdf);}
+      &.vk {@include bg-darken(#346290);}
+      &.gp {@include bg-darken(#c20e1d);}
+    }
+
+    .field-line {margin-bottom: 10px;}
+
+    .agreement {
+      margin-top: 20px;
+      color: #7c7c7c;
+    }
+
+    & .s-gray-box__content {
+      border-top: $gray-light2 1px solid;
+
+      .label-line {
+        display: block;
+        margin: 10px 0 10px;
+        height: 10px;
+        font: 16px $font-family_subsubheader;
+        color: $blue-dark4;
+        text-transform: uppercase;
+      }
+
+      .field {
+        display: block;
+        @include box-sizing(border-box);
+        width: 100%;
+        height: 40px;
+        padding: 0 10px;
+        font: 18px / 40px $font-family_base;
+        color: $black;
+        background: $gray-light3;
+        border: $gray-light3 1px solid;
+        border-radius: 5px;
+        &:focus {border-color: $blue-regular}
+      }
+
+      .remember {top: -2px}
+
+      .submit {
+        display: block;
+        width: 100%;
+        height: 50px;
+        @include bg-darken(#004b95);
+        font: 16px / 54px $font-family_subsubheader;
+        text-transform: uppercase;
+        text-align: center;
+        color: $white;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .restore {
+        margin: 20px 0 0;
+        font: 16px $font-family_subsubheader;
+        text-align: center;
+        .restore-link {color: $blue-dark4;}
+      }
+
+      .additional {
+        width: 100%;
+        height: 0;
+        position: relative;
+        top: 35px;
+        text-align: center;
+        font-family: $font-family_proxymanova;
+        color: $white;
+        .g-button {margin-left: 20px}
+      }
+    }
+  }
+}

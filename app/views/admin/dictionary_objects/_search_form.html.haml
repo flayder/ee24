@@ -1,0 +1,13 @@
+.well
+  %h3 Поиск
+  #search_form
+    = simple_form_for @search, :url => admin_dictionary_objects_path, class: 'form-horizontal' do |form|
+      .control-group
+        .controls
+          = form.input :id_eq, :required => false
+        .controls
+          = form.input :approved_eq, :required => false, :as => :radio_buttons      
+        .controls
+          = form.select :rubric_id_eq, @site.dictionary_rubrics.map { |r| [r.title, r.id] }, :prompt => 'Выберите рубрику', :required => false
+        .controls
+          = form.button :submit, 'Найти', class: 'btn'

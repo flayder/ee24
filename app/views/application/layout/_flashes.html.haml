@@ -1,0 +1,4 @@
+%div.l-page__flashes
+  - flash.each do |key, text|
+    .flash{ class: key }
+      = text

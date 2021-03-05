@@ -1,0 +1,68 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <%= render 'account/templates/blocks/left' %>
+  </aside>
+  <section class="l-page__column right">
+    <div class='b-rubric-title'>Редактирование</div>
+    <div class="g-box">
+      Выберите ваш аватар:
+      <%= form_tag(user_update_avatar_url(@user.subdomain), multipart: true) do %>
+        <table width=360 border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td>
+              <table width=360 border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td height=5></td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= avatar_img(@user, size = "avatar").html_safe %>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan=4 height=20></td>
+                </tr>
+                <tr>
+                  <td>Новый аватар:</td>
+                </tr>
+                <tr>
+                  <td height=5></td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">
+                    <%= file_field :user, :avatar %>
+                  </td>
+                </tr>
+                <tr>
+                  <td width=360 colspan=4 style="font-size: 10px;">В качестве аватара может быть использовано
+                    изображение в формате jpg или gif размером 100х100 пикселей.
+                  </td>
+                </tr>
+                <tr>
+                  <td height=5></td>
+                </tr>
+                <tr>
+                  <td style="text-align: left;">
+                    <%= check_box("no_avatar", "") %> Пустой аватар
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan=4 height=20></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table width=100% border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td style="text-align: left;"><br><%= submit_tag 'Сохранить' %></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,18 @@
+= link_to 'К списку разделов', "/admin/versions/#{@item.class}"
+
+%h1 
+  История изменений
+  - if @item.respond_to?(:url)
+    %h4= link_to @item.title, @item.url
+
+- if @item.versions.present?
+  %table.table.table-bordered
+    %tr
+      %th Дата изменения
+      %th Автор изменения
+      %th 
+    - @item.versions.each do |version|
+      %tr
+        %td= version.created_at.strftime("%d.%m.%Y %H:%M")
+        %td= version.author.login if version.author.present?
+        %td= link_to 'diff', admin_version_diff_url(version.id)

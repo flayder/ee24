@@ -1,0 +1,28 @@
+.b-event__item.l-l
+  .l-cols-2.l-l.b-event__date
+    - if event.finish_date.to_date == event.start_date.to_date
+      .b-event__day
+        = event.start_date.strftime('%d')
+      .b-event__month
+        = Russian::strftime(event.start_date, "%d %B").split(' ').last
+      .b-event__time
+    - else
+      .b-event__start-date
+        %span с
+        = event.start_date.strftime('%d.%m.%Y')
+      .b-event__finish-date
+        %span по
+        = event.finish_date.strftime('%d.%m.%Y')
+  .l-cols-7.l-l
+    - if event.main_photo.present?
+      .b-event__photo.l-l
+        = image_tag event.main_photo.image.url(:medium), size: '190x131', alt: event.title, title: event.title, class: 'cover'
+
+    .b-event__content
+      = link_to event.rubric.title, event.rubric.url, class: 'b-event__category' if event.rubric.present?
+      .b-event__title
+        = link_to event.title, event.approved ? event.url : event.preview_secret_url
+      .g-aux.mini.l
+        %span.g-aux__item.views
+          = event.page_views
+        = render partial: 'templates/blocks/comments_counter', locals: {doc: event}

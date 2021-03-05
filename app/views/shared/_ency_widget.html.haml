@@ -1,0 +1,7 @@
+.b-ency-widget
+  -if params[:controller] == 'main'
+    .b-ency-widget__title Энциклопедия
+  .b-ency-widget__link.person= link_to 'Персона', @site.dictionaries.find_by_link(:persona).url, class: ''
+  .b-ency-widget__link.sights= link_to 'Достопримечательности', @site.dictionaries.find_by_link(:attractions).url, class: ''
+  .b-ency-widget__link.beer= link_to 'Чешское пиво', @site.dictionaries.find_by_link(:czech_beer).url, class: ''
+  .b-ency-widget__link.dict= link_to 'Медицинский словарь', @site.dictionaries.find_by_link(:medical).url, class: ''

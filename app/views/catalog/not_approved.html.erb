@@ -1,0 +1,34 @@
+<div class="l-page__columns-line">
+  <aside class="l-page__column left">
+    <%= render partial: 'rubrics' %>
+    <div class="g-box">
+      <% unless @places.empty? %>
+        <%= div_for @places, class: "b-board__item" do |place| %>
+          <%= link_to place.title, place.url(@site), class: "title" %>
+          <div class="text">
+            <%= place.annotation %>
+          </div>
+          <% if place.logo? %>
+            <div class="photos">
+              <%= link_to image_tag(place.logo.url('medium'), size: "100x100"), place.url(@site), title: place.logo_alt, alt: place.logo_alt %>
+            </div>
+          <% end %>
+          <% if can?(:manage, place) %>
+            <div class="manage-links">
+              <%= link_to 'ред.', edit_catalog_url(place) %>
+              <%= link_to 'уд.', catalog_url(place), method: :delete, confirm: 'Вы уверены, что хотите удалить компанию?' %>
+            </div>
+          <% end %>
+        <% end %>
+        <% if @places.total_pages > 1 %>
+          <%= will_paginate_new @places %>
+        <% end %>
+      <% else %>
+        <p class="no-info">Нет компаний</p>
+      <% end %>
+    </div>
+  </aside>
+  <section class="l-page__column right">
+    <%= render partial: "/catalog/templates/blocks/right2" %>
+  </section>
+</div>

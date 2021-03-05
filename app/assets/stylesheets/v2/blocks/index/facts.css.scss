@@ -1,0 +1,48 @@
+.b-facts {
+  padding: 35px 25px;
+  margin-bottom: 30px;
+  background: #c6e6eb;
+  @include clearfix;
+
+  &__title {
+    margin-bottom: 35px;
+    font: bold 24px $font-family_subheader;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    color: $green-light;
+  }
+
+  .b-fact {
+    width: 240px;
+    padding-left: 140px;
+    margin-right: 110px;
+    float: left;
+    &:last-child {margin-right: -25px;}
+
+    &__image {
+      float: left;
+      margin: 0 20px 0 -140px;
+      border: 6px #c6e6eb solid;
+      border-radius: 50%;
+    }
+
+    &__title {
+      font-size: $font-size_big;
+      line-height: $line-height_big;
+      color: $blue-dark4;
+    }
+    
+    &__category {
+      padding: 5px -0px;
+      font: normal $font-size_inreased $font-family_subsubheader;
+      line-height: $line-height_inreased;
+      text-transform: uppercase;
+      a {color: $black}
+    }
+
+    &__descr {
+      color: $gray-dark2;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+- content_for :head do
+  = raw yandex_header
+
+:javascript
+  var cityCoords = #{[@city.lat, @city.lng]};
+
+.l-wrapper
+
+  = render 'header'
+  #b-yandex-map.large-surface{:style => "width: 100%; height: 600px;"}
+  -#= yandex_direct_code @site
+= seo_text @seo

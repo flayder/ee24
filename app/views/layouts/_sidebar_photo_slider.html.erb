@@ -1,0 +1,31 @@
+<div class="g-box last-photo-reports">
+  <% if @photo_sliders %>
+      <% @photo_sliders.limit(1).each do |gallery| %>
+          <div class='gallery'>
+            <% if gallery.main_photo %>
+              <%= link_to gallery.list_url, class: 'image' do  %>
+                <%= image_tag(url_for_file_column(gallery.main_photo, "image", "photo_gallery"), alt: gallery.title, title: gallery.title) %>
+                <%= image_tag 'layout/overlay.png', class: 'overlay'%>
+              <% end %>
+            <% end %>
+            <div class="container">
+              <div class="views">
+                <%= image_tag 'layout/views.png' %>
+                <%= gallery.page_views %>
+              </div>
+              <div class="photos">
+                <%= image_tag 'layout/photos.png' %>
+                <%= gallery.photos.count %>
+              </div>
+              <div class="comments">
+                <% if comments_needed_for?(gallery) %>
+                  <%= image_tag 'icons/comments-white.png', class: "b-news__comments__counter-icon" %>
+                  <%= render partial: 'templates/blocks/comments_counter_code', locals: {doc: gallery} %>
+                <% end %>
+              </div>
+              <%= link_to gallery.title, gallery.list_url, class: 'gallery-title'%>
+            </div>
+          </div>
+      <% end %>
+  <% end %>
+</div>

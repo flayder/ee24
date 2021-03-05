@@ -1,0 +1,11 @@
+%h1= 'Новый формат рекламной поверхности'
+= form_for [:admin, @ad_format] do |f|
+  = error_messages_for :ad_format, :object => @ad_format
+  
+  .control_group
+    .controls
+      = f.label :titte
+      = f.text_field :title
+
+    .controls
+      = f.submit 'Сохранить', class: 'btn'

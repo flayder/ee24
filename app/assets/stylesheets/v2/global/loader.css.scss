@@ -1,0 +1,54 @@
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+
+.g-loader {
+  text-align: center;
+  margin: 50px 0;
+  &.mini {
+    margin: 0;
+    text-align: left;
+    float: left;
+    .g-loader__link {
+      display: block;
+      height: 40px;
+      padding-left: 40px;
+      font-size: 16px;
+      line-height: 38px;
+      color: $blue-mid3;
+      border: none;
+      background: asset-data_url('v2/icons/ajax-reload_invert.png') left center no-repeat;
+      cursor: pointer;
+      &:hover {color: $blue-mid4}
+    }
+  }
+
+  .l-cols &,
+  .b-photos & {
+    width: 100%;
+    float: left;
+  }
+
+  & &__link {
+    line-height: 28px;
+    display: inline-block;
+    vertical-align: middle;
+    &:before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: 30px;
+      height: 28px;
+      background: asset-data-url('v2/icons/ajax-reload.png') no-repeat;
+      margin-right: 10px;
+    }
+    &:hover:before {@include animation(spin 500ms linear 0s 1);}
+    &.disabled {
+      color: $gray-mid;
+      text-decoration: none;
+      cursor: default;
+      &:before {
+        @include animation(spin 1s linear 0s infinite);
+        opacity: .7;
+      }
+    }
+  }
+}

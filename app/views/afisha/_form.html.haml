@@ -1,0 +1,108 @@
+- content_for :head do
+  = javascript_include_tag 'ckeditor'
+  = stylesheet_link_tag '//code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css'
+
+.b-form.l-cols
+  = form_for @event, html: {class: 'b-form', multipart: true} do |f|
+    = error_messages_for :event
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :event_rubric_id, nil
+      .l-cols-8.l-l
+        = f.select :event_rubric_id, @rubrics.map { |r| [r.title, r.id] }, {}, class: 'b-form__control select'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :title
+      .l-cols-8.l-l
+        = f.text_field :title, class: 'b-form__control wide'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :start_date
+      .l-cols-8.l-l
+        = f.datetime_select :start_date, {}, {class: 'b-form__control inline-block'}
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :finish_date
+      .l-cols-8.l-l
+        = f.datetime_select :finish_date, {}, {class: 'b-form__control inline-block'}
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :show_time
+      .l-cols-8.l-l
+        = f.check_box :show_time
+    = render partial: 'docs/upload_photos', locals: {f: f, doc: @event}
+    - if can?(:manage, @event)
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :long_image
+        .l-cols-8.l-l
+          = f.check_box :long_image
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :place
+      .l-cols-8.l-l
+        = f.text_field :place, class: 'b-form__control wide'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :address
+      .l-cols-8.l-l
+        = f.text_area :address, cols: 50, rows: 2, class: 'b-form__control textarea'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :price
+      .l-cols-8.l-l
+        = f.text_field :price, class: 'b-form__control wide'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :promote_link
+      .l-cols-8.l-l
+        = f.text_field :promote_link, class: 'b-form__control wide'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :annotation
+      .l-cols-8.l-l
+        = f.text_area :annotation, cols: 50, rows: 2, class: 'b-form__control textarea'
+    .b-form__row
+      .l-cols-3.l-l
+        = f.label :text
+      .l-cols-8.l-l
+        - if can?(:manage, @event)
+          = f.cktext_area :text, class: 'b-form__control textarea', ckeditor: {toolbar: 'Full'}
+        - else
+          = f.cktext_area :text, class: 'b-form__control textarea', ckeditor: {toolbar: 'Basic'}
+    - if can?(:manage, @event)
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :tag_list
+        .l-cols-8.l-l
+          = f.text_field :tag_list, class: 'b-form__control wide with_autocomplete', data: {url: "/tags/autocomplete"}
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :approved
+        .l-cols-2.l-l
+          = f.check_box :approved
+
+        .l-cols-3.l-l
+          = f.label :main
+        .l-cols-3.l-l
+          = f.check_box :main
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :is_commentable
+        .l-cols-8.l-l
+          = f.check_box :is_commentable
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :created_at
+        .l-cols-8.l-l
+          = f.datetime_select :created_at, {}, {class: 'b-form__control inline-block'}
+      .b-form__row
+        .l-cols-3.l-l
+          = f.label :user_id
+        .l-cols-8.l-l
+          = f.text_field :user_id, value: @event.user.try(:email), class: 'b-form__control'
+    .b-form__row
+      .l-cols-3.l-l
+        &nbsp;
+      .l-cols-8.l-l
+        = f.submit 'Отправить', class: 'g-button medium primary'

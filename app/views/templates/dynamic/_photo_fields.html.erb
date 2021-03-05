@@ -1,0 +1,12 @@
+<% if object.photo? %>
+  <div>
+    <%= image_tag url_for_file_column(object, 'photo', 'small')  %>
+    <%= f.check_box :remove_photo %>Нет картинки
+  </div>
+<% end %>
+<div>
+  <%= label object.class.to_s.downcase, 'photo', 'Прикрепить картинку:' %>
+  <%= f.file_field 'photo' %>
+  <%= f.hidden_field 'photo_cache' %>
+  <p>Разрешены .jpg, .png, максимальный размер 5 мегабайт</p>
+</div>

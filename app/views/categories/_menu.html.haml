@@ -1,0 +1,12 @@
+.g-tabs.unjustify
+  - if params[:id] || params[:category_id]
+    = link_to_current t('.new'), category_path(params[:id] || params[:category_id]), class: 'g-tab'
+    = link_to_current t('.popular'), popular_category_questions_path(params[:id] || params[:category_id]), class: 'g-tab'
+  - else
+    = link_to_current t('.new'), categories_path, class: 'g-tab'
+    = link_to_current t('.popular'), popular_questions_path, class: 'g-tab'
+  - if current_user
+    = link_to_current t('.my'), my_questions_path, class: 'g-tab'
+
+  .pull-right
+    = link_if_logged t('.add_question'), new_question_path(category_id: params[:id] || params[:category_id])
