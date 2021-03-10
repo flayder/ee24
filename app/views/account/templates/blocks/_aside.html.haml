@@ -24,10 +24,6 @@
         .character__socials
           = link_to social_account_url(host: "https://instagram.com", account: user.instagram), target: :_blank, rel: :nofollow do
             = image_tag "v2/social/instagram.png"
-      - if user.gplus?
-        .character__socials
-          = link_to social_account_url(host: "https://plus.google.com", account: user.gplus), target: :_blank, rel: :nofollow do
-            = image_tag "v2/social/google.png"
       - if user.vkontakte?
         .character__socials
           = link_to social_account_url(host: "https://vk.com", account: user.vkontakte), target: :_blank, rel: :nofollow do
