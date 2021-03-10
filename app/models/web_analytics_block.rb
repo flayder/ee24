@@ -2,7 +2,7 @@
 class WebAnalyticsBlock < ActiveRecord::Base
   include WithSite
 
-  CODE_TYPES = ['google_analytics', 'liveinternet100on', 'liveinternet', 'yandex_metrika', 'mailru', 'liveinternet_visible']
+  CODE_TYPES = ['google_analytics', 'yandex_metrika']
   #validates_uniqueness_of :site_id
 
   attr_accessible :body, :code_type

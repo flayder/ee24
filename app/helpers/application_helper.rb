@@ -265,11 +265,6 @@ module ApplicationHelper
     end
   end
 
-  def liveinternet_logo
-    code = @site.web_analytics_blocks.find_by_code_type('liveinternet_visible')
-    code.present? ? raw(code.body) : ''
-  end
-
   def yandex_direct_code site
     if code = YandexDirectCodes[site.domain]
       raw(YandexDirectCodes[site.domain])
