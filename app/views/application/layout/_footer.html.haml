@@ -36,8 +36,8 @@
           -#   %li= link_to 'Продажа билетов на концерты в Праге', 'https://tickets.420on.cz'
 
         .l-footer__content__block.social
-          .l-footer__content__block-title Мы в соцсетях
-          - if block = FooterBlock.where(identity: 'social').first
+          .l-footer__content__block-title Связаться с нами
+          - if block = FooterBlock.where(identity: 'contacts').first
             = raw block.content
           -# %ul.l-footer__content__social-links
           -#   %li= link_to '', 'https://vk.com/czonline', class: 'link vk', rel: 'nofollow'
@@ -47,10 +47,10 @@
           -#   %li= link_to '', 'https://www.youtube.com/user/420oncz', class: 'link yt', rel: 'nofollow'
           -#   %li= link_to '', 'https://instagram.com/420oncz', class: 'link ig', rel: 'nofollow'
 
-        .l-footer__content__block.contacts
-          .l-footer__content__block-title Связаться с нами
-          - if block = FooterBlock.where(identity: 'contacts').first
-            = raw block.content
+        -# .l-footer__content__block.contacts
+        -#   .l-footer__content__block-title Связаться с нами
+        -#   - if block = FooterBlock.where(identity: 'contacts').first
+        -#     = raw block.content
           -# %ul.l-footer__content__links
           -#   %li
           -#     420on.cz s.r.o.
@@ -64,8 +64,8 @@
         %p= "#{@site.domain} &mdash; #{@site.portal_title}".html_safe
         %p= "&copy; 2009-#{Date.today.year} Все права защищены.".html_safe
         %p= %(Любое использование материалов допускается только при наличии гиперссылки на #{link_to @site.domain, "https://#{@site.domain}"}).html_safe
-        %p= %(#{link_to 'Web portal development', 'https://evrone.com/media'} by #{link_to 'Evrone Ruby team', 'https://evrone.com/ruby'}).html_safe
-        %p= %(Сайт разработан командой #{link_to 'Evrone', 'https://evrone.ru/'}).html_safe
 
       .l-footer__content__analitics
-        = web_analytics(@site)
+        .l-footer__content__block-title{ style: 'padding: 0 0 10px;' } Мы в соцсетях
+        - if block = FooterBlock.where(identity: 'social').first
+          = raw block.content
