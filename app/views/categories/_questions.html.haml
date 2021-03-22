@@ -7,5 +7,5 @@
       -# TODO: comments
       = link_to question.category.name, question.category, class: 'g-aux__label'
       %span.g-aux__item.time= timeleft question.created_at
-      %span.g-aux__item.comments
-        = link_to question.comments.count, category_question_path(question.category, question, :anchor => 'comments')
+      -# %span.g-aux__item.comments
+      -#   = link_to question.comments.count, category_question_path(question.category, question, :anchor => 'comments')

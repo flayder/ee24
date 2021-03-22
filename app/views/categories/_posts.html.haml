@@ -8,4 +8,4 @@
       = link_to post.community.category.name, post.community.category, class: 'g-aux__label'
       = link_to post.community.name, [post.community.category, post.community], class: 'g-aux__item users'
       %span.g-aux__item.date= timeleft post.created_at
-      %span.g-aux__item.comments= post.comments.count
+      -# %span.g-aux__item.comments= post.comments.count

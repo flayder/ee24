@@ -5,5 +5,5 @@
 .g-aux.l
   %time.g-aux__item.date{datetime: Russian::strftime(externaldoc.created_at, '%Y-%m-%d')}
     = externaldoc.created_at.strftime('%d.%m.%Y')
-  .g-aux__item.comments
-    = render partial: 'templates/blocks/comments_counter_code', locals: {doc: externaldoc}
+  -# .g-aux__item.comments
+  -#   = render partial: 'templates/blocks/comments_counter_code', locals: {doc: externaldoc}

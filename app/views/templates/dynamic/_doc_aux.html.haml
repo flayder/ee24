@@ -9,7 +9,7 @@
       %time.g-aux__item.date{datetime: Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%Y-%m-%d')}= Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%d.%m.%Y')
       - unless doc.is_a?(DictionaryObject)
         %span.g-aux__item.views= doc.page_views
-        %span.g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: doc}
+        -# %span.g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: doc}
     = render partial: 'shared/tags', locals: {doc: doc}
 
   .b-doc__socials

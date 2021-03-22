@@ -7,7 +7,7 @@
     .g-aux.l.blue
       %time.g-aux__item.date{datetime: Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%Y-%m-%d')}= Russian::strftime(doc.is_a?(Event) ? doc.updated_at : doc.created_at, '%d.%m.%Y')
       %span.g-aux__item.views= doc.page_views
-      %span.g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: doc}
+      -# %span.g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: doc}
       -# TODO: для сообщества дополнить %span.g-aux__item.community= rand(20)
     = render partial: 'shared/tags', locals: {doc: doc}
     - if doc.is_a?(Gallery) && can?(:manage, Gallery)

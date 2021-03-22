@@ -11,7 +11,7 @@
       .b-media__lead= truncate(strip_tags(media.annotation), length: 200).html_safe if !@site.photo_rubrics.include?(media.rubric) && controller_name != 'photos'
   .b-media__info
     .g-aux.r
-      .g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: media}
+      -# .g-aux__item.comments= render partial: 'templates/blocks/comments_counter_code', locals: {doc: media}
       .g-aux__item.views= media.page_views
       .g-aux__item.date= media.created_at.strftime('%d.%m.%Y')
     - if media.user
