@@ -8,12 +8,6 @@
       - if doc.is_a?(Event)
         %span.doc-playbill-date
           = doc.start_date.strftime("%d.%m.%y")
-      - else
-        %span.doc-date
-          - if doc.rubric.global_rubric_id == 38 && doc.created_at.to_date != Time.current.to_date
-            = doc.created_at.strftime("%d.%m %H:%M")
-          - else
-            = doc.created_at.strftime(date_format)
       %span.doc-category= link_to doc.rubric.title, doc.rubric.url
 
     .doc-title
