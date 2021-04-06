@@ -3,9 +3,9 @@
 .container
   .logo
 
-  %h2.page-title Новости
+  %h2.page-title Главное
   .feed
-    - @news.each do |doc|
+    - @docs.each do |doc|
       = render 'shared/mobile/doc_item', doc: doc
   .text-center
     = link_to 'Все новости', '/news'
