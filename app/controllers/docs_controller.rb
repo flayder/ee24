@@ -16,7 +16,7 @@ class DocsController < ApplicationController
 
   def index
     set_index_meta_fields
-    @docs = Doc.site(@site).approved.global_rubric(@global_rubric).by_language.order('id DESC')
+    @docs = Doc.site(@site).approved.global_rubric(@global_rubric).by_language.order('created_at DESC')
                 .paginate(page: params[:page], per_page: 15)
     respond_to do |format|
       format.html
