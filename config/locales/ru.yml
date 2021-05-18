@@ -640,6 +640,7 @@ ru:
     vertical_right_main: баннер справа на главной
     vertical_top_right: баннер справа сверху
     doc_text_bottom: баннер в статьях после текста
+    mobile_doc_text_bottom: баннер в статьях после текста в мобильной версии
 
   errors:
     messages:

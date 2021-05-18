@@ -53,9 +53,18 @@
 
   .doc-text= article_text(@doc)
 
-  - if (banner = ad_code('doc_text_bottom')).present?
+  - if (banner = ad_code('mobile_doc_text_bottom')).present?
     .l-cols.banner-doc-text-bottom
       = banner.html_safe
+
+      :plain
+        <script type="text/javascript">
+          $('.banner-doc-text-bottom').bind('DOMSubtreeModified', function () {
+            $('.banner-doc-text-bottom img').attr('style', '')
+            $('.banner-doc-text-bottom #ad_ph_1 div').attr('style', '')
+            $('.banner-doc-text-bottom img').attr('style', 'width: 100%')
+          });
+        </script>
 
   .doc-tags
     - @doc.tags.each do |tag|
