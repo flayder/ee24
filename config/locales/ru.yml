@@ -642,6 +642,7 @@ ru:
     doc_text_bottom: баннер в статьях после текста
     mobile_doc_text_bottom: баннер в статьях после текста в мобильной версии
     mobile_doc_text_top: баннер в статьях перед текстом в мобильной версии
+    mobile_horizontal_top: верхний горизонтальный в мобильной версии
 
   errors:
     messages:

@@ -1,5 +1,20 @@
 = content_for :title, 'Главное'
 
+- if (banner = ad_code('mobile_horizontal_top')).present?
+  .l-cols.banner-horizontal-top
+    = banner.html_safe
+
+  :plain
+    <script type="text/javascript">
+      $('.banner-horizontal-top').bind('DOMSubtreeModified', function () {
+        $('.banner-horizontal-top img').attr('style', '')
+        $('.banner-horizontal-top #ad_ph_1 div').attr('style', '')
+        $('.banner-horizontal-top #ad_ph_2 div').attr('style', '')
+        $('.banner-horizontal-top #ad_ph_3 div').attr('style', '')
+        $('.banner-horizontal-top img').attr('style', 'width: 100%')
+      });
+    </script>
+
 .container
   .logo
 

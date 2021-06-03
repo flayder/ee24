@@ -13,7 +13,8 @@ class AdCode < ActiveRecord::Base
     :vertical_top_right, 
     :doc_text_bottom,
     :mobile_doc_text_bottom,
-    :mobile_doc_text_top
+    :mobile_doc_text_top,
+    :mobile_horizontal_top
   ]
 
   #уникальная валидация по принадлежащей рубрике/секции или по урлу (ну и сайту)
