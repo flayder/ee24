@@ -4,7 +4,17 @@ class AdCode < ActiveRecord::Base
   belongs_to :ad_section, :polymorphic => true
 
   AD_SECTION_TYPES = %(Site SiteSection CatalogRubric Dictionary DocGlobalRubric DocRubric RubricDoc EventRubric PhotoRubric DictionaryRubric)
-  BANNER_TYPES = ['horizontal_top', 'horizontal_bottom', 'vertical_right', 'vertical_right_main', 'logo', 'vertical_top_right', 'doc_text_bottom']
+  BANNER_TYPES = [
+    :horizontal_top, 
+    :horizontal_bottom, 
+    :vertical_right, 
+    :vertical_right_main, 
+    :logo, 
+    :vertical_top_right, 
+    :doc_text_bottom,
+    :mobile_doc_text_bottom,
+    :mobile_doc_text_top
+  ]
 
   #уникальная валидация по принадлежащей рубрике/секции или по урлу (ну и сайту)
   validates :site_id, :uniqueness => {:scope => [:banner_type, :ad_section_id, :ad_section_type], :message => 'Можно создать только 1 баннер данного типа для раздела/рубрики'}, :if => :section_uniqueness_required?
