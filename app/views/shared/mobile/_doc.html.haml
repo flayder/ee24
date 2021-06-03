@@ -1,8 +1,17 @@
-<!--  AdRiver code START. Type:AjaxJS Site: 420on.cz PZ:1 BN:1 -->
-#adriver_banner_866129108
-:javascript
-  new adriver("adriver_banner_866129108", {sid:188490, bt:52, bn:1, pz:1});
-<!--  AdRiver code END  -->
+- if (banner = ad_code('mobile_doc_text_top')).present?
+  .l-cols.banner-doc-text-top
+    = banner.html_safe
+
+  :plain
+    <script type="text/javascript">
+      $('.banner-doc-text-top').bind('DOMSubtreeModified', function () {
+        $('.banner-doc-text-top img').attr('style', '')
+        $('.banner-doc-text-top #ad_ph_1 div').attr('style', '')
+        $('.banner-doc-text-top #ad_ph_2 div').attr('style', '')
+        $('.banner-doc-text-top #ad_ph_3 div').attr('style', '')
+        $('.banner-doc-text-top img').attr('style', 'width: 100%')
+      });
+    </script>
 
 .article
   .doc-info
@@ -62,6 +71,8 @@
           $('.banner-doc-text-bottom').bind('DOMSubtreeModified', function () {
             $('.banner-doc-text-bottom img').attr('style', '')
             $('.banner-doc-text-bottom #ad_ph_1 div').attr('style', '')
+            $('.banner-doc-text-bottom #ad_ph_2 div').attr('style', '')
+            $('.banner-doc-text-bottom #ad_ph_3 div').attr('style', '')
             $('.banner-doc-text-bottom img').attr('style', 'width: 100%')
           });
         </script>

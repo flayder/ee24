@@ -641,6 +641,7 @@ ru:
     vertical_top_right: баннер справа сверху
     doc_text_bottom: баннер в статьях после текста
     mobile_doc_text_bottom: баннер в статьях после текста в мобильной версии
+    mobile_doc_text_top: баннер в статьях перед текстом в мобильной версии
 
   errors:
     messages:
