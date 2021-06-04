@@ -48,6 +48,5 @@
               = banner.ad_section.respond_to?(:title) ? banner.ad_section.title : "##{banner.ad_section.id}"
           %td
             = link_to 'ред.', edit_admin_ad_code_url(banner)
-            = link_to 'уд.', admin_ad_code_url(banner), :method => :delete, :confirm => 'Вы уверены, что хотите удалить баннер?'
 
 = will_paginate_bootstrap @ad_codes
