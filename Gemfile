@@ -44,7 +44,6 @@ gem 'mysql2'
 gem 'rmagick'
 gem 'thinking-sphinx', '3.1.4'
 gem 'whenever', require: false
-gem 'yajl-ruby'
 gem 'oauth'
 gem 'omniauth'
 # Локальный гем вконтакта нужен только для того, чтобы в нем прописать 'omniauth-oauth2' версии ~> 1.2,
