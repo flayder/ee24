@@ -86,11 +86,8 @@
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
-    :javascript
-      (adsbygoogle = window.adsbygoogle || []).push({
-        google_ad_client: "ca-pub-4210860558654007",
-        enable_page_level_ads: true
-      });
+    :plain
+      <script data-ad-client="ca-pub-4210860558654007" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     - if controller_name == 'catalog'
       %script
