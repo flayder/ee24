@@ -6,12 +6,8 @@
 
   :plain
     <script type="text/javascript">
-      $('.banner-horizontal-top').bind('DOMSubtreeModified', function () {
-        $('.banner-horizontal-top iframe').attr('width', '100%')
-        $('.banner-horizontal-top iframe').attr('height', '')
-        $('.banner-horizontal-top img').attr('style', '')
-        $('.banner-horizontal-top img').attr('width', window.innerWidth)
-      });
+      left_padding = (window.innerWidth - $('.banner-horizontal-top iframe').width()) / 2
+      $('.banner-horizontal-top iframe').attr('style', "padding-left: " + left_padding + "px" )
     </script>
 
 .container
