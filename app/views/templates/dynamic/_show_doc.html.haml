@@ -151,6 +151,10 @@
         .g-comments-wrapper.js-comments{data:{class: doc.class, id: doc.id}}
           = render 'comments/comment_form_full', doc: doc, visible: doc.class == 'Question'
 
+      - if (banner = ad_code('doc_text_bottom')).present?
+        .l-cols.banner-doc-text-bottom
+          = banner.html_safe
+
       - if doc.is_a?(Doc) && doc.similar_docs.present?
         .b-doc__last-news
           .g-subheader.g-subheader__last-news Последние новости:
