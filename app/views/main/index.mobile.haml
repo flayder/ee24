@@ -4,12 +4,6 @@
   .l-cols.banner-horizontal-top
     = banner.html_safe
 
-  :plain
-    <script type="text/javascript">
-      left_padding = (window.innerWidth - $('.banner-horizontal-top iframe').width()) / 2
-      $('.banner-horizontal-top iframe').attr('style', "padding-left: " + left_padding + "px" )
-    </script>
-
 .container
   .logo
 
@@ -21,6 +15,11 @@
     = link_to 'Все новости', '/news'
   .divider
 
+- if (banner = ad_code('mobile_horizontal_top')).present?
+  .l-cols.banner-horizontal-top
+    = banner.html_safe
+
+.container
   %h2.page-title События
   .feed
     - @events.each do |doc|
@@ -29,7 +28,18 @@
     = link_to 'Все события', '/afisha'
   .divider
 
+- if (banner = ad_code('mobile_horizontal_top')).present?
+  .l-cols.banner-horizontal-top
+    = banner.html_safe
+
+.container
   %h2.page-title Статьи
   .feed
     - @articles.each do |doc|
       = render 'shared/mobile/doc_item', doc: doc, date_format: "%d.%m"
+
+:plain
+    <script type="text/javascript">
+      left_padding = (window.innerWidth - $('.banner-horizontal-top iframe').width()) / 2
+      $('.banner-horizontal-top iframe').attr('style', "padding-left: " + left_padding + "px" )
+    </script>
