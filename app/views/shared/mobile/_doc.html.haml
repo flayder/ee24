@@ -4,14 +4,11 @@
 
   :plain
     <script type="text/javascript">
-      $('.banner-doc-text-top').bind('DOMSubtreeModified', function () {
-        $('.banner-doc-text-top img').attr('style', '')
-        $('.banner-doc-text-top #ad_ph_1 div').attr('style', '')
-        $('.banner-doc-text-top #ad_ph_2 div').attr('style', '')
-        $('.banner-doc-text-top #ad_ph_3 div').attr('style', '')
-        $('.banner-doc-text-top img').attr('style', 'width: 100%')
-      });
+      var el = $('.banner-doc-text-top iframe')
+      left_padding = (el.parent().width() - el.width()) / 2
+      $('.banner-doc-text-top iframe').attr('style', "padding-left: " + left_padding + "px" )
     </script>
+
 
 .article
   .doc-info

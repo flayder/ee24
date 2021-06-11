@@ -15,6 +15,19 @@
 
   .divider
 
+.container
+  - if (banner = ad_code('mobile_doc_text_top')).present?
+    .l-cols.banner-doc-text-top
+      = banner.html_safe
+
+    :plain
+      <script type="text/javascript">
+        var el = $('.banner-doc-text-top iframe')
+        left_padding = (el.parent().width() - el.width()) / 2
+        $('.banner-doc-text-top iframe').attr('style', "padding-left: " + left_padding + "px" )
+      </script>
+
+
   .doc-subheader Главное
   .feed
     - @docs.each do |doc|
@@ -22,3 +35,15 @@
       
   .text-center
     = link_to 'Все новости', '/news'
+
+.container
+  - if (banner = ad_code('mobile_doc_text_top')).present?
+    .l-cols.banner-doc-text-top
+      = banner.html_safe
+
+    :plain
+      <script type="text/javascript">
+        var el = $('.banner-doc-text-top iframe')
+        left_padding = (el.parent().width() - el.width()) / 2
+        $('.banner-doc-text-top iframe').attr('style', "padding-left: " + left_padding + "px" )
+      </script>
