@@ -17,6 +17,11 @@ group :assets do
   gem 'turbo-sprockets-rails3'
 end
 
+# if RUBY_VERSION =~ /1.9/
+#   Encoding.default_external = Encoding::UTF_8
+#   Encoding.default_internal = Encoding::UTF_8
+# end
+
 gem 'ultimate-flash', '~> 0.8.0'
 gem 'ultimate-base', '~> 0.4.0.1'
 gem 'jquery-rails', '~> 3.1.0'
@@ -42,7 +47,7 @@ gem 'acts_as_list'
 gem 'mechanize'
 gem 'mysql2'
 gem 'rmagick'
-gem 'thinking-sphinx', '3.1.4'
+gem 'thinking-sphinx' #, '3.1.4'
 gem 'whenever', require: false
 gem 'oauth'
 gem 'omniauth'

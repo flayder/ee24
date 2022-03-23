@@ -1,8 +1,24 @@
-.g-comment-form.js-commentForm
+.js-commentForm  
   = form_for :comment, html: {data: {type: 'json', remote: true}}, url: comments_path do |f|
-    = image_tag current_user.avatar.url(:small), size: '60x60', class: 'avatar'
-    = f.hidden_field :commentable_id, value: doc.id
-    = f.hidden_field :commentable_type, value: doc.class.to_s
-    = f.hidden_field :parent_id, value: defined?(comment) ? comment.id : nil
-    = f.text_area :text, class: 'g-comment-form__textarea js-commentEditText', rows: 10
-    %button.g-button.primary.js-commentSend Отправить
+    .formular__header.header
+      %span.header__title ДОБАВИТЬ КОММЕНТАРИЙ
+    .formular__main
+      .form-field
+        = f.hidden_field :commentable_id, value: doc.id
+        = f.hidden_field :commentable_type, value: doc.class.to_s
+        = f.hidden_field :parent_id, value: defined?(comment) ? comment.id : nil
+        = f.text_area :text, class: 'form-field__input js-commentEditText', rows: 10,   required: ""
+        / //form-field
+    .formular__footer
+      .row
+        .col.col_8.col_tab-6
+        .col.col_4.col_tab-6
+          %button.btn.js-commentSend Отправить
+/ .g-comment-form.js-commentForm
+/   =# form_for :comment, html: {data: {type: 'json', remote: true}}, url: comments_path do |f|
+/     = #image_tag current_user.avatar.url(:small), size: '60x60', class: 'avatar'
+/     = #f.hidden_field :commentable_id, value: doc.id
+/     = #f.hidden_field :commentable_type, value: doc.class.to_s
+/     = #f.hidden_field :parent_id, value: defined?(comment) ? comment.id : nil
+/     = #f.text_area :text, class: 'g-comment-form__textarea js-commentEditText', rows: 10
+/     %button.g-button.primary.js-commentSend Отправить

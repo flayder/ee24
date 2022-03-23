@@ -1,0 +1,12 @@
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text сообщества
+  / section__main
+  .section__main
+    / articles
+    .articles
+      .articles__list
+        - @questions.each do |question|
+          = render partial: "other/community", locals: {question: question}

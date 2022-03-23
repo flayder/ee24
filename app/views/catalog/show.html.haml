@@ -1,55 +1,147 @@
-.l-wrapper
-  %aside.l-section__aside
-    = render 'shared/adv-aside'
+= render "aux"
+- user = @place.user
+.layout__header.header
+  .layout__title.title
+    %span.title__text 
+      - if @place.title.present?
+        = @place.title
+      -else
+        Вакансии
+  = render "other/partner"
+.layout__content
+  / ПОСТ
+  %section.section
+    / section__main
+    .section__main
+      / columns
+      .post
+        .post__headline.headline
+          .headline__list
+            .headline__item
+              %span.post__date= Russian::strftime(Time.parse(@place.created_at.to_s), "%d %B")
+            .headline__item
+              %span.post__time= DateTime.parse(@place.created_at.to_s).strftime("%H:%M")
+            .headline__item
+              .post__views.views
+                %svg.views__ico{:fill => "none", :height => "12", :viewbox => "0 0 20 12", :width => "20", :xmlns => "http://www.w3.org/2000/svg"}
+                  %g{"clip-path" => "url(#clip0_4_178)"}
+                    %path{:d => "M10.0048 11.41C15.2538 11.41 19.5167 8.97997 19.5167 5.99997C19.5167 3.01997 15.2538 0.589966 10.0048 0.589966C4.75593 0.589966 0.483337 2.99997 0.483337 5.99997C0.483337 8.99997 4.74627 11.41 10.0048 11.41Z", :stroke => "#B2B2B2"}
+                    %path{:d => "M10.0048 11.5C12.861 11.5 15.1764 9.03757 15.1764 6C15.1764 2.96243 12.861 0.5 10.0048 0.5C7.14865 0.5 4.83325 2.96243 4.83325 6C4.83325 9.03757 7.14865 11.5 10.0048 11.5Z", :stroke => "#B2B2B2"}
+                    %path{:d => "M10.0048 8.07998C10.5296 8.06427 11.0271 7.83481 11.3892 7.44153C11.7512 7.04825 11.9485 6.52297 11.9381 5.97998C11.9381 5.44955 11.7344 4.94084 11.3719 4.56577C11.0093 4.19069 10.5176 3.97998 10.0048 3.97998C9.49207 3.97998 9.00033 4.19069 8.63777 4.56577C8.2752 4.94084 8.07152 5.44955 8.07152 5.97998C8.06362 6.52223 8.26174 7.04603 8.62328 7.43874C8.98482 7.83145 9.48089 8.0617 10.0048 8.07998V8.07998Z", :stroke => "#B2B2B2"}
+                  %defs
+                    %clippath#clip0_4_178
+                      %rect{:fill => "white", :height => "12", :width => "20"}
+                %span.views__text= @place.page_views
+        
+        - begin
+          .post__author.author
+            .author__media{:style => "background-image: url('#{user.avatar.avatar}');"}
+            .author__title.title
+              - if user.first_name || user.last_name
+                %span.title__text= "#{user.first_name} #{user.last_name}"
+              - else
+                %span.title__text= user.login
+        - rescue NoMethodError => e
+          - true
+        / post main
+        .post__main
+          .post__header.post__header_secondary.header
+            %span.header__title= @place.title
+          .post__content= @place.text.html_safe
+        / post share
+        / .post__share.share
+        /   %span.share__title РАССКАЗАТЬ ВСЕМ:
+        /   %ul.share__list
+        /     %li.share__item
+        /       %a.share__link{:href => "#"} TELEGRAM
+        /     %li.share__item
+        /       %a.share__link{:href => "#"} FACEBOOK
+        /     %li.share__item
+        /       %a.share__link{:href => "#"} INSTAGRAM
+        = render partial: 'shared/tags', locals: {doc: @place}
+        - if (@place.lat? && @place.lng?)
+          .b-company__location
+            = link_to t('.show_on_map'), 'javascrpit:;', class: 'b-company__location-item map seo-link', data: {link: "#{show_place_map_index_path(id: @place)}"}
+            - if @place.site.map_provider == 'yandex'
+              = link_to t('.route'), 'javascrpit:;', class: 'b-company__location-item svetofor seo-link', data: {link: "#{show_place_map_index_path(id: @place.id, traffic: true)}"}
 
-  %div.l-section__main
-    .b-catalog{itemscope: '', itemtype: 'http://schema.org/Organization'}
-      = render 'aux'
-      .b-company
-
-        .b-company__avatar
-          = image_tag @place.logo.url(:medium), size: '200x100', title: @place.logo_alt, alt: @place.logo_alt, class: 'avatar', itemprop: 'logo'
-
-        .b-company__info
-          %h1.title{itemprop: 'brand'}= @place.title
-          .annotation= @place.annotation
-          .g-aux.l
-            %span.g-aux__item.views= @place.page_views
-            = render partial: 'templates/blocks/comments_counter', locals: {doc: @place}
-          .manage-links
-            - if can? :manage, Version
-              = link_to t('.change_history'), admin_item_versions_url(item_type: 'Catalog', item_id: @place.id)
-            - if can? :edit, @place
-              = link_to t('.edit'), edit_catalog_url(@place)
-            - if can? :destroy, :catalog
-              = link_to t('.delete'), catalog_url(@place), method: :delete, confirm: t('.delete_confirm')
-              = link_to t('.approve'), approve_catalog_url(@place), confirm: 'Вы уверены?'
-          .description= sanitize @place.text, tags: %w(a p br em strong ul ol li img div)
-
-          - if (@place.lat? && @place.lng?)
-            .b-company__location
-              = link_to t('.show_on_map'), 'javascrpit:;', class: 'b-company__location-item map seo-link', data: {link: "#{show_place_map_index_path(id: @place)}"}
-              - if @place.site.map_provider == 'yandex'
-                = link_to t('.route'), 'javascrpit:;', class: 'b-company__location-item svetofor seo-link', data: {link: "#{show_place_map_index_path(id: @place.id, traffic: true)}"}
-
-          .b-company__contacts
-            .contacts__title= t('.contacts')
-            - if @place.email.present?
-              .contacts__item.email{itemprop: 'email'}= @place.email
-            - if @place.site_url.present?
-              .contacts__item.site{itemprop: 'sameas'}= @place.site_url
-            .contacts__item.phone{itemprop: 'telephone'}
-              - @place.tel.split(',').each do |phone_number|
-                = phone_number.strip
-            .contacts__item.address{itemprop: 'address', itemscope: '', itemtype: 'http://schema.org/PostalAddress'}
-              %span.street-address{itemprop: 'streetAddress'}= @place.street_address
-              - if @place.extended_address.present?
-                ,
-                %span.address-extended= @place.extended_address
-
-          = render partial: 'shared/tags', locals: {doc: @place}
-          - if @place.approved
+        - if @place.approved
+          / post chat
+          .post__chat.chat
             .g-comments-wrapper.js-comments{data:{class: @place.class, id: @place.id}}
+            .chat__formular.formular
               = render 'comments/comment_form_full', doc: @place, visible: false
 
-= seo_text @seo
+              / .formular__header.header
+              /     %span.header__title ДОБАВИТЬ КОММЕНТАРИЙ
+              /   .formular__main
+              /     %form{:action => "index.html"}
+              /       .form-field
+              /         %textarea.form-field__input{:required => ""}
+              /       / //form-field
+              /   .formular__footer
+              /     .row
+              /       .col.col_8.col_tab-6
+              /         %span.formular__text
+              /           %p
+              /             Для добавления комментария
+              /             %a{:href => "#"} войдите
+              /             или
+              /             %a{:href => "#"} зарегистрируйтесь
+              /       .col.col_4.col_tab-6
+              /         %button.btn{:type => "submit"} Отправить
+/ .l-wrapper
+/   %aside.l-section__aside
+/     = render 'shared/adv-aside'
+
+/   %div.l-section__main
+/     .b-catalog{itemscope: '', itemtype: 'http://schema.org/Organization'}
+/       = render 'aux'
+/       .b-company
+
+/         .b-company__avatar
+/           = image_tag @place.logo.url(:medium), size: '200x100', title: @place.logo_alt, alt: @place.logo_alt, class: 'avatar', itemprop: 'logo'
+
+/         .b-company__info
+/           %h1.title{itemprop: 'brand'}= @place.title
+/           .annotation= @place.annotation
+/           .g-aux.l
+/             %span.g-aux__item.views= @place.page_views
+/             = render partial: 'templates/blocks/comments_counter', locals: {doc: @place}
+/           .manage-links
+/             - if can? :manage, Version
+/               = link_to t('.change_history'), admin_item_versions_url(item_type: 'Catalog', item_id: @place.id)
+/             - if can? :edit, @place
+/               = link_to t('.edit'), edit_catalog_url(@place)
+/             - if can? :destroy, :catalog
+/               = link_to t('.delete'), catalog_url(@place), method: :delete, confirm: t('.delete_confirm')
+/               = link_to t('.approve'), approve_catalog_url(@place), confirm: 'Вы уверены?'
+/           .description= sanitize @place.text, tags: %w(a p br em strong ul ol li img div)
+
+/           - if (@place.lat? && @place.lng?)
+/             .b-company__location
+/               = link_to t('.show_on_map'), 'javascrpit:;', class: 'b-company__location-item map seo-link', data: {link: "#{show_place_map_index_path(id: @place)}"}
+/               - if @place.site.map_provider == 'yandex'
+/                 = link_to t('.route'), 'javascrpit:;', class: 'b-company__location-item svetofor seo-link', data: {link: "#{show_place_map_index_path(id: @place.id, traffic: true)}"}
+
+/           .b-company__contacts
+/             .contacts__title= t('.contacts')
+/             - if @place.email.present?
+/               .contacts__item.email{itemprop: 'email'}= @place.email
+/             - if @place.site_url.present?
+/               .contacts__item.site{itemprop: 'sameas'}= @place.site_url
+/             .contacts__item.phone{itemprop: 'telephone'}
+/               - @place.tel.split(',').each do |phone_number|
+/                 = phone_number.strip
+/             .contacts__item.address{itemprop: 'address', itemscope: '', itemtype: 'http://schema.org/PostalAddress'}
+/               %span.street-address{itemprop: 'streetAddress'}= @place.street_address
+/               - if @place.extended_address.present?
+/                 ,
+/                 %span.address-extended= @place.extended_address
+
+/           = render partial: 'shared/tags', locals: {doc: @place}
+/           - if @place.approved
+/             .g-comments-wrapper.js-comments{data:{class: @place.class, id: @place.id}}
+/               = render 'comments/comment_form_full', doc: @place, visible: false
+
+/ = seo_text @seo

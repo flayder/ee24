@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_page_generation_start_time
   before_filter :login_from_cookie
   before_filter :configure_charsets
-  before_filter :admin_access
+  #before_filter :admin_access
   before_filter :visit_session_set
   before_filter :chop_url, :get_seo, :get_banners
   before_filter :manage_params_page
@@ -84,6 +84,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_search_action
+
     @search_action = case params[:controller]
                      when 'main' then 'docs'
                      when 'news' then 'docs'
@@ -250,6 +251,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_site_and_city
+    @img_domain = "https://420on.cz"
     @site = Site.find_by_domain('420on.cz')
     render_404 and return unless @site
     @city = @site.city
@@ -262,11 +264,12 @@ class ApplicationController < ActionController::Base
   end
 
   def mobile_switching
-    if params[:_mobile_view] == 'no'
-      force_non_mobile!
-    elsif params[:_mobile_view] == 'yes' || cookies[:mobile] == '1'
-      force_mobile!
-    end
+    # if params[:_mobile_view] == 'no'
+    #   force_non_mobile!
+    # elsif params[:_mobile_view] == 'yes' || cookies[:mobile] == '1'
+    #   force_mobile!
+    # end
+    force_non_mobile!
   end
 
   def escape_hash_params(hash)

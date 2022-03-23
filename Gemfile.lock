@@ -637,7 +637,7 @@ DEPENDENCIES
   sitemap_generator
   spork (~> 1.0rc)
   therubyracer
-  thinking-sphinx (= 3.1.4)
+  thinking-sphinx
   timecop
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)

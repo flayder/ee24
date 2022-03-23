@@ -1,10 +1,16 @@
-.l-wrapper
-
-  %aside.l-section__aside= render partial: '/search/templates/blocks/right'
-
-  %div.l-section__main
-    = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
-    = render 'search/menu'
-    = render 'templates/dynamic/docs_index', docs: @results
-    -#= yandex_direct_code @site
-= seo_text @seo
+/.test= params[:controller]
+.section__main
+  = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+  = render 'search/menu'
+  =# render 'templates/dynamic/docs_index', docs: @results
+  - if @results.present?
+    - @docs = @results
+    = render partial: 'news/news_list'
+    .g-loader
+      = will_paginate @docs
+  - else
+    .b-box
+      - no_info ||= 'По вашему запросу ничего не найдено.'
+      = no_info
+  = render partial: "main/main_text", locals: {seo: @seo}
+  = render "main/main_popular"  

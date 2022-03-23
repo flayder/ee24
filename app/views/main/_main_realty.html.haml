@@ -1,0 +1,51 @@
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text Каталог недвижимости
+    / section__action
+    .section__action.action
+      .action__list
+        - @realties.each_with_index do |(key, tab), i|
+          .action__item.action__item_secondary{class: ('action__item_active' if i == 0)}
+            %span.action__text= tab.rubric.title
+  / section__main
+  .section__main
+    .section__tabs.tabs
+      - @realties.each_with_index do |tab, i|
+        .tabs__item{class: ('tabs__item_active' if i == 0)}
+          / articles
+          .articles
+            .articles__list
+              - tab.each do |realty|
+                = render partial: "other/realty", locals: {realty: realty}
+    / .catalog{:style => "display: none;"}
+    /   .catalog__list
+    /     .row
+    /       .col.col_4.col_tab-6.col_mob-12
+    /         .catalog__item{:style => "background-image: url('images/content/catalog01.jpg');"}
+    /           %a.catalog__link{:href => "#"}
+    /             .catalog__title.title
+    /               %span.title__link Pronajem bytu 2+kk, 60 m2 - U tržnice, Praha 2
+    /             .catalog__price.price
+    /               %span.price__text 30 000 Kč za měsíc
+    /             .catalog__category.category
+    /               %span.category__text квартиры
+    /       .col.col_4.col_tab-6.col_mob-12
+    /         .catalog__item{:style => "background-image: url('images/content/catalog02.jpg');"}
+    /           %a.catalog__link{:href => "#"}
+    /             .catalog__title.title
+    /               %span.title__link Pronajem bytu 2+kk, 60 m2 - U tržnice, Praha 2
+    /             .catalog__price.price
+    /               %span.price__text 30 000 Kč za měsíc
+    /             .catalog__category.category
+    /               %span.category__text квартиры
+    /       .col.col_4.col_tab-6.col_mob-12
+    /         .catalog__item{:style => "background-image: url('images/content/catalog03.jpg');"}
+    /           %a.catalog__link{:href => "#"}
+    /             .catalog__title.title
+    /               %span.title__link Pronajem bytu 2+kk, 60 m2 - U tržnice, Praha 2
+    /             .catalog__price.price
+    /               %span.price__text 30 000 Kč za měsíc
+    /             .catalog__category.category
+    /               %span.category__text квартиры

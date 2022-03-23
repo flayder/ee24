@@ -1,28 +1,64 @@
-.l-wrapper
-  %aside.l-section__aside
-    = render 'shared/adv-aside'
-    = render 'latest_events'
+= render partial: "other/breadcrumbs"
 
-  %div.l-section__main.js-loaderByDate
-    .l-row.newslist__head
-      .l-cols-5.l-l
-        .g-subheader.g-subheader__last-news
-          = @rubric ? @rubric.title : 'Ближайшие события'
+.layout__header.header
+  .layout__title.title
+    %span.title__text Ближайшие события
+  /= render "other/partner"
+  - if logged_in?
+    = link_to "Добавить событие", 'javascript:;', data: {link: '/afisha/new'}, class: "btn-blue"
+  - else
+    = link_to "Добавить событие", 'javascript:;', data: {link: new_session_path}, class: "btn-blue js-jump"
+.layout__content
+  / КОМПАНИИ
+  %section.section
+    / section__header
+    - if @doc_rubric.present?
+      %br
+      .section__header
+        .section__title.title
+          - if @doc_rubric.present?
+            %span.title__text= @doc_rubric.title
+    - unless @doc_rubric.present?
+      %br
+      %br
+    / section__main
+    .section__main
+      - if @events.present?
+        / articles
+        .articles
+          .articles__list
+            - @events.each do |event|
+              = render partial: "other/event", locals: {event: event}
+        .g-loader
+          = will_paginate @events
+      - else
+        .b-box Нет информации.
+      = render 'main/main_text', seo: @seo
+/ .l-wrapper
+/   %aside.l-section__aside
+/     = render 'shared/adv-aside'
+/     = render 'latest_events'
 
-      .l-cols-4.l-l
-        - if logged_in?
-          = link_to "Добавить событие", 'javascript:;', data: {link: '/afisha/new'}, class: "l-r g-button primary seo-link"
-        - else
-          = link_to "Добавить событие", 'javascript:;', data: {link: new_session_path}, class: "l-r g-button primary seo-link js-jump"
-        .l-r
-          = render 'dates'
-    .clearfix
+/   %div.l-section__main.js-loaderByDate
+/     .l-row.newslist__head
+/       .l-cols-5.l-l
+/         .g-subheader.g-subheader__last-news
+/           = @rubric ? @rubric.title : 'Ближайшие события'
 
-  %div.l-section__main
-    - if @events.present?
-      = render partial: 'events_list', object: @events
-      .g-loader
-        = will_paginate @events
-    - else
-      .b-box Нет информации.
-= seo_text @seo
+/       .l-cols-4.l-l
+/         - if logged_in?
+/           = link_to "Добавить событие", 'javascript:;', data: {link: '/afisha/new'}, class: "l-r g-button primary seo-link"
+/         - else
+/           = link_to "Добавить событие", 'javascript:;', data: {link: new_session_path}, class: "l-r g-button primary seo-link js-jump"
+/         .l-r
+/           = render 'dates'
+/     .clearfix
+
+/   %div.l-section__main
+/     - if @events.present?
+/       = render partial: 'events_list', object: @events
+/       .g-loader
+/         = will_paginate @events
+/     - else
+/       .b-box Нет информации.
+/ = seo_text @seo

@@ -1,19 +1,22 @@
-- unless @docs.empty?
-  - @docs.group_by {|d| d.created_at.to_date}.each do |date, news_docs|
+.articles
+  - unless @docs.empty?
+    .articles_list
+      - @docs.group_by {|d| d.created_at.to_date}.each do |date, news_docs|
+        - if news_docs.length > 1
+          .l-row.b-newslist-tape{style: "border-bottom: 1px solid #979797;"}
+            .l-cols-2.l-l
+              .articles__date.date
+                .date__day
+                  = Russian.strftime(date, '%d')
+                .date__month
+                  = Russian::strftime(date, "%d %B").split(' ').last
+            .l-cols-7.l-l
+              - @docs.each do |doc|
+                = render partial: "other/article_no_date", locals: {article: doc}
+        - else
+          - @docs.each do |doc|
+            = render partial: "other/article", locals: {article: doc}
+  - else
     .l-row.b-newslist-tape
-      .l-cols-2.l-l
-        .news__date.news__date_day
-          = Russian.strftime(date, '%d')
-        .news__date.news__date_month
-          = Russian::strftime(date, "%d %B").split(' ').last
-      .l-cols-7.l-l
-        = render partial: 'news/news_item', collection: news_docs, as: 'news_item'
-- else
-  .l-row.b-newslist-tape
-    .l-cols-2.l-l
-      .news__date.news__date_day
-        = Russian.strftime(date, '%d')
-      .news__date.news__date_month
-        = Russian.strftime(date, '%B')
-    .l-cols-7.l-l
-      .b-newslist-mini__item.message За указанный день новостей нет.
+      .l-cols-9.l-l
+        .b-box Нет информации.

@@ -19,6 +19,12 @@ class AfishaController < ApplicationController
   def index
     set_index_meta_fields
     @date = find_date(params)
+    @breadcrumbs = [
+      {
+        title: "Ближайшие события",
+        url: "/afisha"
+      }
+    ]
     @events = if @date
       @site.events.approved.current(@date).by_language.order(:finish_date).paginate(page: 1, per_page: 100)
     else

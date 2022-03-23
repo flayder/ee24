@@ -1,95 +1,207 @@
-.l-wrapper
+= render "other/breadcrumbs"
 
-  %aside.l-section__aside
-    = link_if_logged params[:type] == 'resume' ? 'резюме' : 'вакансию', url_for(action: :new, type: params[:type])
-    = render partial: 'job/rubricator'
-    = render 'shared/adv-aside'
-    = render partial: 'shared/rated'
+.layout__header.header
+  .layout__title.title
+    %span.title__text Вакансии
+  = render "other/partner"
+.layout__content
+  / ПОСТ
+  %section.section
+    / section__main
+    .section__main
+      / columns
+      .post
+        .post__headline.headline
+          .headline__list
+            .headline__item
+              %span.post__date= Russian::strftime(Time.parse(@job_item.created_at.to_s), "%d %B")
+            .headline__item
+              %span.post__time= DateTime.parse(@job_item.created_at.to_s).strftime("%H:%M")
+            .headline__item
+              .post__views.views
+                %svg.views__ico{:fill => "none", :height => "12", :viewbox => "0 0 20 12", :width => "20", :xmlns => "http://www.w3.org/2000/svg"}
+                  %g{"clip-path" => "url(#clip0_4_178)"}
+                    %path{:d => "M10.0048 11.41C15.2538 11.41 19.5167 8.97997 19.5167 5.99997C19.5167 3.01997 15.2538 0.589966 10.0048 0.589966C4.75593 0.589966 0.483337 2.99997 0.483337 5.99997C0.483337 8.99997 4.74627 11.41 10.0048 11.41Z", :stroke => "#B2B2B2"}
+                    %path{:d => "M10.0048 11.5C12.861 11.5 15.1764 9.03757 15.1764 6C15.1764 2.96243 12.861 0.5 10.0048 0.5C7.14865 0.5 4.83325 2.96243 4.83325 6C4.83325 9.03757 7.14865 11.5 10.0048 11.5Z", :stroke => "#B2B2B2"}
+                    %path{:d => "M10.0048 8.07998C10.5296 8.06427 11.0271 7.83481 11.3892 7.44153C11.7512 7.04825 11.9485 6.52297 11.9381 5.97998C11.9381 5.44955 11.7344 4.94084 11.3719 4.56577C11.0093 4.19069 10.5176 3.97998 10.0048 3.97998C9.49207 3.97998 9.00033 4.19069 8.63777 4.56577C8.2752 4.94084 8.07152 5.44955 8.07152 5.97998C8.06362 6.52223 8.26174 7.04603 8.62328 7.43874C8.98482 7.83145 9.48089 8.0617 10.0048 8.07998V8.07998Z", :stroke => "#B2B2B2"}
+                  %defs
+                    %clippath#clip0_4_178
+                      %rect{:fill => "white", :height => "12", :width => "20"}
+                %span.views__text= @job_item.page_views
+        / post main
+        .post__main
+          .post__header.post__header_secondary.header
+            %span.header__title= @job_item.title
 
-  %div.l-section__main
-    .b-vacancy
-      .b-vacancy__relevant
-        - if @job_item.respond_to?(:company_name) && @job_item.catalog
-          .b-vacancy__employer
-            .avatar= image_tag @job_item.catalog.logo.url(:medium), size: '200x100'
-            .title= link_to @job_item.catalog.title, @job_item.catalog.url
-        - if @relevant_job.present?
-          .relevant__title Подобные вакансии
-          .relevant__list
-            - @relevant_job.each do |job|
-              .item
-                .title
-                  = link_to job.title, job.url
-                .employer
-                  - if job.catalog.present?
-                    = link_to job.catalog.title, job.catalog.url
-                  - elsif job.company_name.present?
-                    = job.company_name
-                .location
-                  = job.region_city.title
+          %div.l-section__main
+            .b-vacancy
+              .b-vacancy__relevant
+                - if @relevant_job.present?
+                  .relevant__title Подобные вакансии
+                  .relevant__list
+                    - @relevant_job.each do |job|
+                      .item
+                        .title
+                          = link_to job.title, job.url
+                        .employer
+                          - if job.catalog.present?
+                            = link_to job.catalog.title, job.catalog.url
+                          - elsif job.company_name.present?
+                            = job.company_name
+                        .location
+                          = job.region_city.title
+              .b-vacancy__content{style: "width: 100%"}
+                .b-vacancy__manage
+                  - if can? :manage, @job_item
+                    = link_to "Изменить", {action: "edit", id: @job_item.id, type: params[:type]}
+                    = link_to "Удалить", {action: "destroy", type: params[:type], id: @job_item.id}, confirm:"Удалить?", method: :delete
+                    - if can?(:manage, @job_item) && !@job_item.approved?
+                      = link_to "Подтвердить", {action: "approve", type: params[:type], id: @job_item.id}, confirm:"Подтвердить?"
+                  - if can? :manage, Version
+                    = link_to 'История изменений', admin_item_versions_url(item_type: @job_item.class, item_id: @job_item.id)
+                .b-vacancy__summary
+                  .row
+                    .dt Тип занятости
+                    .dd= @job_item.busy_title
+                  .row
+                    .dt Профессия
+                    .dd= @job_item.professions.pluck(:title).join(', ')
+                  .row
+                    .dt Регион
+                    .dd= @job_item.region.title
+                  .row
+                    .dt Город
+                    .dd= @job_item.region_city.title
+                  .row
+                    .dt Заработная плата
+                    .dd.salary
+                      - if @job_item.money.to_i > 0
+                        = "#{number_with_precision(@job_item.money, delimiter: ' ', precision: 0).html_safe} #{JobItem::CURRENCY[@job_item.currency]}"
+                      - else
+                        не указана
+                  - if !@job_item.catalog && @job_item.company_name.present?
+                    .row
+                      .dt Компания
+                      .dd= @job_item.company_name
 
-      .b-vacancy__content
-        %h1.b-vacancy__title.hot= @job_item.title
-        .b-vacancy__manage
-          - if can? :manage, @job_item
-            = link_to "Изменить", {action: "edit", id: @job_item.id, type: params[:type]}
-            = link_to "Удалить", {action: "destroy", type: params[:type], id: @job_item.id}, confirm:"Удалить?", method: :delete
-            - if can?(:manage, @job_item) && !@job_item.approved?
-              = link_to "Подтвердить", {action: "approve", type: params[:type], id: @job_item.id}, confirm:"Подтвердить?"
-          - if can? :manage, Version
-            = link_to 'История изменений', admin_item_versions_url(item_type: @job_item.class, item_id: @job_item.id)
+                .b-vacancy__text
+                  .title Описание
+                  .post__content= @job_item.text.html_safe
+                - if @job_item.requirements.present?
+                  .b-vacancy__responsibility
+                    .title Требования
+                    = simple_format sanitize(@job_item.requirements, tags: %w(p br strong))
+                - if @job_item.terms.present?
+                  .b-vacancy__requirements
+                    .title Условия
+                    = simple_format sanitize(@job_item.terms, tags: %w(p br strong))
+                - if @job_item.additional_info?
+                  .b-vacancy__text
+                    .title Дополнительная информация
+                    = simple_format sanitize(@job_item.additional_info, tags: %w(p br strong))
+                - if [@job_item.contacts_name, @job_item.contacts_email, @job_item.contacts_phone].any?(&:present?)
+                  .b-vacancy__conditions
+                    .b-vacancy__contacts
+                      .title Контакты:
+                      = simple_format h(@job_item.contacts_name)
+                      = simple_format h(@job_item.contacts_email)
+                      = simple_format h(@job_item.contacts_phone)
+                - if @job_item.link.present?
+                  .b-vacancy__text
+                    .link_title= link_to "Откликнутся на вакансию", @job_item.link
 
-        .b-vacancy__datetime Размещено #{timeleft(@job_item.created_at)}
-        .b-vacancy__summary
-          .row
-            .dt Тип занятости
-            .dd= @job_item.busy_title
-          .row
-            .dt Профессия
-            .dd= @job_item.professions.pluck(:title).join(', ')
-          .row
-            .dt Регион
-            .dd= @job_item.region.title
-          .row
-            .dt Город
-            .dd= @job_item.region_city.title
-          .row
-            .dt Заработная плата
-            .dd.salary
-              - if @job_item.money.to_i > 0
-                = "#{number_with_precision(@job_item.money, delimiter: ' ', precision: 0).html_safe} #{JobItem::CURRENCY[@job_item.currency]}"
-              - else
-                не указана
-          - if !@job_item.catalog && @job_item.company_name.present?
-            .row
-              .dt Компания
-              .dd= @job_item.company_name
+/ .l-wrapper
 
-        .b-vacancy__text
-          .title Описание
-          = simple_format sanitize(@job_item.text, tags: %w(p br strong))
-        - if @job_item.requirements.present?
-          .b-vacancy__responsibility
-            .title Требования
-            = simple_format sanitize(@job_item.requirements, tags: %w(p br strong))
-        - if @job_item.terms.present?
-          .b-vacancy__requirements
-            .title Условия
-            = simple_format sanitize(@job_item.terms, tags: %w(p br strong))
-        - if @job_item.additional_info?
-          .b-vacancy__text
-            .title Дополнительная информация
-            = simple_format sanitize(@job_item.additional_info, tags: %w(p br strong))
-        - if [@job_item.contacts_name, @job_item.contacts_email, @job_item.contacts_phone].any?(&:present?)
-          .b-vacancy__conditions
-            .b-vacancy__contacts
-              .title Контакты:
-              = simple_format h(@job_item.contacts_name)
-              = simple_format h(@job_item.contacts_email)
-              = simple_format h(@job_item.contacts_phone)
-        - if @job_item.link.present?
-          .b-vacancy__text
-            .link_title= link_to "Откликнутся на вакансию", @job_item.link
-= seo_text @seo
-= seo_about @seo_about
-= seo_sub_text @seo_sub_text
+/   %aside.l-section__aside
+/     = link_if_logged params[:type] == 'resume' ? 'резюме' : 'вакансию', url_for(action: :new, type: params[:type])
+/     = render partial: 'job/rubricator'
+/     = render 'shared/adv-aside'
+/     = render partial: 'shared/rated'
+
+/   %div.l-section__main
+/     .b-vacancy
+/       .b-vacancy__relevant
+/         - if @job_item.respond_to?(:company_name) && @job_item.catalog
+/           .b-vacancy__employer
+/             .avatar= image_tag @job_item.catalog.logo.url(:medium), size: '200x100'
+/             .title= link_to @job_item.catalog.title, @job_item.catalog.url
+/         - if @relevant_job.present?
+/           .relevant__title Подобные вакансии
+/           .relevant__list
+/             - @relevant_job.each do |job|
+/               .item
+/                 .title
+/                   = link_to job.title, job.url
+/                 .employer
+/                   - if job.catalog.present?
+/                     = link_to job.catalog.title, job.catalog.url
+/                   - elsif job.company_name.present?
+/                     = job.company_name
+/                 .location
+/                   = job.region_city.title
+
+/       .b-vacancy__content
+/         %h1.b-vacancy__title.hot= @job_item.title
+/         .b-vacancy__manage
+/           - if can? :manage, @job_item
+/             = link_to "Изменить", {action: "edit", id: @job_item.id, type: params[:type]}
+/             = link_to "Удалить", {action: "destroy", type: params[:type], id: @job_item.id}, confirm:"Удалить?", method: :delete
+/             - if can?(:manage, @job_item) && !@job_item.approved?
+/               = link_to "Подтвердить", {action: "approve", type: params[:type], id: @job_item.id}, confirm:"Подтвердить?"
+/           - if can? :manage, Version
+/             = link_to 'История изменений', admin_item_versions_url(item_type: @job_item.class, item_id: @job_item.id)
+
+/         .b-vacancy__datetime Размещено #{timeleft(@job_item.created_at)}
+/         .b-vacancy__summary
+/           .row
+/             .dt Тип занятости
+/             .dd= @job_item.busy_title
+/           .row
+/             .dt Профессия
+/             .dd= @job_item.professions.pluck(:title).join(', ')
+/           .row
+/             .dt Регион
+/             .dd= @job_item.region.title
+/           .row
+/             .dt Город
+/             .dd= @job_item.region_city.title
+/           .row
+/             .dt Заработная плата
+/             .dd.salary
+/               - if @job_item.money.to_i > 0
+/                 = "#{number_with_precision(@job_item.money, delimiter: ' ', precision: 0).html_safe} #{JobItem::CURRENCY[@job_item.currency]}"
+/               - else
+/                 не указана
+/           - if !@job_item.catalog && @job_item.company_name.present?
+/             .row
+/               .dt Компания
+/               .dd= @job_item.company_name
+
+/         .b-vacancy__text
+/           .title Описание
+/           = simple_format sanitize(@job_item.text, tags: %w(p br strong))
+/         - if @job_item.requirements.present?
+/           .b-vacancy__responsibility
+/             .title Требования
+/             = simple_format sanitize(@job_item.requirements, tags: %w(p br strong))
+/         - if @job_item.terms.present?
+/           .b-vacancy__requirements
+/             .title Условия
+/             = simple_format sanitize(@job_item.terms, tags: %w(p br strong))
+/         - if @job_item.additional_info?
+/           .b-vacancy__text
+/             .title Дополнительная информация
+/             = simple_format sanitize(@job_item.additional_info, tags: %w(p br strong))
+/         - if [@job_item.contacts_name, @job_item.contacts_email, @job_item.contacts_phone].any?(&:present?)
+/           .b-vacancy__conditions
+/             .b-vacancy__contacts
+/               .title Контакты:
+/               = simple_format h(@job_item.contacts_name)
+/               = simple_format h(@job_item.contacts_email)
+/               = simple_format h(@job_item.contacts_phone)
+/         - if @job_item.link.present?
+/           .b-vacancy__text
+/             .link_title= link_to "Откликнутся на вакансию", @job_item.link
+/ = seo_text @seo
+/ = seo_about @seo_about
+/ = seo_sub_text @seo_sub_text

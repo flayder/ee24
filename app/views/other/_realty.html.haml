@@ -1,0 +1,15 @@
+.articles__item
+  .row
+    .col.col_3.col_mob-12
+      .articles__media.media
+        %a.media__link{:href => realty.url}
+          %img.sidebar__img{:alt => "banner", :src => "#{@img_domain}#{realty.main_photo.image.xxlarge.url}"}
+    .col.col_9.col_mob-12
+      .articles__main
+        .articles__title.title
+          %a.title__text{:href => realty.url}= realty.title
+        .articles__tags.tags
+          %ul.tags__list
+            - realty.tags.each do |tag|
+              %li.tags__item
+                %a.tags__text{:href => tag.url}= tag.name

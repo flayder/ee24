@@ -1,0 +1,15 @@
+/.test= params[:controller]
+.section__main
+  = render partial: 'search/search_form', locals: {path: "/#{params[:controller]}"}
+  = render 'search/menu'
+  =# render 'templates/dynamic/docs_index', docs: @results
+  - if @results.present?
+    = render partial: "other/companies", locals: {places: @results}
+    .g-loader
+      = will_paginate @results
+  - else
+    .b-box
+      - no_info ||= 'По вашему запросу ничего не найдено.'
+      = no_info
+  = render partial: "main/main_text", locals: {seo: @seo}
+  = render "main/main_popular"

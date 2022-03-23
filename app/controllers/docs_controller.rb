@@ -18,6 +18,10 @@ class DocsController < ApplicationController
     set_index_meta_fields
     @docs = Doc.site(@site).approved.global_rubric(@global_rubric).by_language.order('created_at DESC')
                 .paginate(page: params[:page], per_page: 15)
+
+    @breadcrumbs = []
+    @breadcrumbs.push({title: (@global_rubric.title), url: "/#{@global_rubric.link}"}) if @global_rubric.present?
+    #render json: @docs
     respond_to do |format|
       format.html
       format.json {render_next_page}
@@ -71,7 +75,10 @@ class DocsController < ApplicationController
                 .paginate(page: params[:page], per_page: 14)
     set_rubric_meta_fields
     @broads = [[@global_rubric.title, "/#{@global_rubric.link}/"], @rubric.title]
-
+    @breadcrumbs = []
+    @breadcrumbs.push({title: (@global_rubric.title), url: "/#{@global_rubric.link}"}) if @global_rubric.present?
+    @breadcrumbs.push({title: (@rubric.title), url: "/#{@global_rubric.link}/#{@rubric.link}"}) if @rubric.present?
+    #render json: @docs
     respond_to do |format|
       format.html {render :index}
       format.json {render_next_page}
@@ -187,7 +194,7 @@ class DocsController < ApplicationController
     set_last_modified @doc unless logged_in?
 
     @doc.inc_page_views! @site
-
+    #render json: @docs
     respond_to do |format|
       format.html
       format.rss {

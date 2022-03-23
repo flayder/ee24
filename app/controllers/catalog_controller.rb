@@ -20,6 +20,12 @@ class CatalogController < ApplicationController
         @catalog_rubrics = @site.catalog_rubrics.roots.order('position, title')
         set_index_last_modified
         set_index_meta_fields
+        @breadcrumbs = [
+          {
+            title: "Компания",
+            url: "/catalog"
+          }
+        ]
         render :index
       end
       format.rss do
@@ -105,6 +111,8 @@ class CatalogController < ApplicationController
     set_last_modified @place unless logged_in?
 
     @place.inc_page_views! @site
+
+    #render json: @place
   end
 
   def comments

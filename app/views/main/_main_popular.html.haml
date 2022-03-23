@@ -1,0 +1,21 @@
+/ - unless @global_rubric 
+/   - tags = @site.tags.joins("INNER JOIN taggings as t ON t.tag_id = tags.id").group("tags.id").order("COUNT(tag_id) desc").first(20)
+/ - else 
+/   - tags = @site.tags
+- tags = @site.tags.joins("INNER JOIN taggings as t ON t.tag_id = tags.id").group("tags.id").order("COUNT(tag_id) desc").first(20)
+
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text популярное
+  / section__main
+  .section__main
+    .popular
+      .popular__list
+        .row.row_secondary
+          - tags.each do |tag|
+            .col.col_3.col_tab-4.col_mob-6.col_mob-p-12
+              .popular__item
+                %a.popular__link{:href => tag.url}
+                  %span.popular__text= tag.name

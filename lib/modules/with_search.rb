@@ -24,6 +24,8 @@ module Modules
       else
         @meta_title = ["Поиск. #{Settings.portal_title} #{Settings.portal_domain}"]
       end
+
+      render json: default_params(options)
     end
 
     def default_params options = {}

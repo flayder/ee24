@@ -1,6 +1,18 @@
-.b-index-events
-  .g-subheader.g-subheader__large
-    =link_to 'Ближайшие события', '/afisha'
-  .l-cols
-    - @events.each do |event|
-      = render partial: 'afisha/event_item', object: event, as: 'event'
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text Ближайшие события
+  / section__main
+  .section__main
+    / articles
+    .articles
+      .articles__list
+        - @events.each do |event|
+          = render partial: "other/event", locals: {event: event}
+/ .b-index-events
+/   .g-subheader.g-subheader__large
+/     =link_to 'Ближайшие события', '/afisha'
+/   .l-cols
+/     - @events.each do |event|
+/       = render partial: 'afisha/event_item', object: event, as: 'event'

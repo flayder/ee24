@@ -1,0 +1,27 @@
+- if items.present? and items.next_page
+  %a.btn.btn_tertiary.paginate_btn{href: "#{request.path}?page=#{items.next_page}"} Показать еще
+  :javascript
+    $(document).on('click', '.paginate_btn:not(.disabled)', function(e){
+      e.preventDefault()
+      $(this).addClass('disabled')
+      $.ajax({
+        type: "GET",
+        url: $(this).attr('href'),
+        dataType: "html",
+        success: response => {
+          $(this).removeClass('disabled')
+          const html = $(response)
+          const $items = html.find("#{item}")
+          const $btn = 
+            html.find('#{btn} .paginate_btn')
+          if($items.length > 0) {
+            $('#{block}').append($items)
+            if($btn.length > 0)
+              $(this).attr('href', $btn.attr('href'))
+            else
+              $btn.remove()
+          }
+          //console.log(response)
+        }
+      })
+    })

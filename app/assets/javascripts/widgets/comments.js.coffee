@@ -31,6 +31,13 @@ class App.Widgets.Comments extends Ultimate.Plugin
       doc_id: @$el.data('id')
     @loadComments()
 
+    $(document).on 'ajax:success', '.js-commentForm form', (data, status, xhr) =>
+        console.log($($.parseHTML(status.comment)).find('.js-comment').attr('id'))
+        @loadComments()
+        setTimeout =>
+          @addComment(data, status)
+        , 200
+
   loadComments: (replace) ->
     $.ajax
       url: '/comments'
@@ -40,7 +47,7 @@ class App.Widgets.Comments extends Ultimate.Plugin
         if replace
           $('.js-comments').first().html(results.comments)
         else
-          @$el.prepend(results.comments)
+          @$el.empty().prepend(results.comments)
 
   showReplyForm: (event) ->
     jTrigger = $ event.currentTarget
@@ -125,11 +132,11 @@ class App.Widgets.Comments extends Ultimate.Plugin
       @$('.js-commentsList').first().append data.comment
       $(event.currentTarget).find('.js-commentEditText').val('')
     @cachedForm.find('.js-commentEditText').val('')
-    jComment = $("##{$(data.comment).attr('id')}")
-    if jComment.offset().top > $(window).scrollTop() + $(window).height()
-      a = jComment.offset().top + jComment.outerHeight() - $(window).height()
-      $('body').animate({scrollTop:a}, '500', 'swing')
-      jComment.addClass('attention')
+    #jComment = $("##{$(data.comment).attr('id')}")
+    #if jComment.offset().top > $(window).scrollTop() + $(window).height()
+    #  a = jComment.offset().top + jComment.outerHeight() - $(window).height()
+    #  $('body').animate({scrollTop:a}, '500', 'swing')
+    #  jComment.addClass('attention')
     @refreshCounter()
 
   addCommentError: (event, data, status, xhr) ->

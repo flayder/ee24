@@ -1,0 +1,25 @@
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text Компании
+    / section__action
+    .section__action.section__action_tabs.action
+      .action__list.action__list_second
+        .action__item.skipped
+          %a.action__text{href: "/catalog"} Все компании
+        .action__item
+          %a.action__text.skipped{href: "/catalog/new"} Добавить Компанию
+  / section__main
+  .section__main
+    .companies
+      .companies__groups
+        .row
+          - @catalogs.each_slice(@catalogs.length / 3) do |slice|
+            .col.col_4.col_tab-6.col_mob-p-12
+              .companies__group
+                .companies__main
+                  .companies__list
+                    - slice.each do |rubric|
+                      .companies__item
+                        %a.companies__link{:href => "/catalog/list/#{rubric.id}"}= "#{rubric.title} (#{rubric.counter})"

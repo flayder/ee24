@@ -1,0 +1,32 @@
+- if places.present?  
+  .companies
+    .companies__details.details
+      .details__list.article_block
+        - places.each do |place|
+          .details__item.company_item
+            .row
+              .col.col_4.col_mob-p-12
+                .details__media
+                  = image_tag "#{@img_domain}#{place.logo.url(:medium)}", class: "sidebar__img"
+              .col.col_8.col_mob-p-12
+                .details__main
+                  .details__content
+                    %a.details__title{href: "/catalog/show/#{place.id}"}= place.title
+                    %p
+                      = place.text.html_safe
+                  .details__footer
+                    %p
+                      = place.street_address
+                      - if place.extended_address.present?
+                        = place.extended_address
+                      - place.tel.split(',').each do |phone_number|
+                        = phone_number.strip  
+      .details__item
+        .row
+          .col.col_4.col_mob-p-12
+          .col.col_8.col_mob-p-12
+            .btn-wrap
+              = render partial: "other/pagination", locals: {items: @places, btn: '', block: '.article_block', item: '.company_item'}
+              %a.btn{:href => "/catalog/new"} Добавить компанию
+    .g-loader
+      = will_paginate places

@@ -1,7 +1,26 @@
-.share-block
-  .social-likes
-    .facebook{title: t('.facebook_title')} Facebook
-    .twitter{title: t(".twitter_title")} Twitter
-    .vkontakte{title: t('.vkontakte_title')}= t('.vkontakte')
-    .pinterest{title: t('.pinterest_title'), data: {media: "#{doc.main_photo ? URI.join(root_url, doc.main_photo.image.url(:xxlarge)) : URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png'))}"}} Pinterest
+/ post share
+/ .post__share.share
+/   %span.share__title РАССКАЗАТЬ ВСЕМ:
+/   %ul.share__list
+/     %li.share__item
+/       %span.share__link 
+/         .twitter{title: t(".twitter_title")} TWITTER
+/     %li.share__item
+/       %span.share__link 
+/         .facebook{title: t('.facebook_title')} FACEBOOK
+/     %li.share__item
+/       %span.share__link 
+/         .vkontakte{title: t('.vkontakte_title')} VK
+/     %li.share__item
+/       %span.share__link 
+/         .pinterest{title: t('.pinterest_title'), data: {media: "#{doc.main_photo ? URI.join(root_url, doc.main_photo.image.url(:xxlarge)) : URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png'))}"}} PINTINTEREST
+/ post share
+.post__share.share
+  %span.share__title РАССКАЗАТЬ ВСЕМ:
+  .share-block
+    .social-likes
+      .facebook{title: t('.facebook_title')} Facebook
+      .twitter{title: t(".twitter_title")} Twitter
+      .vkontakte{title: t('.vkontakte_title')}= t('.vkontakte')
+      .pinterest{title: t('.pinterest_title'), data: {media: "#{doc.main_photo ? URI.join(root_url, doc.main_photo.image.url(:xxlarge)) : URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png'))}"}} Pinterest
     

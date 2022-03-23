@@ -1,0 +1,32 @@
+.articles__item.articles__item_second
+  .row.justify-lg-between
+    .col.col_2.col_mob-4.col_mob-p-12
+      .articles__media.media
+        %a.media__link{:href => event.url}
+          = image_tag "#{@img_domain}#{event.main_photo.image.url(:medium)}", size: '190x131', alt: event.title, title: event.title, class: 'media__ico'
+    .col.col_9.col_mob-8.col_mob-p-12
+      .row
+        .col.col_10.col_big-desktop-12
+          .articles__main
+            .articles__headline.headline
+              .headline__list
+                .headline__item
+                  %a.headline__text{:href => event.url}= Russian::strftime(event.start_date, "%d %B")
+                .headline__item
+                  .time
+                    %span.time__text= DateTime.parse(event.created_at.to_s).strftime("%H:%M")
+                .headline__item
+                  .views
+                    %svg.views__ico{:fill => "none", :height => "12", :viewbox => "0 0 20 12", :width => "20", :xmlns => "http://www.w3.org/2000/svg"}
+                      %g{"clip-path" => "url(#clip0_4_178)"}
+                        %path{:d => "M10.0048 11.41C15.2538 11.41 19.5167 8.97997 19.5167 5.99997C19.5167 3.01997 15.2538 0.589966 10.0048 0.589966C4.75593 0.589966 0.483337 2.99997 0.483337 5.99997C0.483337 8.99997 4.74627 11.41 10.0048 11.41Z", :stroke => "#B2B2B2"}
+                        %path{:d => "M10.0048 11.5C12.861 11.5 15.1764 9.03757 15.1764 6C15.1764 2.96243 12.861 0.5 10.0048 0.5C7.14865 0.5 4.83325 2.96243 4.83325 6C4.83325 9.03757 7.14865 11.5 10.0048 11.5Z", :stroke => "#B2B2B2"}
+                        %path{:d => "M10.0048 8.07998C10.5296 8.06427 11.0271 7.83481 11.3892 7.44153C11.7512 7.04825 11.9485 6.52297 11.9381 5.97998C11.9381 5.44955 11.7344 4.94084 11.3719 4.56577C11.0093 4.19069 10.5176 3.97998 10.0048 3.97998C9.49207 3.97998 9.00033 4.19069 8.63777 4.56577C8.2752 4.94084 8.07152 5.44955 8.07152 5.97998C8.06362 6.52223 8.26174 7.04603 8.62328 7.43874C8.98482 7.83145 9.48089 8.0617 10.0048 8.07998V8.07998Z", :stroke => "#B2B2B2"}
+                      %defs
+                        %clippath#clip0_4_178
+                          %rect{:fill => "white", :height => "12", :width => "20"}
+                    %span.views__text= event.page_views
+                .headline__item
+                  %a.headline__text{:href => event.rubric.url}= event.rubric.title
+            .articles__title.articles__title_secondary.title
+              %a.title__text{:href => event.url}= event.title

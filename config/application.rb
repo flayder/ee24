@@ -2,6 +2,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'ipaddr'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -43,6 +44,7 @@ module Onru
 
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
+    config.serve_static_assets = false
     config.autoload_paths << "#{config.root}/lib"
     config.autoload_paths << "#{config.root}/lib/constraints"
     config.autoload_paths << "#{config.root}/lib/validators"
@@ -83,6 +85,10 @@ module Onru
     config.default_charset = "utf-8"
     config.default_content_type = "text/html"
 
+    config.hosts = [
+      IPAddr.new("0.0.0.0/0")
+    ]
+
     config.assets.paths << Rails.root.join("app", "assets", "flash")
 
     config.cache_store = :redis_store, { :db => Settings.redis.db.cache, host: ENV['REDIS_HOST'] || 'localhost', port: ENV['REDIS_PORT'] || '6379' }
@@ -107,4 +113,4 @@ YandexDirectCodes = YAML.load(File.read(Rails.root + 'config' + 'yandex_direct.y
 require 'object'
 require 'tag_extend'
 
-PARTNER_PORTALS = %W(420on.cz)
+PARTNER_PORTALS = %W(5.181.109.70)

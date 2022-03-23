@@ -14,6 +14,8 @@ class TagsController < ApplicationController
     @galleries = @galleries.paginate(page: 1, per_page: 3)
     @catalog = @catalog.paginate(page: 1, per_page: 3)
     @dictionary_objects = @dictionary_objects.paginate(page: 1, per_page: 3)
+    @breadcrumbs = []
+    @breadcrumbs.push({title: @tag.name, url: ""})
   end
 
   def news

@@ -29,6 +29,7 @@ class Doc < ActiveRecord::Base
   delegate :global_rubric, :global_rubric_id, :to => :rubric
 
   scope :news, where(:doc_rubric_id => DocGlobalRubric.where(site_id: 93, link: 'news').first.try(:doc_rubrics).try(:map, &:id), :approved => true, :site_id => 93)
+
   scope :auth_columns_and_interviews, where(:doc_rubric_id => [DocRubric::INTERVIEW_ID, DocRubric::AUTH_COLUMNS_ID], :approved => true)
 
   scope :for_news_rss, joins(rubric: :global_rubric).where(doc_global_rubrics: { link: 'news' })
@@ -38,7 +39,9 @@ class Doc < ActiveRecord::Base
   scope :date_between, lambda { |range, type| type == true ? date_between_weak(range) : date_between_strict(range) }
   scope :global_rubric, lambda { |global_rubric| joins(:rubric).where(doc_rubrics: { global_rubric_id: global_rubric.id }) }
   scope :mailru_widget, with_photo.approved.for_rss.order('docs.created_at DESC').limit(3)
-  scope :last_week, lambda { where(docs: { created_at: (Time.now - 1.week)..(Time.now) }) }
+  scope :today, where(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day )
+  scope :last_week, where(created_at: (Time.now - 1.week)..(Time.now) )
+  scope :last_month, where(created_at: (Time.now - 1.month)..(Time.now) )
   scope :ready_for_push_notifications_from, lambda { where("approved = ? and created_at > ?", true, 30.minutes.ago) }
   scope :without_news, lambda { joins(rubric: :global_rubric).where("doc_global_rubrics.link != ?", 'news').approved.order("created_at DESC") }
   scope :rubric_for_date, lambda {|rubric, date| global_rubric(rubric).where(created_at: date).order('docs.created_at DESC')}
@@ -68,6 +71,16 @@ class Doc < ActiveRecord::Base
   class << self
     def last_updated
       order('updated_at').last
+    end
+    def per_realty per
+      arr = []
+      DocGlobalRubric.where(site_id: 93, link: 'realty').first.try(:doc_rubrics).each do |rub|
+        fields = rub.docs.approved.first(per)
+        if fields.length > 0
+          arr.push fields
+        end
+      end
+      arr
     end
   end
 

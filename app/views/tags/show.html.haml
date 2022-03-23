@@ -1,52 +1,160 @@
-.l-wrapper.l-content
-  .l-page__columns-line
-    .l-section__aside
-      = render partial: 'shared/adv-aside'
+= render partial: "other/breadcrumbs"
 
-    .l-section__main
-      .b-tag
-        %div{class: "b-tag__description#{@branding_logo}"}
-          .b-tag__description__title
-            = @tag.name
+.layout__header.header
+  .layout__title.title
+    %span.title__text= @tag.name
+  = render "other/partner"
+.layout__content
+  / КОМПАНИИ
+  %section.section
+    / section__main
+    .section__main
+      = render 'menu'
+      .b-tag__content
+        - if @news.present? && ['show', 'news'].include?(action_name)
+          .section__header
+            .section__title.title
+              .title__text В новостях
+          .articles
+            - unless @news.empty?
+              .articles_list
+                - @news.group_by {|d| d.created_at.to_date}.each do |date, news_docs|
+                  - if news_docs.length > 1
+                    .l-row.b-newslist-tape{style: "border-bottom: 1px solid #979797;"}
+                      .l-cols-2.l-l
+                        .articles__date.date
+                          .date__day
+                            = Russian.strftime(date, '%d')
+                          .date__month
+                            = Russian::strftime(date, "%d %B").split(' ').last
+                      .l-cols-7.l-l
+                        - @docs.each do |doc|
+                          = render partial: "other/article_no_date", locals: {article: doc}
+                  - else
+                    - @docs.each do |doc|
+                      = render partial: "other/article", locals: {article: doc}
 
-        = render 'menu'
+        - if @docs.present? && ['show', 'docs'].include?(action_name)
+          .section__header
+            .section__title.title
+              .title__text В статьях
+          .articles
+            - unless @docs.empty?
+              .articles_list
+                - @docs.group_by {|d| d.created_at.to_date}.each do |date, news_docs|
+                  - if news_docs.length > 1
+                    .l-row.b-newslist-tape{style: "border-bottom: 1px solid #979797;"}
+                      .l-cols-2.l-l
+                        .articles__date.date
+                          .date__day
+                            = Russian.strftime(date, '%d')
+                          .date__month
+                            = Russian::strftime(date, "%d %B").split(' ').last
+                      .l-cols-7.l-l
+                        - @docs.each do |doc|
+                          = render partial: "other/article_no_date", locals: {article: doc}
+                  - else
+                    - @docs.each do |doc|
+                      = render partial: "other/article", locals: {article: doc}
+        - if @events.present? && ['show', 'afisha'].include?(action_name)
+          .section__header
+            .section__title.title
+              .title__text В афише
+          .articles
+            - unless @events.empty?
+              .articles_list
+                - @events.each do |doc|
+                  = render partial: "other/event", locals: {event: doc}
+        - if @galleries.present? && ['show', 'photo'].include?(action_name)
+          .section__header
+            .section__title.title
+              .title__text В фотографиях
+          .b-photos= render partial: 'photo/galleries_list_extended', object: @galleries
 
-        .b-tag__content
-          - if @news.present? && ['show', 'news'].include?(action_name)
-            .g-subheader3 В новостях
-            .l-cols
-              - @news.in_groups_of(3).transpose.each_with_index do |slice_news, index|
-                .l-cols-3.l-l{class: "col#{index+1}"}
-                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+        - if @catalog.present? && ['show', 'catalog'].include?(action_name)
+          .section__header
+            .section__title.title
+              .title__text В компаниях
+          .companies
+            .companies__details.details
+              .details__list.article_block
+                - @catalog.each do |place|
+                  .details__item.company_item
+                    .row
+                      .col.col_4.col_mob-p-12
+                        .details__media
+                          = image_tag place.logo.url(:medium), class: "sidebar__img"
+                      .col.col_8.col_mob-p-12
+                        .details__main
+                          .details__content
+                            %a.details__title{href: "/catalog/show/#{place.id}"}= place.title
+                            %p
+                              = place.text.html_safe
+                          .details__footer
+                            %p
+                              = place.street_address
+                              - if place.extended_address.present?
+                                = place.extended_address
+                              - place.tel.split(',').each do |phone_number|
+                                = phone_number.strip  
+        - if @dictionary_objects.present? && ['show', 'dictionary'].include?(action_name)
+          .section__header
+            .section__title.title
+              .title__text В энциклопедии
+          .b-ency
+            .b-ency__digest
+              - @dictionary_objects.each do |dictionary_object|
+                = render partial: 'shared/ency_item', object: dictionary_object
 
-          - if @docs.present? && ['show', 'docs'].include?(action_name)
-            .g-subheader3 В статьях
-            .l-cols
-              - @docs.in_groups_of(3).transpose.each_with_index do |slice_news, index|
-                .l-cols-3.l-l{class: "col#{index+1}"}
-                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+/ .l-wrapper.l-content
+/   .l-page__columns-line
+/     .l-section__aside
+/       = render partial: 'shared/adv-aside'
 
-          - if @events.present? && ['show', 'afisha'].include?(action_name)
-            .g-subheader3 В афише
-            .l-cols
-              - @events.in_groups_of(3).transpose.each_with_index do |slice_news, index|
-                .l-cols-3.l-l{class: "col#{index+1}"}
-                  = render partial: 'shared/article', collection: slice_news, as: 'article'
+/     .l-section__main
+/       .b-tag
+/         %div{class: "b-tag__description#{@branding_logo}"}
+/           .b-tag__description__title
+/             = @tag.name
 
-          - if @galleries.present? && ['show', 'photo'].include?(action_name)
-            .g-subheader3 В фотографиях
-            .b-photos= render partial: 'photo/galleries_list_extended', object: @galleries
+/         = render 'menu'
 
-          - if @catalog.present? && ['show', 'catalog'].include?(action_name)
-            .g-subheader3 В компаниях
-            .b-companies= render partial: 'shared/companies', object: @catalog
+/         .b-tag__content
+/           - if @news.present? && ['show', 'news'].include?(action_name)
+/             .g-subheader3 В новостях
+/             .l-cols
+/               - @news.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+/                 .l-cols-3.l-l{class: "col#{index+1}"}
+/                   = render partial: 'shared/article', collection: slice_news, as: 'article'
+
+/           - if @docs.present? && ['show', 'docs'].include?(action_name)
+/             .g-subheader3 В статьях
+/             .l-cols
+/               - @docs.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+/                 .l-cols-3.l-l{class: "col#{index+1}"}
+/                   = render partial: 'shared/article', collection: slice_news, as: 'article'
+
+/           - if @events.present? && ['show', 'afisha'].include?(action_name)
+/             .g-subheader3 В афише
+/             .l-cols
+/               - @events.in_groups_of(3).transpose.each_with_index do |slice_news, index|
+/                 .l-cols-3.l-l{class: "col#{index+1}"}
+/                   = render partial: 'shared/article', collection: slice_news, as: 'article'
+
+/           - if @galleries.present? && ['show', 'photo'].include?(action_name)
+/             .g-subheader3 В фотографиях
+/             .b-photos= render partial: 'photo/galleries_list_extended', object: @galleries
+
+/           - if @catalog.present? && ['show', 'catalog'].include?(action_name)
+/             .g-subheader3 В компаниях
+/             .b-companies= render partial: 'shared/companies', object: @catalog
 
 
-          - if @dictionary_objects.present? && ['show', 'dictionary'].include?(action_name)
-            .g-subheader3 В энциклопедии
-            .b-ency
-              .b-ency__digest
-                - @dictionary_objects.each do |dictionary_object|
-                  = render partial: 'shared/ency_item', object: dictionary_object
+/           - if @dictionary_objects.present? && ['show', 'dictionary'].include?(action_name)
+/             .g-subheader3 В энциклопедии
+/             .b-ency
+/               .b-ency__digest
+/                 - @dictionary_objects.each do |dictionary_object|
+/                   = render partial: 'shared/ency_item', object: dictionary_object
 
-= seo_text @seo
+/ = seo_text @seo

@@ -1,0 +1,22 @@
+.col.col_4.col_tab-6.col_mob-12
+  .columns__item{:style => "background-image: url('#{@img_domain}#{author.main_photo.image.url(:medium)}');"}
+    %a.columns__link{:href => author.url}
+      .columns__author.author
+        %span.author__text= author.user.first_name + " " + author.user.last_name
+      .columns__title.title
+        %span.title__text= author.title
+      .columns__views.views
+        %svg.views__ico{:fill => "none", :height => "12", :viewbox => "0 0 20 12", :width => "20", :xmlns => "http://www.w3.org/2000/svg"}
+          %g{"clip-path" => "url(#clip0_4_341)"}
+            %path{:d => "M10.0048 11.4098C15.2538 11.4098 19.5167 8.97984 19.5167 5.99984C19.5167 3.01984 15.2538 0.589844 10.0048 0.589844C4.75593 0.589844 0.483337 2.99984 0.483337 5.99984C0.483337 8.99984 4.74627 11.4098 10.0048 11.4098Z", :stroke => "white"}
+            %path{:d => "M10.0048 11.5C12.861 11.5 15.1764 9.03757 15.1764 6C15.1764 2.96243 12.861 0.5 10.0048 0.5C7.14865 0.5 4.83325 2.96243 4.83325 6C4.83325 9.03757 7.14865 11.5 10.0048 11.5Z", :stroke => "white"}
+            %path{:d => "M10.0048 8.07998C10.5296 8.06427 11.0271 7.83481 11.3892 7.44153C11.7512 7.04825 11.9485 6.52297 11.9381 5.97998C11.9381 5.44955 11.7344 4.94084 11.3719 4.56577C11.0093 4.19069 10.5176 3.97998 10.0048 3.97998C9.49207 3.97998 9.00033 4.19069 8.63777 4.56577C8.2752 4.94084 8.07152 5.44955 8.07152 5.97998C8.06362 6.52223 8.26174 7.04603 8.62328 7.43874C8.98482 7.83145 9.48089 8.0617 10.0048 8.07998V8.07998Z", :stroke => "white"}
+          %defs
+            %clippath#clip0_4_341
+              %rect{:fill => "white", :height => "12", :width => "20"}
+        %span.views__text= author.page_views
+      .columns__tags.tags
+        %ul.tags__list
+          - author.tags.each do |tag|
+            %li.tags__item
+              %span.tags__text= tag.name.upcase

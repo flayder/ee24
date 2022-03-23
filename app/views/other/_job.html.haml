@@ -1,0 +1,8 @@
+.vacancies__item
+  %a.vacancies__link{:href => "/job/#{job_type(job_item).pluralize}/#{job_item.id}"}
+    .vacancies__title.title
+      %span.title__text= job_item.title
+    .vacancies__companies.companies
+      %span.companies__text= job_item.company_name
+    .vacancies__content.content
+      %span.content__text= [job_item.region.try(:title), job_item.region_city.try(:title)].compact.join(', ')

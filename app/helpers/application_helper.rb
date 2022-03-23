@@ -78,11 +78,13 @@ module ApplicationHelper
 
   def will_paginate(collection_or_options = nil, options = {})
     head_content = ""
-    if collection_or_options.current_page > 1
-      head_content += "<link rel=\"prev\" href=\"#{url_for(params.merge(only_path: false, page: collection_or_options.current_page - 1))}\">"
-    end
-    if collection_or_options.current_page < collection_or_options.total_pages
-      head_content += "<link rel=\"next\" href=\"#{url_for(params.merge(only_path: false, page: collection_or_options.current_page + 1))}\">"
+    if collection_or_options
+      if collection_or_options.current_page > 1
+        head_content += "<link rel=\"prev\" href=\"#{url_for(params.merge(only_path: false, page: collection_or_options.current_page - 1))}\">"
+      end
+      if collection_or_options.current_page < collection_or_options.total_pages
+        head_content += "<link rel=\"next\" href=\"#{url_for(params.merge(only_path: false, page: collection_or_options.current_page + 1))}\">"
+      end
     end
 
     content_for :head, head_content.html_safe if head_content.present?

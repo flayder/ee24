@@ -13,6 +13,8 @@ WORKDIR /420on
 COPY Gemfile Gemfile.lock .rbenv-version ./
 COPY vendor/omniauth-vkontakte ./vendor/omniauth-vkontakte/
 
+COPY . .
+
 # install bundler
 RUN gem install bundler -v 1.12.2
 
@@ -20,5 +22,9 @@ RUN gem install bundler -v 1.12.2
 RUN bundle install
 
 EXPOSE 3000
+
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
 
 CMD ["rails", "server", "-b", "0.0.0.0"]

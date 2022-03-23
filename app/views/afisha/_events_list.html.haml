@@ -1,3 +1,4 @@
-.l-cols
-  - @events.each do |event|
-    = render partial: 'event_item', object: event, as: 'event'
+.articles
+  .articles_list
+    - @events.each do |event|
+      = render partial: 'other/event', locals: {event: event}

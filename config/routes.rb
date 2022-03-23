@@ -170,6 +170,7 @@ Onru::Application.routes.draw do
     resources :doc_announces, only: :create
 
     resources :request_forms, only: [:index, :destroy]
+    resources :forms, only: [:index, :destroy]
   end
 
   namespace :design do
@@ -445,7 +446,7 @@ Onru::Application.routes.draw do
     get "/job/#{job_type}/list" => redirect("/job/#{job_type}/"), :defaults => {:controller => "job/#{job_type}"}
   end
 
-  get '/:controller' => ':controller#index', :constraints => { :controller => %r(search/companies|search/events|search/photos|search/docs|search/vacancies|search/dictionary_objects) }
+  get '/:controller' => ':controller#index', :constraints => { :controller => %r(search/catalog|search/events|search/photos|search/docs|search/job|search/dictionary_objects) }
 
   resources :categories do
     resources :communities do
@@ -480,4 +481,5 @@ Onru::Application.routes.draw do
   get 'afisha/:rubric/date/:year/:month/:day', to: 'afisha#rubric', :defaults => {:day => nil, :month => nil}
 
   resource :request_forms, only: [:create]
+  resource :forms, only: [:create]
 end

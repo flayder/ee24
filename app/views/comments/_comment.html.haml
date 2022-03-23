@@ -1,35 +1,49 @@
-.g-comment.js-comment{id: comment.id}
-  = image_tag comment.user.avatar.url(:small), size: '60x60', class: 'avatar'
+.chat__item.comment.js-comment{id: comment.id}
+  .comment__media.avatar{:style => "background-image: url('#{comment.user.avatar.url(:small)}');"}
+  .comment__main
+    .comment__header
+      .comment__name.name
+        %span.name__text= (comment.user.fio || comment.user.login)
+      .comment_date.date
+        %span.date__text= Russian::strftime(DateTime.parse(comment.created_at.to_s), "%d %B %H:%M")
+    .comment__content
+      %p
+        = comment.text
 
-  .g-comment__aux
-    = render partial: 'comments/rate', locals: {comment: comment}
-    -#= link_to (comment.user.fio || comment.user.login), user_path(comment.user),  class: 'username'
-    = link_to comment.user.fio_or_login, user_path(comment.user.subdomain),  class: 'username'
+- if comment.children.present?
+  = render 'comments/comments', comments: comment.children
+/ .g-comment.js-comment{id: comment.id}
+/   = image_tag comment.user.avatar.url(:small), size: '60x60', class: 'avatar'
 
-  .g-comment__text.js-commentText= comment.text
+/   .g-comment__aux
+/     = render partial: 'comments/rate', locals: {comment: comment}
+/     -#= link_to (comment.user.fio || comment.user.login), user_path(comment.user),  class: 'username'
+/     = link_to comment.user.fio_or_login, user_path(comment.user.subdomain),  class: 'username'
 
-  .g-comment__aux
-    .info
-      %span.info__item.time
-        = 'отредактировано' if comment.updated?
-        = timeleft(comment.published_at)
-      = link_to '', "##{comment.id}", class: 'info__item anchor', title: 'Ссылка на комментарий'
-    .actions
-      - if comment.children.present? && comment.depth < Comment::MAX_LEVEL
-        %span.actions__item.js-commentTurn Свернуть
-      - if current_user.present?
-        %span.actions__item.js-commentReply Ответить
-        - if current_user.site_admin_for(@site) || can?(:update, comment)
-          .actions__item.js-commentEtc
-            Ещё
-            .actions__menu
-              = link_to 'Редактировать', edit_comment_path(comment), remote: true, class: 'menu__item js-commentEdit' if can?(:update, comment)
-              - if current_user.site_admin_for(@site)
-                = link_to 'Удалить', comment_path(comment), method: :delete, confirm: 'Вы уверены?', class: 'menu__item js-commentRemove'
-                = link_to 'Удалить все коментарии пользователя', comment_by_user_delete_path(comment), method: :post, confirm: 'Вы уверены?', class: 'menu__item js-commentRemoveAll'
-                / = link_to 'Заблокировать пользователя (1 день)', 'javascript:;', class: 'menu__item'
-                / = link_to 'Заблокировать пользователя (5 дней)', 'javascript:;', class: 'menu__item'
-                = link_to 'Заблокировать пользователя', toggle_ban_admin_user_path(comment.user), method: :put, class: 'menu__item'
+/   .g-comment__text.js-commentText= comment.text
 
-  - if comment.children.present?
-    = render 'comments/comments', comments: comment.children
+/   .g-comment__aux
+/     .info
+/       %span.info__item.time
+/         = 'отредактировано' if comment.updated?
+/         = timeleft(comment.published_at)
+/       = link_to '', "##{comment.id}", class: 'info__item anchor', title: 'Ссылка на комментарий'
+/     .actions
+/       - if comment.children.present? && comment.depth < Comment::MAX_LEVEL
+/         %span.actions__item.js-commentTurn Свернуть
+/       - if current_user.present?
+/         %span.actions__item.js-commentReply Ответить
+/         - if current_user.site_admin_for(@site) || can?(:update, comment)
+/           .actions__item.js-commentEtc
+/             Ещё
+/             .actions__menu
+/               = link_to 'Редактировать', edit_comment_path(comment), remote: true, class: 'menu__item js-commentEdit' if can?(:update, comment)
+/               - if current_user.site_admin_for(@site)
+/                 = link_to 'Удалить', comment_path(comment), method: :delete, confirm: 'Вы уверены?', class: 'menu__item js-commentRemove'
+/                 = link_to 'Удалить все коментарии пользователя', comment_by_user_delete_path(comment), method: :post, confirm: 'Вы уверены?', class: 'menu__item js-commentRemoveAll'
+/                 / = link_to 'Заблокировать пользователя (1 день)', 'javascript:;', class: 'menu__item'
+/                 / = link_to 'Заблокировать пользователя (5 дней)', 'javascript:;', class: 'menu__item'
+/                 = link_to 'Заблокировать пользователя', toggle_ban_admin_user_path(comment.user), method: :put, class: 'menu__item'
+
+/   - if comment.children.present?
+/     = render 'comments/comments', comments: comment.children

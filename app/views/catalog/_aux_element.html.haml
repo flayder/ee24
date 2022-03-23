@@ -1,14 +1,31 @@
-.b-path
-  - breadcrumbs = []
-  - current_rubric = rubric
-  - while current_rubric.parent.present? do
-    - breadcrumbs << link_to(current_rubric.parent.title, current_rubric.parent.url, class: 'b-path__item')
-    - current_rubric = current_rubric.parent
-  - breadcrumbs << link_to(t('.companies'), catalogs_path) unless @place.present?
-  - breadcrumbs.reverse!
-  - if @place.present?
-    - breadcrumbs << link_to(rubric.title, rubric.url, class: 'b-path__item')
-    - breadcrumbs << @place.title
-  - else
-    - breadcrumbs << rubric.title
-  = breadcrumbs.join(' // ').html_safe
+- breadcrumbs = []
+- current_rubric = rubric
+- while current_rubric.parent.present? do
+  .breadcrumbs__item
+    = link_to(current_rubric.parent.title, current_rubric.parent.url, class: 'breadcrumbs__link')
+  - current_rubric = current_rubric.parent
+- unless @place.present?
+  .breadcrumbs__item
+    = link_to(t('.companies'), catalogs_path, class: 'breadcrumbs__link') 
+- breadcrumbs.reverse!
+- if @place.present?
+  .breadcrumbs__item
+    = link_to(@place.title, "", class: 'breadcrumbs__link')
+- else
+  .breadcrumbs__item
+    = link_to(rubric.title, "", class: 'breadcrumbs__link')
+
+/ .b-path
+/   - breadcrumbs = []
+/   - current_rubric = rubric
+/   - while current_rubric.parent.present? do
+/     - breadcrumbs << link_to(current_rubric.parent.title, current_rubric.parent.url, class: 'b-path__item')
+/     - current_rubric = current_rubric.parent
+/   - breadcrumbs << link_to(t('.companies'), catalogs_path) unless @place.present?
+/   - breadcrumbs.reverse!
+/   - if @place.present?
+/     - breadcrumbs << link_to(rubric.title, rubric.url, class: 'b-path__item')
+/     - breadcrumbs << @place.title
+/   - else
+/     - breadcrumbs << rubric.title
+/   = breadcrumbs.join(' // ').html_safe

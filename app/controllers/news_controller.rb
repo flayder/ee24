@@ -8,12 +8,18 @@ class NewsController < ApplicationController
   def index
     find_date_and_range(params)
     set_meta_fields
-    per_page = request.format == 'rss' ? 50 : 20
+    per_page = request.format == 'rss' ? 30 : 20
     @docs = if @date_range
       @site.docs.news.where(created_at: @date_range).by_language.order('created_at DESC').paginate(:page => params[:page], per_page: per_page)
     else
       @site.docs.news.by_language.order('created_at DESC').paginate(:page => params[:page], per_page: per_page)
     end
+    @breadcrumbs = [
+      {
+        title: "Новости",
+        url: "/news"
+      }
+    ]
     respond_to do |format|
       format.html
       format.json { render json: {content: render_to_string('_news_list', layout: false, formats: [:html]), prev: @date.prev_day.strftime('%Y/%m/%d')} }
@@ -27,13 +33,23 @@ class NewsController < ApplicationController
   def show
     set_meta_fields
     per_page = request.format == 'rss' ? 50 : 20
-    doc_rubric = @site.doc_global_rubrics.find_by_link('news').doc_rubrics.find_by_link(params[:id])
-    unless doc_rubric
+    @doc_rubric = @site.doc_global_rubrics.find_by_link('news').doc_rubrics.find_by_link(params[:id])
+    unless @doc_rubric
       render_404
       return false
     end
-    @docs = doc_rubric.docs.approved.by_language.paginate(page: params[:page], per_page: per_page)
+    @docs = @doc_rubric.docs.approved.by_language.paginate(page: params[:page], per_page: per_page)
     @seo ||= @rubric.seo(@site)
+    @breadcrumbs = [
+      {
+        title: "Новости",
+        url: "/news"
+      },
+      {
+        title: @doc_rubric.title,
+        url: "/news" + @doc_rubric.link
+      }
+    ]
     respond_to do |format|
       format.html { render :index }
       format.json { render json: {content: render_to_string('_news_list', layout: false, formats: [:html]), prev: @date.prev_day.strftime('%Y/%m/%d')} }

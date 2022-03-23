@@ -1,75 +1,105 @@
 - content_for :head do
   %meta{content: URI.join(root_url, path_to_image('v2/default/photo_xxlarge_share.png')), property: 'og:image'}
+%div
+  = render "main/main_news"
+  // ПОДПИСАТЬСЯ
+  = render "main/main_sub_form"
+  // СТАТЬИ
+  = render "main/main_articles"
+  // КОЛОНКИ
+  = render "main/main_authors"
+  // СТАТЬИ
+  = render "main/community"
+  // КАРУСЕЛЬ
+  = render "main/main_carousel"
+  / ЦИФРА ДНЯ
+  = render "main/main_digital"
+  / СТАТЬИ
+  = render 'main/events'
+  / СЕРВИСЫ
+  = render 'main/main_ser_form'
+  / НЕДВИЖИМОСТЬ
+  = render 'main/main_realty'
+  / ВАКАНСИЯ
+  = render 'main/main_vacancy'
+  / КОМПАНИИ
+  = render 'main/main_company'
+  / Слайдер
+  = render "other/company_slider"
+  / О ЧЕХИИ
+  = render 'main/main_text', seo: @seo
+  / ПОПУЛЯРНОЕ
+  = render 'main/main_popular'
+  / partial
+/ .l-wrapper
 
-.l-wrapper
+/   %aside.l-section__aside
+/     = render 'shared/rated'
+/     = render 'shared/adv-aside'
+/     = render 'vacancies'
 
-  %aside.l-section__aside
-    = render 'shared/rated'
-    = render 'shared/adv-aside'
-    = render 'vacancies'
+/   %div.l-section__main
+/     - if MainSection.where(identity: 'main').first.try(:active)
+/       .g-subheader.g-subheader__large Главное
 
-  %div.l-section__main
-    - if MainSection.where(identity: 'main').first.try(:active)
-      .g-subheader.g-subheader__large Главное
-
-      .news__carousel
-        - @docs.first(5).each do |article|
-          .news-item
-            = link_to article.url do
-              = image_tag(article.main_photo.image.xxlarge.url, size: '610х421', title: article.title) if article.main_photo.present?
-            .news-item__info
-              .news-item__info-content
-                = link_to article.title, article.url, class: "news-item__title"
-                .news-item__annotation
-                  = link_to article.annotation, article.url
+/       .news__carousel
+/         - @docs.first(5).each do |article|
+/           .news-item
+/             = link_to article.url do
+/               = image_tag(article.main_photo.image.xxlarge.url, size: '610х421', title: article.title) if article.main_photo.present?
+/             .news-item__info
+/               .news-item__info-content
+/                 = link_to article.title, article.url, class: "news-item__title"
+/                 .news-item__annotation
+/                   = link_to article.annotation, article.url
 
 
-      = render partial: 'shared/docs', object: @docs.last(3).each_slice(1)
+/       = render partial: 'shared/docs', object: @docs.last(3).each_slice(1)
 
-    - if MainSection.where(identity: 'events').first.try(:active)
-      = render 'events'
+/     - if MainSection.where(identity: 'events').first.try(:active)
+/       = render 'events'
 
-    - if MainSection.where(identity: 'community').first.try(:active)
-      %div
-        .b-categories-list
-          .l-row
-            .g-subheader.g-subheader__large.l-l
-              = link_to t('.community'), '/categories'
-            = link_to t('.create_new_question'), new_question_path, class:'g-button medium danger l-r'
-          .b-categories__content
-            = render partial: 'categories/questions', object: @questions
+/     - if MainSection.where(identity: 'community').first.try(:active)
+/       %div
+/         .b-categories-list
+/           .l-row
+/             .g-subheader.g-subheader__large.l-l
+/               = link_to t('.community'), '/categories'
+/             = link_to t('.create_new_question'), new_question_path, class:'g-button medium danger l-r'
+/           .b-categories__content
+/             = render partial: 'categories/questions', object: @questions
 
-  %div.l-section__main
-    %br
-    .g-subheader.g-subheader__large
-      = link_to @main_blocks.first.title, @main_blocks.first.path
-    = render partial: 'shared/docs', object: @main_blocks.first.docs.by_language.first(3).each_slice(1)
+/   %div.l-section__main
+/     %br
+/     .g-subheader.g-subheader__large
+/       = link_to @main_blocks.first.title, @main_blocks.first.path
+/     = render partial: 'shared/docs', object: @main_blocks.first.docs.by_language.first(3).each_slice(1)
 
-- if MainSection.where(identity: 'photos').first.try(:active)
-  .l-wrapper
-    = render 'photo_digest'
+/ - if MainSection.where(identity: 'photos').first.try(:active)
+/   .l-wrapper
+/     = render 'photo_digest'
 
-- if (banner = ad_code('doc_text_bottom')).present?
-  .l-cols.banner-doc-text-bottom
-    = banner.html_safe
+/ - if (banner = ad_code('doc_text_bottom')).present?
+/   .l-cols.banner-doc-text-bottom
+/     = banner.html_safe
 
--# новости
-.l-wrapper
-  .l-page__columns-line
-    %aside.l-section__aside
-      = render 'last_news_aside'
-      = render 'shared/ency_widget'
-      = render 'templates/blocks/new/social_widgets'
-      = render 'shared/adv-aside'
+/ -# новости
+/ .l-wrapper
+/   .l-page__columns-line
+/     %aside.l-section__aside
+/       = render 'last_news_aside'
+/       = render 'shared/ency_widget'
+/       = render 'templates/blocks/new/social_widgets'
+/       = render 'shared/adv-aside'
 
-    %div.l-section__main
-      - @main_blocks[1..-1].each do |block|
-        .g-subheader.g-subheader__large
-          = link_to block.title, block.path
-        = render partial: 'shared/docs', object: block.docs.by_language.first(3).each_slice(1)
+/     %div.l-section__main
+/       - @main_blocks[1..-1].each do |block|
+/         .g-subheader.g-subheader__large
+/           = link_to block.title, block.path
+/         = render partial: 'shared/docs', object: block.docs.by_language.first(3).each_slice(1)
 
-- if (banner = ad_code('doc_text_bottom')).present?
-  .l-cols.banner-doc-text-bottom
-    = banner.html_safe
+/ - if (banner = ad_code('doc_text_bottom')).present?
+/   .l-cols.banner-doc-text-bottom
+/     = banner.html_safe
 
-= seo_text @seo
+/ = seo_text @seo

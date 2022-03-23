@@ -29,6 +29,11 @@ class JobController < ApplicationController
   end
 
   def index
+    @breadcrumbs = [{
+      title: "Вакансии", 
+      url: "/job"
+    }]
+    @breadcrumbs.push({title: (@global_rubric.title), url: "/#{@global_rubric.link}"}) if @global_rubric.present?
     respond_to do |format|
       format.html do
         find_job_items
@@ -75,6 +80,9 @@ class JobController < ApplicationController
     if params[:region_ids].present?
       list = list.where('region_id in (?)', params[:region_ids])
     end
+    if list.empty?
+      list = Vacancy.approved.order("created_at DESC")
+    end 
     @job_items = load_list list
   end
 
@@ -90,6 +98,16 @@ class JobController < ApplicationController
 
     set_show_meta_fields @job_item
     @job_item.inc_page_views! @site
+    @breadcrumbs = [
+      {
+        title: "Вакансии",
+        url: "/job"
+      },
+      {
+        title: @job_item.title,
+        url: ""
+      }
+    ]
   end
 
   def new

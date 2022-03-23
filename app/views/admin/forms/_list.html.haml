@@ -1,0 +1,12 @@
+%table.table.table-bordered
+  %thead
+    %th= sort_link @search, :created_at, "Дата", default_order: :desc
+    %th Заголовок формы
+    %th Данные
+    %th
+  - request_forms.each do |request_form|
+    %tr
+      %td= request_form.created_at.strftime('%d-%m-%Y %H:%M')
+      %td= request_form.title
+      %td= request_form.data
+      %td= link_to 'Удалить', admin_form_path(request_form), method: :delete, confirm: 'Вы уверены?'

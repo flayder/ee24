@@ -19,6 +19,13 @@
 
     = stylesheet_link_tag 'v2/application'
 
+    //new
+    %link{:rel => :preconnect, :href => "https://fonts.gstatic.com"}
+    %link{:rel => :stylesheet, :href => "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700&display=swap"}
+    %link{:rel => :stylesheet, :type => :"text/css", :href => "/assets/v2/new/libs.min.css"}
+    %link{:rel => :stylesheet, :type => :"text/css", :href => "/assets/v2/new/main.css"}
+    == <meta name="viewport" content="width=device-width, initial-scale=1 , maximum-scale=1, user-scalable=0">
+
     - if Rails.env.development?
       :javascript
         var DEBUG_MODE = true;
@@ -32,6 +39,7 @@
     :javascript
       var backgroundRepeat = #{@site.repeat_background};
 
+    -#%script{:src => "https://code.jquery.com/jquery-3.4.1.min.js"}
     = javascript_include_tag 'application', async: Rails.env.production?
 
     = yield :head
@@ -46,37 +54,49 @@
   %body{class: "l-#{@css_layout || "#{controller_name}"} #{@css_tag}", style: extra_style }
     = render 'application/layout/flashes'
     = render 'cookies_eu/consent_banner'
-    %div
-      .l-wrapper
-        = render 'layouts/ads/top'
-        = render partial: 'application/layout/header'
-        = render partial: 'layouts/menu'
+    #wrapper.wrapper
+      / partial:parts/_header.html
+      %header#header.site-header
+        .container
+          / банер
+          = render 'layouts/ads/top'
+          = render partial: 'application/layout/header'
+          = render partial: 'layouts/menu'
+          
+        / //container
+      / //header
+      / partial
+      %main#main.main
+        .container
+          / layout
+          .layout
+            .row
+              - unless controller_name == 'account'
+                .col.col_9.col_desktop-12
+                  .layout__content
+                    = yield
+                .col.col_3.col_desktop-12
+                  = render 'main/main_aside'
+              - else
+                .col.col_12.col_desktop-12
+                  .layout__content
+                    = yield
+              - if ads_needed?
+                .l-wrapper
+                  = raw ad_code('horizontal_bottom')
+                  %br
+                  %br
+      / //middle
+      = render partial: 'application/layout/footer'
+      - if current_user && current_user.can_access_admin_panel?(@site)
+        = render 'application/layout/fast_admin_panel'
+      .popup-overlay
+      = render partial: 'layouts/popup_layout'
 
-    -# TODO: подумать о необходимости этого куска
-    -#%div
-      .l-wrapper
-        -#.l-page__center= render partial: "layouts/special_projects"
-        = render partial: '/templates/blocks/new/broad_new' unless current_page?(root_url)
-        = yield :page_menu
+      #fb-root
 
-    %div
-      = yield
-      - if ads_needed?
-        .l-wrapper
-          = raw ad_code('horizontal_bottom')
-
-    .l-wrapper
-      %br
-      %br
-      = link_to 'Мобильная версия', params.merge(_mobile_view: 'yes'), class: "g-button primary seo-link block medium"
-
-    = render partial: 'application/layout/footer'
-    - if current_user && current_user.can_access_admin_panel?(@site)
-      = render 'application/layout/fast_admin_panel'
-    .popup-overlay
-    = render partial: 'layouts/popup_layout'
-
-    #fb-root
+    %script{:src => "/assets/new/libs.min"}
+    %script{:src => "/assets/new/main"}
     %script
       (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

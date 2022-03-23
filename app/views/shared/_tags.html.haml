@@ -1,4 +1,12 @@
-- if doc.respond_to?(:tags) and doc.tags.present?
-  .b-tags
-    ТЕГИ:
-    = doc.tags.map { |t| link_to t.name, tag_url(t), title: "Новости с тегом #{t.name}" }.join(', ').html_safe
+- if doc.respond_to?(:tags) and doc.tags.present?  
+  / post tags
+  .post__tags.tags
+    %ul.tags__list
+      - doc.tags.each do |tag|
+        %li.tags__item
+          %a.tags__text{:href => tag.link}= tag.name
+
+/ - if doc.respond_to?(:tags) and doc.tags.present?
+/   .b-tags
+/     ТЕГИ:
+/     = doc.tags.map { |t| link_to t.name, tag_url(t), title: "Новости с тегом #{t.name}" }.join(', ').html_safe

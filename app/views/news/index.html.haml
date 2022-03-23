@@ -1,33 +1,75 @@
-.l-wrapper
-  .l-cols
-    %aside.l-section__aside
-      = render partial: 'shared/adv-aside'
-      = render 'popular_news'
+= render partial: "other/breadcrumbs"
 
-    %div.l-section__main.js-loaderByDate
-      .l-row.newslist__head
-        .l-cols-6.l-l
-          .g-subheader.g-subheader__last-news
-            - if action_name == 'index'
-              Последние новости
-            - else
-              = "Новости: #{@rubric.title}"
-
-        .l-cols-3.l-l
-          - if logged_in?
-            = link_to "Добавить новость", 'javascript:;', data: {link: '/news/new'}, class: "l-r g-button primary seo-link"
-          - else
-            = link_to "Добавить новость", 'javascript:;', data: {link: new_session_path}, class: "l-r g-button primary seo-link js-jump"
-          .l-r
-            = render 'dates'
-      .clearfix
-
+.layout__header.header
+  .layout__title.title
+    %span.title__text Компании
+  - if logged_in?
+    = link_to "Добавить новость", 'javascript:;', data: {link: '/news/new'}, class: "btn-blue"
+  - else
+    = link_to "Добавить новость", 'javascript:;', data: {link: new_session_path}, class: "btn-blue js-jump"
+%br
+  /= render "other/partner"
+.layout__content
+  / КОМПАНИИ
+  %section.section
+    / section__header
+    .section__header
+      .section__title.title
+        - if @doc_rubric.present?
+          %span.title__text= @doc_rubric.title
+        - else
+          %span.title__text Новости
+    / section__main
+    .section__main
       - if @docs.present?
-        .b-newslist-tape.js-list
+        - if @doc_rubric.present? and @doc_rubric.link == "authors"
+          / columns
+          .columns
+            .columns__list
+              .row
+                - @docs.each do |author|
+                  = render partial: "other/author", locals: {author: author}
+                .g-loader
+                  = will_paginate @docs
+        - else
+          / section__main
           = render partial: 'news_list'
         .g-loader
           = will_paginate @docs
       - else
         .b-box Нет информации.
+      - if action_name == 'index'
+        = render 'main/main_text', seo: @seo
+/ .l-wrapper
+/   .l-cols
+/     %aside.l-section__aside
+/       = render partial: 'shared/adv-aside'
+/       = render 'popular_news'
 
-= seo_text @seo
+/     %div.l-section__main.js-loaderByDate
+/       .l-row.newslist__head
+/         .l-cols-6.l-l
+/           .g-subheader.g-subheader__last-news
+/             - if action_name == 'index'
+/               Последние новости
+/             - else
+/               = "Новости: #{@rubric.title}"
+
+/         .l-cols-3.l-l
+/           - if logged_in?
+/             = link_to "Добавить новость", 'javascript:;', data: {link: '/news/new'}, class: "l-r g-button primary seo-link"
+/           - else
+/             = link_to "Добавить новость", 'javascript:;', data: {link: new_session_path}, class: "l-r g-button primary seo-link js-jump"
+/           .l-r
+/             = render 'dates'
+/       .clearfix
+
+/       - if @docs.present?
+/         .b-newslist-tape.js-list
+/           = render partial: 'news_list'
+/         .g-loader
+/           = will_paginate @docs
+/       - else
+/         .b-box Нет информации.
+
+/ = seo_text @seo

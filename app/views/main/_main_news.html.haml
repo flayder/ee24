@@ -1,0 +1,49 @@
+/ НОВОСТИ
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text Главные новости чехии
+    / section__action
+    .section__action.section__action_tabs.action
+      .action__list
+        .action__item.action__item_active
+          %span.action__text Сегодня
+        .action__item
+          %span.action__text За неделю
+        .action__item
+          %span.action__text За месяц
+  / section__main
+  .section__main
+    .section__tabs.tabs
+      .tabs__item.tabs__item_active
+        / news
+        .news
+          .news__list
+            - @news.each_with_index do |n, k|
+              .news__item{class: ( "news__item_top" if k == 0)}
+                .news__item
+                  %a.news__link{:href => n.url}
+                    %span.news__time= DateTime.parse(n.created_at.to_s).strftime("%H:%M")
+                    %span.news__title= n.title
+            
+      .tabs__item
+        / news
+        .news
+          .news__list
+            - @news_week.each_with_index do |n, k|
+              .news__item{class: ( "news__item_top" if k == 0)}
+                .news__item
+                  %a.news__link{:href => n.url}
+                    %span.news__time= DateTime.parse(n.created_at.to_s).strftime("%H:%M")
+                    %span.news__title= n.title
+      .tabs__item
+        / news
+        .news
+          .news__list
+            - @news_month.each_with_index do |n, k|
+              .news__item{class: ( "news__item_top" if k == 0)}
+                .news__item
+                  %a.news__link{:href => n.url}
+                    %span.news__time= DateTime.parse(n.created_at.to_s).strftime("%H:%M")
+                    %span.news__title= n.title

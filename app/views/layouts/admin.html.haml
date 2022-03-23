@@ -113,6 +113,8 @@
                 = link_to_unless_current 'Картинки', admin_photos_path, title: 'Картинки'
               %li
                 = link_to_unless_current 'Заявки', admin_request_forms_path, title: 'Зaявки'
+              %li
+                = link_to_unless_current 'Подписки', admin_forms_path, title: 'Подписки'
 
           - if @site.has_section?(:'forecast/locations')
             .well.well-small.sidebar-nav

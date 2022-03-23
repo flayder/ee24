@@ -1,6 +1,8 @@
 defaults: &defaults
+  #default_host_name: 420on.cz
+  #default_protocol: https
   default_host_name: 420on.cz
-  default_protocol: https
+  default_protocol: http
   yandex_cleanweb_api_key: cw.1.1.20121219T060900Z.7528d5a27a439f2e.b9ec5bfeb2a5e4f2e2de5c33fa22f2f0b7541c11
   secret_token: a2f215b77ab7682f9f1d6848bc78272fe2d4c6c83c85224f1c839dc213da600a2fc5af2b02014c5c90166310064baf0ef83f0a24877ef869f03d141c93336690
   openweathermap_key: 4ba2687f04a3715797811b742821ca07
@@ -14,8 +16,9 @@ defaults: &defaults
       # staging cache: 4
   mobile_api_key: cb5e100e5a9a3e7f6d1fd97512215282
   hypercomments_widget_id:
-    36on.ru: 16044
-    420on.cz: 16010
+   # 36on.ru: 16044
+   # 420on.cz: 16010
+   5.181.109.70: 16010
 
 development:
   <<: *defaults
@@ -25,7 +28,7 @@ staging:
 
 test:
   <<: *defaults
-  default_host_name: 420on.cz
+  #default_host_name: 420on.cz
 
 production:
   <<: *defaults

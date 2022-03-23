@@ -1,12 +1,33 @@
-.g-comment-form.anonymous.js-commentForm
+.js-commentForm.anonymous  
   = form_for :comment, html: {data: {type: 'json', remote: true}}, url: comments_path do |f|
-    %img{alt: "Male_small", class: "avatar", height: "60", src: "/assets/v2/default/male_small.png", width: "60"}
-    = f.text_area :text, class: 'g-comment-form__textarea js-commentEditText', rows: 10, disabled: "disabled"
-  %div.notification
-    Для добавления комментария
-    = link_to 'войдите', '/account/login', class: 'js-jump'
-    или
-    = link_to 'зарегистрируйтесь', '/account/signup', class: 'js-jump'
+    .formular__header.header
+      %span.header__title ДОБАВИТЬ КОММЕНТАРИЙ
+    .formular__main
+      .form-field
+        = f.text_area :text, class: 'form-field__input js-commentEditText', rows: 10,   disabled: "disabled"
+        / //form-field
+    .formular__footer
+      .row
+        .col.col_8.col_tab-6
+          %span.formular__text
+            %p
+              Для добавления комментария
+              = link_to 'войдите', '/account/login', class: 'js-jump'
+              или
+              = link_to 'зарегистрируйтесь', '/account/signup', class: 'js-jump'
+        .col.col_4.col_tab-6
+          %button.btn.js-commentSend{disabled: "disabled"} Отправить
 
-  / = render 'layouts/clean/social_auth_links'
-  %button.g-button.disabled.js-commentSend{disabled: "disabled"} Отправить
+
+  / .g-comment-form.anonymous.js-commentForm
+  /   =# form_for :comment, html: {data: {type: 'json', remote: true}}, url: comments_path do |f|
+  /     %img{alt: "Male_small", class: "avatar", height: "60", src: "/assets/v2/default/  male_small.png", width: "60"}
+  /     =# f.text_area :text, class: 'g-comment-form__textarea js-commentEditText', rows: 10,  disabled: "disabled"
+  /   %div.notification
+  /     Для добавления комментария
+  /     = #link_to 'войдите', '/account/login', class: 'js-jump'
+  /     или
+  /     = #link_to 'зарегистрируйтесь', '/account/signup', class: 'js-jump'
+  
+  /   = #render 'layouts/clean/social_auth_links'
+  /   %button.g-button.disabled.js-commentSend{disabled: "disabled"} Отправить

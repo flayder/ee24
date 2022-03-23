@@ -1,13 +1,15 @@
-.b-catalog__aux
-
-  - if @place.present?
-    %strong= t('.in_rubrics')
-    = render partial: 'aux_element', collection: @place.rubrics, as: :rubric
-  - elsif @rubric
-    = render partial: 'aux_element', locals: {rubric: @rubric}
-  - else
-    %aside.l-section__aside
-      = link_if_logged t('.add_company'), new_catalog_path
-    %p
-      - catalog_count = @site.catalogs.approved.by_language.count
-      = t('.catalog_count', count: catalog_count, show_count: number_with_precision(catalog_count, delimiter: ' ', precision: 0)).html_safe
+.breadcrumbs
+  .breadcrumbs__list
+    .breadcrumbs__item
+      %a.breadcrumbs__link{:href => "/"} Главная
+    - if @place.present?
+      /%strong= t('.in_rubrics')
+      = render partial: 'aux_element', collection: @place.rubrics, as: :rubric
+    - elsif @rubric
+      = render partial: 'aux_element', locals: {rubric: @rubric}
+    - else
+      / %aside.l-section__aside
+      /   = link_if_logged t('.add_company'), new_catalog_path
+      / %p
+      /   - catalog_count = @site.catalogs.approved.by_language.count
+      /   = t('.catalog_count', count: catalog_count, show_count: number_with_precision(catalog_count, delimiter: ' ', precision: 0)).html_safe

@@ -1,0 +1,8 @@
+
+%h3
+  Заявки
+/= render :partial => 'search_form'
+
+= render :partial => 'list', locals: { request_forms: @request_forms }
+
+= will_paginate_bootstrap @request_forms

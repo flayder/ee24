@@ -1,0 +1,8 @@
+- if @breadcrumbs.present?
+  .breadcrumbs
+    .breadcrumbs__list
+      .breadcrumbs__item
+        %a.breadcrumbs__link{:href => "/"} Главная
+      - @breadcrumbs.each do |item| 
+        .breadcrumbs__item
+          %a.breadcrumbs__link{:href => item[:url]}= item[:title]

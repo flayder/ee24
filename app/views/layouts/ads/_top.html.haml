@@ -1,4 +1,12 @@
 - if ads_needed?
   - top_banner = ad_code('horizontal_top')
   - if top_banner.present?
-    .b-isikhangiso-top= top_banner.html_safe
+    .header__banner.banner= top_banner.html_safe
+    :css
+      @media (min-width: 768px) {
+        *[id*="ad_ph"] > div, *[id*="ad_ph"] img {width: 100% !important;}
+      }
+
+      @media (max-width: 768px) {
+        *[id*="ad_ph"], *[id*="ad_ph"] > div, *[id*="ad_ph"] img {width: 100% !important; height: auto !important}
+      }

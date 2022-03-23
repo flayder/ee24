@@ -1,0 +1,27 @@
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text Вакансия
+    / section__action
+    .section__action.section__action_tabs.action
+      .action__list.action__list_second
+        .action__item.action__item_active
+          %span.action__text Актуальное
+        .action__item
+          %span.action__text все Вакансии
+        .action__item.skipped
+          %a.action__text{href: "/job/vacancies/new"} Добавить вакансию
+  / section__main
+  .section__main
+    .section__tabs.tabs
+      .tabs__item.tabs__item_active
+        .vacancies
+          .vacancies__list
+            - @job_items_actual.each do |job|
+              = render partial: "other/job", locals: {job_item: job}
+      .tabs__item
+        .vacancies
+          .vacancies__list
+            - @job_items.each do |job|
+              = render partial: "other/job", locals: {job_item: job}

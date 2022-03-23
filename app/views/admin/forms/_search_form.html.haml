@@ -1,0 +1,13 @@
+.well
+  #search_form
+    = simple_form_for @search, url: admin_forms_path do |form|
+      %p
+        = form.label :full_name_contains, label: "ФИО содержит", required: false
+        = form.text_field :full_name_contains, required: false
+      %p
+        = form.label :created_at_greater_than, label: 'Начиная с даты', required: false
+        = form.datetime_select :created_at_greater_than, include_blank: true, required: false
+      %p
+        = form.label :email_contains, label: "Email содержит", required: false
+        = form.text_field :email_contains, required: false
+      = form.button :submit, 'Найти', class: 'btn'

@@ -2,6 +2,7 @@
 #     config.middleware.use 'Utf8Sanitizer'
 # to config/application.rb.
 # See: https://gist.github.com/joost/ca4eda8f31655cf6095a
+#encoding: utf-8
 class Utf8Sanitizer
   SANITIZE_ENV_KEYS = %w(
     HTTP_REFERER

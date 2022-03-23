@@ -1,7 +1,7 @@
 .g-tabs
   = link_to_current 'Статьи', {controller:'/search/docs', search: params[:search] }, class: 'g-tab'
-  = link_to_current 'Компании', {controller:'/search/companies', search: params[:search] }, class: 'g-tab'
-  = link_to_current 'Фотографии', {controller:'/search/photos', search: params[:search] }, class: 'g-tab'
+  = link_to_current 'Компании', {controller:'/search/catalog', search: params[:search] }, class: 'g-tab'
+  / = link_to_current 'Фотографии', {controller:'/search/photos', search: params[:search] }, class: 'g-tab'
   = link_to_current 'События', {controller:'/search/events', search: params[:search] }, class: 'g-tab'
-  = link_to_current 'Вакансии', {controller:'/search/vacancies', search: params[:search] }, class: 'g-tab'
-  = link_to_current 'Словари', {controller:'/search/dictionary_objects', search: params[:search] }, class: 'g-tab'
+  = link_to_current 'Вакансии', {controller:'/search/job', search: params[:search] }, class: 'g-tab'
+  / = link_to_current 'Словари', {controller:'/search/dictionary_objects', search: params[:search] }, class: 'g-tab'

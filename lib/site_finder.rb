@@ -8,7 +8,6 @@ module SiteFinder
     else
       host_name = request.domain
     end
-
     Site.find_by_domain!(host_name)
   end
 end

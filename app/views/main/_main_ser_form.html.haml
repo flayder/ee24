@@ -1,0 +1,99 @@
+%section.section
+  / section__header
+  .section__header
+    .section__title.title
+      %span.title__text 420on рекомендует услуги в Чехии
+  / section__main
+  .section__main
+    .section__wysiwyg.wysiwyg
+      %p
+        Команда 420on рекомендует Вам решить самые важные вопросы
+        по следующим направлениям:
+    .services
+      .services__list
+        .row
+          .col.col_4.col_tab-6.col_mob-p-12
+            .services__item
+              %a.services__link{:href => "#"}
+                .services__title
+                  %span.title__text недвижимость
+                .services__tags.tags
+                  %ul.tags__list
+                    %li.tags__item
+                      %span.tags__text покупка
+                    %li.tags__item
+                      %span.tags__text сдача
+                    %li.tags__item
+                      %span.tags__text аренда
+                    %li.tags__item
+                      %span.tags__text ипотека
+          .col.col_4.col_tab-6.col_mob-p-12
+            .services__item
+              %a.services__link{:href => "#"}
+                .services__title
+                  %span.title__text финансы
+                .services__tags.tags
+                  %ul.tags__list
+                    %li.tags__item
+                      %span.tags__text кредиты
+                    %li.tags__item
+                      %span.tags__text банки
+                    %li.tags__item
+                      %span.tags__text инвестиции
+          .col.col_4.col_tab-6.col_mob-p-12
+            .services__item
+              %a.services__link{:href => "#"}
+                .services__title
+                  %span.title__text страхование
+                .services__tags.tags
+                  %ul.tags__list
+                    %li.tags__item
+                      %span.tags__text кредиты
+                    %li.tags__item
+                      %span.tags__text банки
+                    %li.tags__item
+                      %span.tags__text фонды
+          .col.col_4.col_tab-6.col_mob-p-12
+            .services__item
+              %a.services__link{:href => "#"}
+                .services__title
+                  %span.title__text бухгалтерия
+                .services__tags.tags
+                  %ul.tags__list
+                    %li.tags__item
+                      %span.tags__text кредиты
+                    %li.tags__item
+                      %span.tags__text фонды
+                    %li.tags__item
+                      %span.tags__text инвестиции
+          .col.col_4.col_tab-6.col_mob-p-12
+            .services__item
+              %a.services__link{:href => "#"}
+                .services__title
+                  %span.title__text образование
+                .services__tags.tags
+                  %ul.tags__list
+                    %li.tags__item
+                      %span.tags__text вузы
+                    %li.tags__item
+                      %span.tags__text школы
+                    %li.tags__item
+                      %span.tags__text курсы
+                    %li.tags__item
+                      %span.tags__text репетиторы
+          .col.col_4.col_tab-6.col_mob-p-12
+            .services__item
+              %a.services__link{:href => "#"}
+                .services__title
+                  %span.title__text образование
+                .services__tags.tags
+                  %ul.tags__list
+                    %li.tags__item
+                      %span.tags__text получение
+                    %li.tags__item
+                      %span.tags__text бизнес
+    .section__wysiwyg.wysiwyg
+      %p
+        Оставьте свой номер телефона и 420on Вам поможет:
+    .section__formular.formular
+      = render "ser_form"

@@ -1,17 +1,42 @@
-.l-wrapper
-  - if @global_rubric.present? || @rubric.present?
-    %h1.g-subheader.g-subheader__last-news
-      = @rubric.present? ? @rubric.title : @global_rubric.title
-  %aside.l-section__aside
-    = link_if_logged t('.add'), "/#{@global_rubric.link}/new"
+= render partial: "other/breadcrumbs"
 
-    = render 'shared/adv-aside'
-    = render partial: 'shared/rated'
-
-  %div.l-section__main
-    - if @docs.present?
-      = render partial: 'articles_list', object: @docs
+.layout__header.header
+  .layout__title.title
+    %span.title__text= @rubric.present? ? @rubric.title : @global_rubric.title
+  - if params[:global_rubric] != "job" and params[:rubric] != "career"
+    = render "other/partner"
+  - else
+    - if logged_in?
+      = link_to "Добавить материал", 'javascript:;', data: {link: '/job/new'}, class: "btn-blue"
     - else
-      .b-box Нет информации.
+      = link_to "Добавить материал", 'javascript:;', data: {link: new_session_path}, class: "btn-blue js-jump"
+%br
+.layout__content
+  / КОМПАНИИ
+  %section.section.section_p0
+    / section__main
+    .section__main
+      = render partial: 'news/news_list'
+      .g-loader
+        = will_paginate @docs
+      
+    = render 'main/main_text', seo: @seo
+    / ПОПУЛЯРНОЕ
+    = render 'main/main_popular'
+/ .l-wrapper
+/   - if @global_rubric.present? || @rubric.present?
+/     %h1.g-subheader.g-subheader__last-news
+/       = @rubric.present? ? @rubric.title : @global_rubric.title
+/   %aside.l-section__aside
+/     = link_if_logged t('.add'), "/#{@global_rubric.link}/new"
 
-= seo_text @seo
+/     = render 'shared/adv-aside'
+/     = render partial: 'shared/rated'
+
+/   %div.l-section__main
+/     - if @docs.present?
+/       = render partial: 'articles_list', object: @docs
+/     - else
+/       .b-box Нет информации.
+
+/ = seo_text @seo

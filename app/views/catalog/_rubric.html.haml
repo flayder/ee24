@@ -1,10 +1,28 @@
 - unless rubric.blank?
-  .b-catalog__item
-    = image_tag catalog_rubric_icon(rubric), alt: rubric.title, class: 'icon'
-    = link_to "/catalog/list/#{rubric.id}", class: 'title' do
-      %strong= rubric.title
-      (#{rubric.counter})
-    - unless rubric.children.blank?
-      %ul.b-catalog__children
-        - rubric.children.each do |category|
-          %li.b-catalog__child= link_to "#{category.title}&nbsp;(#{category.counter})".html_safe, "/catalog/list/#{category.id}"
+  .col.col_4.col_tab-6.col_mob-p-12.ss11
+    .companies__group
+      .companies__header.header
+        .companies__media.media
+          = image_tag "#{@img_domain}#{catalog_rubric_icon(rubric)}", alt: rubric.title, class: 'media__ico'
+        .companies__title.title
+          %a.title__text{:href => "/catalog/list/#{rubric.id}"}= "#{rubric.title} (#{rubric.counter})"
+        .companies__action.action
+          %svg.action__ico{:fill => "none", :height => "8", :viewbox => "0 0 13 8", :width => "13", :xmlns => "http://www.w3.org/2000/svg"}
+            %path{:d => "M1.16212 4.90695e-07L8.0848e-08 1.22022L6.5 8L13 1.21337L11.8379 6.18002e-07L6.5 5.57326L1.16212 4.90695e-07Z", :fill => "black"}
+      - unless rubric.children.blank?
+        .companies__main
+          .companies__list
+            - rubric.children.each do |category|
+              .companies__item
+                %a.companies__link{:href => "/catalog/list/#{category.id}"}= "#{category.title}&nbsp;(#{category.counter})".html_safe
+
+/ - unless rubric.blank?
+/   .b-catalog__item
+/     = image_tag catalog_rubric_icon(rubric), alt: rubric.title, class: 'icon'
+/     = link_to "/catalog/list/#{rubric.id}", class: 'title' do
+/       %strong= rubric.title
+/       (#{rubric.counter})
+/     - unless rubric.children.blank?
+/       %ul.b-catalog__children
+/         - rubric.children.each do |category|
+/           %li.b-catalog__child= link_to "#{category.title}&nbsp;(#{category.counter})".html_safe, "/catalog/list/#{category.id}"

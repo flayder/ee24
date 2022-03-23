@@ -1,3 +1,6 @@
-.g-comments__list.js-commentsList
-  - comments.each do |comment|
-    = render partial: 'comments/comment', object: comment
+.chat__header.header
+  %span.header__title= "КОММЕНТАРИИ (<span class='js-commentsCount'>#{comments.length}</span>)".html_safe
+  .chat__main
+    .chat__list.js-comments
+      - comments.each do |comment|
+        = render partial: 'comments/comment', object: comment

@@ -1,29 +1,46 @@
-.l-wrapper
-  %aside.l-section__aside
-    = link_if_logged t('.add_company'), new_catalog_path
-    = render 'shared/adv-aside'
+/= render partial: "other/breadcrumbs"
+= render 'aux'
 
-  %div.l-section__main
-    .b-catalog
-      %h1.g-subheader.g-subheader__last-news
-        =# @rubric.title
-      = render 'aux'
-      - if @rubrics.present?
-        .b-catalog-sub
-          - @rubrics.each do |rubric|
-            .b-catalog-sub__item>
-              = link_to "#{rubric.title} (#{rubric.counter})", "/catalog/list/#{rubric.id}", class: "#{' active' if current_page?(rubric.url)}"
-        .g-section-subheader.mini
+.layout__header.header
+  .layout__title.title
+    %span.title__text= @rubric.title
+  = render "other/partner"
+.layout__content
+  .section__main
+    = render partial: "other/company_list", locals: {rubrics: @rubrics}
+  / КОМПАНИИ
+  %section__main
+    = render partial: "other/companies", locals: {places: @places}
 
-        -# TODO: блок рекомендаций: разобраться, кому, что и зачем рекомендовать (см документ, 68.1)
-        -#  %span Мы рекомендуем
-        -#.b-companies= render partial: 'shared/companies', object: @recommended_catalogs
+  = render "other/company_slider" 
+  = render partial: "main/main_text", locals: {seo: @seo}
+  = render "main/main_popular"       
+/ .l-wrapper
+/   %aside.l-section__aside
+/     = link_if_logged t('.add_company'), new_catalog_path
+/     = render 'shared/adv-aside'
 
-      - if @places.present?
-        .b-catalog-companies.js-loaderByPage
-          .col1= render partial: 'catalog/items'
-          .g-loader
-            =# link_to 'Загрузить ещё компании', 'javascript:;', data: {page: @places.next_page}, class: 'g-loader__link js-loader'
-            = will_paginate @places
+/   %div.l-section__main
+/     .b-catalog
+/       %h1.g-subheader.g-subheader__last-news
+/         =# @rubric.title
+/       = render 'aux'
+/       - if @rubrics.present?
+/         .b-catalog-sub
+/           - @rubrics.each do |rubric|
+/             .b-catalog-sub__item>
+/               = link_to "#{rubric.title} (#{rubric.counter})", "/catalog/list/#{rubric.id}", class: "#{' active' if current_page?(rubric.url)}"
+/         .g-section-subheader.mini
 
-= seo_text @seo
+/         -# TODO: блок рекомендаций: разобраться, кому, что и зачем рекомендовать (см документ, 68.1)
+/         -#  %span Мы рекомендуем
+/         -#.b-companies= render partial: 'shared/companies', object: @recommended_catalogs
+
+/       - if @places.present?
+/         .b-catalog-companies.js-loaderByPage
+/           .col1= render partial: 'catalog/items'
+/           .g-loader
+/             =# link_to 'Загрузить ещё компании', 'javascript:;', data: {page: @places.next_page}, class: 'g-loader__link js-loader'
+/             = will_paginate @places
+
+/ = seo_text @seo

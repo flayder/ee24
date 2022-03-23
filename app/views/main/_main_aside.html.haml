@@ -1,0 +1,23 @@
+%aside.sidebar
+  .sidebar__list
+    .sidebar__item
+      %a.sidebar__link{:href => "#"}
+        %img.sidebar__img{:alt => "banner", :src => "/assets/sidebar-img01.jpg"}/
+    .sidebar__item
+      .sidebar__action.action
+        .action__list
+          .action__item
+            %a.action__text{href: "/news/new", style: "color: #fff;"} Добавить новость
+          .action__item
+            %a.action__text{href: "/job/vacancies/new", style: "color: #fff;"} Добавить вакансию
+          .action__item
+            %a.action__text{href: "/catalog/new", style: "color: #fff;"} Добавить компанию
+          .action__item
+            %a.action__text{href: "/travel/new", style: "color: #fff;"} Добавить статью
+    = ad_code('vertical_top_right').html_safe
+    / .sidebar__item
+    /   %a.sidebar__link{:href => "#"}
+    /     %img.sidebar__img{:alt => "banner", :src => "/assets/sidebar-img02.jpg"}/
+    / .sidebar__item
+    /   %a.sidebar__link{:href => "#"}
+    /     %img.sidebar__img{:alt => "banner", :src => "/assets/sidebar-img03.jpg"}/

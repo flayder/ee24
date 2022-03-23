@@ -1,5 +1,9 @@
 - if docs.present?
-  = render partial: 'shared/docs_paginated', object: docs
+  -# @docs = @results
+  .section__main  
+    = render partial: 'news_list'
+    .g-loader
+      = will_paginate @docs
 - else
   .b-box
     - no_info ||= 'По вашему запросу ничего не найдено.'

@@ -1,0 +1,23 @@
+= form_tag "/forms", method: "post", class: "formular__from" do |f|
+  .row
+    .col.col_9.col_desktop-big-8.col_mob-12
+      .form-field
+        %input.form-field__input{:placeholder => "Введите ваш e-mail", :required => "", :name => "data", :type => "email"}
+        %input{:name => "title", :value => "Форма рекомендует услуги", :type => "hidden"}
+      / //form-field
+    .col.col_3.col_desktop-big-4.col_mob-12
+      .form-field
+        %button{:type => "submit"} Подписаться
+        :javascript
+          $(document).on('submit', '.formular__from', function(){
+            const $this = $(this)
+            $.ajax({
+              type: "POST",
+              data: $this.serialize(),
+              url: $this.attr('action'),
+              success(res) {
+                //console.log(res)
+              }
+            })
+            return false
+          })

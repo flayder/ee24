@@ -1,14 +1,16 @@
-.b-newslist-tape__item
-  - if news_item.main_photo.present?
-    .item__photo.l-l
-      = image_tag news_item.main_photo.image.url(:medium), size: '190x130', alt: news_item.title, title: news_item.title, class: 'cover'
-  .item__info
-    %span.date
-      = Russian::strftime(news_item.created_at, '%d.%m.%Y %H:%M')
-    = link_to news_item.rubric.title, news_item.rubric.url, class: 'category' if news_item.rubric.present?
-  .item__title
-    = link_to news_item.title, (!news_item.approved? && can?(:manage, news_item)) ? news_item.preview_secret_url : news_item.url, class: 'link'
-  .g-aux.mini.l
-    %span.g-aux__item.views
-      = news_item.page_views
-    = render partial: 'templates/blocks/comments_counter', locals: {doc: news_item}
+= render partial: "other/article", locals: {article: news_item}
+
+/ .b-newslist-tape__item
+/   - if news_item.main_photo.present?
+/     .item__photo.l-l
+/       = image_tag news_item.main_photo.image.url(:medium), size: '190x130', alt: news_item.title, title: news_item.title, class: 'cover'
+/   .item__info
+/     %span.date
+/       = Russian::strftime(news_item.created_at, '%d.%m.%Y %H:%M')
+/     = link_to news_item.rubric.title, news_item.rubric.url, class: 'category' if news_item.rubric.present?
+/   .item__title
+/     = link_to news_item.title, (!news_item.approved? && can?(:manage, news_item)) ? news_item.preview_secret_url : news_item.url, class: 'link'
+/   .g-aux.mini.l
+/     %span.g-aux__item.views
+/       = news_item.page_views
+/     = render partial: 'templates/blocks/comments_counter', locals: {doc: news_item}

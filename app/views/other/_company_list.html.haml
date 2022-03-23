@@ -1,0 +1,12 @@
+- if rubrics.present?
+  .companies
+    .companies__groups
+      .row
+        - rubrics.each_slice(rubrics.length / 3) do |slice|
+          .col.col_4.col_tab-6.col_mob-p-12
+            .companies__group
+              .companies__main
+                .companies__list
+                  - slice.each do |rubric|
+                    .companies__item
+                      %a.companies__link{:href => "/catalog/list/#{rubric.id}"}= "#{rubric.title} (#{rubric.counter})"
